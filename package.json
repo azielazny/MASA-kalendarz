@@ -1,0 +1,38 @@
+{
+  "name": "kalendarz",
+  "version": "0.0.1",
+  "description": "kalendarz",
+  "main": "index.html",
+    "scripts": {
+    "start": "npm run lite",
+    "lite": "lite-server"
+  },
+
+  "repository": {
+    "type": "git",
+    "url": "https://kask.eti.pg.gda.pl/gitlab_aui/XIV-projekt-grupowy/MASA-kalendarz.git"
+  },
+  "author": "Arkadiusz Zielazny",
+  "license": "ISC",
+  "dependencies": {
+    "@angular/common": "~2.4.5",
+    "@angular/compiler": "~2.4.5",
+    "@angular/core": "~2.4.5",
+    "@angular/forms": "~2.4.5",
+    "@angular/http": "~2.4.5",
+    "@angular/platform-browser": "~2.4.5",
+    "@angular/platform-browser-dynamic": "~2.4.5",
+    "@angular/router": "~3.4.5",
+    "@angular/upgrade": "~2.4.5",
+
+    "angular-in-memory-web-api": "~0.2.4",
+    "core-js": "^2.4.1",
+    "rxjs": "5.0.2",
+    "systemjs": "0.19.39",
+    "zone.js": "^0.7.4"
+  },
+  "devDependencies": {
+    "concurrently": "^3.0.0",
+    "lite-server": "^2.2.2"
+  }
+}
