@@ -13,13 +13,28 @@
     <script src="node_modules/@angular/compiler/bundles/compiler.umd.js"></script>
     <script src="node_modules/@angular/platform-browser/bundles/platform-browser.umd.js"></script>
     <script src="node_modules/@angular/platform-browser-dynamic/bundles/platform-browser-dynamic.umd.js"></script>
+    <!--jquery-->
+    <script src="node_modules/jquery/dist/jquery.js"></script>
+    <!--bootstrap 3-->
+    <script src="node_modules/bootstrap/dist/js/bootstrap.js"></script>
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap-theme.css">
+
     <!-- 2. Load our 'modules' -->
     <script src='app/app.component.js'></script>
     <script src='app/app.module.js'></script>
     <script src='main.js'></script>
+
+
 </head>
 <!-- 3. Display the application -->
 <body>
 <my-app>Loading...</my-app>
+<h2>test jquery</h2>
+<script>
+    $(document).ready(function() {
+        $('h2').css('color','red');
+    });
+</script>
 </body>
 </html>

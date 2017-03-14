@@ -3,7 +3,6 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-clean');
     grunt.loadNpmTasks('grunt-contrib-imagemin');
     grunt.loadNpmTasks('grunt-contrib-sass');
-    grunt.loadNpmTasks('grunt-mustache-render');
     grunt.loadNpmTasks('grunt-contrib-cssmin');
 
     grunt.loadNpmTasks('grunt-contrib-concat');
@@ -11,7 +10,6 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-minify-html');
 
-    grunt.loadNpmTasks('grunt-typescript');
 
     // Load grunt tasks automatically
     require('load-grunt-tasks')(grunt);
@@ -85,7 +83,7 @@ module.exports = function (grunt) {
                 },
                 files: [{
                     expand: true,
-                    cwd: 'assets/sass',
+                    cwd: 'assets/scss',
                     src: ['*.scss'],
                     dest: 'src/styles',
                     ext: '.css'
@@ -117,7 +115,7 @@ module.exports = function (grunt) {
             },
             css: {
                 files: ['assets/scss/*.scss'],
-                tasks: ['css'],
+                tasks: ['sass'],
             },
             html: {
                 files: ['assets/templates/*.html'],
