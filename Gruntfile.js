@@ -8,7 +8,7 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-concat');
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-watch');
-    grunt.loadNpmTasks('grunt-minify-html');
+    grunt.loadNpmTasks('grunt-contrib-htmlmin');
 
 
     // Load grunt tasks automatically
@@ -49,14 +49,20 @@ module.exports = function (grunt) {
             }
         },
         //minifikacja html
-        minifyHtml: {
-            options: {
-                cdata: true
-            },
-            dist: {
-                files: {
-                    'assets/*.html': 'src/*.html'//need configure
-                }
+        htmlmin: {
+
+
+            dev: {
+                options: {                                 // Target options
+                    removeComments: true,
+                    collapseWhitespace: true
+                },
+                files: [{
+                    expand: true,
+                    cwd: 'src',
+                    src: ['*.html'],
+                    dest: 'src'
+                }]
             }
         },
         imagemin: {                          // Task
@@ -105,7 +111,7 @@ module.exports = function (grunt) {
         },
 
         clean: {
-            contents: ['src/styles/*', 'src/images/*']
+            contents: ['src/styles/*', 'src/images/*', 'src/*.html']
         },
 
 
@@ -119,7 +125,7 @@ module.exports = function (grunt) {
             },
             html: {
                 files: ['assets/templates/*.html'],
-                tasks: ['copy']
+                tasks: ['copyfiles']
             }
         }
 
@@ -127,8 +133,8 @@ module.exports = function (grunt) {
     grunt.registerTask('css', ['sass']);
     grunt.registerTask('copyfiles', ['copy']);
     grunt.registerTask('images', ['imagemin']);
-    grunt.registerTask('htmlminify', ['minifyHtml']);
+    grunt.registerTask('htmlminify', ['htmlmin']);
     grunt.registerTask('cssminify', ['cssmin']);
-    grunt.registerTask('minific', ['minifyHtml', 'cssmin', 'imagemin']);
+    grunt.registerTask('minific', ['htmlmin', 'cssmin', 'imagemin']);
     grunt.registerTask('build', ['clean', 'sass', 'copy', 'imagemin']);
 };
