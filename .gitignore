@@ -1,5 +1,5 @@
 .idea
 .sass-cache
 node_modules
-src/styles
-src/images
+src/styles/*
+src/images/*
