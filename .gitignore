@@ -1,0 +1,8 @@
+.idea
+.sass-cache
+node_modules
+src/styles/*.css
+src/images/*
+src/*.html
+assets/scss/*.css
+assets/scss/*.css.map
