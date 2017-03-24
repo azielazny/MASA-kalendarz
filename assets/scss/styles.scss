@@ -7,6 +7,16 @@ h1 {
 
 body {
   margin: 2em;
+  text-align: center;
+  height:100vh;
+  vertical-align: middle;
+  display: table-cell;
+  width:100vw
+}
+#ramka {
+  border: 3px solid #888;
+  padding: 20px;
+  display: inline-block;
 }
 
 /*

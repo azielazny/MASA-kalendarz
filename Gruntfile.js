@@ -84,7 +84,6 @@ module.exports = function (grunt) {
         sass: {
             dist: {
                 options: {
-                    compass: true,
                     quiet: true
                 },
                 files: [{
@@ -135,6 +134,7 @@ module.exports = function (grunt) {
     grunt.registerTask('images', ['imagemin']);
     grunt.registerTask('htmlminify', ['htmlmin']);
     grunt.registerTask('cssminify', ['cssmin']);
+    grunt.registerTask('jsmin', ['uglify']);
     grunt.registerTask('minific', ['htmlmin', 'cssmin', 'imagemin']);
     grunt.registerTask('build', ['clean', 'sass', 'copy', 'imagemin']);
 };
