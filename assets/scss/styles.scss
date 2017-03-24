@@ -7,9 +7,16 @@ h1 {
 
 body {
   margin: 2em;
+  text-align: center;
+  height:100vh;
+  vertical-align: middle;
+  display: table-cell;
+  width:100vw
+}
+#ramka {
+  border: 3px solid #888;
+  padding: 20px;
+  display: inline-block;
 }
 
-/*
- * See https://github.com/angular/angular.io/blob/master/public/docs/_examples/styles.css
- * for the full set of master styles used by the documentation samples
- */
+
