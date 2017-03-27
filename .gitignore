@@ -1,5 +1,5 @@
 src/styles/*.css
-src/images/*
+#src/images/*
 assets/scss/*.css
 assets/scss/*.css.map
 
