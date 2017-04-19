@@ -1,0 +1,274 @@
+body{
+    font-family: Arial;
+
+    background-color: #ffffff;
+    margin: 0;
+    height: 100%;
+}
+
+.header {
+    border-bottom: 1px solid #76777a;
+    width: 100%;
+
+    position: fixed;
+    top: 0px;
+
+    background: white;
+    z-index: 1000;
+}
+
+.header .row {
+    align-self: center;
+    margin: auto !important;
+
+    width: 80%;
+}
+
+.header-left {
+    float: left;
+}
+
+.header-left h1 {
+    font-size: 2em;
+    color: #000000;
+    font-family: "Arial Black", Arial , Helvetica, sans-serif;
+    font-weight: bolder;
+    margin-top: 0.6em;
+}
+
+.header-right {
+    float: right;
+}
+
+.header-right p {
+    font-size: 1em;
+    font-family: Arial;
+    font-weight: bold;
+    color:#077e8f;
+    position: relative;
+    top: 25px;
+    text-align: right;
+    display: inline;
+}
+
+.header-right p i{
+    margin-left: 0.2em;
+}
+
+
+
+
+
+.footer p{
+    font-size: 0.8em ;
+    font-family: Tahoma, Helvetica, Arial, sans-serif;
+    color: #76777a;
+    text-align: center;
+    margin-top: 10px;
+}
+.footer p span {
+    margin: 0 25px;
+}
+
+.footer-wrap {
+    position: relative;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+
+    border-top: 1px solid #76777a;
+
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+
+}
+
+
+
+
+
+.main {
+    width: 100%;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    justify-content: center;
+    flex-flow: column nowrap;
+}
+
+.main > div {
+    width: 80%;
+    align-self: center;
+    margin: auto;
+}
+
+
+
+.banner {
+    background: url(img/banner.png) #067e8f no-repeat center;
+    width: 100%;
+    height: 103px;
+
+    border-top: 1px solid #015965;
+    border-bottom: 1px solid #015965;
+
+    position: relative;
+    top: 55px;
+}
+
+
+
+
+.city-header {
+    font-weight: bold;
+    font-size: 2em;
+
+    padding: 20px 0;
+}
+
+
+
+
+.city-search {
+    border: 1px solid black;
+    padding: 5px;
+}
+
+.city-search-right {
+    float: right;
+    display: table;
+    border-collapse: collapse;
+}
+
+.city-search-right button {
+    background: none;
+    border: 1px solid lightgrey;
+    margin: 0;
+    display: table-cell;
+
+    font-size: 0.90em;
+}
+
+.city-search-right button.selected {
+    background: #067e8f;
+    color: white;
+    border: 1px solid #015965
+}
+
+.city-search-right button:first-child {
+    border-radius: 5px 0 0 5px;
+}
+
+.city-search-right button:last-child {
+    border-radius: 0 5px 5px 0;
+}
+
+.city-search-left {
+    float: left;
+}
+
+
+
+
+.events {
+    padding-top: 20px;
+}
+
+.event {
+    display: table;
+    border-collapse: collapse;
+}
+
+.event-internals > div {
+    display: table-row;
+    border: 1px solid #d2d2d2;
+}
+
+.event-internals {
+    margin: 10px;
+}
+
+.event-image-cover {
+    display: none;
+
+    position: absolute;
+    top: 11px;
+    left: 11px;
+    background-color: rgba(237, 237, 237, 0.8);
+
+    text-align: center;
+    justify-content: center;
+
+    font-variant: small-caps;
+
+    font-size: 2em;
+}
+
+.event-image-cover span {
+    align-self: center;
+}
+
+.event:hover .event-image-cover {
+    display: flex;
+}
+
+.event-image img {
+    margin: 1px 0 0 1px;
+    width: calc(100% - 2px);
+    height: auto;
+}
+
+.event-title {
+    font-size: 1.1em;
+    font-weight: bold;
+
+    border-bottom: 0 !important;
+}
+
+.event-title span {
+    display: block;
+    margin: 0 10px;
+}
+
+.event-dates {
+    border-top: 0 !important;
+
+    flex-flow: row nowrap;
+
+    margin: 0 10px;
+}
+
+.event-dates div {
+    display: inline-block;
+    padding: 0 4px;
+}
+
+.event:hover > * {
+    background-color: #ededed;
+}
+
+.event-date {
+    background-color: black;
+    color: white;
+    border: 1px solid black;
+    margin-left: 10px;
+}
+
+.event-date i {
+    color: white;
+    padding-right: 4px;
+}
+
+.event-time {
+    border: 1px solid black;
+    background: white;
+    margin-right: 10px;
+}
+
+.event-location span {
+    font-size: 0.9em;
+    margin: 0 10px;
+    display: block;
+}
