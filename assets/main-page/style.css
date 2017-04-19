@@ -1,9 +1,16 @@
 
+img {
+  height: auto;
+  max-width: 100%;
+}
 
 body{
   background-color: #ffffff;
   margin: 0;
   height: 100%;
+
+
+
 
 }
 .header{
@@ -15,18 +22,18 @@ body{
   font-size: 2em;
   color: #000000;
   font-family: "Arial Black", Arial , Helvetica, sans-serif;
- font-weight: bolder;
+  font-weight: bolder;
   padding-left: 100px;
   margin-top: 0.6em;
 
 }
 .header-right p {
   font-size: 1em;
-  font-family: Arial;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: bold;
   color:#077e8f;
- position: absolute;
- right: 100px;
+  position: absolute;
+  right: 100px;
   top: 25px;
   text-align: right;
   display: inline;
@@ -39,54 +46,74 @@ body{
   margin-left: 0.2em;
 
 }
-.column-left{
-  border: dashed 2px red;
 
-
-
-}
 .column-center{
-  border: dashed 2px red;
+
   position: center;
+  margin-top: 80px;
+  padding-top: 80px;
+  padding-bottom: 100px;
+
+
 
 
 }
 .column-center h1{
-  font-size: 46px;
-  font-family: MyriadPro;
+  font-size: 36px;
+  font-family: Verdana;
   font-weight: bold;
   color: #323439;
-  text-align: justify;
-  padding-left: 200px;
+  margin-left: 50px;
+  padding-left: 170px;
+  height: auto;
 
 }
 .column-center h2{
   font-size: 30px;
   color: #76777a;
   font-weight: normal;
-  text-align: justify;
-  padding-left: 200px;
+  font-family: Verdana;
+  padding-left: 150px;
+  margin-left: 0;
 }
-.column-left{
-  text-align: center;
-  padding-top: 300px;
+.column-center h2:nth-child(odd){
+  margin-left: 50px;
 }
-.button1{
-  margin-bottom: 30px;
-  border-color: #FFFE00;
+.button{
+  padding-left: 170px;
+}
+
+.column-center .button1 {
+  margin-top: 30px;
+  margin-left: 100px;
+  color:white ;
+  font-weight: bolder;
+  border-color: #FFCC00;
+  background-color: #3367d6;
+}
 
 
 
+.column-center .button2 {
+
+  margin-top: 50px;
+  margin-left: 20px;
+  font-weight: bold;
+  color: #76777a;
+  border-color: #CBE0FF;
 }
-.button2{
-  border-color: #FFFE00;
-}
-.button3{
- border-color: #E2EDFF;
+
+
+.column-center .button3{
+
+  margin-left: 20px;
+  margin-top: 50px;
+  font-weight: bold;
+  color: #76777a;
+  border-color: #CBE0FF;
 }
 body {
   background-image: url("img/women3.png");
-  background-repeat: no-repeat;
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-position: 80% 100%;
@@ -106,6 +133,10 @@ body {
 
 }
 .footer-wrap {
-
-  position:absolute;height:20px;bottom:0;left:0;width:100%
+  border-top: 1px solid #76777a;
+  position:absolute;
+  height:20px;
+  bottom:30px;
+  left:0;
+  width:100%
 }
