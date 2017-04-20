@@ -91,7 +91,37 @@ body{
   border-color: #FFCC00;
   background-color: #3367d6;
 }
+.column-center .button1, .button1:hover, .button1:visited, .button1:active, .button1:focus {
+  margin-top: 30px;
+  margin-left: 100px;
+  color:white !important;
+  font-weight: bolder;
+  border-color: #FFCC00 !important;
+  background-color: #3367d6 !important;
+}
 
+
+
+.column-center .button2, .button2:hover, .button2:visited, .button2:active, .button2:focus {
+
+  margin-top: 50px;
+  margin-left: 20px;
+  font-weight: bold;
+  color: #76777a !important;
+  border-color: #CBE0FF !important;
+  background-color: #fff !important;
+}
+
+
+.column-center .button3, .button3:hover, .button3:visited, .button3:active, .button3:focus{
+
+  margin-left: 20px;
+  margin-top: 50px;
+  font-weight: bold;
+  color: #76777a !important;
+  border-color: #CBE0FF !important;
+  background-color: #fff !important;
+}
 
 
 .column-center .button2 {
