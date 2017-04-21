@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <script src="../../node_modules/jquery/dist/jquery.js"></script>
+    <script src="../../node_modules/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="../../app/app.component.js"></script>
+    <script src="../../app/app.module.js"></script>
+    <script src="../../main.js"></script>
+
+    <link rel="stylesheet" href="../../node_modules/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="../../node_modules/bootstrap/dist/css/bootstrap-theme.css">
+    <link rel="stylesheet" href="../../node_modules/font-awesome/css/font-awesome.css">
+    <link rel="stylesheet" href="style-calendar.css">
+</head>
+<body>
+<div id="main" class="shortView">
+    <aside id="leftColumn" class="col-xs-5 col-sm-4 col-md-3 col-xl-2">
+        <div class="logoBox">
+            <i class="fa fa-bars" aria-hidden="true"></i>
+            <span class="logoText">makeplan.</span>
+        </div>
+        <section id="newAlerts">
+            <i class="fa fa-angle-down" aria-hidden="true"></i>
+            <i class="fa fa-angle-up" aria-hidden="true"></i>
+            <div class="info">
+                <span>Najbliższe wydarzenia</span>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consectetur explicabo iure mollitia, sed
+                    veritatis voluptas.</p>
+            </div>
+
+        </section>
+        <nav id="mainNav">
+            <ul class="list-unstyled">
+                <li><a href="#"><i class="fa fa-cogs" aria-hidden="true"></i> <span>Ustawienia</span></a></li>
+                <li><a href="#"><i class="fa fa-book" aria-hidden="true"></i> <span>Wydarzenia publiczne</span></a></li>
+                <li><a href="#"><i class="fa fa-sign-out" aria-hidden="true"></i> <span>Wyloguj</span></a></li>
+            </ul>
+        </nav>
+        <section id="categoryList">
+            <div class="input-group  input-group-sm">
+                <span class="input-group-addon" id="basic-addon1"><i class="fa fa-stop" aria-hidden="true"></i>
+</span>
+                <input type="text" class="form-control" placeholder="Dodaj etykietę...">
+
+            </div>
+            <div class="actualCategory">
+                <div class="catBox"><i class="fa fa-stop" aria-hidden="true"></i></div>
+                <div class="catName">Domowe</div>
+                <div class="catDel"><i class="fa fa-times" aria-hidden="true"></i></div>
+            </div>
+            <div class="actualCategory">
+                <div class="catBox"><i class="fa fa-stop" aria-hidden="true"></i></div>
+                <div class="catName">Domowe</div>
+                <div class="catDel"><i class="fa fa-times" aria-hidden="true"></i></div>
+            </div>
+            <div class="actualCategory">
+                <div class="catBox"><i class="fa fa-stop" aria-hidden="true"></i></div>
+                <div class="catName">Domowe</div>
+                <div class="catDel"><i class="fa fa-times" aria-hidden="true"></i></div>
+            </div>
+            <div class="actualCategory">
+                <div class="catBox"><i class="fa fa-stop" aria-hidden="true"></i></div>
+                <div class="catName">Domowe</div>
+                <div class="catDel"><i class="fa fa-times" aria-hidden="true"></i></div>
+            </div>
+        </section>
+    </aside>
+    <section id="calendar" class="col-xs-7  col-sm-8 col-md-9  col-xl-10">
+        <section id="rightColumn" class="hidden">
+            <i class="fa fa-close"></i>
+            <div class="title">
+                Zdarzenie
+            </div>
+            <div class="addEvent">
+                <i class="fa fa-plus"></i>
+                <span>Dodaj zdarzenie</span>
+            </div>
+            <div id="evList">
+                <div class="eventPrev">
+                    <i class="fa fa-angle-double-up"></i>
+                </div>
+                <div class="eventsList">
+                    <div class="eventBox">
+                        <i class="fa fa-2x fa-bookmark"></i>
+                        <div class="title">Najbliższe wydarzenie planowane z długą nazwą</div>
+                        <div class="data">
+                            03.03.2017 od <span>11:22</span> do <span>12:22</span><br>
+                            Polibuda Gdańska<br>
+                            Gdańsk, ul. Długa 2222/222
+                        </div>
+                        <div class="body">
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequuntur, eveniet.
+                        </div>
+                    </div>
+                </div>
+                <div class="eventsList">
+                    <div class="eventBox">
+                        <i class="fa fa-2x fa-bookmark"></i>
+                        <div class="title">Najbliższe wydarzenie planowane z długą nazwą</div>
+                        <div class="data">
+                            03.03.2017 od <span>11:22</span> do <span>12:22</span><br>
+                            Polibuda Gdańska<br>
+                            Gdańsk, ul. Długa 2222/222
+                        </div>
+                        <div class="body">
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequuntur, eveniet.
+                        </div>
+                    </div>
+                </div>
+                <div class="eventsList">
+                    <div class="eventBox">
+                        <i class="fa fa-2x fa-bookmark"></i>
+                        <div class="title">Najbliższe wydarzenie planowane z długą nazwą</div>
+                        <div class="data">
+                            03.03.2017 od <span>11:22</span> do <span>12:22</span><br>
+                            Polibuda Gdańska<br>
+                            Gdańsk, ul. Długa 2222/222
+                        </div>
+                        <div class="body">
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequuntur, eveniet.
+                        </div>
+                    </div>
+                </div>
+                <i class="fa fa-angle-double-down"></i>
+                <div class="eventNext">
+                    <i class="fa"></i>
+                </div>
+            </div>
+        </section>
+        <section id="calEdit" class="hidden">
+            <!--box z ustawieniami-->
+
+            <div class="col-xs-1"></div>
+
+            <div class="col-xs-10">
+                <div class="row">
+                    <div class="col-xs-11">
+                        <div class="topNav active">
+                            Edycja zdarzenia
+                        </div>
+                        <div class="topNav">
+                            Ustawienia
+                        </div>
+                    </div>
+                    <div class="col-xs-1"><i class="fa fa-2x fa-close closeEditCal"></i></div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12 mainNav">
+                        <div class="mainNavBox">
+                            <i class="fa fa-save"></i> <span>Zapisz i zamknij</span>
+                        </div>
+                        <div class="mainNavBox">
+                            <i class="fa fa-trash-o"></i> <span>Usuń</span>
+                        </div>
+                        <div class="mainNavBox">
+                            <i class="fa fa-unlock publicIcon"></i> <span>Publiczne</span>
+                        </div>
+                        <div class="mainNavBox">
+                            <i class="fa fa-thumb-tack"></i> <span>Przypomnienie</span>
+                        </div>
+                    </div>
+                    <div class="col-xs-12">
+                        <div class="col-xs-12 col-md-8 formCalendar">
+
+                            <div class="selectColor">
+                                <i class="fa fa-2x fa-stop" aria-hidden="true"></i>
+                                <i class="fa fa-2x fa-angle-down" aria-hidden="true"></i>
+                            </div>
+                            <input type="text" value="Nazwa zdarzenia..." class="bigSize">
+                            <input type="text" value="Lokalizacja..." class="fullWidth calField">
+                            <div class="calField editDate">
+                                <input type="text" value="Start:11.11.2222">
+                            </div>
+                            <select name="" class="selectHour calField" id="">
+                                <option value="">Od: 33:33</option>
+                            </select>
+                            <div class="calField editDate">
+                                <input type="text" value="Start:11.11.2222">
+                            </div>
+                            <select name="" id="" class="selectHour calField">
+                                <option value="">Do: 33:33</option>
+                            </select>
+
+
+                            <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+                                <div class="panel panel-default">
+                                    <div class="panel-heading" role="tab" id="headingOne">
+                                        <h4 class="panel-title">
+                                            <a role="button" data-toggle="collapse" data-parent="#accordion"
+                                               href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                                Opis zdarzenia
+                                            </a>
+                                        </h4>
+                                    </div>
+                                    <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel"
+                                         aria-labelledby="headingOne">
+                                        <div class="panel-body">
+                                            <textarea>Opis zdarzenia</textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="panel panel-default">
+                                    <div class="panel-heading" role="tab" id="headingTwo">
+                                        <h4 class="panel-title">
+                                            <a class="collapsed" role="button" data-toggle="collapse"
+                                               data-parent="#accordion" href="#collapseTwo" aria-expanded="false"
+                                               aria-controls="collapseTwo">
+                                                Osoby zapisane
+                                            </a>
+                                        </h4>
+                                    </div>
+                                    <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel"
+                                         aria-labelledby="headingTwo">
+                                        <div class="panel-body">
+                                            - Imie i nazwisko<br>- Imie i nazwisko<br>- Imie i nazwisko<br>- Imie i
+                                            nazwisko<br>- Imie i nazwisko<br>- Imie i nazwisko<br>- Imie i nazwisko<br>-
+                                            Imie i nazwisko<br>- Imie i nazwisko<br>-
+                                            Imie i nazwisko<br>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="panel panel-default">
+                                    <div class="panel-heading" role="tab" id="headingThree">
+                                        <h4 class="panel-title">
+                                            <a class="collapsed" role="button" data-toggle="collapse"
+                                               data-parent="#accordion" href="#collapseThree" aria-expanded="false"
+                                               aria-controls="collapseThree">
+                                                Ustawienia publiczne
+                                            </a>
+                                        </h4>
+                                    </div>
+                                    <div id="collapseThree" class="panel-collapse collapse" role="tabpanel"
+                                         aria-labelledby="headingThree">
+                                        <div class="panel-body">
+                                            W trakcie budowy
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        </div>
+                        <div class="col-xs-12 col-md-4 mapa">mapa i pogoda</div>
+                    </div>
+                    <div class="col-xs-1"></div>
+                </div>
+
+            </div>
+            <div class="col-xs-1"></div>
+            <!--box z ustawieniami END-->
+        </section>
+        <div class="row">
+            <div class="personHello col-xs-12 col-sm-6">
+                Witaj, Jan Kowalski
+            </div>
+            <div id="calData" class="calData col-xs-12 col-sm-6">
+                Marzec 2017
+            </div>
+        </div>
+        <div id="calGrid">
+            <div id="calPrev"><i class="fa fa-angle-double-left" aria-hidden="true"></i>
+            </div>
+            <div id="calBody">kalendarzowa siatka</div>
+            <div id="calNext"><i class="fa fa-angle-double-right" aria-hidden="true"></i>
+            </div>
+        </div>
+
+
+    </section>
+
+
+</div>
+<script>
+
+    var now = new Date();
+    var thisMonth = now.getMonth();
+    now.setFullYear(now.getFullYear());
+
+    var thisDay = now.getDate();
+    var year = now.getFullYear();
+    var month = now.getMonth();
+    document.getElementById('calPrev').addEventListener('click', function () {
+        now.setMonth(now.getMonth() - 1);
+        year = now.getFullYear();
+        month = now.getMonth();
+        monthGen(month, year);
+    });
+    document.getElementById('calNext').addEventListener('click', function () {
+        now.setMonth(now.getMonth() + 1);
+        year = now.getFullYear();
+        month = now.getMonth();
+        monthGen(month, year);
+    });
+
+    var days = ['pn', 'wt', 'sr', 'cz', 'pt', 'sb', 'nd'];
+    var months = ['Styczeń', 'Luty', 'Marzec', 'Kwiecień', 'Maj', 'Czerwiec', 'Lipiec', 'Sierpień', 'Wrzesień', 'Październik', 'Listopad', 'Grudzień'];
+    var actMonth = '';
+
+    monthGen(month, year);
+
+    function februaryInYear(year) {
+        return (year % 4 == 0) ? 29 : 28;
+    }
+
+    function monthDays(month, year) {
+        if (month != 2) {
+            var x = (month <= 7) ? 1 : 0;
+            return 30 + (Number(month % 2 == x));
+        } else {
+            return februaryInYear(year);
+        }
+
+    }
+
+    //dni w miesiącu
+    function monthGen(m, y) {
+
+        var mDays = monthDays(m + 1, y);
+        var mDaysPrev = monthDays(m, y);
+
+        var data = new Date(y, m, 1);
+        var marginToDay = data.getDay() - 1;
+        if (marginToDay < 0) {
+            marginToDay = 7 + marginToDay;
+        }
+        //dni tyg
+        for (i = 0; i < days.length; i++) {
+            actMonth += "<div class='wCard'>" + days[i] + '</div>';
+        }
+
+        //dni miesiąca
+        for (i = (1 - marginToDay), j = 0; i <= 42 - marginToDay; i++, j++) {
+            /*            actMonth += (j % 7 == 0) ? "<br>" : '';
+             actMonth += (i < 10 && i > 0) ? '0' : '';
+             card = (i == thisDay && m == thisMonth) ? "<b>" + i + "</b>" : (i>mDays)?'0'+(i-mDays):i;
+             actMonth += (i >= 1) ? card + "&nbsp; " : (mDaysPrev+i)+"&nbsp; ";*/
+            //actMonth += (j % 7 == 0) ? "<br>" : '';
+            card = (i == thisDay && m == thisMonth && y == year) ?
+                "<div class='lCard active'><span>" + i + "<span>" + days[(j % 7)] + "</span></span></div>" :
+                (i > mDays)
+                    ? "<div class='dCard'><span>" + (i - mDays) + "</span></div>" :
+                    "<div class='lCard'><span>" + i + "<span>" + days[(j % 7)] + "</span></span></div>";
+            actMonth += (i >= 1) ? card : "<div class='dCard'><span>" + (mDaysPrev + i) + "</span></div>";
+        }
+
+        //update danych
+        document.getElementById('calBody').innerHTML = actMonth;
+        document.getElementById('calData').innerHTML = months[m] + ' ' + year;
+        actMonth = '';
+    }
+
+    $(document).ready(function () {
+        $("#leftColumn .logoBox .fa-bars").on("click", function () {
+
+            $(this).parents("#main").toggleClass("shortView");
+            if ($(document).width() > $("#main").width()) {
+                $("#calendar").toggleClass("shortCal").find(".personHello:first").toggleClass("hidden");
+            } else {
+                $("#calendar").removeClass("shortCal").find(".personHello:first").removeClass("hidden");
+            }
+
+
+        });
+
+        $("#rightColumn .addEvent").on("click", function () {
+            console.log("sddsd");
+            $("#calendar").find("#calEdit").removeClass("hidden");
+        });
+        $(".closeEditCal").on("click", function () {
+            $("#calendar").find("#calEdit").addClass("hidden");
+        });
+        $(".lCard").on("click", function () {
+            $("#rightColumn").removeClass("hidden");
+        });
+        $("#rightColumn .fa-close").on("click", function () {
+            $("#rightColumn").addClass("hidden");
+        });
+        $('.collapse').collapse();
+
+
+    });
+
+
+</script>
+</body>
+</html>
