@@ -1,0 +1,50 @@
+.header {
+  border-bottom: 1px solid #76777a;
+  width: 100%;
+
+  position: fixed;
+  top: 0;
+
+  background: white;
+  z-index: 1000;
+
+  .row {
+    align-self: center;
+    margin: auto !important;
+
+    width: 80%;
+  }
+}
+
+.header-left {
+  float: left;
+
+  h1 {
+    font-size: 2em;
+    color: #000000;
+    font-family: "Arial Black", Arial , Helvetica, sans-serif;
+    font-weight: bolder;
+    margin-top: 0.6em;
+  }
+}
+
+.header-right {
+  float: right;
+
+  p {
+    font-size: 1em;
+    font-family: Arial;
+    font-weight: bold;
+    color: #077e8f;
+    position: relative;
+    top: 25px;
+    text-align: right;
+    display: inline;
+
+    i {
+      margin-left: 0.2em;
+      color: #077e8f;
+    }
+  }
+}
+
