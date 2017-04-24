@@ -5,12 +5,14 @@ import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
 import { FooterGlobalComponent } from './footer-global/footer-global.component';
+import { HeaderGlobalComponent } from './header-global/header-global.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     FooterGlobalComponent
+    HeaderGlobalComponent
   ],
   imports: [
     BrowserModule,
