@@ -11,7 +11,7 @@ import { HeaderGlobalComponent } from './header-global/header-global.component';
 @NgModule({
   declarations: [
     AppComponent,
-    FooterGlobalComponent
+    FooterGlobalComponent,
     HeaderGlobalComponent
   ],
   imports: [
