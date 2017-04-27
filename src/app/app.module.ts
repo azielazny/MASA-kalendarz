@@ -6,13 +6,15 @@ import { HttpModule } from '@angular/http';
 import { AppComponent } from './app.component';
 import { FooterGlobalComponent } from './footer-global/footer-global.component';
 import { HeaderGlobalComponent } from './header-global/header-global.component';
+import { EventsListHeaderComponent } from './events-list-header/events-list-header.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     FooterGlobalComponent,
-    HeaderGlobalComponent
+    HeaderGlobalComponent,
+    EventsListHeaderComponent
   ],
   imports: [
     BrowserModule,
