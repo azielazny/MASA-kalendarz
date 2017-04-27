@@ -8,6 +8,7 @@ import { FooterGlobalComponent } from './footer-global/footer-global.component';
 import { HeaderGlobalComponent } from './header-global/header-global.component';
 import { MainPageCentralComponent } from './main-page-central/main-page-central.component';
 import { MainPageComponent } from './main-page/main-page.component';
+import { EventsListHeaderComponent } from './events-list-header/events-list-header.component';
 
 
 @NgModule({
@@ -17,6 +18,7 @@ import { MainPageComponent } from './main-page/main-page.component';
     HeaderGlobalComponent,
     MainPageCentralComponent,
     MainPageComponent
+    EventsListHeaderComponent
   ],
   imports: [
     BrowserModule,
