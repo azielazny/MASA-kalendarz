@@ -17,7 +17,7 @@ import { EventsListHeaderComponent } from './events-list-header/events-list-head
     FooterGlobalComponent,
     HeaderGlobalComponent,
     MainPageCentralComponent,
-    MainPageComponent
+    MainPageComponent,
     EventsListHeaderComponent
   ],
   imports: [
