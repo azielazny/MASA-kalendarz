@@ -3,6 +3,9 @@
   color: red; }
 
 body {
-  background: beige; }
+  font-family: Arial;
+  background-color: #ffffff;
+  margin: 0;
+  height: 100%; }
 
 /*# sourceMappingURL=styles.css.map */
