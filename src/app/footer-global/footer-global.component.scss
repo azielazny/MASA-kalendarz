@@ -1,5 +1,5 @@
 .footer-wrap {
-  position: relative;
+  position: absolute;
   bottom: 0;
   left: 0;
   width: 100%;
@@ -8,6 +8,8 @@
 
   margin-left: 0 !important;
   margin-right: 0 !important;
+
+  background-color: white;
 
   .footer p {
     font-size: 0.8em ;

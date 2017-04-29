@@ -6,6 +6,11 @@ body {
   font-family: Arial;
   background-color: #ffffff;
   margin: 0;
-  height: 100%; }
+  min-height: 100%;
+  position: relative;}
+
+html {
+  min-height: 100%;
+}
 
 /*# sourceMappingURL=styles.css.map */
