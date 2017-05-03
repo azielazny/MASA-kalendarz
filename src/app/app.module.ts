@@ -9,6 +9,10 @@ import { HeaderGlobalComponent } from './header-global/header-global.component';
 import { MainPageCentralComponent } from './main-page-central/main-page-central.component';
 import { MainPageComponent } from './main-page/main-page.component';
 import { EventsListHeaderComponent } from './events-list-header/events-list-header.component';
+import {EventsRightColumnComponent} from './events-right-column/event-right-column.component';
+
+
+
 
 
 @NgModule({
@@ -18,7 +22,11 @@ import { EventsListHeaderComponent } from './events-list-header/events-list-head
     HeaderGlobalComponent,
     MainPageCentralComponent,
     MainPageComponent,
-    EventsListHeaderComponent
+    EventsListHeaderComponent,
+    EventsRightColumnComponent,
+
+
+
   ],
   imports: [
     BrowserModule,
