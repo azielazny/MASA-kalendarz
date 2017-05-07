@@ -1,0 +1,20 @@
+<div class="event-tabs">
+  <app-events-details-description></app-events-details-description>
+  <app-events-details-register></app-events-details-register>
+  <app-events-details-comment></app-events-details-comment>
+
+
+</div>
+
+
+
+
+<script>
+  $(document).ready(function () {
+    $('.event-tabs ul li a').click(function (e) {
+      e.preventDefault();
+      $(this).tab('show');
+    });
+  });
+
+</script>
