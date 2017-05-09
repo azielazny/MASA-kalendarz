@@ -20,7 +20,6 @@ import {EventsDetailsComponent} from "./events-details/events-details.component"
 import {EventsDetailsDescriptionComponent} from "./events-details-description/events-details-description.component";
 
 import {routing} from "./app-routing.module";
-import {EventDetailComponent} from "./event-detail/event-detail.component";
 
 
 
@@ -38,9 +37,7 @@ import {EventDetailComponent} from "./event-detail/event-detail.component";
     EventsDetailsRegisterComponent,
     EventsDetailsTablistComponent,
     EventsDetailsComponent,
-    EventsDetailsDescriptionComponent,
-    EventDetailComponent
-
+    EventsDetailsDescriptionComponent
 
 
   ],
