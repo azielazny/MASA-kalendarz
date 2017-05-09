@@ -19,7 +19,7 @@ import {EventsDetailsTablistComponent} from "./events-details-tablist/events-det
 import {EventsDetailsComponent} from "./events-details/events-details.component";
 import {EventsDetailsDescriptionComponent} from "./events-details-description/events-details-description.component";
 
-
+import {Router} from "@angular/router";
 
 
 
@@ -39,7 +39,8 @@ import {EventsDetailsDescriptionComponent} from "./events-details-description/ev
     EventsDetailsRegisterComponent,
     EventsDetailsTablistComponent,
     EventsDetailsComponent,
-    EventsDetailsDescriptionComponent
+    EventsDetailsDescriptionComponent,
+    router
 
 
 
