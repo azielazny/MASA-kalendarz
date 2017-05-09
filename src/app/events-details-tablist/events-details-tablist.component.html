@@ -1,0 +1,29 @@
+<div class="event-tabs">
+  <ul class="nav nav-tabs" role="tablist">
+
+    <li role="presentation" class="active"><a href="#description" aria-controls="description" role="tab"
+                                              data-toggle="tab">Opis</a></li>
+    <li role="presentation"><a href="#register" aria-controls="register" role="tab" data-toggle="tab">Rejestracja</a>
+    </li>
+    <li role="presentation"><a href="#comments" aria-controls="comments" role="tab" data-toggle="tab">Komentarze</a>
+    </li>
+  </ul>
+  <div class="tab-content">
+
+
+    <app-events-details-description role="tabpanel" class="tab-pane active" id="description"></app-events-details-description>
+    <app-events-details-register role="tabpanel" class="tab-pane" id="register"></app-events-details-register>
+    <app-events-details-comment role="tabpanel" class="tab-pane" id="comments"></app-events-details-comment>
+  </div>
+
+</div>
+
+
+<script>
+  $(document).ready(function () {
+    $('.event-tabs ul li a').click(function (e) {
+      e.preventDefault();
+      $(this).tab('show');
+    });
+  });
+</script>

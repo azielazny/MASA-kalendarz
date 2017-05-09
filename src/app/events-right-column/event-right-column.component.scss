@@ -1,0 +1,78 @@
+
+
+
+
+.event-dates {
+  border: 1px solid #d2d2d2;
+  margin: 0 0 20px 0;
+  padding: 15px 30px 15px 40px;
+}
+
+.event-dates > div {
+  display: flex;
+  flex-flow: row nowrap;
+}
+
+.event-dates > div > div:first-child {
+  font-size: 2em;
+  position: relative;
+  top: 5px;
+  left: -5px;
+
+  padding-right: 10px;
+}
+
+.event-dates > div > div:nth-child(2) {
+
+}
+
+.event-dates > div:nth-child(2) > span:first-child {
+  font-weight: bolder;
+}
+
+.event-dates i {
+  color: #057d8d;
+}
+
+.event-location {
+  border: 1px solid #d2d2d2;
+  margin: 0 0 20px 0;
+}
+
+.event-location i {
+  color: #057d8d;
+}
+
+.event-location > div:first-child {
+  margin: 15px 30px;
+  display: flex;
+  flex-flow: row nowrap;
+}
+
+.event-location > div:first-child > div:first-child {
+  font-size: 2em;
+  position: relative;
+  top: 5px;
+  left: -5px;
+
+  padding-right: 10px;
+}
+
+.event-location > div:nth-child(2) {
+  padding: 0 15px;
+}
+
+.event-location img {
+  width: 100%;
+  height: auto;
+}
+
+.event-weather {
+  border: 1px solid #d2d2d2;
+  margin: 0 0 20px 0;
+}
+
+.event-weather img {
+  width: 100%;
+  height: auto;
+}

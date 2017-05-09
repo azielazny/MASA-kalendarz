@@ -14,7 +14,7 @@ body {
     background-image: url("img/women3.png");
     background-repeat: no-repeat;
     background-attachment: fixed;
-    background-position: 80% 20%;
+    background-position: 80% 50%;
     background-size: 40em;
 }
 
@@ -135,7 +135,7 @@ body {
     color: white;
     font-weight: bolder;
     border-color: #FFCC00;
-    background-color: #3367d6;
+    backgrodun-color: #3367d6;
 }
 
 .column-center .button1, .button1:hover, .button1:visited, .button1:active, .button1:focus {
