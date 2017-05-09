@@ -1,0 +1,125 @@
+body {
+  background-color: #ffffff;
+  margin: 0;
+}
+
+.main {
+  background-image: url("images/women3.png");
+  background-repeat: no-repeat;
+  background-attachment: local;
+  background-position: 80% 20%;
+  background-size: 40em;
+}
+
+.column-center {
+
+  position: center;
+  margin-top: 80px;
+  padding-top: 80px;
+  padding-bottom: 100px;
+
+  h1 {
+    font-size: 36px;
+    font-family: Verdana;
+    font-weight: bold;
+    color: #323439 !important;
+    margin-left: 50px;
+    padding-left: 170px;
+    height: auto;
+  }
+
+  h2 {
+    font-size: 30px;
+    color: #76777a !important;
+    font-weight: normal;
+    font-family: Verdana;
+    padding-left: 150px;
+    margin-left: 0;
+
+    &:nth-child(odd) {
+      margin-left: 50px;
+    }
+  }
+}
+
+.button {
+  padding-left: 170px;
+}
+
+.button1 {
+  &, &:hover, &:visited, &:active, &:focus {
+    margin-top: 30px;
+    margin-left: 100px;
+    color: white !important;
+    font-weight: bolder;
+    border-color: #FFCC00 !important;
+    background-color: #3367d6 !important;
+
+    padding: 10px 16px;
+    font-size: 18px;
+    line-height: 1.3333333;
+    border-radius: 6px;
+
+    display: inline-block;
+    margin-bottom: 0;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    touch-action: manipulation;
+    cursor: pointer;
+    user-select: none;
+    background-image: none;
+  }
+}
+
+.button2 {
+  &, &:hover, &:visited, &:active, &:focus {
+    margin-top: 50px;
+    margin-left: 20px;
+    font-weight: bold;
+    color: #76777a !important;
+    border-color: #CBE0FF !important;
+    background-color: #fff !important;
+
+    padding: 10px 16px;
+    font-size: 18px;
+    line-height: 1.3333333;
+    border-radius: 6px;
+
+    display: inline-block;
+    margin-bottom: 0;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    touch-action: manipulation;
+    cursor: pointer;
+    user-select: none;
+    background-image: none;
+  }
+}
+
+.button3 {
+  &, &:hover, &:visited, &:active, &:focus {
+    margin-left: 20px;
+    margin-top: 50px;
+    font-weight: bold;
+    color: #76777a !important;
+    border-color: #CBE0FF !important;
+    background-color: #fff !important;
+
+    padding: 10px 16px;
+    font-size: 18px;
+    line-height: 1.3333333;
+    border-radius: 6px;
+
+    display: inline-block;
+    margin-bottom: 0;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    touch-action: manipulation;
+    cursor: pointer;
+    user-select: none;
+    background-image: none;
+  }
+}
