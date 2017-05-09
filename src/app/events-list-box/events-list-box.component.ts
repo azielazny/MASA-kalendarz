@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Event } from '../class/event.class';
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-events-list-box',
@@ -18,7 +19,7 @@ export class EventsListBoxComponent implements OnInit {
   public location: string;
   public image: string;
 
-  constructor() { }
+  constructor(private router: Router) {}
 
   ngOnInit() {
     this.title = this.eventdata.title;

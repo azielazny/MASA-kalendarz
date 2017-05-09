@@ -22,6 +22,7 @@ import {EventsDetailsComponent} from "./events-details/events-details.component"
 import {EventsDetailsDescriptionComponent} from "./events-details-description/events-details-description.component";
 
 import {routing} from "./app-routing.module";
+import {EventsListBoxComponent} from "./events-list-box/events-list-box.component";
 
 
 
@@ -46,7 +47,8 @@ import {routing} from "./app-routing.module";
   imports: [
     BrowserModule,
     FormsModule,
-    HttpModule
+    HttpModule,
+    router
   ],
   providers: [
     EventsService
