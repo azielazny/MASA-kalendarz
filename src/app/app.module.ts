@@ -19,7 +19,7 @@ import {EventsDetailsTablistComponent} from "./events-details-tablist/events-det
 import {EventsDetailsComponent} from "./events-details/events-details.component";
 import {EventsDetailsDescriptionComponent} from "./events-details-description/events-details-description.component";
 
-
+import {routing} from "./app-routing.module";
 
 
 
@@ -37,8 +37,7 @@ import {EventsDetailsDescriptionComponent} from "./events-details-description/ev
     EventsDetailsRegisterComponent,
     EventsDetailsTablistComponent,
     EventsDetailsComponent,
-    EventsDetailsDescriptionComponent,
-    router
+    EventsDetailsDescriptionComponent
 
 
 
@@ -46,7 +45,8 @@ import {EventsDetailsDescriptionComponent} from "./events-details-description/ev
   imports: [
     BrowserModule,
     FormsModule,
-    HttpModule
+    HttpModule,
+    routing
   ],
   providers: [],
   bootstrap: [AppComponent]
