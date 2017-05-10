@@ -31,7 +31,7 @@ import { EventsListBoxComponent } from './events-list-box/events-list-box.compon
     HttpModule
   ],
   providers: [
-    UsersService
+    UsersService,
     EventsService
   ],
   bootstrap: [AppComponent]
