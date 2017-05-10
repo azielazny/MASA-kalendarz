@@ -48,7 +48,7 @@ import {EventsListBoxComponent} from "./events-list-box/events-list-box.componen
     BrowserModule,
     FormsModule,
     HttpModule,
-    router
+    routing
   ],
   providers: [
     EventsService

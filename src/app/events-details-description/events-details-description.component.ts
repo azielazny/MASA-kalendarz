@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, Input} from '@angular/core';
+import {Event} from '../class/event.class';
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-events-details-description',
@@ -7,9 +9,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EventsDetailsDescriptionComponent implements OnInit {
 
-  constructor() { }
+  @Input()
+  private eventdata: Event;
+
+  public description: string;
+
+  constructor(private router: Router) {}
 
   ngOnInit() {
+    this.description = "opis"; //this.eventdata.description;
+
+  
   }
 
 }
