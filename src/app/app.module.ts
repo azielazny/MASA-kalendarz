@@ -3,6 +3,8 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
+import { UsersService } from "./service/users.service";
+
 import { AppComponent } from './app.component';
 import { FooterGlobalComponent } from './footer-global/footer-global.component';
 import { HeaderGlobalComponent } from './header-global/header-global.component';
@@ -25,7 +27,9 @@ import { EventsListHeaderComponent } from './events-list-header/events-list-head
     FormsModule,
     HttpModule
   ],
-  providers: [],
+  providers: [
+    UsersService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
