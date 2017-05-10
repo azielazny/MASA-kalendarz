@@ -15,7 +15,7 @@ before_script:
 stages:
   - build
 
-job1:
+build_stage:
   stage: build
   script:
    - npm build
