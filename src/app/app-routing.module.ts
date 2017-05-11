@@ -8,7 +8,7 @@ import {EventsDetailsComponent}  from './events-details/events-details.component
 const routes: Routes = [
   { path: '', redirectTo: '/index', pathMatch: 'full' },
   {path: 'index', component: MainPageComponent},
-  {path: 'events-details/:id', component: EventsDetailsComponent},
+  {path: 'event/:id', component: EventsDetailsComponent},
   // {path: 'events', component: EventsListComponent}
 ];
 
