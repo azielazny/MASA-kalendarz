@@ -1,0 +1,37 @@
+.city-search {
+  border: 1px solid black;
+  padding: 5px;
+}
+
+.city-search-right {
+  float: right;
+  display: table;
+  border-collapse: collapse;
+
+  button {
+    background: none;
+    border: 1px solid lightgrey;
+    margin: 0;
+    display: table-cell;
+
+    font-size: 0.90em;
+
+    &.selected {
+      background: #067e8f;
+      color: white;
+      border: 1px solid #015965
+    }
+
+    &:first-child {
+      border-radius: 5px 0 0 5px;
+    }
+
+    &:last-child {
+      border-radius: 0 5px 5px 0;
+    }
+  }
+}
+
+.city-search-left {
+  float: left;
+}

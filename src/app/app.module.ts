@@ -12,6 +12,10 @@ import { MainPageCentralComponent } from './main-page-central/main-page-central.
 import { MainPageComponent } from './main-page/main-page.component';
 import { EventsListHeaderComponent } from './events-list-header/events-list-header.component';
 import { EventsListBoxComponent } from './events-list-box/events-list-box.component';
+import { EventsListCitybarComponent } from './events-list-citybar/events-list-citybar.component';
+import { EventsListSearchbarComponent } from './events-list-searchbar/events-list-searchbar.component';
+import { EventsListBoxgridComponent } from './events-list-boxgrid/events-list-boxgrid.component';
+import { EventsListComponent } from './events-list/events-list.component';
 
 
 @NgModule({
@@ -22,7 +26,11 @@ import { EventsListBoxComponent } from './events-list-box/events-list-box.compon
     MainPageCentralComponent,
     MainPageComponent,
     EventsListHeaderComponent,
-    EventsListBoxComponent
+    EventsListBoxComponent,
+    EventsListCitybarComponent,
+    EventsListSearchbarComponent,
+    EventsListBoxgridComponent,
+    EventsListComponent
   ],
   imports: [
     BrowserModule,
