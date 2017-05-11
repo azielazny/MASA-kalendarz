@@ -29,7 +29,7 @@ export class EventsService {
     });
 
     return this.http.get(this.url + "/details/" + eventid, options)
-      .map(this.extractEventDetails);
+                    .map(this.extractEventDetails);
   }
 
   add(event: Event): Observable<boolean> {
@@ -99,29 +99,11 @@ export class EventsService {
       .map(this.extractEventAttendants);
   }
 
-  cities() : Observable<string[]> {
-    let options = new RequestOptions({
-      withCredentials: true // CORS Access-Control-Allow-Credentials header
-    });
-
-    return this.http.get(this.url + "/cities", options)
-      .map(this.extractEventsCities);
-  }
-
-  private extractEventsCities(res: Response) {
-    let body = res.json();
-
-    if(body.code === 200)
-      return body.cities;
-    else
-      return [];
-  }
-
   private extractEventDetails(res: Response) {
     let body = res.json();
 
-    if(body.code === 200)
-      return body.event;
+    if(body.data.code === 200)
+      return body.data.event;
     else
       return {};
   }
@@ -129,8 +111,8 @@ export class EventsService {
   private extractEventsList(res: Response) {
     let body = res.json();
 
-    if(body.code === 200)
-      return body.events;
+    if(body.data.code === 200)
+      return body.data.events;
     else
       return {};
   }

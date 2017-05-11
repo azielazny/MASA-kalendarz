@@ -29,12 +29,12 @@ export class EventsListBoxComponent implements OnInit {
     let x = new Date(this.eventdata.start_ts * 1000);
 
     let day = x.getDate();
-    let day_s : string = day.toString();
-    if(day < 10) day_s = '0' + day.toString();
+    let day_s: string = day.toString();
+    if (day < 10) day_s = '0' + day.toString();
 
     let month = x.getMonth() + 1;
-    let month_s : string = month.toString();
-    if(month < 10) month_s = '0' + month.toString();
+    let month_s: string = month.toString();
+    if (month < 10) month_s = '0' + month.toString();
 
     this.date = day_s + '-' + month_s + '-' + x.getFullYear().toString();
 
@@ -46,25 +46,35 @@ export class EventsListBoxComponent implements OnInit {
     let h1_s = h1.toString(), h2_s = h2.toString();
     let m1_s = m1.toString(), m2_s = m2.toString();
 
-    if(h1 < 10) h1_s = '0' + h1.toString();
-    if(h2 < 10) h2_s = '0' + h2.toString();
-    if(m1 < 10) m1_s = '0' + m1.toString();
-    if(m2 < 10) m2_s = '0' + m2.toString();
+    if (h1 < 10) h1_s = '0' + h1.toString();
+    if (h2 < 10) h2_s = '0' + h2.toString();
+    if (m1 < 10) m1_s = '0' + m1.toString();
+    if (m2 < 10) m2_s = '0' + m2.toString();
 
     this.time1 = h1_s + ':' + m1_s;
     this.time2 = h2_s + ':' + m2_s;
 
-    this.location = (this.eventdata.loc_name + ', ' + this.eventdata.loc_street + ' ' + this.eventdata.loc_bnum + ', ' + this.eventdata.loc_city).toUpperCase();
+    this.location = "";
 
+    if (this.eventdata.loc_name != null)
+      this.location += this.eventdata.loc_name.trim() + ', ';
 
+    if (this.eventdata.loc_street != null)
+      this.location += this.eventdata.loc_street.trim();
 
-    $(window).resize(function () {
-      let $event_image_img = $(".event-image img");
-      $(".event-image-cover").width($event_image_img.width() + 1).height($event_image_img.height() + 1);
-    });
+    if (this.eventdata.loc_street != null && this.eventdata.loc_bnum != null)
+      this.location += " ";
 
-    let $event_image_img = $(".event-image img");
-    $(".event-image-cover").width($event_image_img.width() + 1).height($event_image_img.height() + 1);
+    if (this.eventdata.loc_bnum != null)
+      this.location += this.eventdata.loc_bnum.trim();
+
+    if ((this.eventdata.loc_street != null || this.eventdata.loc_bnum != null) && this.eventdata.loc_city != null)
+      this.location += ', ';
+
+    if (this.eventdata.loc_city != null)
+      this.location += this.eventdata.loc_city.trim();
+
+    this.location = this.location.toUpperCase();
   }
 
 }

@@ -1,0 +1,13 @@
+<div class="row city-search">
+  <div class="city-search-left">
+    Miasto:
+    <select (change)="cityChanged()">
+      <option *ngFor="let city of citiesList">{{city}}</option>
+    </select>
+  </div>
+  <div class="city-search-right">
+    <button (click)="listToday()" [ngClass]="{'selected': (currentPeriod == 1)}">Dzisiaj</button>
+    <button (click)="listWeek()" [ngClass]="{'selected': (currentPeriod == 2)}">Tydzień</button>
+    <button (click)="listAll()" [ngClass]="{'selected': (currentPeriod == 3)}">Kiedykolwiek</button>
+  </div>
+</div>

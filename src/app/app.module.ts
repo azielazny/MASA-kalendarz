@@ -23,7 +23,10 @@ import {EventsDetailsDescriptionComponent} from "./events-details-description/ev
 
 import {routing} from "./app-routing.module";
 import {EventsListBoxComponent} from "./events-list-box/events-list-box.component";
-
+import { EventsListCitybarComponent } from './events-list-citybar/events-list-citybar.component';
+import { EventsListSearchbarComponent } from './events-list-searchbar/events-list-searchbar.component';
+import { EventsListBoxgridComponent } from './events-list-boxgrid/events-list-boxgrid.component';
+import { EventsListComponent } from './events-list/events-list.component';
 
 
 @NgModule({
@@ -41,7 +44,12 @@ import {EventsListBoxComponent} from "./events-list-box/events-list-box.componen
     EventsDetailsTablistComponent,
     EventsDetailsComponent,
     EventsDetailsDescriptionComponent,
-    EventsListBoxComponent
+    EventsListBoxComponent,
+    EventsListBoxComponent,
+    EventsListCitybarComponent,
+    EventsListSearchbarComponent,
+    EventsListBoxgridComponent,
+    EventsListComponent
 
   ],
   imports: [
