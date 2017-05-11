@@ -1,27 +1,29 @@
-import { Injectable } from '@angular/core';
-import { Http, Response, Headers, RequestOptions } from '@angular/http';
+import {Injectable} from '@angular/core';
+import {Http, Response, Headers, RequestOptions} from '@angular/http';
 
-import { Observable } from 'rxjs/Observable';
+import {Observable} from 'rxjs/Observable';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
 
-import { Event } from '../class/event.class';
-import { Attendant } from '../class/attendant.class';
+import {Event} from '../class/event.class';
+import {Attendant} from '../class/attendant.class';
 
 @Injectable()
 export class EventsService {
   private url = "https://masa.oustish.pl/events";
 
-  constructor(private http: Http) {};
+  constructor(private http: Http) {
+  };
 
   list(access: string = "public", city: string = "%", startts: number = 0, endts: number = 2147483647, page: number = 0, limit: number = 100): Observable<Event[]> {
     let options = new RequestOptions({
       withCredentials: true // CORS Access-Control-Allow-Credentials header
     });
 
-    return this.http.get(this.url + "/list/" + access + '/' + city + '/' + startts + '/' + endts +'/' + page + '/' + limit, options)
+    return this.http.get(this.url + "/list/" + access + '/' + city + '/' + startts + '/' + endts + '/' + page + '/' + limit, options)
       .map(this.extractEventsList);
   }
+
 
   details(eventid: number): Observable<Event> {
     let options = new RequestOptions({
@@ -29,7 +31,7 @@ export class EventsService {
     });
 
     return this.http.get(this.url + "/details/" + eventid, options)
-                    .map(this.extractEventDetails);
+      .map(this.extractEventDetails);
   }
 
   add(event: Event): Observable<boolean> {
@@ -99,11 +101,29 @@ export class EventsService {
       .map(this.extractEventAttendants);
   }
 
+  cities(): Observable<string[]> {
+    let options = new RequestOptions({
+      withCredentials: true // CORS Access-Control-Allow-Credentials header
+    });
+
+    return this.http.get(this.url + "/cities", options)
+      .map(this.extractEventsCities);
+  }
+
+  private extractEventsCities(res: Response) {
+    let body = res.json();
+
+    if (body.code === 200)
+      return body.cities;
+    else
+      return [];
+  }
+
   private extractEventDetails(res: Response) {
     let body = res.json();
 
-    if(body.data.code === 200)
-      return body.data.event;
+    if (body.code === 200)
+      return body.event;
     else
       return {};
   }
@@ -111,8 +131,8 @@ export class EventsService {
   private extractEventsList(res: Response) {
     let body = res.json();
 
-    if(body.data.code === 200)
-      return body.data.events;
+    if (body.code === 200)
+      return body.events;
     else
       return {};
   }
@@ -126,7 +146,7 @@ export class EventsService {
   private extractEventAttendants(res: Response) {
     let body = res.json();
 
-    if(body.code === 200)
+    if (body.code === 200)
       return body.attendants;
     else
       return {};
