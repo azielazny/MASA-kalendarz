@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, Input} from '@angular/core';
 
 @Component({
   selector: 'app-events-details-tablist',
@@ -7,9 +7,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EventsDetailsTablistComponent implements OnInit {
 
+  @Input()
+  public eventdata: Event;
+
+  public events: Event[] = [];
+
   constructor() { }
 
   ngOnInit() {
+    this.events.push(this.eventdata);
   }
 
 }

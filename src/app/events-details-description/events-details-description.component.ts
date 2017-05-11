@@ -11,15 +11,10 @@ export class EventsDetailsDescriptionComponent implements OnInit {
 
   @Input()
   private eventdata: Event;
-
-  public description: string;
-
+  
   constructor(private router: Router) {}
 
   ngOnInit() {
-    this.description = "opis"; //this.eventdata.description;
-
-  
   }
 
 }

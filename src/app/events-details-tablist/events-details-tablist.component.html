@@ -9,11 +9,9 @@
     </li>
   </ul>
   <div class="tab-content">
-
-
-    <app-events-details-description role="tabpanel" class="tab-pane active" id="description"></app-events-details-description>
-    <app-events-details-register role="tabpanel" class="tab-pane" id="register"></app-events-details-register>
-    <app-events-details-comment role="tabpanel" class="tab-pane" id="comments"></app-events-details-comment>
+    <app-events-details-description *ngFor="let ev of events" [eventdata]="ev" role="tabpanel" class="tab-pane active" id="description"></app-events-details-description>
+    <app-events-details-register *ngFor="let ev of events" [eventdata]="ev" role="tabpanel" class="tab-pane" id="register"></app-events-details-register>
+    <app-events-details-comment *ngFor="let ev of events" [eventdata]="ev" role="tabpanel" class="tab-pane" id="comments"></app-events-details-comment>
   </div>
 
 </div>
