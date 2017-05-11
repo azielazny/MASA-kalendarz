@@ -12,9 +12,9 @@ export class AppComponent {
 
   public constructor() {
     this.ev = new Event();
-    this.ev.event_id = 1;
+    this.ev.event_id = 33;
     this.ev.user_id = 1;
-    this.ev.title = "TEST TITLE";
+    this.ev.title = "TEST TITLE55";
     this.ev.end_ts = 1496178000;
     this.ev.start_ts = 1494313200;
     this.ev.loc_name = "TEST NAME";

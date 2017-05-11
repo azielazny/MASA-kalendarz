@@ -1,6 +1,7 @@
 import {Component, OnInit, Input} from '@angular/core';
 import {Event} from '../class/event.class';
-import {Router} from "@angular/router";
+import {Router, ActivatedRoute} from "@angular/router";
+import {EventsService} from "../services/events.service";
 
 @Component({
   selector: 'app-events-details-central',
@@ -15,11 +16,37 @@ export class EventsDetailsCentralComponent implements OnInit {
   public title: string;
   public image: string;
 
-  constructor(private router: Router) {
-  }
+  eva : Event;
+  ev : Event;
+  constructor(private eventService: EventsService, public route: ActivatedRoute, private router: Router) {
 
+    this.ev = new Event();
+    this.ev.event_id = 31;
+    this.ev.user_id = 1;
+    this.ev.title = "TEST TITLE111";
+    this.ev.end_ts = 1496178000;
+    this.ev.start_ts = 1494313200;
+    this.ev.loc_name = "TEST NAME";
+    this.ev.loc_street = "TEST STREET";
+    this.ev.loc_bnum = "55";
+    this.ev.loc_city = "CITY HERE WILL BE";
+
+  }
+  public id: number;
+  private mode: string;
+  private event: any;
+
+  getEventsDetail() {
+    this.eventService.details(this.id).subscribe(data => this.eva=data);//then(ev => this.event = ev);
+    // console.log(this.ev.title.toString()+"qqqqqqqqq");
+
+  }
   ngOnInit() {
-    this.title = "LOREM";//this.eventdata.title;
+    this.route.params.subscribe(params => {
+      this.id = params['id'];
+    });
+    this.getEventsDetail();
+    this.title = "sdsdsdsd"+this.ev.title;//this.ev.title
 
     this.image = "https://masa.oustish.pl/events/image/";// + this.eventdata.event_id.toString();
 

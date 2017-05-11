@@ -6,8 +6,9 @@ body {
   background-image: url("images/women3.png");
   background-repeat: no-repeat;
   background-attachment: local;
-  background-position: 80% 20%;
-  background-size: 40em; }
+  background-position: 80% 80%;
+  background-size: 40em;
+  height: 100%; }
 
 .column-center {
   position: center;
