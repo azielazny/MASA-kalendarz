@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
+import { UsersService } from "./service/users.service";
 import { EventsService } from "./services/events.service";
 
 import { AppComponent } from './app.component';
@@ -59,6 +60,7 @@ import { EventsListComponent } from './events-list/events-list.component';
     routing
   ],
   providers: [
+    UsersService,
     EventsService
   ],
   bootstrap: [AppComponent]
