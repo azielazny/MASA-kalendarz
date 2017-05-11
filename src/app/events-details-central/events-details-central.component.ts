@@ -38,7 +38,6 @@ export class EventsDetailsCentralComponent implements OnInit {
 
   getEventsDetail() {
     this.eventService.details(this.id).subscribe(data => this.eva=data);//then(ev => this.event = ev);
-    // console.log(this.ev.title.toString()+"qqqqqqqqq");
 
   }
   ngOnInit() {
