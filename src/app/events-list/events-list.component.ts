@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {Router, ActivatedRoute} from "@angular/router";
+import {EventsService} from "../services/events.service";
 
 @Component({
   selector: 'app-events-list',
@@ -7,7 +9,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EventsListComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router, private eventsService: EventsService, public route: ActivatedRoute) {}
 
   ngOnInit() {
   }

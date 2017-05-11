@@ -39,7 +39,7 @@
 
 .event-title span {
   display: block;
-  margin: 0 10px; }
+  margin: 3px 10px; }
 
 .event-dates {
   border-top: 0 !important;
@@ -70,7 +70,7 @@
 
 .event-location span {
   font-size: 0.9em;
-  margin: 0 10px;
+  margin: 5px 10px 2px;
   display: block; }
 
 /*# sourceMappingURL=events-list-box.component.css.map */
