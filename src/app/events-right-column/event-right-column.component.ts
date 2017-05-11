@@ -10,10 +10,12 @@ import {Router, ActivatedRoute} from "@angular/router";
 export class EventsRightColumnComponent implements OnInit {
   @Input()
   private eventdata: Event;
+  private events: Event[] = [];
 
   constructor(public route: ActivatedRoute, private router: Router) {}
 
   ngOnInit() {
+    this.events.push(this.eventdata);
   }
 
 }

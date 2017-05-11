@@ -10,7 +10,7 @@ import {EventsService} from "../services/events.service";
   styleUrls: ['./events-details.component.scss']
 })
 export class EventsDetailsComponent implements OnInit {
-  public ev: Event;
+  public events: Event[] = [];
   public id: number;
 
   constructor(private router: Router, private eventsService: EventsService, public route: ActivatedRoute) {}
@@ -18,8 +18,13 @@ export class EventsDetailsComponent implements OnInit {
   ngOnInit() {
     this.route.params.subscribe(params => {
       this.id = params['id'];
-      this.eventsService.details(this.id).subscribe(val => { this.ev = val; });
     });
+
+    this.eventsService.details(this.id).subscribe(value => this.eventDataPresent(value));
+  }
+
+  eventDataPresent(value: Event) {
+    this.events.push(value);
   }
 
 }

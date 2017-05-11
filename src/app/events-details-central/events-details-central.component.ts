@@ -11,6 +11,7 @@ import {EventsService} from "../services/events.service";
 export class EventsDetailsCentralComponent implements OnInit {
   @Input()
   public eventdata: Event;
+  public events: Event[] = [];
 
   @Input()
   public id: number;
@@ -18,7 +19,7 @@ export class EventsDetailsCentralComponent implements OnInit {
   constructor(public route: ActivatedRoute, private router: Router) {}
 
   ngOnInit() {
-    console.log(this.eventdata);
+    this.events.push(this.eventdata);
   }
 
 }
