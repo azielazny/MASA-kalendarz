@@ -10,10 +10,3 @@ if (environment.production) {
 }
 
 platformBrowserDynamic().bootstrapModule(AppModule);
-
-
-//jquery stosowany w plikach TS
-$(document).ready(function () {
-  $('h2').css('color', 'blue');
-  $('h1').css('color', 'black');
-});

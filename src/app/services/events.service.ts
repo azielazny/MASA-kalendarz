@@ -19,7 +19,7 @@ export class EventsService {
       withCredentials: true // CORS Access-Control-Allow-Credentials header
     });
 
-    return this.http.get("${this.url}/list/${access}/${city}/${startts}/${endts}/${page}/${limit}", options)
+    return this.http.get(this.url + "/list/" + access + '/' + city + '/' + startts + '/' + endts +'/' + page + '/' + limit, options)
                     .map(this.extractEventsList);
   }
 
@@ -95,15 +95,33 @@ export class EventsService {
       withCredentials: true // CORS Access-Control-Allow-Credentials header
     });
 
-    return this.http.get("${this.url}/attendants/$(eventid)", options)
+    return this.http.get(this.url + "/attendants/$(eventid)", options)
       .map(this.extractEventAttendants);
+  }
+
+  cities() : Observable<string[]> {
+    let options = new RequestOptions({
+      withCredentials: true // CORS Access-Control-Allow-Credentials header
+    });
+
+    return this.http.get(this.url + "/cities", options)
+      .map(this.extractEventsCities);
+  }
+
+  private extractEventsCities(res: Response) {
+    let body = res.json();
+
+    if(body.code === 200)
+      return body.cities;
+    else
+      return [];
   }
 
   private extractEventDetails(res: Response) {
     let body = res.json();
 
-    if(body.data.code === 200)
-      return body.data.event;
+    if(body.code === 200)
+      return body.event;
     else
       return {};
   }
@@ -111,8 +129,8 @@ export class EventsService {
   private extractEventsList(res: Response) {
     let body = res.json();
 
-    if(body.data.code === 200)
-      return body.data.events;
+    if(body.code === 200)
+      return body.events;
     else
       return {};
   }
@@ -120,14 +138,14 @@ export class EventsService {
   private extractStatus(res: Response) {
     let body = res.json();
 
-    return (body.data.code === 200);
+    return (body.code === 200);
   }
 
   private extractEventAttendants(res: Response) {
     let body = res.json();
 
-    if(body.data.code === 200)
-      return body.data.attendants;
+    if(body.code === 200)
+      return body.attendants;
     else
       return {};
   }

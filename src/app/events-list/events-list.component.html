@@ -1,0 +1,13 @@
+<app-header-global></app-header-global>
+
+<app-events-list-header></app-events-list-header>
+
+<div class="main">
+  <app-events-list-citybar #citybar></app-events-list-citybar>
+
+  <app-events-list-searchbar [grid]="boxgrid" [citybar]="citybar"></app-events-list-searchbar>
+
+  <app-events-list-boxgrid #boxgrid></app-events-list-boxgrid>
+</div>
+
+<app-footer-global></app-footer-global>
