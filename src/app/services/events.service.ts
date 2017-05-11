@@ -20,7 +20,7 @@ export class EventsService {
     });
 
     return this.http.get(this.url + "/list/" + access + '/' + city + '/' + startts + '/' + endts +'/' + page + '/' + limit, options)
-      .map(this.extractEventsList);
+                    .map(this.extractEventsList);
   }
 
   details(eventid: number): Observable<Event> {
@@ -29,7 +29,7 @@ export class EventsService {
     });
 
     return this.http.get(this.url + "/details/" + eventid, options)
-      .map(this.extractEventDetails);
+                    .map(this.extractEventDetails);
   }
 
   add(event: Event): Observable<boolean> {
