@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": "AAAA,YAAa;EACX,OAAO,EAAE,MAAM",
+"sources": ["events-details-description.component.scss"],
+"names": [],
+"file": "events-details-description.component.css"
+}

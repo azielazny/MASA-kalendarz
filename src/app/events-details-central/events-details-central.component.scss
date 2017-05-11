@@ -1,0 +1,42 @@
+body{
+  font-family: Arial;
+
+  background-color: #ffffff;
+  margin: 0;
+  height: 100%;
+}
+
+
+.main {
+  width: 80% !important;
+}
+
+@media (min-width: 992px) {
+
+
+  .left-column {
+    padding-right: 30px !important;
+    padding-left: 0 !important;
+  }
+}
+
+
+
+.event-title {
+  margin-top: 50px;
+  padding: 30px 15px 30px 0;
+}
+
+.event-title h1 {
+  font-size: 2em;
+  font-weight: bolder;
+}
+
+.event-image {
+  margin: 0 0 20px 0;
+}
+
+.event-image img {
+  width: 100%;
+  height: auto;
+}

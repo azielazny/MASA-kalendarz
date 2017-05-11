@@ -1,0 +1,10 @@
+<app-header-global></app-header-global>
+<app-events-list-header></app-events-list-header>
+
+<div class="main container">
+  <app-events-details-central *ngFor="let ev of events" [eventdata]="ev"></app-events-details-central>
+
+
+
+</div>
+<app-footer-global></app-footer-global>

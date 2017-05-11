@@ -7,52 +7,52 @@ body{
 }
 
 .header {
-    border-bottom: 1px solid #76777a;
-    width: 100%;
+  border-bottom: 1px solid #76777a;
+  width: 100%;
 
-    position: fixed;
-    top: 0px;
+  position: fixed;
+  top: 0px;
 
-    background: white;
-    z-index: 1000;
+  background: white;
+  z-index: 1000;
 }
 
 .header .row {
-    align-self: center;
-    margin: auto !important;
+  align-self: center;
+  margin: auto !important;
 
-    width: 80%;
+  width: 80%;
 }
 
 .header-left {
-    float: left;
+  float: left;
 }
 
 .header-left h1 {
-    font-size: 2em;
-    color: #000000;
-    font-family: "Arial Black", Arial , Helvetica, sans-serif;
-    font-weight: bolder;
-    margin-top: 0.6em;
+  font-size: 2em;
+  color: #000000;
+  font-family: "Arial Black", Arial , Helvetica, sans-serif;
+  font-weight: bolder;
+  margin-top: 0.6em;
 }
 
 .header-right {
-    float: right;
+  float: right;
 }
 
 .header-right p {
-    font-size: 1em;
-    font-family: Arial;
-    font-weight: bold;
-    color:#077e8f;
-    position: relative;
-    top: 25px;
-    text-align: right;
-    display: inline;
+  font-size: 1em;
+  font-family: Arial;
+  font-weight: bold;
+  color:#077e8f;
+  position: relative;
+  top: 25px;
+  text-align: right;
+  display: inline;
 }
 
 .header-right p i{
-    margin-left: 0.2em;
+  margin-left: 0.2em;
 }
 
 
@@ -60,40 +60,40 @@ body{
 
 
 .footer p{
-    font-size: 0.8em ;
-    font-family: Tahoma, Helvetica, Arial, sans-serif;
-    color: #76777a;
-    text-align: center;
-    margin-top: 10px;
+  font-size: 0.8em ;
+  font-family: Tahoma, Helvetica, Arial, sans-serif;
+  color: #76777a;
+  text-align: center;
+  margin-top: 10px;
 }
 .footer p span {
-    margin: 0 25px;
+  margin: 0 25px;
 }
 
 .footer-wrap {
-    position: relative;
-    bottom: 0;
-    left: 0;
-    width: 100%;
+  position: relative;
+  bottom: 0;
+  left: 0;
+  width: 100%;
 
-    border-top: 1px solid #76777a;
+  border-top: 1px solid #76777a;
 
-    margin-left: 0 !important;
-    margin-right: 0 !important;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
 
 }
 
 
 .banner {
-    background: url(img/banner.png) #067e8f no-repeat center;
-    width: 100%;
-    height: 103px;
+  background: url(img/banner.png) #067e8f no-repeat center;
+  width: 100%;
+  height: 103px;
 
-    border-top: 1px solid #015965;
-    border-bottom: 1px solid #015965;
+  border-top: 1px solid #015965;
+  border-bottom: 1px solid #015965;
 
-    position: relative;
-    top: 55px;
+  position: relative;
+  top: 55px;
 }
 
 .main {

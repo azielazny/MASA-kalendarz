@@ -24,3 +24,4 @@ export class Event {
   category: number;
   attendants: number;
 }
+

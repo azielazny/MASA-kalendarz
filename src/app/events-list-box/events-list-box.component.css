@@ -1,0 +1,76 @@
+.event {
+  display: table;
+  border-collapse: collapse; }
+
+.event-internals > div {
+  display: table-row;
+  border: 1px solid #d2d2d2; }
+
+.event-internals {
+  margin: 10px; }
+
+.event-image-cover {
+  display: none;
+  position: absolute;
+  top: 11px;
+  left: 11px;
+  background-color: rgba(237, 237, 237, 0.8);
+  text-align: center;
+  justify-content: center;
+  font-variant: small-caps;
+  font-size: 2em;
+  cursor: pointer; }
+
+.event-image-cover span {
+  align-self: center; }
+
+.event:hover .event-image-cover {
+  display: flex; }
+
+.event-image img {
+  margin: 1px 0 0 1px;
+  width: calc(100% - 2px);
+  height: auto; }
+
+.event-title {
+  font-size: 1.1em;
+  font-weight: bold;
+  border-bottom: 0 !important; }
+
+.event-title span {
+  display: block;
+  margin: 3px 10px; }
+
+.event-dates {
+  border-top: 0 !important;
+  flex-flow: row nowrap;
+  margin: 0 10px; }
+
+.event-dates div {
+  display: inline-block;
+  padding: 0 4px; }
+
+.event:hover > * {
+  background-color: #ededed; }
+
+.event-date {
+  background-color: black;
+  color: white;
+  border: 1px solid black;
+  margin-left: 10px; }
+
+.event-date i {
+  color: white;
+  padding-right: 4px; }
+
+.event-time {
+  border: 1px solid black;
+  background: white;
+  margin-right: 10px; }
+
+.event-location span {
+  font-size: 0.9em;
+  margin: 5px 10px 2px;
+  display: block; }
+
+/*# sourceMappingURL=events-list-box.component.css.map */
