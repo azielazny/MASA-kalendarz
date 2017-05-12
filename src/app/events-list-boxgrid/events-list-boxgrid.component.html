@@ -1,3 +1,15 @@
 <div class="row events">
   <app-events-list-box *ngFor="let ev of eventslist; let lst = last" [eventdata]="ev"></app-events-list-box>
 </div>
+
+
+<div class="row center-parent" *ngIf="eventslist.length > 0">
+  <div class="centered">
+    <ul class="pagination">
+      <li *ngFor="let i of arr" [ngClass]="{'active': (i == (page))}" (click)="changePage(i)"><a>{{i}}</a></li>
+    </ul>
+  </div>
+</div>
+
+
+<div class="no-elements" *ngIf="eventslist.length == 0">Nie znaleziono żadnych wydarzeń w wybranym mieście w danym zakresie czasowym. Zmiana kryteriów może pomóc.</div>

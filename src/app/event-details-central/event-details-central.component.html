@@ -1,0 +1,18 @@
+
+
+  <div class="row event-title">
+    <h1>{{eventdata.title}}</h1>
+    <a href="#" (click)="location.back()"><< Wróć</a>
+  </div>
+
+  <div class="row">
+    <app-event-details-right-column *ngFor="let ev of events" [eventdata]="ev"></app-event-details-right-column>
+
+    <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12 col-lg-pull-4 col-md-pull-4 left-column">
+      <div class="event-image"><img src="https://masa.oustish.pl/events/image/{{eventdata.event_id}}" alt="ART"></div>
+      <app-event-details-tablist *ngFor="let ev of events" [eventdata]="ev"></app-event-details-tablist>
+
+
+    </div>
+  </div>
+

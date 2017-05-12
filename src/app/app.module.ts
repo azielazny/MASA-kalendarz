@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
-import { UsersService } from "./service/users.service";
+import { UsersService } from "./services/users.service";
 import { EventsService } from "./services/events.service";
 
 import { AppComponent } from './app.component';
@@ -13,14 +13,14 @@ import { MainPageCentralComponent } from './main-page-central/main-page-central.
 import { MainPageComponent } from './main-page/main-page.component';
 import { EventsListHeaderComponent } from './events-list-header/events-list-header.component';
 
-import {EventsRightColumnComponent} from './events-right-column/event-right-column.component';
+import {EventDetailsRightColumnComponent} from './event-details-right-column/event-details-right-column.component';
 
-import {EventsDetailsCentralComponent} from "./events-details-central/events-details-central.component";
-import {EventsDetailsCommentComponent} from "./events-details-comment/events-details-comment.component";
-import {EventsDetailsRegisterComponent} from "./events-details-register/events-details-register.component";
-import {EventsDetailsTablistComponent} from "./events-details-tablist/events-details-tablist.component";
-import {EventsDetailsComponent} from "./events-details/events-details.component";
-import {EventsDetailsDescriptionComponent} from "./events-details-description/events-details-description.component";
+import {EventDetailsCentralComponent} from "./event-details-central/event-details-central.component";
+import {EventDetailsTabCommentsComponent} from "./event-details-tab-comments/event-details-tab-comments.component";
+import {EventDetailsTabEnrollComponent} from "./event-details-tab-enroll/event-details-tab-enroll.component";
+import {EventDetailsTablistComponent} from "./event-details-tablist/event-details-tablist.component";
+import {EventDetailsComponent} from "./event-details/event-details.component";
+import {EventDetailsTabDescriptionComponent} from "./event-details-tab-description/event-details-tab-description.component";
 
 import {routing} from "./app-routing.module";
 import {EventsListBoxComponent} from "./events-list-box/events-list-box.component";
@@ -38,13 +38,13 @@ import { EventsListComponent } from './events-list/events-list.component';
     MainPageCentralComponent,
     MainPageComponent,
     EventsListHeaderComponent,
-    EventsRightColumnComponent,
-    EventsDetailsCentralComponent,
-    EventsDetailsCommentComponent,
-    EventsDetailsRegisterComponent,
-    EventsDetailsTablistComponent,
-    EventsDetailsComponent,
-    EventsDetailsDescriptionComponent,
+    EventDetailsRightColumnComponent,
+    EventDetailsCentralComponent,
+    EventDetailsTabCommentsComponent,
+    EventDetailsTabEnrollComponent,
+    EventDetailsTablistComponent,
+    EventDetailsComponent,
+    EventDetailsTabDescriptionComponent,
     EventsListBoxComponent,
     EventsListBoxComponent,
     EventsListCitybarComponent,

@@ -1,29 +1,25 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { Event } from '../class/event.class';
-import {Router} from "@angular/router";
+import {Component, OnInit, Input} from '@angular/core';
+import {Event} from '../class/event.class';
+import {Router, ActivatedRoute} from "@angular/router";
 
 @Component({
-  selector: 'app-events-list-box',
-  templateUrl: './events-list-box.component.html',
-  styleUrls: ['./events-list-box.component.scss']
+  selector: 'app-event-details-right-column',
+  templateUrl: 'event-details-right-column.component.html',
+  styleUrls: ['event-details-right-column.component.scss']
 })
-export class EventsListBoxComponent implements OnInit {
-
+export class EventDetailsRightColumnComponent implements OnInit {
   @Input()
   private eventdata: Event;
 
-  public title: string;
-  public time1: string;
-  public time2: string;
-  public date: string;
-  public location: string;
-  public image: string;
+  location: string = "";
+  image: string = "";
+  date: string = "";
+  time1: string = "";
+  time2: string = "";
 
-  constructor(private router: Router) {}
+  constructor(public route: ActivatedRoute, private router: Router) {}
 
   ngOnInit() {
-    this.title = this.eventdata.title;
-
     this.image = "https://masa.oustish.pl/events/image/" + this.eventdata.event_id.toString();
 
     let x = new Date(this.eventdata.start_ts * 1000);
@@ -75,15 +71,6 @@ export class EventsListBoxComponent implements OnInit {
       this.location += this.eventdata.loc_city.trim();
 
     this.location = this.location.toUpperCase();
-  }
-
-  gotoEventDetails() {
-    this.router.navigate(['/event/', this.eventdata.event_id.toString(), EventsListBoxComponent.toTitleCase(this.eventdata.title).replace(/ /g, '')]);
-  }
-
-  public static toTitleCase(str)
-  {
-    return str.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
   }
 
 }

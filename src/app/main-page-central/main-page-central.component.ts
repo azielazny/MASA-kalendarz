@@ -1,5 +1,6 @@
 import {Component, OnInit, NgZone} from '@angular/core';
-import { UsersService } from "../service/users.service";
+import { UsersService } from "../services/users.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-main-page-central',
@@ -8,7 +9,7 @@ import { UsersService } from "../service/users.service";
 })
 export class MainPageCentralComponent implements OnInit {
 
-  constructor(private usersService: UsersService, private zone:NgZone) {
+  constructor(private usersService: UsersService, private zone:NgZone, private router: Router) {
     (<any>window).startApp(); // funkcja JS z index.html
 
     // kod poniżj wystawia component angular2 dla JS
@@ -36,7 +37,10 @@ export class MainPageCentralComponent implements OnInit {
     {
       localStorage.setItem("loggedBy","google");
       localStorage.setItem("loggedAs", googleUser.getAuthResponse().id_token);
-      location.reload();
+
+      this.zone.runOutsideAngular(() => {
+        location.reload();
+      });
     }
   }
 

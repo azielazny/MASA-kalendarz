@@ -1,0 +1,27 @@
+<div class="event-tabs">
+  <ul class="nav nav-tabs" role="tablist">
+
+    <li role="presentation" class="active"><a href="#description" aria-controls="description" role="tab"
+                                              data-toggle="tab">Opis</a></li>
+    <li role="presentation"><a href="#register" aria-controls="register" role="tab" data-toggle="tab">Rejestracja</a>
+    </li>
+    <li role="presentation"><a href="#comments" aria-controls="comments" role="tab" data-toggle="tab">Komentarze</a>
+    </li>
+  </ul>
+  <div class="tab-content">
+    <app-event-details-tab-description *ngFor="let ev of events" role="tabpanel" class="tab-pane active" id="description" [innerHTML]="ev.description"></app-event-details-tab-description>
+    <app-event-details-tab-enroll *ngFor="let ev of events" [eventdata]="ev" role="tabpanel" class="tab-pane" id="register"></app-event-details-tab-enroll>
+    <app-event-details-tab-comments *ngFor="let ev of events" [eventdata]="ev" role="tabpanel" class="tab-pane" id="comments"></app-event-details-tab-comments>
+  </div>
+
+</div>
+
+
+<script>
+  $(document).ready(function () {
+    $('.event-tabs ul li a').click(function (e) {
+      e.preventDefault();
+      $(this).tab('show');
+    });
+  });
+</script>

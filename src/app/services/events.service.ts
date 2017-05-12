@@ -110,6 +110,24 @@ export class EventsService {
       .map(this.extractEventsCities);
   }
 
+  total(): Observable<number> {
+    let options = new RequestOptions({
+      withCredentials: true // CORS Access-Control-Allow-Credentials header
+    });
+
+    return this.http.get(this.url + "/total", options)
+      .map(this.extractTotalCount);
+  }
+
+  private extractTotalCount(res: Response) {
+    let body = res.json();
+
+    if(body.code == 200)
+      return body.count;
+    else
+      return -1;
+  }
+
   private extractEventsCities(res: Response) {
     let body = res.json();
 

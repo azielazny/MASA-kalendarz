@@ -1,0 +1,16 @@
+.no-elements {
+  border: 3px dashed black;
+  margin-top: 20px;
+  padding: 50px 0px !important;
+  text-align: center;
+}
+
+.center-parent {
+  display: flex;
+  justify-content: center;
+}
+
+.centered {
+  display: block;
+  align-self: center;
+}
