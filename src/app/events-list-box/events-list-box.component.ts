@@ -18,6 +18,7 @@ export class EventsListBoxComponent implements OnInit {
   public date: string;
   public location: string;
   public image: string;
+  public diff: string;
 
   constructor(private router: Router) {}
 
@@ -26,6 +27,8 @@ export class EventsListBoxComponent implements OnInit {
 
     this.image = "https://masa.oustish.pl/events/image/" + this.eventdata.event_id.toString();
 
+
+    // czas początku i końca (formatowanie)
     let x = new Date(this.eventdata.start_ts * 1000);
 
     let day = x.getDate();
@@ -54,6 +57,7 @@ export class EventsListBoxComponent implements OnInit {
     this.time1 = h1_s + ':' + m1_s;
     this.time2 = h2_s + ':' + m2_s;
 
+    // lokalizacja (formatowanie)
     this.location = "";
 
     if (this.eventdata.loc_name != null)
