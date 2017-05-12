@@ -91,14 +91,14 @@ export class EventsListBoxgridComponent implements OnInit {
       end.setSeconds(59);
     }
     else if(this.scope == 2) { // week (from now on)
-      end.setTime(+start + (7*24*3600));
+      end.setTime(+start + (7*24*3600*1000));
     }
     else { // all (from now on)
       start.setTime(0);
-      end.setTime(2147483647);
+      end.setTime(2147483647000);
     }
 
-    this.eventsServce.list('public', this.city, +start, +end, this.page - 1, this.limit).subscribe(val => this.populateEventsList(val));
+    this.eventsServce.list('public', this.city, Math.round(+start/1000), Math.round(+end/1000), this.page - 1, this.limit).subscribe(val => this.populateEventsList(val));
   }
 
   private populateEventsList(value : Event[]) {
