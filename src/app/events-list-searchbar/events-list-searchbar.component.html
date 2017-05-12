@@ -2,12 +2,12 @@
   <div class="city-search-left">
     Miasto:
     <select (change)="cityChanged()">
-      <option *ngFor="let city of citiesList">{{city}}</option>
+      <option *ngFor="let city of citiesList" value="{{city}}">{{city}}</option>
     </select>
   </div>
   <div class="city-search-right">
-    <button (click)="listToday()" [ngClass]="{'selected': (currentPeriod == 1)}">Dzisiaj</button>
-    <button (click)="listWeek()" [ngClass]="{'selected': (currentPeriod == 2)}">Tydzień</button>
-    <button (click)="listAll()" [ngClass]="{'selected': (currentPeriod == 3)}">Kiedykolwiek</button>
+    <button (click)="scopeChanged(1)" [ngClass]="{'selected': (scope == 1)}">Dzisiaj</button>
+    <button (click)="scopeChanged(2)" [ngClass]="{'selected': (scope == 2)}">Tydzień</button>
+    <button (click)="scopeChanged(3)" [ngClass]="{'selected': (scope == 3)}">Kiedykolwiek</button>
   </div>
 </div>

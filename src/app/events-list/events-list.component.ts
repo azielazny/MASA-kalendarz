@@ -9,7 +9,7 @@ import {EventsService} from "../services/events.service";
 })
 export class EventsListComponent implements OnInit {
 
-  constructor(private router: Router, private eventsService: EventsService, public route: ActivatedRoute) {}
+  constructor() {}
 
   ngOnInit() {
   }

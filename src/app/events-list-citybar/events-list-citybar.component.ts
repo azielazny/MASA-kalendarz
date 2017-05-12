@@ -1,4 +1,5 @@
 import {Component, OnInit, Input} from '@angular/core';
+import {ActivatedRoute} from "@angular/router";
 
 @Component({
   selector: 'app-events-list-citybar',
@@ -9,13 +10,13 @@ export class EventsListCitybarComponent implements OnInit {
 
   public selected_city: string = "";
 
-  constructor() { }
-
-  ngOnInit() {
+  constructor(private route: ActivatedRoute) {
+    this.route.params.subscribe(params => {
+      this.selected_city = params['city'];
+    });
   }
 
-  changeCity(city: string) {
-    this.selected_city = city;
+  ngOnInit() {
   }
 
 }
