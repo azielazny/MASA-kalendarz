@@ -17,7 +17,8 @@
     color: #000000;
     font-family: "Arial Black", Arial , Helvetica, sans-serif;
     font-weight: bolder;
-    margin-top: 0.6em; }
+    margin-top: 0.6em;
+    cursor: pointer; }
 
 .header-right {
   float: right; }
