@@ -1,0 +1,53 @@
+#calEdit .formCalendar {
+  margin-top: 35px; }
+#calEdit .formCalendar input {
+  border: none;
+  padding: 0;
+  color: #8c8a8d;
+  background: none;
+  margin: 0;
+  display: inline-block; }
+#calEdit .formCalendar .calField, #calEdit .formCalendar select, #calEdit .formCalendar .selectColor, #calEdit .formCalendar .bigSize {
+  border: 1px solid #727173;
+  padding: 5px;
+  color: #8c8a8d;
+  background: none;
+  margin: 10px 0px 10px;
+  display: inline-block; }
+#calEdit .formCalendar .selectColor {
+  max-width: 70px;
+  height: 55px;
+  padding: 10px;
+  margin-right: 20px; }
+#calEdit .formCalendar .editDate:after {
+  color: #8c8a8d;
+  content: "\f133";
+  display: inline-block;
+  font: normal normal normal 14px/1 FontAwesome;
+  font-size: inherit;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale; }
+#calEdit .formCalendar .selectHour {
+  margin: 0px 20px; }
+#calEdit .formCalendar .bigSize {
+  font-size: 1.5rem;
+  width: calc(100% - 92px);
+  padding: 10px 20px; }
+#calEdit .formCalendar .fullWidth {
+  width: 100%; }
+#calEdit .formCalendar textarea {
+  width: 100%;
+  border: none;
+  background: none; }
+#calEdit .formCalendar #accordion .panel {
+  margin: 10px 0px !important;
+  background-color: transparent !important;
+  border: 1px solid transparent;
+  border-radius: 0px !important; }
+#calEdit .formCalendar #accordion .panel .panel-heading {
+  background: transparent !important;
+  border: 1px solid #59575a; }
+#calEdit .formCalendar #accordion .panel .panel-body {
+  margin-top: 10px;
+  border: 1px solid #59575a; }

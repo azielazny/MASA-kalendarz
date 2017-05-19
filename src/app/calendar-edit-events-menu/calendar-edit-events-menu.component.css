@@ -1,0 +1,20 @@
+#calEdit .mainNav {
+  background: #d8d7d9;
+  color: #8c8a8d;
+  height: 40px;
+  width: 100%;
+  font-size: 24px; }
+#calEdit .mainNav .mainNavBox {
+  padding: 5px 15px;
+  display: inline-block;
+  font-size: 16px;
+  font-weight: 500;
+  color: #000; }
+#calEdit .mainNav .mainNavBox i {
+  margin-right: 10px;
+  font-size: 150%; }
+#calEdit .mainNav .mainNavBox .publicIcon {
+  text-shadow: 1px 1px 0px #19131f, -1px -1px 0px #19131f, -1px 1px 0px #19131f, 1px -1px 0px #19131f;
+  color: #d8d7d9; }
+#calEdit .mainNav .fa-close {
+  color: #19131f; }

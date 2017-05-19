@@ -28,6 +28,14 @@ import { EventsListCitybarComponent } from './events-list-citybar/events-list-ci
 import { EventsListSearchbarComponent } from './events-list-searchbar/events-list-searchbar.component';
 import { EventsListBoxgridComponent } from './events-list-boxgrid/events-list-boxgrid.component';
 import { EventsListComponent } from './events-list/events-list.component';
+import {CalendarEditEventsRightColumnComponent} from "./calendar-edit-events-right-column/calendar-edit-events-right-column.component";
+import {CalendarEditEventsFormComponent} from "./calendar-edit-events-form/calendar-edit-events-form.component";
+import {CalendarEditEventsMenuComponent} from "./calendar-edit-events-menu/calendar-edit-events-menu.component";
+import {CalendarEditEventsComponent} from "./calendar-edit-events/calendar-edit-events.component";
+
+
+
+
 
 
 @NgModule({
@@ -50,7 +58,12 @@ import { EventsListComponent } from './events-list/events-list.component';
     EventsListCitybarComponent,
     EventsListSearchbarComponent,
     EventsListBoxgridComponent,
-    EventsListComponent
+    EventsListComponent,
+    CalendarEditEventsRightColumnComponent,
+    CalendarEditEventsFormComponent,
+    CalendarEditEventsMenuComponent,
+    CalendarEditEventsComponent
+
 
   ],
   imports: [

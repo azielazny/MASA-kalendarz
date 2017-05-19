@@ -1,0 +1,44 @@
+.mainNav {
+  background: $lightgray;
+  color: $gray;
+  height: 40px;
+  width: 100%;
+  font-size: 24px;
+  .mainNavBox {
+    padding: 5px 15px;
+    display: inline-block;
+    font-size: 16px;
+    font-weight: 500;
+    color: $black;
+    span {
+
+    }
+    i {
+      margin-right: 10px;
+      font-size: 150%;
+    }
+    .publicIcon {
+      text-shadow: 1px 1px 0px $darkviolet, -1px -1px 0px $darkviolet, -1px 1px 0px $darkviolet, 1px -1px 0px $darkviolet;
+      color: $lightgray;
+    }
+  }
+  .fa-close {
+    color: $darkviolet;
+  }
+
+}
+
+@media (max-width: 767px) {
+  #calendar {
+    @include shortCalendar();
+  }
+  #calEdit {
+    .mainNav {
+      .mainNavBox {
+        span {
+          display: none;
+        }
+      }
+    }
+  }
+}
