@@ -1,0 +1,30 @@
+#leftColumn > section {
+  margin: 2.375em 1.25em 0 1.25em; }
+#leftColumn > nav {
+  margin: 2.375em 0; }
+#leftColumn #newAlerts {
+  background-color: #19131f;
+  height: 8.75em;
+  color: #fff;
+  overflow: hidden; }
+#leftColumn #newAlerts .fa-angle-down {
+  position: absolute;
+  right: 2em;
+  font-size: 150%;
+  color: #492748; }
+#leftColumn #newAlerts .fa-angle-up {
+  position: absolute;
+  /* float: right; */
+  right: 1.2em;
+  font-size: 150%;
+  color: #492748; }
+#leftColumn #newAlerts .info {
+  margin: 1.25em;
+  overflow: hidden;
+  height: 6.25em; }
+#leftColumn #newAlerts span {
+  font-weight: 700;
+  color: #0298ac;
+  margin-bottom: 0.6rem;
+  font-size: 1rem;
+  display: block; }

@@ -32,6 +32,14 @@ import {CalendarEditEventsRightColumnComponent} from "./calendar-edit-events-rig
 import {CalendarEditEventsFormComponent} from "./calendar-edit-events-form/calendar-edit-events-form.component";
 import {CalendarEditEventsMenuComponent} from "./calendar-edit-events-menu/calendar-edit-events-menu.component";
 import {CalendarEditEventsComponent} from "./calendar-edit-events/calendar-edit-events.component";
+import {CalendarLeftColumnLogoboxComponent} from "./calendar-left-column-logobox/calendar-left-column-logobox.component";
+import {CalendarLeftColumnInfoboxComponent} from "./calendar-left-column-infobox/calendar-left-column-infobox.component";
+import {CalendarLeftColumnSettingsComponent} from "./calendar-left-column-settings/calendar-left-column-settings.component";
+import {CalendarLeftColumnEventPublicComponent} from "./calendar-left-column-event-public/calendar-left-column-event-public.component";
+import {CalendarLeftColumnLogoutComponent} from "./calendar-left-column-logout/calendar-left-column-event-public.component";
+import {CalendarLeftColumnCategoriesComponent} from "./calendar-left-column-categories/calendar-left-column-event-public.component";
+import {CalendarLeftColumnMainnavComponent} from "./calendar-left-column-mainnav/calendar-left-column-event-public.component";
+import {CalendarLeftColumComponent} from "./calendar-left-column/calendar-left-column-event-public.component";
 
 
 
@@ -62,7 +70,16 @@ import {CalendarEditEventsComponent} from "./calendar-edit-events/calendar-edit-
     CalendarEditEventsRightColumnComponent,
     CalendarEditEventsFormComponent,
     CalendarEditEventsMenuComponent,
-    CalendarEditEventsComponent
+    CalendarEditEventsComponent,
+    CalendarLeftColumnLogoboxComponent,
+    CalendarLeftColumnInfoboxComponent,
+    CalendarLeftColumnSettingsComponent,
+    CalendarLeftColumnEventPublicComponent,
+    CalendarLeftColumnLogoutComponent,
+    CalendarLeftColumnMainnavComponent,
+    CalendarLeftColumnCategoriesComponent,
+    CalendarLeftColumComponent
+
 
 
   ],
