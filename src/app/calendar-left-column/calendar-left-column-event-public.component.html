@@ -4,3 +4,17 @@
   <app-left-column-mainnav></app-left-column-mainnav>
   <app-left-column-categories></app-left-column-categories>
 </aside>
+<script>
+$(document).ready(function () {
+$("#leftColumn .logoBox .fa-bars").on("click", function () {
+
+$(this).parents("#main").toggleClass("shortView");
+if ($(document).width() > $("#main").width()) {
+$("#calendar").toggleClass("shortCal").find(".personHello:first").toggleClass("hidden");
+} else {
+$("#calendar").removeClass("shortCal").find(".personHello:first").removeClass("hidden");
+}
+
+
+});
+</script>
