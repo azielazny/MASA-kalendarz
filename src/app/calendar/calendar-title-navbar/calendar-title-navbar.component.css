@@ -1,3 +1,9 @@
+#gridOpts div {
+  display: inline-block;
+  float: right;
+  padding: 5px 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  background: #492748; }
 
-
-/*# sourceMappingURL=calendar-title-navbar.component.cssss.map */
+/*# sourceMappingURL=calendar-title-navbar.component.css.map */
