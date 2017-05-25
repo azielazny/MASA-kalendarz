@@ -8,7 +8,7 @@ import {Router} from "@angular/router";
 })
 export class CalendarLeftColumnMainnavComponent implements OnInit {
 
-  constructor(private router: Router) {}
+  constructor() {}
 
 
   ngOnInit() {

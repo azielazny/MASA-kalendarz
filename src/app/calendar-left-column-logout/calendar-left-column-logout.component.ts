@@ -8,7 +8,7 @@ import {Router} from "@angular/router";
 })
 export class CalendarLeftColumnLogoutComponent implements OnInit {
   
-  constructor(private router: Router) {}
+  constructor() {}
 
 
   ngOnInit() {

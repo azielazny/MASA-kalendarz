@@ -40,6 +40,7 @@ import {CalendarLeftColumnLogoutComponent} from "./calendar-left-column-logout/c
 import {CalendarLeftColumnMainnavComponent} from "./calendar-left-column-mainnav/calendar-left-column-mainnav.component";
 import {CalendarLeftColumnCategoriesComponent} from "./calendar-left-column-categories/calendar-left-column-categories.component";
 import {CalendarLeftColumComponent} from "./calendar-left-column/calendar-left-column.component";
+import {CalendarBackofficeComponent} from "./calendar-backoffice/calendar-backoffice.component";
 
 
 
@@ -75,7 +76,8 @@ import {CalendarLeftColumComponent} from "./calendar-left-column/calendar-left-c
     CalendarLeftColumnLogoutComponent,
     CalendarLeftColumnMainnavComponent,
     CalendarLeftColumnCategoriesComponent,
-    CalendarLeftColumComponent
+    CalendarLeftColumComponent,
+    CalendarBackofficeComponent
 
 
   ],
@@ -89,8 +91,7 @@ import {CalendarLeftColumComponent} from "./calendar-left-column/calendar-left-c
     UsersService,
     EventsService
   ],
-  bootstrap: [AppComponent],
-  schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
+  bootstrap: [AppComponent]
 })
 export class AppModule {
 }
