@@ -1,3 +1,62 @@
+//kolory
+$darkviolet: #19131f;
+$lightviolet: #492748;
+$lightred: #984b43;
+$white: #fff;
+$gray: #8c8a8d;
+$lightgray: lighten($gray, 30%);
+$black: #000;
+$beige: #f7e2d1;
+$blue: #0298ac;
+@mixin shortCalendar() {
+
+  .calData {
+    text-align: center;
+  }
+  #calNext, #calPrev {
+    vertical-align: top;
+    text-align: center;
+    padding-top: 10px;
+  }
+  #calBody {
+    min-width: initial;
+  }
+
+  .lCard {
+    display: inline-block;
+    font-size: 1rem;
+    width: 100%;
+    height: 40px;
+    text-align: left;
+    vertical-align: middle;
+    border: 1px solid $darkviolet;
+    line-height: 40px;
+    span {
+
+      &:first-child {
+        display: inline-block;
+        width: 40px;
+        text-align: center;
+      }
+      span {
+        position: absolute;
+        color: darken($lightviolet, 7%); //#6b4c6a;
+        left: 64px;
+        border-right: 1px solid darken($lightviolet, 20%);
+      }
+    }
+    &.active {
+      border: 2px solid gold;
+    }
+  }
+  .dCard {
+    display: none;
+  }
+  .wCard {
+    display: none;
+  }
+}
+
 .mainNav {
   background: $lightgray;
   color: $gray;

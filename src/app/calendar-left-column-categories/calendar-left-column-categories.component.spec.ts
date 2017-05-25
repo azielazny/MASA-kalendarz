@@ -1,7 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 
-import {CalendarLeftColumnCategoriesComponent} from "./calendar-left-column-event-categories.component";
+import {CalendarLeftColumnCategoriesComponent} from "./calendar-left-column-categories.component";
 
 describe('CalendarLeftColumnCategoriesComponent', () => {
   let component: CalendarLeftColumnCategoriesComponent;

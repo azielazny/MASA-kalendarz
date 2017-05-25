@@ -36,10 +36,10 @@ import {CalendarLeftColumnLogoboxComponent} from "./calendar-left-column-logobox
 import {CalendarLeftColumnInfoboxComponent} from "./calendar-left-column-infobox/calendar-left-column-infobox.component";
 import {CalendarLeftColumnSettingsComponent} from "./calendar-left-column-settings/calendar-left-column-settings.component";
 import {CalendarLeftColumnEventPublicComponent} from "./calendar-left-column-event-public/calendar-left-column-event-public.component";
-import {CalendarLeftColumnLogoutComponent} from "./calendar-left-column-logout/calendar-left-column-event-public.component";
-import {CalendarLeftColumnCategoriesComponent} from "./calendar-left-column-categories/calendar-left-column-event-public.component";
-import {CalendarLeftColumnMainnavComponent} from "./calendar-left-column-mainnav/calendar-left-column-event-public.component";
+import {CalendarLeftColumnLogoutComponent} from "./calendar-left-column-logout/calendar-left-column-logout.component";
+import {CalendarLeftColumnCategoriesComponent} from "./calendar-left-column-categories/calendar-left-column-categories.component";
 import {CalendarLeftColumComponent} from "./calendar-left-column/calendar-left-column-event-public.component";
+import {CalendarLeftColumnMainnavComponent} from "./calendar-left-column-mainnav/calendar-left-column-mainnav.component";
 
 
 
@@ -79,7 +79,6 @@ import {CalendarLeftColumComponent} from "./calendar-left-column/calendar-left-c
     CalendarLeftColumnMainnavComponent,
     CalendarLeftColumnCategoriesComponent,
     CalendarLeftColumComponent
-
 
 
   ],

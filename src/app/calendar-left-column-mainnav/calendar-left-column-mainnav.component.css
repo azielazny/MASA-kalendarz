@@ -1,0 +1,13 @@
+#mainNav ul li {
+  color: #fff;
+  padding: .3em 1.25em;
+  font-size: 1rem; }
+  #mainNav ul li i {
+    padding-right: .7rem; }
+#mainNav ul li:hover {
+  background: #984b43; }
+
+#mainNav ul li span {
+  display: none; }
+
+/*# sourceMappingURL=calendar-left-column-mainnav.component.css.map */

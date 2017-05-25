@@ -7,7 +7,7 @@ import {Router} from "@angular/router";
   styleUrls: ['./calendar-left-column-logout.component.scss']
 })
 export class CalendarLeftColumnLogoutComponent implements OnInit {
-
+  
   constructor(private router: Router) {}
 
 

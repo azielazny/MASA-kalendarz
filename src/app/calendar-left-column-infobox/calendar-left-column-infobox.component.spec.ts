@@ -15,7 +15,7 @@ describe('CalendarLeftColumnInfoboxComponent', () => {
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(CCalendarLeftColumnInfoboxComponent);
+    fixture = TestBed.createComponent(CalendarLeftColumnInfoboxComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

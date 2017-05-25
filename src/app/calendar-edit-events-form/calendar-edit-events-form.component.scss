@@ -1,3 +1,14 @@
+//kolory
+$darkviolet: #19131f;
+$lightviolet: #492748;
+$lightred: #984b43;
+$white: #fff;
+$gray: #8c8a8d;
+$lightgray: lighten($gray, 30%);
+$black: #000;
+$beige: #f7e2d1;
+$blue: #0298ac;
+
 .formCalendar {
   margin-top: 35px;
   & input {
