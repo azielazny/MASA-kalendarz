@@ -1,5 +1,5 @@
 import {Component, OnInit, Input} from '@angular/core';
-import {Event} from '../class/event.class';
+import {Event} from '../../class/event.class';
 import {Router, ActivatedRoute} from "@angular/router";
 import {Location} from "@angular/common";
 

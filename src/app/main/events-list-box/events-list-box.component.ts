@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Event } from '../class/event.class';
+import { Event } from '../../class/event.class';
 import {Router} from "@angular/router";
 
 @Component({

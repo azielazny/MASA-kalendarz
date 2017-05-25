@@ -1,5 +1,5 @@
 import {Component, OnInit, Input, ViewChild} from '@angular/core';
-import {EventsService} from "../services/events.service";
+import {EventsService} from "../../services/events.service";
 import {EventsListBoxgridComponent} from "../events-list-boxgrid/events-list-boxgrid.component";
 import {EventsListCitybarComponent} from "../events-list-citybar/events-list-citybar.component";
 import {Router, NavigationEnd, ActivatedRoute} from "@angular/router";

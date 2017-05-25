@@ -1,3 +1,4 @@
+///<reference path="main/event-details/event-details.component.ts"/>
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule, CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
 import {FormsModule} from '@angular/forms';
@@ -41,6 +42,9 @@ import {CalendarLeftColumnMainnavComponent} from "./calendar/calendar-left-colum
 import {CalendarLeftColumnCategoriesComponent} from "./calendar/calendar-left-column-categories/calendar-left-column-categories.component";
 import {CalendarLeftColumComponent} from "./calendar/calendar-left-column/calendar-left-column.component";
 import {CalendarBackofficeComponent} from "./calendar/calendar-backoffice/calendar-backoffice.component";
+import {CalendarGridComponent} from "./calendar/calendar-grid/calendar-grid.component";
+import {CalendarRightColumnComponent} from "./calendar/calendar-right-column/calendar-right-column.component";
+import {CalendarTitleNavbarComponent} from "./calendar/calendar-title-navbar/calendar-title-navbar.component";
 
 
 
@@ -77,7 +81,10 @@ import {CalendarBackofficeComponent} from "./calendar/calendar-backoffice/calend
     CalendarLeftColumnMainnavComponent,
     CalendarLeftColumnCategoriesComponent,
     CalendarLeftColumComponent,
-    CalendarBackofficeComponent
+    CalendarBackofficeComponent,
+    CalendarGridComponent,
+    CalendarRightColumnComponent,
+    CalendarTitleNavbarComponent
 
 
   ],

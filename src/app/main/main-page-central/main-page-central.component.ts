@@ -1,5 +1,5 @@
 import {Component, OnInit, NgZone} from '@angular/core';
-import { UsersService } from "../services/users.service";
+import { UsersService } from "../../services/users.service";
 import {Router} from "@angular/router";
 
 @Component({
