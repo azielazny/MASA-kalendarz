@@ -1,34 +1,3 @@
-#calEdit {
-  position: absolute;
-  height: 100%;
-  width: 100%;
-  background: white;
-  z-index: 100;
-  margin: 0 -15px;
-  border-top: 3px solid #000;
-  display: block;
-  color: #000; }
-  #calEdit .mapa {
-    border: 1px solid #727173;
-    padding: 5px;
-    color: #8c8a8d;
-    background: none;
-    margin: 45px 0px 10px; }
-  #calEdit .closeEditCal {
-    position: absolute;
-    top: 0px;
-    right: 0px;
-    color: #492748; }
-  #calEdit .topNav {
-    margin-top: 20px;
-    width: 170px;
-    height: 36px;
-    display: inline-block;
-    font-weight: 700;
-    border-bottom: 3px solid #8c8a8d;
-    color: #8c8a8d; }
-    #calEdit .topNav.active {
-      border-bottom: 3px solid #19131f;
-      color: #000; }
+
 
 /*# sourceMappingURL=calendar-edit-events.component.css.map */
