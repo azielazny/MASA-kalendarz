@@ -45,6 +45,9 @@ import {CalendarBackofficeComponent} from "./calendar/calendar-backoffice/calend
 import {CalendarGridComponent} from "./calendar/calendar-grid/calendar-grid.component";
 import {CalendarRightColumnComponent} from "./calendar/calendar-right-column/calendar-right-column.component";
 import {CalendarTitleNavbarComponent} from "./calendar/calendar-title-navbar/calendar-title-navbar.component";
+import {CalendarMonthViewLightBoxComponent} from "./calendar/calendar-month-view-light-box/calendar-month-view-light-box.component";
+import {CalendarMonthViewDarkBoxComponent} from "./calendar/calendar-month-view-dark-box/calendar-month-view-dark-box.component";
+import {CalendarMonthViewComponent} from "./calendar/calendar-month-view/calendar-month-view.component";
 
 
 
@@ -84,7 +87,10 @@ import {CalendarTitleNavbarComponent} from "./calendar/calendar-title-navbar/cal
     CalendarBackofficeComponent,
     CalendarGridComponent,
     CalendarRightColumnComponent,
-    CalendarTitleNavbarComponent
+    CalendarTitleNavbarComponent,
+    CalendarMonthViewLightBoxComponent,
+    CalendarMonthViewDarkBoxComponent,
+    CalendarMonthViewComponent
 
 
   ],
