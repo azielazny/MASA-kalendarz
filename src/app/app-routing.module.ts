@@ -12,7 +12,7 @@ const routes: Routes = [
   {path: 'index', component: MainPageComponent},
   {path: 'event/:id/:utitle', component: EventDetailsComponent},
   {path: 'events/:city/:scope/:page', component: EventsListComponent},
-  {path: 'calendar', component: CalendarEditEventsComponent}
+  // {path: 'calendar', component: CalendarEditEventsComponent}
 ];
 
 export const routing: ModuleWithProviders = RouterModule.forRoot(routes);
