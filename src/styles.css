@@ -13,7 +13,7 @@ app-calendar-backoffice {
   font-family: Arial;
   background: linear-gradient(to bottom, #000 3px, #19131f 3px);
   width: 100%;
-  height: 100%;
+  height: 99.99%;
   display: block; }
   app-calendar-backoffice #leftColumn {
     max-width: 300px;
@@ -64,37 +64,39 @@ app-calendar-backoffice {
         padding-right: .7rem; }
     app-calendar-backoffice #leftColumn #mainNav ul li:hover {
       background: #984b43; }
-    app-calendar-backoffice #leftColumn #categoryList .input-group {
-      margin-bottom: 2.375em; }
-      app-calendar-backoffice #leftColumn #categoryList .input-group .input-group-addon {
-        background-color: #19131f;
-        color: #0298ac;
-        border: 1px solid #59575a;
-        border-right: none;
-        border-radius: 0px; }
-      app-calendar-backoffice #leftColumn #categoryList .input-group input {
-        background-color: #19131f;
-        color: #8c8a8d;
-        border: 1px solid #59575a;
-        border-left: none;
-        border-radius: 0px; }
-    app-calendar-backoffice #leftColumn #categoryList .actualCategory {
-      color: #fff;
-      font-size: 1rem;
-      width: 100%;
-      margin-bottom: .7rem; }
-      app-calendar-backoffice #leftColumn #categoryList .actualCategory .catBox {
-        color: #0298ac;
-        display: inline-block;
-        padding-right: 1rem; }
-      app-calendar-backoffice #leftColumn #categoryList .actualCategory .catName {
-        display: inline-block; }
-      app-calendar-backoffice #leftColumn #categoryList .actualCategory .catDel {
-        color: #19131f;
-        font-size: 0.7em;
-        line-height: 2;
-        float: right;
-        display: inline-block; }
+    app-calendar-backoffice #leftColumn #categoryList {
+      padding: 15px; }
+      app-calendar-backoffice #leftColumn #categoryList .input-group {
+        margin-bottom: 2.375em; }
+        app-calendar-backoffice #leftColumn #categoryList .input-group .input-group-addon {
+          background-color: #19131f;
+          color: #0298ac;
+          border: 1px solid #59575a;
+          border-right: none;
+          border-radius: 0px; }
+        app-calendar-backoffice #leftColumn #categoryList .input-group input {
+          background-color: #19131f;
+          color: #8c8a8d;
+          border: 1px solid #59575a;
+          border-left: none;
+          border-radius: 0px; }
+      app-calendar-backoffice #leftColumn #categoryList .actualCategory {
+        color: #fff;
+        font-size: 1rem;
+        width: 100%;
+        margin-bottom: .7rem; }
+        app-calendar-backoffice #leftColumn #categoryList .actualCategory .catBox {
+          color: #0298ac;
+          display: inline-block;
+          padding-right: 1rem; }
+        app-calendar-backoffice #leftColumn #categoryList .actualCategory .catName {
+          display: inline-block; }
+        app-calendar-backoffice #leftColumn #categoryList .actualCategory .catDel {
+          color: #19131f;
+          font-size: 0.7em;
+          line-height: 2;
+          float: right;
+          display: inline-block; }
   app-calendar-backoffice #leftColumn {
     background-color: #492748;
     padding: 0em;
@@ -114,7 +116,8 @@ app-calendar-backoffice {
       background-color: #19131f;
       height: 8.75em;
       color: #fff;
-      overflow: hidden; }
+      overflow: hidden;
+      margin-bottom: 1rem; }
       app-calendar-backoffice #leftColumn #newAlerts .fa-angle-down {
         position: absolute;
         right: 2em;
@@ -211,13 +214,13 @@ app-calendar-backoffice {
       height: 50px;
       overflow: hidden; }
     app-calendar-backoffice #calendar #calGrid {
-      height: calc(100% - 50px); }
+      height: calc(100% - 120px); }
     app-calendar-backoffice #calendar #calBody {
       display: table-cell;
       font-weight: 700;
       text-align: center;
       width: 100%;
-      height: calc(100vh - 50px);
+      height: calc(100vh - 120px);
       min-width: 540px; }
     app-calendar-backoffice #calendar #calPrev, app-calendar-backoffice #calendar #calNext {
       display: table-cell;

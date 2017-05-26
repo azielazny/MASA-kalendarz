@@ -80,7 +80,7 @@ app-calendar-backoffice {
   font-family: Arial;
   background: linear-gradient(to bottom, $black 3px, $darkviolet 3px);
   width: 100%;
-  height: 100%;
+  height: 99.99%;
   display: block;
   #leftColumn {
     max-width: 300px;
@@ -148,6 +148,7 @@ app-calendar-backoffice {
       }
     }
     #categoryList {
+      padding: 15px;
       .input-group {
         margin-bottom: 2.375em;
         .input-group-addon {
@@ -214,6 +215,7 @@ app-calendar-backoffice {
       height: 8.75em;
       color: $white;
       overflow: hidden;
+      margin-bottom: 1rem;
       .fa-angle-down {
         position: absolute;
         right: 2em;
@@ -361,14 +363,14 @@ app-calendar-backoffice {
       overflow: hidden;
     }
     #calGrid {
-      height: calc(100% - 50px);
+      height: calc(100% - 120px);
     }
     #calBody {
       display: table-cell;
       font-weight: 700;
       text-align: center;
       width: 100%;
-      height: calc(100vh - 50px);
+      height: calc(100vh - 120px);
       min-width: 540px;
     }
     #calPrev, #calNext {

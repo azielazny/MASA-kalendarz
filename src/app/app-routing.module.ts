@@ -9,11 +9,22 @@ import {CalendarBackofficeComponent} from "./calendar/calendar-backoffice/calend
 // import {EventsListComponent} from "./events-list/events-list.component";
 
 const routes: Routes = [
-  { path: '', redirectTo: '/index', pathMatch: 'full' },
-  {path: 'index', component: MainPageComponent},
+  
+
+      {path: '', pathMatch: 'full',redirectTo: '/index'},
+
+        {path: 'index', component: MainPageComponent},
+
+
   {path: 'event/:id/:utitle', component: EventDetailsComponent},
   {path: 'events/:city/:scope/:page', component: EventsListComponent},
-  {path: 'calendar', component: CalendarBackofficeComponent}
-];
+  {path: 'calendar', component: CalendarBackofficeComponent},
+  // { path: '', redirectTo: '/index', pathMatch: 'full' },
 
+
+];
+export const appRoutingProviders: any[] = [];
+// export const routing = RouterModule.forRoot(routes);
 export const routing: ModuleWithProviders = RouterModule.forRoot(routes);
+
+
