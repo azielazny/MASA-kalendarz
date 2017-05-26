@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, Input} from '@angular/core';
 import {Router} from "@angular/router";
+import {isNullOrUndefined} from "util";
 
 @Component({
   selector: 'calendar-left-column-logobox',
@@ -10,6 +11,7 @@ export class CalendarLeftColumnLogoboxComponent implements OnInit {
 
   constructor() {}
 
+  public showShortView = false;
 
   ngOnInit() {
   }

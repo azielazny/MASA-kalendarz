@@ -1,7 +1,5 @@
-<div id="main" >
-  <!--<div id="main" class="shortView">-->
-<calendar-left-column></calendar-left-column>
-<calendar-grid></calendar-grid>
-
+<div id="main" [class.shortView]="leftColumn.logoBox.showShortView">
+  <calendar-left-column #leftColumn></calendar-left-column>
+  <calendar-grid></calendar-grid>
 </div>
 

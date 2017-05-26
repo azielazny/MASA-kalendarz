@@ -1,20 +1,6 @@
 <aside id="leftColumn" class="col-xs-5 col-sm-4 col-md-3 col-xl-2">
-  <calendar-left-column-logobox></calendar-left-column-logobox>
+  <calendar-left-column-logobox #logoBox></calendar-left-column-logobox>
   <calendar-left-column-infobox></calendar-left-column-infobox>
   <calendar-left-column-mainnav></calendar-left-column-mainnav>
   <calendar-left-column-categories></calendar-left-column-categories>
 </aside>
-<script>
-  $(document).ready(function () {
-    $("#leftColumn .logoBox .fa-bars").on("click", function () {
-
-      $(this).parents("#main").toggleClass("shortView");
-      if ($(document).width() > $("#main").width()) {
-        $("#calendar").toggleClass("shortCal").find(".personHello:first").toggleClass("hidden");
-      } else {
-        $("#calendar").removeClass("shortCal").find(".personHello:first").removeClass("hidden");
-      }
-
-
-    });
-</script>
