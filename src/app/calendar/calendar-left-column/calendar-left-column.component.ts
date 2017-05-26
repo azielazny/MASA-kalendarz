@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, Input, ViewChild} from '@angular/core';
 import {Router} from "@angular/router";
 
 @Component({
@@ -10,6 +10,7 @@ export class CalendarLeftColumComponent implements OnInit {
 
   constructor() {}
 
+  @ViewChild('logoBox') public logoBox;
 
   ngOnInit() {
   }

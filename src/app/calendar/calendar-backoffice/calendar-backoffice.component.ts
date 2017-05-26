@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {Router} from "@angular/router";
 
 @Component({
@@ -10,6 +10,7 @@ export class CalendarBackofficeComponent implements OnInit {
 
   constructor(private router: Router) {}
 
+  @ViewChild('leftColumn') public leftColumn;
 
   ngOnInit() {
   }

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, Input} from '@angular/core';
 import {Router} from "@angular/router";
 import {UsersService} from "../../services/users.service";
 
@@ -13,6 +13,12 @@ export class CalendarTitleNavbarComponent implements OnInit {
 
   constructor() {}
 
+  @Input()
+  public parent;
+
+  checkIfShowShortView() {
+    return this.parent.parent.leftColumn.logoBox.showShortView && ($(document).width() > $("#main").width());
+  }
 
   ngOnInit() {
   }

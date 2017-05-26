@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, Input, ViewChild} from '@angular/core';
 import {Router} from "@angular/router";
 
 @Component({
@@ -10,6 +10,15 @@ export class CalendarGridComponent implements OnInit {
 
   constructor() {}
 
+  @Input()
+  public parent;
+
+  @ViewChild('rightColumn') rightColumn;
+  @ViewChild('editEvents') editEvents;
+
+  checkIfShowShortView() {
+    return this.parent.leftColumn.logoBox.showShortView && ($(document).width() > $("#main").width());
+  }
 
   ngOnInit() {
   }
