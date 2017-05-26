@@ -1,0 +1,48 @@
+@media (min-width: 1441px) {
+  .sebm-google-map-container {
+    width: 340px;
+    height: 150px;
+  }
+}
+
+@media (max-width: 1440px) {
+  .sebm-google-map-container {
+    width: 340px;
+    height: 150px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .sebm-google-map-container {
+    width: 280px;
+    height: 150px;
+  }
+}
+
+@media (max-width: 768px) {
+  .sebm-google-map-container {
+    width: 200px;
+    height: 120px;
+  }
+}
+
+@media (max-width: 425px) {
+  .sebm-google-map-container {
+    width: 362px;
+    height: 120px;
+  }
+}
+
+@media (max-width: 375px) {
+  .sebm-google-map-container {
+    width: 310px;
+    height: 100px;
+  }
+}
+
+@media (max-width: 320px) {
+  .sebm-google-map-container {
+    width: 260px;
+    height: 100px;
+  }
+}

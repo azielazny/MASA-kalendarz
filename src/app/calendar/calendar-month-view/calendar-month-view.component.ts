@@ -8,10 +8,15 @@ import {Router} from "@angular/router";
 })
 export class CalendarMonthViewComponent implements OnInit {
 
+  public keys_pre = "ddd".split('');
+  public keys = "llllllllllllllllllllllllllllll".split('');
+  public keys_post = "dd".split('');
+
   constructor() {}
 
 
   ngOnInit() {
+
   }
 
 }

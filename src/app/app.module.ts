@@ -3,6 +3,9 @@ import {BrowserModule} from '@angular/platform-browser';
 import {NgModule, CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {HttpModule} from '@angular/http';
+import { AgmCoreModule } from 'angular2-google-maps/core';
+
+import {KaskadaGoogleMapsComponent} from './shared/kaskada-googlemaps/kaskada-googlemaps.component';
 
 import {UsersService} from "./services/users.service";
 import {EventsService} from "./services/events.service";
@@ -56,6 +59,7 @@ import {CalendarMonthViewComponent} from "./calendar/calendar-month-view/calenda
     AppComponent,
     FooterGlobalComponent,
     HeaderGlobalComponent,
+    KaskadaGoogleMapsComponent,
     MainPageCentralComponent,
     MainPageComponent,
     EventsListHeaderComponent,
@@ -91,14 +95,15 @@ import {CalendarMonthViewComponent} from "./calendar/calendar-month-view/calenda
     CalendarMonthViewLightBoxComponent,
     CalendarMonthViewDarkBoxComponent,
     CalendarMonthViewComponent
-
-
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
-    routing
+    routing,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyAfZ6Cyh-Ri-NBQykrD0HSz-4PXP1SDPLw'
+    })
   ],
   providers: [
     UsersService,

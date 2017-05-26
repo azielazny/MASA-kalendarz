@@ -47,7 +47,7 @@ export class UsersService {
 
   }
 
-  details() {
+  details($uid, $provider) {
     let options = new RequestOptions({
       withCredentials: true // CORS Access-Control-Allow-Credentials header
     });
