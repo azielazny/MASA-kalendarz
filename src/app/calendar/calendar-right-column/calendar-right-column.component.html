@@ -1,9 +1,9 @@
-<section id="rightColumn" class="hidden">
-  <i class="fa fa-close"></i>
+<section id="rightColumn" [class.hidden]="!shown">
+  <i class="fa fa-close" (click)="shown = false"></i>
   <div class="title">
-    Zdarzenie
+    Zdarzenia {{day}}
   </div>
-  <div class="addEvent">
+  <div class="addEvent" (click)="addNewEvent()">
     <i class="fa fa-plus"></i>
     <span>Dodaj zdarzenie</span>
   </div>

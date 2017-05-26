@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, Input} from '@angular/core';
 import {Router} from "@angular/router";
 
 @Component({
@@ -12,8 +12,15 @@ export class CalendarMonthViewComponent implements OnInit {
   public keys = "llllllllllllllllllllllllllllll".split('');
   public keys_post = "dd".split('');
 
+  @Input()
+  public parent;
+
   constructor() {}
 
+  openRightColumn(index) {
+    this.parent.rightColumn.shown = true;
+    this.parent.rightColumn.day = index;
+  }
 
   ngOnInit() {
 

@@ -1,6 +1,6 @@
-<section id="calendar" class="col-xs-7  col-sm-8 col-md-9  col-xl-10">
-  <calendar-right-column></calendar-right-column>
-  <calendar-edit-events></calendar-edit-events>
-  <calendar-title-navbar></calendar-title-navbar>
-  <calendar-month-view></calendar-month-view>
+<section id="calendar" class="col-xs-7  col-sm-8 col-md-9  col-xl-10" [class.shortCal]="checkIfShowShortView()">
+  <calendar-right-column #rightColumn [parent]="this"></calendar-right-column>
+  <calendar-edit-events #editEvents></calendar-edit-events>
+  <calendar-title-navbar [parent]="this"></calendar-title-navbar>
+  <calendar-month-view [parent]="this"></calendar-month-view>
 </section>

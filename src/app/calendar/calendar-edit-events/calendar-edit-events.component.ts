@@ -10,6 +10,8 @@ export class CalendarEditEventsComponent implements OnInit {
 
   constructor() {}
 
+  public shown = false;
+  public tab = 'edit';
 
   ngOnInit() {
   }

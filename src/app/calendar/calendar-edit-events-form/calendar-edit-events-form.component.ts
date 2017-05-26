@@ -12,6 +12,7 @@ export class CalendarEditEventsFormComponent implements OnInit {
 
 
   ngOnInit() {
+    //('.collapsed').collapse();
   }
 
 }

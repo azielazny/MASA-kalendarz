@@ -1,4 +1,4 @@
-<section id="calEdit" class="hidden">
+<section id="calEdit" [class.hidden]="!shown">
   <!--box z ustawieniami-->
 
   <div class="col-xs-1"></div>
@@ -6,22 +6,22 @@
   <div class="col-xs-10">
     <div class="row">
       <div class="col-xs-11 calTopTabs">
-        <div class="topNav editTab active">
+        <div class="topNav editTab" [class.active]="tab == 'edit'" (click)="tab = 'edit'">
           Edycja zdarzenia
         </div>
-        <div class="topNav setTab">
+        <div class="topNav setTab" [class.active]="tab == 'settings'" (click)="tab = 'settings'">
           Ustawienia
         </div>
       </div>
-      <div class="col-xs-1"><i class="fa fa-2x fa-close closeEditCal"></i></div>
+      <div class="col-xs-1 closeEditCal" (click)="shown = false"><i class="fa fa-2x fa-close"></i></div>
     </div>
-    <div class="row calSettingsBody hidden" >
+    <div class="row calSettingsBody" [class.hidden]="tab == 'edit'" >
       <div class="col-xs-12">
         <h3>Tutaj będą ustawienia kalendarza</h3>
       </div>
     </div>
 
-    <div class="row calEditBody">
+    <div class="row calEditBody" [class.hidden]="tab == 'settings'">
       <calendar-edit-events-menu></calendar-edit-events-menu>
       <div class="col-xs-12">
         <calendar-edit-events-form></calendar-edit-events-form>
