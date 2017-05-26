@@ -6,6 +6,21 @@ body {
   min-height: 100%;
   position: relative; }
 
+.noselect {
+  -webkit-touch-callout: none;
+  /* iOS Safari */
+  -webkit-user-select: none;
+  /* Safari */
+  -khtml-user-select: none;
+  /* Konqueror HTML */
+  -moz-user-select: none;
+  /* Firefox */
+  -ms-user-select: none;
+  /* Internet Explorer/Edge */
+  user-select: none;
+  /* Non-prefixed version, currently
+               supported by Chrome and Opera */ }
+
 html {
   font-size: 16px; }
 
@@ -183,7 +198,7 @@ app-calendar-backoffice {
   app-calendar-backoffice .shortView #leftColumn {
     width: 50px; }
   app-calendar-backoffice .shortView #calendar {
-    width: calc(100% - 50px) !important;
+    width: calc(100% - 140px) !important;
     float: right; }
   app-calendar-backoffice .shortView .logoBox {
     height: 210px; }
@@ -214,7 +229,7 @@ app-calendar-backoffice {
       height: 50px;
       overflow: hidden; }
     app-calendar-backoffice #calendar #calGrid {
-      height: calc(100% - 120px); }
+      height: calc(100% - 140px); }
     app-calendar-backoffice #calendar #calBody {
       display: table-cell;
       font-weight: 700;

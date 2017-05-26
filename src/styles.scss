@@ -319,7 +319,7 @@ app-calendar-backoffice {
     }
 
     #calendar {
-      width: calc(100% - 50px) !important;
+      width: calc(100% - 140px) !important;
       float: right;
     }
     .logoBox {
@@ -371,14 +371,14 @@ app-calendar-backoffice {
       overflow: hidden;
     }
     #calGrid {
-      height: calc(100% - 120px);
+      height: calc(100% - 140px);
     }
     #calBody {
       display: table-cell;
       font-weight: 700;
       text-align: center;
       width: 100%;
-      height: calc(100vh - 120px);
+      height: calc(100vh - 140px);
       min-width: 540px;
     }
     #calPrev, #calNext {

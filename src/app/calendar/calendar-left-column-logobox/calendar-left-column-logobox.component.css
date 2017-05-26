@@ -1,9 +1,4 @@
-#leftColumn .logoBox {
-  background: #000;
-  color: #fff;
-  padding: .7em;
-  font-size: 1.5rem;
-  font-weight: 900; }
-.logoBox {
-  height: 210px;
-}
+.fa.fa-bars {
+  cursor: pointer; }
+
+/*# sourceMappingURL=calendar-left-column-logobox.component.css.map */
