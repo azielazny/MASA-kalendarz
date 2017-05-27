@@ -235,7 +235,7 @@ app-calendar-backoffice {
       font-weight: 700;
       text-align: center;
       width: 100%;
-      height: calc(100vh - 120px);
+      height: calc(100vh - 140px);
       min-width: 540px; }
     app-calendar-backoffice #calendar #calPrev, app-calendar-backoffice #calendar #calNext {
       display: table-cell;
