@@ -33,6 +33,4 @@ build_stage:
   tags:
    - docker
    - remote
-  only:
-   - develop
    when: manual
