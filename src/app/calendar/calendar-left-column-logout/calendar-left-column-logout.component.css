@@ -1,3 +1,7 @@
+li {
+  cursor: pointer; }
 
+a:hover, a:active {
+  text-decoration: none; }
 
 /*# sourceMappingURL=calendar-left-column-logout.component.css.map */

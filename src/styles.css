@@ -258,6 +258,8 @@ app-calendar-backoffice {
         display: none; }
       app-calendar-backoffice #calendar .lCard.active {
         border: 2px solid gold; }
+      app-calendar-backoffice #calendar .lCard.mouseover {
+        background: #aa5fa8; }
     app-calendar-backoffice #calendar .dCard {
       display: inline-block;
       font-size: 2.25rem;
