@@ -14,6 +14,7 @@ before_script:
 
 stages:
   - build
+  - build_manual
 
 build_stage:
   stage: build
@@ -24,3 +25,14 @@ build_stage:
    - remote
   only:
    - develop
+   
+ build_stage_manual:
+  stage: build_manual
+  script:
+   - npm build
+  tags:
+   - docker
+   - remote
+  only:
+   - develop
+   when: manual
