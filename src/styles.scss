@@ -1,8 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
-$x:red;
-.fa {
-  color: $x;
-}
+
 
 body {
   font-family: Arial;
@@ -13,6 +10,649 @@ body {
   position: relative;
 }
 
+.noselect {
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Safari */
+  -khtml-user-select: none; /* Konqueror HTML */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome and Opera */
+}
+
+//kolory
+$darkviolet: #19131f;
+$lightviolet: #492748;
+$lightred: #984b43;
+$white: #fff;
+$gray: #8c8a8d;
+$lightgray: lighten($gray, 30%);
+$black: #000;
+$beige: #f7e2d1;
+$blue: #0298ac;
+
+@mixin shortCalendar() {
+
+  .calData {
+    text-align: center;
+  }
+  #calNext, #calPrev {
+    vertical-align: top;
+    text-align: center;
+    padding-top: 10px;
+  }
+  #calBody {
+    min-width: initial;
+  }
+
+  .lCard {
+    display: inline-block;
+    font-size: 1rem;
+    width: 100%;
+    height: 40px;
+    text-align: left;
+    vertical-align: middle;
+    border: 1px solid $darkviolet;
+    line-height: 40px;
+    span {
+
+      &:first-child {
+        display: inline-block;
+        width: 40px;
+        text-align: center;
+      }
+      span {
+        position: absolute;
+        color: darken($lightviolet, 7%); //#6b4c6a;
+        left: 64px;
+        border-right: 1px solid darken($lightviolet, 20%);
+      }
+    }
+    &.active {
+      border: 2px solid gold;
+    }
+  }
+  .dCard {
+    display: none;
+  }
+  .wCard {
+    display: none;
+  }
+}
+
 html {
-  min-height: 100%;
+  font-size: 16px;
+}
+
+app-calendar-backoffice {
+  font-family: Arial;
+  background: linear-gradient(to bottom, $black 3px, $darkviolet 3px);
+  width: 100%;
+  height: 99.99%;
+  display: block;
+  #leftColumn {
+    max-width: 300px;
+    background-color: $lightviolet;
+    padding: 0em;
+    min-height: 100vh;
+    .logoBox {
+      background: $black;
+      color: $white;
+      padding: .7em;
+      font-size: 1.5rem;
+      font-weight: 900;
+    }
+    & > section {
+      margin: 2.375em 1.25em 0 1.25em;
+    }
+    & > nav {
+      margin: 2.375em 0;
+    }
+    #newAlerts {
+      background-color: $darkviolet;
+      height: 8.75em;
+      color: $white;
+      overflow: hidden;
+      .fa-angle-down {
+        position: absolute;
+        right: 2em;
+        font-size: 150%;
+        color: $lightviolet;
+      }
+      .fa-angle-up {
+        position: absolute;
+        /* float: right; */
+        right: 1.2em;
+        font-size: 150%;
+        color: $lightviolet;
+      }
+      .info {
+        margin: 1.25em;
+        overflow: hidden;
+        height: 6.25em;
+      }
+      span {
+        font-weight: 700;
+        color: $blue;
+        margin-bottom: 0.6rem;
+        font-size: 1rem;
+        display: block;
+      }
+    }
+    #mainNav {
+      ul {
+
+        li {
+          color: $white;
+          padding: .3em 1.25em;
+          font-size: 1rem;
+          i {
+            padding-right: .7rem;
+          }
+        }
+        li:hover {
+          background: $lightred;
+        }
+      }
+    }
+    #categoryList {
+      padding: 15px;
+      .input-group {
+        margin-bottom: 2.375em;
+        .input-group-addon {
+          background-color: $darkviolet;
+          color: $blue;
+          border: 1px solid darken($gray, 20%);
+          border-right: none;
+          border-radius: 0px;
+        }
+        input {
+          background-color: $darkviolet;
+          color: $gray;
+          border: 1px solid darken($gray, 20%);
+          border-left: none;
+          border-radius: 0px;
+        }
+      }
+      .actualCategory {
+        color: $white;
+        font-size: 1rem;
+        width: 100%;
+        margin-bottom: .7rem;
+        .catBox {
+          color: $blue;
+          display: inline-block;
+          padding-right: 1rem;
+        }
+        .catName {
+          display: inline-block;
+        }
+        .catDel {
+          color: $darkviolet;
+          font-size: 0.7em;
+          line-height: 2;
+          float: right;
+          display: inline-block;
+        }
+      }
+    }
+  }
+
+  #leftColumn {
+    background-color: $lightviolet;
+    padding: 0em;
+    min-height: 100vh;
+    z-index: 101;
+
+    .logoBox {
+      background: $black;
+      color: $white;
+      padding: .7em;
+      font-size: 1.5rem;
+      font-weight: 900;
+    }
+    & > section {
+      margin: 2.375em 1.25em 0 1.25em;
+    }
+    & > nav {
+      margin: 2.375em 0;
+    }
+    #newAlerts {
+
+      background-color: $darkviolet;
+      height: 8.75em;
+      color: $white;
+      overflow: hidden;
+      margin-bottom: 1rem;
+      .fa-angle-down {
+        position: absolute;
+        right: 2em;
+        font-size: 150%;
+        color: $lightviolet;
+      }
+      .fa-angle-up {
+        position: absolute;
+        /* float: right; */
+        right: 1.2em;
+        font-size: 150%;
+        color: $lightviolet;
+      }
+      .info {
+        margin: 1.25em;
+        overflow: hidden;
+        height: 6.25em;
+      }
+      span {
+        font-weight: 700;
+        color: $blue;
+        margin-bottom: 0.6rem;
+        font-size: 1rem;
+        display: block;
+      }
+    }
+    #mainNav {
+      ul {
+
+        li {
+          color: $white;
+          padding: .3em 1.25em;
+          font-size: 1rem;
+          a {
+            color: $white;
+          }
+          i {
+            padding-right: .7rem;
+          }
+        }
+        li:hover {
+          background: $lightred;
+        }
+      }
+    }
+    #categoryList {
+      .input-group {
+
+        margin-bottom: 2.375em;
+        .input-group-addon {
+          background-color: $darkviolet;
+          color: $blue;
+          border: 1px solid darken($gray, 20%);
+          border-right: none;
+          border-radius: 0px;
+        }
+        input {
+          background-color: $darkviolet;
+          color: $gray;
+          border: 1px solid darken($gray, 20%);
+          border-left: none;
+          border-radius: 0px;
+        }
+      }
+      .actualCategory {
+        color: $white;
+        font-size: 1rem;
+        width: 100%;
+        margin-bottom: .7rem;
+        .catBox {
+          color: $blue;
+          display: inline-block;
+          padding-right: 1rem;
+        }
+        .catName {
+          display: inline-block;
+        }
+        .catDel {
+          color: $darkviolet;
+          font-size: 0.7em;
+          line-height: 2;
+          float: right;
+          display: inline-block;
+        }
+      }
+    }
+  }
+
+  .shortView {
+    #leftColumn {
+      width: 50px;
+
+    }
+
+    #calendar {
+      width: calc(100% - 140px) !important;
+      float: right;
+    }
+    .logoBox {
+      height: 210px;
+    }
+    .logoText {
+      transform: rotate(-90deg);
+      display: block;
+      margin-top: 115px;
+    }
+    #newAlerts, .input-group {
+      display: none;
+    }
+    #mainNav {
+      ul {
+        li {
+          span {
+            display: none;
+          }
+        }
+      }
+    }
+    #categoryList {
+      .actualCategory {
+        .catName, .catDel {
+          display: none !important;
+        }
+      }
+
+    }
+  }
+
+  #calendar {
+    color: $beige;
+    overflow-y: auto;
+    height: 100vh;
+    width: calc(100% - 300px);
+    float: right;
+    .personHello {
+      color: $lightred;
+      font-size: (30 /16) *1rem;
+    }
+    .calData {
+      color: $lightred;
+      font-size: (30 /16) *1rem;
+      font-weight: 900;
+      text-align: right;
+      height: 50px;
+      overflow: hidden;
+    }
+    #calGrid {
+      height: calc(100% - 140px);
+    }
+    #calBody {
+      display: table-cell;
+      font-weight: 700;
+      text-align: center;
+      width: 100%;
+      height: calc(100vh - 140px);
+      min-width: 540px;
+    }
+    #calPrev, #calNext {
+      display: table-cell;
+      width: 20px;
+      vertical-align: middle;
+      text-align: center;
+      i {
+        width: 20px
+      }
+    }
+    .lCard {
+      display: inline-block;
+      font-size: 2.25rem;
+      width: 14%;
+      height: 15.5%;
+      background: $lightviolet;
+      text-align: center;
+      vertical-align: middle;
+      border: 1px solid $darkviolet;
+      line-height: 100px;
+      span {
+        span {
+          display: none;
+        }
+      }
+      &.active {
+        border: 2px solid gold;
+      }
+      &.mouseover {
+        background: lighten($lightviolet, 30%);
+      }
+    }
+    .dCard {
+      display: inline-block;
+      font-size: 2.25rem;
+      width: 14%;
+      height: 15.5%;
+      background: $darkviolet;
+      text-align: center;
+      vertical-align: middle;
+      border: 1px solid $darkviolet;
+      line-height: 100px;
+    }
+    .wCard {
+      display: inline-block;
+      width: 14%;
+      height: 30px;
+      padding-top: 15px;
+      text-align: center;
+      background: $darkviolet;
+      border: 1px solid $darkviolet;
+      color: $gray
+    }
+    &.shortCal {
+      @include shortCalendar();
+      .calData {
+        text-align: right;
+        width: 100%
+      }
+    }
+  }
+
+  #calEdit {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background: rgb(255, 255, 255);
+    z-index: 100;
+    margin: 0 -15px;
+    border-top: 3px solid $black;
+    display: block;
+    color: $black;
+    .mapa {
+      border: 1px solid darken($gray, 10%);
+      padding: 5px;
+      color: $gray;
+      background: none;
+      margin: 45px 0px 10px;
+
+    }
+    .closeEditCal {
+      position: absolute;
+      top: 0px;
+      right: 0px;
+      color: $lightviolet;
+    }
+    .topNav {
+      margin-top: 20px;
+      width: 170px;
+      height: 36px;
+      display: inline-block;
+      font-weight: 700;
+      border-bottom: 3px solid $gray;
+      color: $gray;
+      &.active {
+        border-bottom: 3px solid $darkviolet;
+        color: $black;
+      }
+    }
+    .mainNav {
+      background: $lightgray;
+      color: $gray;
+      height: 40px;
+      width: 100%;
+      font-size: 24px;
+      .mainNavBox {
+        padding: 5px 15px;
+        display: inline-block;
+        font-size: 16px;
+        font-weight: 500;
+        color: $black;
+        span {
+
+        }
+        i {
+          margin-right: 10px;
+          font-size: 150%;
+        }
+        .publicIcon {
+          text-shadow: 1px 1px 0px $darkviolet, -1px -1px 0px $darkviolet, -1px 1px 0px $darkviolet, 1px -1px 0px $darkviolet;
+          color: $lightgray;
+        }
+      }
+      .fa-close {
+        color: $darkviolet;
+      }
+
+    }
+
+    .formCalendar {
+      margin-top: 35px;
+      & input {
+        border: none;
+        padding: 0;
+        color: $gray;
+        background: none;
+        margin: 0;
+        display: inline-block;
+      }
+      .calField, & select, .selectColor, .bigSize {
+        border: 1px solid darken($gray, 10%);
+        padding: 5px;
+        color: $gray;
+        background: none;
+        margin: 10px 0px 10px;
+        display: inline-block;
+      }
+      .selectColor {
+        max-width: 70px;
+        height: 55px;
+        padding: 10px;
+        margin-right: 20px;
+      }
+      .editDate:after {
+        color: $gray;
+        content: "\f133";
+        display: inline-block;
+        font: normal normal normal 14px/1 FontAwesome;
+        font-size: inherit;
+        text-rendering: auto;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+      }
+
+      .selectHour {
+        margin: 0px 20px;
+      }
+      .bigSize {
+        font-size: 1.5rem;
+        width: calc(100% - 92px);
+        padding: 10px 20px;
+      }
+      .fullWidth {
+        width: 100%;
+      }
+      textarea {
+        width: 100%;
+        border: none;
+        background: none;
+      }
+      #accordion {
+        .panel {
+          margin: 10px 0px !important;
+          background-color: transparent !important;
+          border: 1px solid transparent;
+          border-radius: 0px !important;
+          .panel-heading {
+            background: transparent !important;
+            border: 1px solid darken($gray, 20%);
+          }
+          .panel-body {
+            margin-top: 10px;
+            border: 1px solid darken($gray, 20%);
+          }
+        }
+      }
+
+    }
+  }
+
+  #rightColumn {
+    position: absolute;
+    width: 300px;
+    height: 100vh;
+    right: 0px;
+    background: $lightviolet;
+    border-left: 1px solid $darkviolet;
+    z-index: 99;
+    #evList {
+      margin-top: 10px;
+    }
+    .fa-close {
+      text-align: right;
+      width: 100%;
+      padding: 10px;
+    }
+    .title {
+      font-size: 1.4rem;
+      padding: 10px 15px;
+    }
+    .fa-angle-double-up, .fa-angle-double-down {
+      display: block;
+      width: 100%;
+      text-align: center;
+    }
+    .addEvent {
+      background: $darkviolet;
+      padding: 8px 10px;
+      color: $beige;
+    }
+    .eventBox {
+      margin: 10px 15px;
+      text-align: left;
+      width: calc(100% - 30px);
+      padding: 10px;
+      background: $darkviolet;
+      .fa-bookmark {
+        position: absolute;
+        margin: -15px -10px;
+      }
+      .title {
+        margin-left: 15px;
+        font-size: 1rem;
+        color: $blue;
+        padding: 0px;
+        font-weight: 700;
+      }
+      .data {
+        color: $lightviolet;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        span {
+          font-weight: 700;
+        }
+      }
+
+    }
+
+  }
+
+  @media (max-width: 767px) {
+    #calendar {
+      @include shortCalendar();
+    }
+    #calEdit {
+      .mainNav {
+        .mainNavBox {
+          span {
+            display: none;
+          }
+        }
+      }
+    }
+  }
+
 }

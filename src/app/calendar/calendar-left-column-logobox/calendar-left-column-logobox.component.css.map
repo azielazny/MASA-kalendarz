@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": "AAAA,WAAY;EACV,MAAM,EAAE,OAAO",
+"sources": ["calendar-left-column-logobox.component.scss"],
+"names": [],
+"file": "calendar-left-column-logobox.component.css"
+}

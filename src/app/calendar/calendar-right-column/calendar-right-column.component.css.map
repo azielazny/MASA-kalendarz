@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": "AAAA,uBAAwB;EACtB,MAAM,EAAE,OAAO",
+"sources": ["calendar-right-column.component.scss"],
+"names": [],
+"file": "calendar-right-column.component.css"
+}

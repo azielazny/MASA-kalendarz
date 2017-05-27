@@ -1,16 +1,502 @@
 /* You can add global styles to this file, and also import other style files */
-.fa {
-  color: red; }
-
 body {
   font-family: Arial;
   background-color: #ffffff;
   margin: 0;
   min-height: 100%;
-  position: relative;}
+  position: relative; }
+
+.noselect {
+  -webkit-touch-callout: none;
+  /* iOS Safari */
+  -webkit-user-select: none;
+  /* Safari */
+  -khtml-user-select: none;
+  /* Konqueror HTML */
+  -moz-user-select: none;
+  /* Firefox */
+  -ms-user-select: none;
+  /* Internet Explorer/Edge */
+  user-select: none;
+  /* Non-prefixed version, currently
+               supported by Chrome and Opera */ }
 
 html {
-  min-height: 100%;
-}
+  font-size: 16px; }
+
+app-calendar-backoffice {
+  font-family: Arial;
+  background: linear-gradient(to bottom, #000 3px, #19131f 3px);
+  width: 100%;
+  height: 99.99%;
+  display: block; }
+  app-calendar-backoffice #leftColumn {
+    max-width: 300px;
+    background-color: #492748;
+    padding: 0em;
+    min-height: 100vh; }
+    app-calendar-backoffice #leftColumn .logoBox {
+      background: #000;
+      color: #fff;
+      padding: .7em;
+      font-size: 1.5rem;
+      font-weight: 900; }
+    app-calendar-backoffice #leftColumn > section {
+      margin: 2.375em 1.25em 0 1.25em; }
+    app-calendar-backoffice #leftColumn > nav {
+      margin: 2.375em 0; }
+    app-calendar-backoffice #leftColumn #newAlerts {
+      background-color: #19131f;
+      height: 8.75em;
+      color: #fff;
+      overflow: hidden; }
+      app-calendar-backoffice #leftColumn #newAlerts .fa-angle-down {
+        position: absolute;
+        right: 2em;
+        font-size: 150%;
+        color: #492748; }
+      app-calendar-backoffice #leftColumn #newAlerts .fa-angle-up {
+        position: absolute;
+        /* float: right; */
+        right: 1.2em;
+        font-size: 150%;
+        color: #492748; }
+      app-calendar-backoffice #leftColumn #newAlerts .info {
+        margin: 1.25em;
+        overflow: hidden;
+        height: 6.25em; }
+      app-calendar-backoffice #leftColumn #newAlerts span {
+        font-weight: 700;
+        color: #0298ac;
+        margin-bottom: 0.6rem;
+        font-size: 1rem;
+        display: block; }
+    app-calendar-backoffice #leftColumn #mainNav ul li {
+      color: #fff;
+      padding: .3em 1.25em;
+      font-size: 1rem; }
+      app-calendar-backoffice #leftColumn #mainNav ul li i {
+        padding-right: .7rem; }
+    app-calendar-backoffice #leftColumn #mainNav ul li:hover {
+      background: #984b43; }
+    app-calendar-backoffice #leftColumn #categoryList {
+      padding: 15px; }
+      app-calendar-backoffice #leftColumn #categoryList .input-group {
+        margin-bottom: 2.375em; }
+        app-calendar-backoffice #leftColumn #categoryList .input-group .input-group-addon {
+          background-color: #19131f;
+          color: #0298ac;
+          border: 1px solid #59575a;
+          border-right: none;
+          border-radius: 0px; }
+        app-calendar-backoffice #leftColumn #categoryList .input-group input {
+          background-color: #19131f;
+          color: #8c8a8d;
+          border: 1px solid #59575a;
+          border-left: none;
+          border-radius: 0px; }
+      app-calendar-backoffice #leftColumn #categoryList .actualCategory {
+        color: #fff;
+        font-size: 1rem;
+        width: 100%;
+        margin-bottom: .7rem; }
+        app-calendar-backoffice #leftColumn #categoryList .actualCategory .catBox {
+          color: #0298ac;
+          display: inline-block;
+          padding-right: 1rem; }
+        app-calendar-backoffice #leftColumn #categoryList .actualCategory .catName {
+          display: inline-block; }
+        app-calendar-backoffice #leftColumn #categoryList .actualCategory .catDel {
+          color: #19131f;
+          font-size: 0.7em;
+          line-height: 2;
+          float: right;
+          display: inline-block; }
+  app-calendar-backoffice #leftColumn {
+    background-color: #492748;
+    padding: 0em;
+    min-height: 100vh;
+    z-index: 101; }
+    app-calendar-backoffice #leftColumn .logoBox {
+      background: #000;
+      color: #fff;
+      padding: .7em;
+      font-size: 1.5rem;
+      font-weight: 900; }
+    app-calendar-backoffice #leftColumn > section {
+      margin: 2.375em 1.25em 0 1.25em; }
+    app-calendar-backoffice #leftColumn > nav {
+      margin: 2.375em 0; }
+    app-calendar-backoffice #leftColumn #newAlerts {
+      background-color: #19131f;
+      height: 8.75em;
+      color: #fff;
+      overflow: hidden;
+      margin-bottom: 1rem; }
+      app-calendar-backoffice #leftColumn #newAlerts .fa-angle-down {
+        position: absolute;
+        right: 2em;
+        font-size: 150%;
+        color: #492748; }
+      app-calendar-backoffice #leftColumn #newAlerts .fa-angle-up {
+        position: absolute;
+        /* float: right; */
+        right: 1.2em;
+        font-size: 150%;
+        color: #492748; }
+      app-calendar-backoffice #leftColumn #newAlerts .info {
+        margin: 1.25em;
+        overflow: hidden;
+        height: 6.25em; }
+      app-calendar-backoffice #leftColumn #newAlerts span {
+        font-weight: 700;
+        color: #0298ac;
+        margin-bottom: 0.6rem;
+        font-size: 1rem;
+        display: block; }
+    app-calendar-backoffice #leftColumn #mainNav ul li {
+      color: #fff;
+      padding: .3em 1.25em;
+      font-size: 1rem; }
+      app-calendar-backoffice #leftColumn #mainNav ul li a {
+        color: #fff; }
+      app-calendar-backoffice #leftColumn #mainNav ul li i {
+        padding-right: .7rem; }
+    app-calendar-backoffice #leftColumn #mainNav ul li:hover {
+      background: #984b43; }
+    app-calendar-backoffice #leftColumn #categoryList .input-group {
+      margin-bottom: 2.375em; }
+      app-calendar-backoffice #leftColumn #categoryList .input-group .input-group-addon {
+        background-color: #19131f;
+        color: #0298ac;
+        border: 1px solid #59575a;
+        border-right: none;
+        border-radius: 0px; }
+      app-calendar-backoffice #leftColumn #categoryList .input-group input {
+        background-color: #19131f;
+        color: #8c8a8d;
+        border: 1px solid #59575a;
+        border-left: none;
+        border-radius: 0px; }
+    app-calendar-backoffice #leftColumn #categoryList .actualCategory {
+      color: #fff;
+      font-size: 1rem;
+      width: 100%;
+      margin-bottom: .7rem; }
+      app-calendar-backoffice #leftColumn #categoryList .actualCategory .catBox {
+        color: #0298ac;
+        display: inline-block;
+        padding-right: 1rem; }
+      app-calendar-backoffice #leftColumn #categoryList .actualCategory .catName {
+        display: inline-block; }
+      app-calendar-backoffice #leftColumn #categoryList .actualCategory .catDel {
+        color: #19131f;
+        font-size: 0.7em;
+        line-height: 2;
+        float: right;
+        display: inline-block; }
+  app-calendar-backoffice .shortView #leftColumn {
+    width: 50px; }
+  app-calendar-backoffice .shortView #calendar {
+    width: calc(100% - 140px) !important;
+    float: right; }
+  app-calendar-backoffice .shortView .logoBox {
+    height: 210px; }
+  app-calendar-backoffice .shortView .logoText {
+    transform: rotate(-90deg);
+    display: block;
+    margin-top: 115px; }
+  app-calendar-backoffice .shortView #newAlerts, app-calendar-backoffice .shortView .input-group {
+    display: none; }
+  app-calendar-backoffice .shortView #mainNav ul li span {
+    display: none; }
+  app-calendar-backoffice .shortView #categoryList .actualCategory .catName, app-calendar-backoffice .shortView #categoryList .actualCategory .catDel {
+    display: none !important; }
+  app-calendar-backoffice #calendar {
+    color: #f7e2d1;
+    overflow-y: auto;
+    height: 100vh;
+    width: calc(100% - 300px);
+    float: right; }
+    app-calendar-backoffice #calendar .personHello {
+      color: #984b43;
+      font-size: 1.875rem; }
+    app-calendar-backoffice #calendar .calData {
+      color: #984b43;
+      font-size: 1.875rem;
+      font-weight: 900;
+      text-align: right;
+      height: 50px;
+      overflow: hidden; }
+    app-calendar-backoffice #calendar #calGrid {
+      height: calc(100% - 140px); }
+    app-calendar-backoffice #calendar #calBody {
+      display: table-cell;
+      font-weight: 700;
+      text-align: center;
+      width: 100%;
+      height: calc(100vh - 120px);
+      min-width: 540px; }
+    app-calendar-backoffice #calendar #calPrev, app-calendar-backoffice #calendar #calNext {
+      display: table-cell;
+      width: 20px;
+      vertical-align: middle;
+      text-align: center; }
+      app-calendar-backoffice #calendar #calPrev i, app-calendar-backoffice #calendar #calNext i {
+        width: 20px; }
+    app-calendar-backoffice #calendar .lCard {
+      display: inline-block;
+      font-size: 2.25rem;
+      width: 14%;
+      height: 15.5%;
+      background: #492748;
+      text-align: center;
+      vertical-align: middle;
+      border: 1px solid #19131f;
+      line-height: 100px; }
+      app-calendar-backoffice #calendar .lCard span span {
+        display: none; }
+      app-calendar-backoffice #calendar .lCard.active {
+        border: 2px solid gold; }
+    app-calendar-backoffice #calendar .dCard {
+      display: inline-block;
+      font-size: 2.25rem;
+      width: 14%;
+      height: 15.5%;
+      background: #19131f;
+      text-align: center;
+      vertical-align: middle;
+      border: 1px solid #19131f;
+      line-height: 100px; }
+    app-calendar-backoffice #calendar .wCard {
+      display: inline-block;
+      width: 14%;
+      height: 30px;
+      padding-top: 15px;
+      text-align: center;
+      background: #19131f;
+      border: 1px solid #19131f;
+      color: #8c8a8d; }
+    app-calendar-backoffice #calendar.shortCal .calData {
+      text-align: center; }
+    app-calendar-backoffice #calendar.shortCal #calNext, app-calendar-backoffice #calendar.shortCal #calPrev {
+      vertical-align: top;
+      text-align: center;
+      padding-top: 10px; }
+    app-calendar-backoffice #calendar.shortCal #calBody {
+      min-width: initial; }
+    app-calendar-backoffice #calendar.shortCal .lCard {
+      display: inline-block;
+      font-size: 1rem;
+      width: 100%;
+      height: 40px;
+      text-align: left;
+      vertical-align: middle;
+      border: 1px solid #19131f;
+      line-height: 40px; }
+      app-calendar-backoffice #calendar.shortCal .lCard span:first-child {
+        display: inline-block;
+        width: 40px;
+        text-align: center; }
+      app-calendar-backoffice #calendar.shortCal .lCard span span {
+        position: absolute;
+        color: #321b31;
+        left: 64px;
+        border-right: 1px solid #070306; }
+      app-calendar-backoffice #calendar.shortCal .lCard.active {
+        border: 2px solid gold; }
+    app-calendar-backoffice #calendar.shortCal .dCard {
+      display: none; }
+    app-calendar-backoffice #calendar.shortCal .wCard {
+      display: none; }
+    app-calendar-backoffice #calendar.shortCal .calData {
+      text-align: right;
+      width: 100%; }
+  app-calendar-backoffice #calEdit {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background: white;
+    z-index: 100;
+    margin: 0 -15px;
+    border-top: 3px solid #000;
+    display: block;
+    color: #000; }
+    app-calendar-backoffice #calEdit .mapa {
+      border: 1px solid #727173;
+      padding: 5px;
+      color: #8c8a8d;
+      background: none;
+      margin: 45px 0px 10px; }
+    app-calendar-backoffice #calEdit .closeEditCal {
+      position: absolute;
+      top: 0px;
+      right: 0px;
+      color: #492748; }
+    app-calendar-backoffice #calEdit .topNav {
+      margin-top: 20px;
+      width: 170px;
+      height: 36px;
+      display: inline-block;
+      font-weight: 700;
+      border-bottom: 3px solid #8c8a8d;
+      color: #8c8a8d; }
+      app-calendar-backoffice #calEdit .topNav.active {
+        border-bottom: 3px solid #19131f;
+        color: #000; }
+    app-calendar-backoffice #calEdit .mainNav {
+      background: #d8d7d9;
+      color: #8c8a8d;
+      height: 40px;
+      width: 100%;
+      font-size: 24px; }
+      app-calendar-backoffice #calEdit .mainNav .mainNavBox {
+        padding: 5px 15px;
+        display: inline-block;
+        font-size: 16px;
+        font-weight: 500;
+        color: #000; }
+        app-calendar-backoffice #calEdit .mainNav .mainNavBox i {
+          margin-right: 10px;
+          font-size: 150%; }
+        app-calendar-backoffice #calEdit .mainNav .mainNavBox .publicIcon {
+          text-shadow: 1px 1px 0px #19131f, -1px -1px 0px #19131f, -1px 1px 0px #19131f, 1px -1px 0px #19131f;
+          color: #d8d7d9; }
+      app-calendar-backoffice #calEdit .mainNav .fa-close {
+        color: #19131f; }
+    app-calendar-backoffice #calEdit .formCalendar {
+      margin-top: 35px; }
+      app-calendar-backoffice #calEdit .formCalendar input {
+        border: none;
+        padding: 0;
+        color: #8c8a8d;
+        background: none;
+        margin: 0;
+        display: inline-block; }
+      app-calendar-backoffice #calEdit .formCalendar .calField, app-calendar-backoffice #calEdit .formCalendar select, app-calendar-backoffice #calEdit .formCalendar .selectColor, app-calendar-backoffice #calEdit .formCalendar .bigSize {
+        border: 1px solid #727173;
+        padding: 5px;
+        color: #8c8a8d;
+        background: none;
+        margin: 10px 0px 10px;
+        display: inline-block; }
+      app-calendar-backoffice #calEdit .formCalendar .selectColor {
+        max-width: 70px;
+        height: 55px;
+        padding: 10px;
+        margin-right: 20px; }
+      app-calendar-backoffice #calEdit .formCalendar .editDate:after {
+        color: #8c8a8d;
+        content: "\f133";
+        display: inline-block;
+        font: normal normal normal 14px/1 FontAwesome;
+        font-size: inherit;
+        text-rendering: auto;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale; }
+      app-calendar-backoffice #calEdit .formCalendar .selectHour {
+        margin: 0px 20px; }
+      app-calendar-backoffice #calEdit .formCalendar .bigSize {
+        font-size: 1.5rem;
+        width: calc(100% - 92px);
+        padding: 10px 20px; }
+      app-calendar-backoffice #calEdit .formCalendar .fullWidth {
+        width: 100%; }
+      app-calendar-backoffice #calEdit .formCalendar textarea {
+        width: 100%;
+        border: none;
+        background: none; }
+      app-calendar-backoffice #calEdit .formCalendar #accordion .panel {
+        margin: 10px 0px !important;
+        background-color: transparent !important;
+        border: 1px solid transparent;
+        border-radius: 0px !important; }
+        app-calendar-backoffice #calEdit .formCalendar #accordion .panel .panel-heading {
+          background: transparent !important;
+          border: 1px solid #59575a; }
+        app-calendar-backoffice #calEdit .formCalendar #accordion .panel .panel-body {
+          margin-top: 10px;
+          border: 1px solid #59575a; }
+  app-calendar-backoffice #rightColumn {
+    position: absolute;
+    width: 300px;
+    height: 100vh;
+    right: 0px;
+    background: #492748;
+    border-left: 1px solid #19131f;
+    z-index: 99; }
+    app-calendar-backoffice #rightColumn #evList {
+      margin-top: 10px; }
+    app-calendar-backoffice #rightColumn .fa-close {
+      text-align: right;
+      width: 100%;
+      padding: 10px; }
+    app-calendar-backoffice #rightColumn .title {
+      font-size: 1.4rem;
+      padding: 10px 15px; }
+    app-calendar-backoffice #rightColumn .fa-angle-double-up, app-calendar-backoffice #rightColumn .fa-angle-double-down {
+      display: block;
+      width: 100%;
+      text-align: center; }
+    app-calendar-backoffice #rightColumn .addEvent {
+      background: #19131f;
+      padding: 8px 10px;
+      color: #f7e2d1; }
+    app-calendar-backoffice #rightColumn .eventBox {
+      margin: 10px 15px;
+      text-align: left;
+      width: calc(100% - 30px);
+      padding: 10px;
+      background: #19131f; }
+      app-calendar-backoffice #rightColumn .eventBox .fa-bookmark {
+        position: absolute;
+        margin: -15px -10px; }
+      app-calendar-backoffice #rightColumn .eventBox .title {
+        margin-left: 15px;
+        font-size: 1rem;
+        color: #0298ac;
+        padding: 0px;
+        font-weight: 700; }
+      app-calendar-backoffice #rightColumn .eventBox .data {
+        color: #492748;
+        overflow: hidden;
+        text-overflow: ellipsis; }
+        app-calendar-backoffice #rightColumn .eventBox .data span {
+          font-weight: 700; }
+  @media (max-width: 767px) {
+    app-calendar-backoffice #calendar .calData {
+      text-align: center; }
+    app-calendar-backoffice #calendar #calNext, app-calendar-backoffice #calendar #calPrev {
+      vertical-align: top;
+      text-align: center;
+      padding-top: 10px; }
+    app-calendar-backoffice #calendar #calBody {
+      min-width: initial; }
+    app-calendar-backoffice #calendar .lCard {
+      display: inline-block;
+      font-size: 1rem;
+      width: 100%;
+      height: 40px;
+      text-align: left;
+      vertical-align: middle;
+      border: 1px solid #19131f;
+      line-height: 40px; }
+      app-calendar-backoffice #calendar .lCard span:first-child {
+        display: inline-block;
+        width: 40px;
+        text-align: center; }
+      app-calendar-backoffice #calendar .lCard span span {
+        position: absolute;
+        color: #321b31;
+        left: 64px;
+        border-right: 1px solid #070306; }
+      app-calendar-backoffice #calendar .lCard.active {
+        border: 2px solid gold; }
+    app-calendar-backoffice #calendar .dCard {
+      display: none; }
+    app-calendar-backoffice #calendar .wCard {
+      display: none; }
+    app-calendar-backoffice #calEdit .mainNav .mainNavBox span {
+      display: none; } }
 
 /*# sourceMappingURL=styles.css.map */

@@ -1,0 +1,10 @@
+<div id="calGrid" style="margin-top: 90px !important;">
+  <div id="calPrev"><i class="fa fa-angle-double-left" aria-hidden="true"></i></div>
+  <div id="calBody" class="noselect">
+    <calendar-month-view-dark-box *ngFor="let x of keys_pre"></calendar-month-view-dark-box>
+    <calendar-month-view-light-box *ngFor="let x of keys; let i = index" (click)="openRightColumn(i+1)" [parent]="this" #lightBoxes></calendar-month-view-light-box>
+    <calendar-month-view-dark-box *ngFor="let x of keys_post"></calendar-month-view-dark-box>
+  </div>
+  <div id="calNext"><i class="fa fa-angle-double-right" aria-hidden="true"></i></div>
+</div>
+<!-- na tym widoku mamy 2 typy pól kalendarza: light i dark, które mogą być active-->

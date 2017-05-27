@@ -1,10 +1,16 @@
 <html>
-<head><title>Angular QuickStart JS</title>
+<head>
+  <base href="/">
+  <title>Angular QuickStart JS</title>
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
-  <script src="https://apis.google.com/js/api:client.js" async defer></script>
-<script>
+  <!--<script src="https://apis.google.com/js/api:client.js" async defer></script>-->
+  <!--<script src="https://apis.google.com/js/platform.js" async defer></script>-->
+  <script src="https://apis.google.com/js/api.js"></script>
+
+
+  <script>
 
 </script>
 </head>
@@ -15,13 +21,16 @@
     </div>
   </app-root>
   <script>
+    var gapi;
+    var auth2;
+
     var googleUser = {};
     var startApp = function() {
       gapi.load('auth2', function(){
         // Retrieve the singleton for the GoogleAuth library and set up the client.
         auth2 = gapi.auth2.init({
           client_id: '1038686015929-q2rdfr32vlhi50m22abgc24751duuu68.apps.googleusercontent.com',
-          cookiepolicy: 'single_host_origin',
+          cookiepolicy: 'single_host_origin'
           // Request scopes in addition to 'profile' and 'email'
           //scope: 'additional_scope'
         });
@@ -44,5 +53,8 @@
         });
     }
   </script>
+
+
+
 </body>
 </html>

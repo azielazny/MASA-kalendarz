@@ -1,0 +1,61 @@
+<section id="rightColumn" [class.hidden]="!shown">
+  <i class="fa fa-close" (click)="shown = false"></i>
+  <div class="title">
+    Zdarzenia {{day}}
+  </div>
+  <div class="addEvent" (click)="addNewEvent()">
+    <i class="fa fa-plus"></i>
+    <span>Dodaj zdarzenie</span>
+  </div>
+  <div id="evList">
+    <div class="eventPrev">
+      <i class="fa fa-angle-double-up"></i>
+    </div>
+    <div class="eventsList">
+      <div class="eventBox">
+        <i class="fa fa-2x fa-bookmark"></i>
+        <div class="title">Najbliższe wydarzenie planowane z długą nazwą</div>
+        <div class="data">
+          03.03.2017 od <span>11:22</span> do <span>12:22</span><br>
+          Polibuda Gdańska<br>
+          Gdańsk, ul. Długa 2222/222
+        </div>
+        <div class="body">
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequuntur, eveniet.
+        </div>
+      </div>
+    </div>
+    <div class="eventsList">
+      <div class="eventBox">
+        <i class="fa fa-2x fa-bookmark"></i>
+        <div class="title">Najbliższe wydarzenie planowane z długą nazwą</div>
+        <div class="data">
+          03.03.2017 od <span>11:22</span> do <span>12:22</span><br>
+          Polibuda Gdańska<br>
+          Gdańsk, ul. Długa 2222/222
+        </div>
+        <div class="body">
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequuntur, eveniet.
+        </div>
+      </div>
+    </div>
+    <div class="eventsList">
+      <div class="eventBox">
+        <i class="fa fa-2x fa-bookmark"></i>
+        <div class="title">Najbliższe wydarzenie planowane z długą nazwą</div>
+        <div class="data">
+          03.03.2017 od <span>11:22</span> do <span>12:22</span><br>
+          Polibuda Gdańska<br>
+          Gdańsk, ul. Długa 2222/222
+        </div>
+        <div class="body">
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequuntur, eveniet.
+        </div>
+      </div>
+    </div>
+    <i class="fa fa-angle-double-down"></i>
+    <div class="eventNext">
+      <i class="fa"></i>
+    </div>
+  </div>
+  </section>

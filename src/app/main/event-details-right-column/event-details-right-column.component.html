@@ -1,0 +1,26 @@
+<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 col-lg-push-8 col-md-push-8 right-column">
+  <div class="event-dates">
+    <div class="row">
+      <div><i class="fa fa-calendar" aria-hidden="true"></i></div>
+      <div>
+        <span>{{date1}} {{time1}} - {{date2}} {{time2}} ({{diff}})</span><br/>
+        <span><a href="#">Dodaj do organizatora</a></span>
+      </div>
+    </div>
+  </div>
+
+  <div class="event-location">
+    <div class="row">
+      <div><i class="fa fa-map-marker" aria-hidden="true"></i></div>
+      <div>
+        <span>{{location}}</span>
+      </div>
+    </div>
+    <div class="row">
+      <kaskada-googlemap [adres]="location"></kaskada-googlemap>
+    </div>
+  </div>
+
+  <div class="event-weather">
+    <img src="images/weather.png" alt="WEATHER"/>
+  </div>
