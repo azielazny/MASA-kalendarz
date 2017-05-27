@@ -44,7 +44,7 @@
 
           document.getElementById("googleSignInBtn").innerText = "Zalogowano jako: " + googleUser.getBasicProfile().getName();
 
-          localStorage.setItem("userName", googleUser.getBasicProfile().getName());
+          window.localStorage.setItem("userName", googleUser.getBasicProfile().getName());
 
           if(window.angularComponentRef.componentFn != undefined)
             window.angularComponentRef.componentFn(googleUser);

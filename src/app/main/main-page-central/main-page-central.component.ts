@@ -21,22 +21,26 @@ export class MainPageCentralComponent implements OnInit {
   }
 
   ngOnInit() {
-    if(localStorage.getItem("loggedAs") != null)
-      $("#googleSignInBtn").html("Zalogowano jako: " + localStorage.getItem("userName"));
+    console.log(window.localStorage.getItem("loggedBy"));
+    if(window.localStorage.getItem("loggedAs") != null)
+      $("#googleSignInBtn").html("Zalogowano jako: " + window.localStorage.getItem("userName"));
   }
 
   onSignIn(googleUser) {
-    if(localStorage.getItem("loggedAs") != null) return;
+
+    if(window.localStorage.getItem("loggedAs") != null) return;
+
     let resp : boolean;
 
-    let ret = this.usersService.login("google", googleUser.getAuthResponse().id_token).subscribe(val => this.saveLoginData(val, googleUser));
+    let ret = this.usersService.login("google", googleUser.getAuthResponse().id_token);
+      this.saveLoginData(googleUser.getAuthResponse().id_token);
   }
 
-  saveLoginData(resp, googleUser) {
-    if(resp && localStorage.getItem("loggedAs") == null)
+  saveLoginData(googleUser) {
+    if(window.localStorage.getItem("loggedAs") == null)
     {
-      localStorage.setItem("loggedBy","google");
-      localStorage.setItem("loggedAs", googleUser.getAuthResponse().id_token);
+      window.localStorage.setItem("loggedBy","google");
+      window.localStorage.setItem("loggedAs", googleUser);
 
       this.zone.runOutsideAngular(() => {
         location.reload();
