@@ -2,6 +2,7 @@ import {Component, OnInit, Input} from '@angular/core';
 import {EventsService} from "../../services/events.service";
 import {Event} from "../../class/event.class";
 import {Router, ActivatedRoute} from "@angular/router";
+import {Title} from "@angular/platform-browser";
 
 @Component({
   selector: 'app-events-list-boxgrid',
@@ -10,11 +11,13 @@ import {Router, ActivatedRoute} from "@angular/router";
 })
 export class EventsListBoxgridComponent implements OnInit {
 
-  constructor(private eventsServce: EventsService, private router: Router, private route: ActivatedRoute) {
+  constructor(private eventsServce: EventsService, private router: Router, private route: ActivatedRoute, private title: Title) {
     this.route.params.subscribe(params => {
       this.city = params['city'];
       this.scope = params['scope'];
       this.page = params['page'];
+
+      this.title.setTitle(this.city + " - wydarzenia publiczne - makeplan.");
 
       this.getEventsList();
     });
