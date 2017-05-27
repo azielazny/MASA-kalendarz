@@ -22,14 +22,3 @@ build_stage:
   tags:
    - docker
    - remote
-  only:
-   - develop
-   
- build_stage_manual:
-  stage: build
-  script:
-   - npm build
-  tags:
-   - docker
-   - remote
-  when: manual
