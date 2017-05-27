@@ -408,6 +408,9 @@ app-calendar-backoffice {
       &.active {
         border: 2px solid gold;
       }
+      &.mouseover {
+        background: lighten($lightviolet, 30%);
+      }
     }
     .dCard {
       display: inline-block;

@@ -11,11 +11,8 @@ import {CalendarBackofficeComponent} from "./calendar/calendar-backoffice/calend
 const routes: Routes = [
 
 
-      {path: '', pathMatch: 'full',redirectTo: 'index'},
-
-        {path: 'index', component: MainPageComponent},
-
-
+  {path: '', pathMatch: 'full',redirectTo: 'index'},
+  {path: 'index', component: MainPageComponent},
   {path: 'event/:id/:utitle', component: EventDetailsComponent},
   {path: 'events/:city/:scope/:page', component: EventsListComponent},
   {path: 'calendar', component: CalendarBackofficeComponent},

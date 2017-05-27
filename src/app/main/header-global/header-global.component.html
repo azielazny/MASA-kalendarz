@@ -1,6 +1,6 @@
 <header class="header">
   <div class="row">
     <div class="header-left" routerLink="/index" routerLinkActive="active"><h1>makeplan.</h1></div>
-    <div *ngIf="loggedIn" class="header-right"><a href="#" target="_blank"><p>Twój organizer<i class="fa fa-home " aria-hidden="true"></i></p></a></div>
+    <div *ngIf="loggedIn" class="header-right"><a routerLink="/calendar" routerLinkActive="active" target="_blank"><p>Twój organizer<i class="fa fa-home " aria-hidden="true"></i></p></a></div>
   </div>
 </header>

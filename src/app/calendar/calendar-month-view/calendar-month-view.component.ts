@@ -1,4 +1,4 @@
-import {Component, OnInit, Input} from '@angular/core';
+import {Component, OnInit, Input, ViewChild, ViewChildren} from '@angular/core';
 import {Router} from "@angular/router";
 
 @Component({
@@ -15,11 +15,22 @@ export class CalendarMonthViewComponent implements OnInit {
   @Input()
   public parent;
 
+  @ViewChildren('lightBoxes')
+  public lightBoxes;
+
   constructor() {}
 
   openRightColumn(index) {
     this.parent.rightColumn.shown = true;
     this.parent.rightColumn.day = index;
+
+    this.clearActiveClass();
+    this.lightBoxes.toArray()[index - 1].active = true;
+  }
+
+  clearActiveClass() {
+    for(let x of this.lightBoxes.toArray())
+      x.active = false;
   }
 
   ngOnInit() {

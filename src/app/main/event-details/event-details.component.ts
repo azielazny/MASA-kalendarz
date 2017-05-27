@@ -2,6 +2,7 @@ import {Component, OnInit, Input} from '@angular/core';
 import {Router, ActivatedRoute} from "@angular/router";
 import { Event } from '../../class/event.class';
 import {EventsService} from "../../services/events.service";
+import {Title} from "@angular/platform-browser";
 
 
 @Component({
@@ -13,9 +14,11 @@ export class EventDetailsComponent implements OnInit {
   public events: Event[] = [];
   public id: number;
 
-  constructor(private router: Router, private eventsService: EventsService, public route: ActivatedRoute) {}
+  constructor(private router: Router, private eventsService: EventsService, public route: ActivatedRoute, private title: Title) {}
 
   ngOnInit() {
+    this.title.setTitle("szczegóły wydarzenia - makeplan.");
+
     this.route.params.subscribe(params => {
       this.id = params['id'];
     });
@@ -25,6 +28,8 @@ export class EventDetailsComponent implements OnInit {
 
   eventDataPresent(value: Event) {
     this.events.push(value);
+
+    this.title.setTitle(value.title + " - " + value.loc_city + " - makeplan.");
   }
 
 }

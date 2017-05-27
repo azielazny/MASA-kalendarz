@@ -1,5 +1,6 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {Router} from "@angular/router";
+import {Title} from "@angular/platform-browser";
 
 @Component({
   selector: 'app-calendar-backoffice',
@@ -8,7 +9,9 @@ import {Router} from "@angular/router";
 })
 export class CalendarBackofficeComponent implements OnInit {
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, private title: Title) {
+    this.title.setTitle("Twój Organizer - makeplan.");
+  }
 
   @ViewChild('leftColumn') public leftColumn;
 
