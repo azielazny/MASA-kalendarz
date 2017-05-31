@@ -9,12 +9,13 @@ import {UsersService} from "../../services/users.service";
 })
 export class CalendarLeftColumnLogoutComponent implements OnInit {
 
-  constructor(private userService: UsersService) {}
+  constructor(private userService: UsersService, private router:Router) {}
 
   logoutAction() {
     this.userService.logout();
 
     localStorage.clear();
+    this.router.navigate(['index']);
   }
 
   ngOnInit() {
