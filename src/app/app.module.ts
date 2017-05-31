@@ -17,6 +17,7 @@ import {MainPageCentralComponent} from './main/main-page-central/main-page-centr
 import {MainPageComponent} from './main/main-page/main-page.component';
 import {EventsListHeaderComponent} from './main/events-list-header/events-list-header.component';
 
+
 import {EventDetailsRightColumnComponent} from './main/event-details-right-column/event-details-right-column.component';
 
 import {EventDetailsCentralComponent} from "./main/event-details-central/event-details-central.component";
@@ -51,6 +52,7 @@ import {CalendarTitleNavbarComponent} from "./calendar/calendar-title-navbar/cal
 import {CalendarMonthViewLightBoxComponent} from "./calendar/calendar-month-view-light-box/calendar-month-view-light-box.component";
 import {CalendarMonthViewDarkBoxComponent} from "./calendar/calendar-month-view-dark-box/calendar-month-view-dark-box.component";
 import {CalendarMonthViewComponent} from "./calendar/calendar-month-view/calendar-month-view.component";
+
 
 
 
