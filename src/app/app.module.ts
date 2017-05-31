@@ -54,6 +54,11 @@ import {CalendarMonthViewComponent} from "./calendar/calendar-month-view/calenda
 
 
 
+
+
+
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -94,7 +99,10 @@ import {CalendarMonthViewComponent} from "./calendar/calendar-month-view/calenda
     CalendarTitleNavbarComponent,
     CalendarMonthViewLightBoxComponent,
     CalendarMonthViewDarkBoxComponent,
-    CalendarMonthViewComponent
+    CalendarMonthViewComponent,
+
+
+
   ],
   imports: [
     BrowserModule,
