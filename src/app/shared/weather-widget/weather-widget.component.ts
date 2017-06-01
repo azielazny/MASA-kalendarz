@@ -1,7 +1,5 @@
 import {Component, Input, OnInit, OnChanges, AfterViewInit, Inject} from '@angular/core';
-import {window} from "rxjs/operator/window";
-import {Weather} from "../../class/weather.class";
-// declare var WeatherFromApi: any;
+
 declare var $:JQueryStatic;
 
 @Component({
@@ -11,8 +9,7 @@ declare var $:JQueryStatic;
 })
 
 
-export class WeatherWidgetComponent implements OnInit {
-
+export class WeatherWidgetComponent implements OnInit, AfterViewInit {
    myWidgetParam: {id: number; event_date: number; city_name: string; appid: string; units: string; containerid: string};
    x:any;
 
