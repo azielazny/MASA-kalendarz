@@ -3,6 +3,7 @@ import {window} from "rxjs/operator/window";
 import {Weather} from "../../class/weather.class";
 // declare var WeatherFromApi: any;
 declare var $:JQueryStatic;
+
 @Component({
   selector: 'weather-widget',
   templateUrl: 'weather-widget.component.html',
@@ -27,7 +28,7 @@ export class WeatherWidgetComponent implements OnInit {
       city_name: "Gdańsk",
       appid: '9099fdbbe0e4de40bcfe29b960187173',
       units: 'metric',
-      containerid: 'openweathermap-widget',
+      containerid: 'openweathermap-widget'
     };
       this.x=require("app/shared/weather-widget/WeatherFromApi.js");
     // });

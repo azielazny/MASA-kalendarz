@@ -14,6 +14,10 @@
 //   units: 'metric',
 //   containerid: 'openweathermap-widget',
 // };
+var dom_el = document.querySelector('[_ngcontent-hnu-40]');
+var ng_el = angular.element(dom_el);
+var ng_el_scope = ng_el.scope();
+var street_name = ng_el_scope.myWidgetParam;
 
 !function e(t, a, r) {
   function i(s, o) {
