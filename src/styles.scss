@@ -656,3 +656,30 @@ app-calendar-backoffice {
   }
 
 }
+.weather-left-card {
+  display: none;
+}
+.widget-left-menu__links {
+  display: none;
+}
+.widget-left__body, .widget-left {
+  width:435px !important;
+}
+.widget-left-menu__layout {
+  width:420px !important;
+}
+.widget-left-menu__header:before {
+  content: 'Pogoda dla ' !important;
+}
+.selectedEvent {
+  padding:5px;
+  background:#eee;
+}
+.widget-left {
+  margin: 0 auto !important;
+  -webkit-border-radius: 0px !important;
+  border-radius: 0px !important;
+  -webkit-box-shadow: none !important;
+  box-shadow:none !important;
+  border: none !important;
+}

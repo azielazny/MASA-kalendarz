@@ -6,6 +6,14 @@
  *            See https://raw.githubusercontent.com/stefanpenner/es6-promise/master/LICENSE
  * @version   4.1.0
  */
+// myWidgetParam = {
+//   id: 21,
+//   event_date: 1496898730,
+//   city_name: "Gdańsk",
+//   appid: '9099fdbbe0e4de40bcfe29b960187173',
+//   units: 'metric',
+//   containerid: 'openweathermap-widget',
+// };
 
 !function e(t, a, r) {
   function i(s, o) {
@@ -2184,7 +2192,7 @@
             schema: "blue"
           },
           "widget-2-left-blue": {
-            code: "<script type=\"text/javascript\">\n                            window.myWidgetParam = {\n                                id: 2,\n                                cityid: 524901,\n                                containerid: 'openweathermap-widget',\n                            };\n                            (function() {\n                                var script = document.createElement('script');\n                                script.type = 'text/javascript';\n                                script.async = true;\n                                script.src = " + this.scriptSRC + ";\n                                var s = document.getElementsByTagName('script')[0];\n                                s.parentNode.insertBefore(script, s);\n                            })();\n                      <\/script>",
+            code: "<script type=\"text/javascript\">\n                            myWidgetParam = {\n                                id: 2,\n                                cityid: 524901,\n                                containerid: 'openweathermap-widget',\n                            };\n                            (function() {\n                                var script = document.createElement('script');\n                                script.type = 'text/javascript';\n                                script.async = true;\n                                script.src = " + this.scriptSRC + ";\n                                var s = document.getElementsByTagName('script')[0];\n                                s.parentNode.insertBefore(script, s);\n                            })();\n                      <\/script>",
             schema: "blue"
           },
           "widget-3-left-blue": {code: "script.js?type=left&schema=blue&id=3", schema: "blue"},
@@ -2195,15 +2203,15 @@
           "widget-8-right-blue": {code: "script.js?type=right&schema=blue&id=8", schema: "blue"},
           "widget-9-right-blue": {code: "script.js?type=right&schema=blue&id=9", schema: "blue"},
           "widget-1-left-brown": {
-            code: '<script src="' + this.scriptD3SRC + "\"><\/script>\n                            <script type=\"text/javascript\">\n                                    window.myWidgetParam = {\n                                    id: 10,\n                                    cityid: 524901,\n                                    containerid: 'openweathermap-widget',\n                                };\n                                (function() {\n                                    var script = document.createElement('script');\n                                    script.type = 'text/javascript';\n                                    script.async = true;\n                                    script.src = " + this.scriptSRC + ";\n                                    var s = document.getElementsByTagName('script')[0];\n                                    s.parentNode.insertBefore(script, s);\n                                })();\n                            <\/script>",
+            code: '<script src="' + this.scriptD3SRC + "\"><\/script>\n                            <script type=\"text/javascript\">\n                                    myWidgetParam = {\n                                    id: 10,\n                                    cityid: 524901,\n                                    containerid: 'openweathermap-widget',\n                                };\n                                (function() {\n                                    var script = document.createElement('script');\n                                    script.type = 'text/javascript';\n                                    script.async = true;\n                                    script.src = " + this.scriptSRC + ";\n                                    var s = document.getElementsByTagName('script')[0];\n                                    s.parentNode.insertBefore(script, s);\n                                })();\n                            <\/script>",
             schema: "brown"
           },
           "widget-2-left-brown": {
-            code: "<script type=\"text/javascript\">\n                            window.myWidgetParam = {\n                                id: 11,\n                                cityid: 524901,\n                                containerid: 'openweathermap-widget',\n                            };\n                            (function() {\n                                var script = document.createElement('script');\n                                script.type = 'text/javascript';\n                                script.async = true;\n                                script.src = " + this.scriptSRC + ";\n                                var s = document.getElementsByTagName('script')[0];\n                                s.parentNode.insertBefore(script, s);\n                            })();\n                        <\/script>",
+            code: "<script type=\"text/javascript\">\n                            myWidgetParam = {\n                                id: 11,\n                                cityid: 524901,\n                                containerid: 'openweathermap-widget',\n                            };\n                            (function() {\n                                var script = document.createElement('script');\n                                script.type = 'text/javascript';\n                                script.async = true;\n                                script.src = " + this.scriptSRC + ";\n                                var s = document.getElementsByTagName('script')[0];\n                                s.parentNode.insertBefore(script, s);\n                            })();\n                        <\/script>",
             schema: "brown"
           },
           "widget-3-left-brown": {
-            code: "<script type=\"text/javascript\">\n                            window.myWidgetParam = {\n                                id: 12,\n                                cityid: 524901,\n                                containerid: 'openweathermap-widget',\n                            };\n                            (function() {\n                                var script = document.createElement('script');\n                                script.type = 'text/javascript';\n                                script.async = true;\n                                script.src = " + this.scriptSRC + ";\n                                var s = document.getElementsByTagName('script')[0];\n                                s.parentNode.insertBefore(script, s);\n                            })();\n                        <\/script>",
+            code: "<script type=\"text/javascript\">\n                            myWidgetParam = {\n                                id: 12,\n                                cityid: 524901,\n                                containerid: 'openweathermap-widget',\n                            };\n                            (function() {\n                                var script = document.createElement('script');\n                                script.type = 'text/javascript';\n                                script.async = true;\n                                script.src = " + this.scriptSRC + ";\n                                var s = document.getElementsByTagName('script')[0];\n                                s.parentNode.insertBefore(script, s);\n                            })();\n                        <\/script>",
             schema: "brown"
           },
           "widget-4-left-brown": {code: "script.js?type=left&schema=brown&id=4", schema: "brown"},
@@ -2363,15 +2371,16 @@
 
       return i(e, [{
         key: "getCodeForGenerateWidget", value: function (e, t, a, r) {
-          return e && (t || a) && r ? ' <script type="text/javascript">\n                                window.myWidgetParam = {\n                                    id: ' + e + ",\n                                    cityid: " + city_id + ",\n                                    containerid: 'openweathermap-widget',\n                                };\n                                (function() {\n                                    var script = document.createElement('script');\n                                    script.type = 'text/javascript';\n                                    script.async = true;\n                                    script.src = " + this.scriptSRC + ";\n                                    var s = document.getElementsByTagName('script')[0];\n                                    s.parentNode.insertBefore(script, s);\n                                })();\n            <\/script>" : null
+          return e && (t || a) && r ? ' <script type="text/javascript">\n                                myWidgetParam = {\n                                    id: ' + e + ",\n                                    cityid: " + city_id + ",\n                                    containerid: 'openweathermap-widget',\n                                };\n                                (function() {\n                                    var script = document.createElement('script');\n                                    script.type = 'text/javascript';\n                                    script.async = true;\n                                    script.src = " + this.scriptSRC + ";\n                                    var s = document.getElementsByTagName('script')[0];\n                                    s.parentNode.insertBefore(script, s);\n                                })();\n            <\/script>" : null
         }
       }, {
         key: "render", value: function () {
-          if (window.myWidgetParam) {
-            this.selDOMElement = this.domElements["id" + window.myWidgetParam.id];
-            var e = document.getElementById(window.myWidgetParam.containerid);
+          if (myWidgetParam) {
+            this.selDOMElement = this.domElements["id" + myWidgetParam.id];
+            var e = document.getElementById(myWidgetParam.containerid);
+
             e.insertAdjacentHTML("afterbegin", this.selDOMElement.dom), e.insertAdjacentHTML("afterbegin", this.lincsCSS[this.selDOMElement.type]);
-            e.insertAdjacentHTML("beforeend", "<script>\n         (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){\n         (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),\n         m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)\n         })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');\n\n         ga('create', 'UA-31601618-11', 'auto');\n         ga('send', 'pageview');\n\n        <\/script>")
+            // e.insertAdjacentHTML("beforeend", "<script>\n         (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){\n         (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),\n         m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)\n         })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');\n\n         ga('create', 'UA-31601618-11', 'auto');\n         ga('send', 'pageview');\n\n        <\/script>")
           }
         }
       }]), e
@@ -2521,17 +2530,17 @@
     e("String.fromCodePoint");
     var l = new o.default;
     if (l.render(),
-        window.myWidgetParam) {
+        myWidgetParam) {
       var d = "";
-      d = window.myWidgetParam.cityid ? "?id=" + window.myWidgetParam.cityid + "&lang=pl" : window.myWidgetParam.city_name ? "?q=" + window.myWidgetParam.city_name + "&lang=pl" : "?q=London";
+      d = myWidgetParam.cityid ? "?id=" + myWidgetParam.cityid + "&lang=pl" : myWidgetParam.city_name ? "?q=" + myWidgetParam.city_name + "&lang=pl" : "?q=London";
       var c = "#000";
       l.selDOMElement.colorPolilyne && (c = l.selDOMElement.colorPolilyne);
       var h = void 0;
-      h = window.myWidgetParam.units && "imperial" === window.myWidgetParam.units ? ["imperial", "°F"] : ["metric", "°C"];
+      h = myWidgetParam.units && "imperial" === myWidgetParam.units ? ["imperial", "°F"] : ["metric", "°C"];
       var u = {
         cityName: "Moscow",
         lang: "pl",
-        appid: window.myWidgetParam.appid,
+        appid: myWidgetParam.appid,
         units: h[0],
         textUnitTemp: h[1],
         colorPolilyne: c,
@@ -2726,8 +2735,8 @@
             var now = new Date();
             var maxDate = (now.getTime() + 16*24*60*60*1000);
             var middleDate = (now.getTime() + 7*24*60*60*1000);
-            console.log(window.myWidgetParam.event_date*1000+ "ddd"+middleDate);
-            if (new Date(window.myWidgetParam.event_date*1000).getTime() <= middleDate && new Date(a.dt * 1e3).getTime() <= middleDate) {
+            console.log(myWidgetParam.event_date*1000+ "ddd"+middleDate);
+            if (new Date(myWidgetParam.event_date*1000).getTime() <= middleDate && new Date(a.dt * 1e3).getTime() <= middleDate) {
               if(t.length<8) {
                 t.push({
                   min: Math.round(a.temp.min),
@@ -2738,7 +2747,7 @@
                   dt: a.dt
                 })
               }
-            } else if (new Date(window.myWidgetParam.event_date*1000).getTime() <= maxDate && new Date(a.dt * 1e3).getTime() >= new Date(middleDate).getTime()) {
+            } else if (new Date(myWidgetParam.event_date*1000).getTime() <= maxDate && new Date(a.dt * 1e3).getTime() >= new Date(middleDate).getTime()) {
               if(t.length<8) {
                 t.push({
                   min: Math.round(a.temp.min),
@@ -2757,7 +2766,7 @@
           var t = this, a = this;
           return e.forEach(function (e, r) {
             var i = new Date(1e3 * e.dt);
-            var selected=(new Date(window.myWidgetParam.event_date*1000).getDate()== i.getDate())?'selectedEvent':'';
+            var selected=(new Date(myWidgetParam.event_date*1000).getDate()== i.getDate())?'selectedEvent':'';
             a.controls.calendarItem[r].innerHTML = "<div class='"+selected+"'>"+e.day + "<br>" + i.getDate() + " " + t.getMonthNameByMonthNumber(i.getMonth()) + '<img src="http://openweathermap.org/img/w/' + e.icon + '.png" width="32" height="32" alt="' + e.day + '"></div>'
           }), e
         }

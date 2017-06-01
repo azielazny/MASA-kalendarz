@@ -51,6 +51,7 @@ import {CalendarTitleNavbarComponent} from "./calendar/calendar-title-navbar/cal
 import {CalendarMonthViewLightBoxComponent} from "./calendar/calendar-month-view-light-box/calendar-month-view-light-box.component";
 import {CalendarMonthViewDarkBoxComponent} from "./calendar/calendar-month-view-dark-box/calendar-month-view-dark-box.component";
 import {CalendarMonthViewComponent} from "./calendar/calendar-month-view/calendar-month-view.component";
+import {WeatherWidgetComponent} from "./shared/weather-widget/weather-widget.component";
 
 
 
@@ -94,7 +95,8 @@ import {CalendarMonthViewComponent} from "./calendar/calendar-month-view/calenda
     CalendarTitleNavbarComponent,
     CalendarMonthViewLightBoxComponent,
     CalendarMonthViewDarkBoxComponent,
-    CalendarMonthViewComponent
+    CalendarMonthViewComponent,
+    WeatherWidgetComponent
   ],
   imports: [
     BrowserModule,
