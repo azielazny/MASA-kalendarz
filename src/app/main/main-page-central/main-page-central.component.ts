@@ -23,11 +23,6 @@ export class MainPageCentralComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit(){
     $("#myModal").modal('hide');
-    // $('#myModal').on('shown.bs.modal', function () {
-    //     $('#myInput').focus()
-    //   });
-    console.log( "ready!" );
-
   }
 
   ngOnInit() {
