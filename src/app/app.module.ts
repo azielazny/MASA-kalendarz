@@ -53,6 +53,8 @@ import {CalendarMonthViewLightBoxComponent} from "./calendar/calendar-month-view
 import {CalendarMonthViewDarkBoxComponent} from "./calendar/calendar-month-view-dark-box/calendar-month-view-dark-box.component";
 import {CalendarMonthViewComponent} from "./calendar/calendar-month-view/calendar-month-view.component";
 import {HowMakeComponent} from "./main/how-make/how-make.component";
+import {CommentsService} from "./services/comments.service";
+import { EventDetailsCommentComponent } from './main/event-details-comment/event-details-comment.component';
 
 
 @NgModule({
@@ -96,7 +98,8 @@ import {HowMakeComponent} from "./main/how-make/how-make.component";
     CalendarMonthViewLightBoxComponent,
     CalendarMonthViewDarkBoxComponent,
     CalendarMonthViewComponent,
-    HowMakeComponent
+    HowMakeComponent,
+    EventDetailsCommentComponent
 
 
   ],
@@ -111,7 +114,8 @@ import {HowMakeComponent} from "./main/how-make/how-make.component";
   ],
   providers: [
     UsersService,
-    EventsService
+    EventsService,
+    CommentsService
   ],
   bootstrap: [AppComponent]
 })

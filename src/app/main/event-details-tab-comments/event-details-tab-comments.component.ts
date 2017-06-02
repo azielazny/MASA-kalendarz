@@ -1,4 +1,7 @@
 import {Component, OnInit, Input} from '@angular/core';
+import {ActivatedRoute} from "@angular/router";
+import {CommentsService} from "../../services/comments.service";
+import {Comment} from "../../class/comment.class";
 
 @Component({
   selector: 'app-event-details-tab-comments',
@@ -7,10 +10,20 @@ import {Component, OnInit, Input} from '@angular/core';
 })
 export class EventDetailsTabCommentsComponent implements OnInit {
 
+  public id : number;
+
   @Input()
   public eventdata: Event;
 
-  constructor() { }
+  public comms : Comment[] = [];
+
+  constructor(public route: ActivatedRoute, private commentsService: CommentsService) {
+    this.route.params.subscribe(params => {
+      this.id = params['id'];
+
+      this.commentsService.list(this.id, 0).subscribe(val => this.comms = val);
+    });
+  }
 
   ngOnInit() {
   }
