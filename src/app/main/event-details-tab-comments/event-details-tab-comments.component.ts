@@ -11,6 +11,7 @@ import {Comment} from "../../class/comment.class";
 export class EventDetailsTabCommentsComponent implements OnInit {
 
   public id : number;
+  public showResponseDiv = false;
 
   @Input()
   public eventdata: Event;

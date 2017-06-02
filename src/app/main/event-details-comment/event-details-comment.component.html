@@ -15,7 +15,7 @@
         <div class="comment-post">
           <p>{{ getContent() }}</p>
         </div>
-        <p class="text-right"><a class="btn btn-default btn-sm"><i class="fa fa-reply"></i> odpowiedz</a></p>
+        <p class="text-right"><a class="btn btn-default btn-sm" (click)="parent.showResponseDiv = true"><i class="fa fa-reply"></i> odpowiedz</a></p>
       </div>
     </div>
   </div>

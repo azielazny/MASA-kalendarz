@@ -1,6 +1,13 @@
 <div>
   <section class="comment-list">
-    <event-details-comment *ngFor="let cmnt of comms" [commentdata]="cmnt"></event-details-comment>
+    <event-details-comment *ngFor="let cmnt of comms" [commentdata]="cmnt" [parent]="this"></event-details-comment>
 
+    <div class="comment-response" [class.hidden]="!showResponseDiv">
+      <form role="form">
+        <div class="input-group">
+          <div class="col-sm-12"><textarea style="width: 100%" placeholder="treść..."></textarea></div>
+        </div>
+      </form>
+    </div>
   </section>
 </div>
