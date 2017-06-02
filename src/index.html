@@ -27,12 +27,9 @@
     var googleUser = {};
     var startApp = function() {
       gapi.load('auth2', function(){
-        // Retrieve the singleton for the GoogleAuth library and set up the client.
         auth2 = gapi.auth2.init({
           client_id: '1038686015929-q2rdfr32vlhi50m22abgc24751duuu68.apps.googleusercontent.com',
           cookiepolicy: 'single_host_origin'
-          // Request scopes in addition to 'profile' and 'email'
-          //scope: 'additional_scope'
         });
         attachSignin(document.getElementById('googleSignInBtn'));
       });
@@ -41,9 +38,7 @@
     function attachSignin(element) {
       auth2.attachClickHandler(element, {},
         function(googleUser) {
-
           document.getElementById("googleSignInBtn").innerText = "Zalogowano jako: " + googleUser.getBasicProfile().getName();
-
           window.localStorage.setItem("userName", googleUser.getBasicProfile().getName());
 
           if(window.angularComponentRef.componentFn != undefined)

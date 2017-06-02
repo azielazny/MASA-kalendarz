@@ -21,19 +21,17 @@ export class MainPageCentralComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log(window.localStorage.getItem("loggedBy"));
     if(window.localStorage.getItem("loggedAs") != null)
       $("#googleSignInBtn").html("Zalogowano jako: " + window.localStorage.getItem("userName"));
   }
 
   onSignIn(googleUser) {
-
     if(window.localStorage.getItem("loggedAs") != null) return;
 
     let resp : boolean;
+    this.usersService.login("google", googleUser.getAuthResponse().id_token).subscribe(ret => {resp = ret});
 
-    let ret = this.usersService.login("google", googleUser.getAuthResponse().id_token);
-      this.saveLoginData(googleUser.getAuthResponse().id_token);
+    this.saveLoginData(googleUser.getAuthResponse().id_token);
   }
 
   saveLoginData(googleUser) {

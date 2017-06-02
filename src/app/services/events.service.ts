@@ -79,7 +79,7 @@ export class EventsService {
       withCredentials: true // CORS Access-Control-Allow-Credentials header
     });
 
-    return this.http.get("${this.url}/enroll/$(eventid)", options)
+    return this.http.get(this.url + "/enroll/" + eventid, options)
       .map(this.extractStatus);
   }
 
@@ -88,8 +88,17 @@ export class EventsService {
       withCredentials: true // CORS Access-Control-Allow-Credentials header
     });
 
-    return this.http.get("${this.url}/disenroll/$(eventid)", options)
+    return this.http.get(this.url + "/disenroll/" + eventid, options)
       .map(this.extractStatus);
+  }
+
+  enrolled(eventid: number): Observable<boolean> {
+    let options = new RequestOptions({
+      withCredentials: true // CORS Access-Control-Allow-Credentials header
+    });
+
+    return this.http.get(this.url + "/enrolled/" + eventid, options)
+      .map(this.extractEnrolledStatus);
   }
 
   attendants(eventid: number): Observable<Attendant[]> {
@@ -159,6 +168,12 @@ export class EventsService {
     let body = res.json();
 
     return (body.code === 200);
+  }
+
+  private extractEnrolledStatus(res: Response) {
+    let body = res.json();
+
+    return body.enrolled;
   }
 
   private extractEventAttendants(res: Response) {
