@@ -22,6 +22,22 @@ export class CommentsService {
       .map(this.extractCommentsList);
   }
 
+  add(eventid: number, username: string, comment: string) {
+    let headers = new Headers({'Content-Type': 'application/json'});
+    let options = new RequestOptions({
+      headers: headers,
+      withCredentials: true // CORS Access-Control-Allow-Credentials header
+    });
+
+    let data = {
+      username: username,
+      comment: comment
+    };
+
+    return this.http.post(this.url + "/add/" + eventid, JSON.stringify(data), options)
+      .map(this.extractStatus);
+  }
+
   private extractCommentsList(res: Response) {
     let body = res.json();
 
@@ -29,5 +45,11 @@ export class CommentsService {
       return body.comments;
     else
       return {};
+  }
+
+  private extractStatus(res: Response) {
+    let body = res.json();
+
+    return (body.code === 200);
   }
 }
