@@ -14,6 +14,9 @@
   left: -5px;
   padding-right: 10px; }
 
+.event-dates > div > div:nth-child(2) {
+  font-size: 0.9em; }
+
 .event-dates > div:nth-child(2) > span:first-child {
   font-weight: bolder; }
 
@@ -54,4 +57,4 @@
   width: 100%;
   height: auto; }
 
-/*# sourceMappingURL=event-details-right-column.component.cssnent.css.map */
+/*# sourceMappingURL=event-details-right-column.component.css.map */
