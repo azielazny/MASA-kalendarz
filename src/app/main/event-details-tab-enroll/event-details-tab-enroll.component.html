@@ -1,4 +1,4 @@
-    <div>
+    <div [class.hidden]="enrolled">
       <div class="register" style="display: block;
     padding: 50px 0px 50px;
     font-weight: 900;
@@ -6,16 +6,7 @@
         ZAREZERWUJ MIEJSCE NA WYDARZENIU
       </div>
     </div>
-
-
-
-    <form id="login-form" action="#" method="post" role="form" style="display: block; width:50%;padding:0px 0 100px; margin: 0 auto">
-      <div class="form-group">
-        <input type="text" name="username" id="username" tabindex="1" class="form-control" placeholder="Imię" value="">
-      </div>
-      <div class="form-group">
-        <input type="text" name="password" id="password" tabindex="2" class="form-control" placeholder="Nazwisko">
-      </div>
+    <form id="enroll-form" role="form" style="display: block; width:50%;padding:0px 0 100px; margin: 0 auto" [class.hidden]="enrolled">
       <div class="form-group text-center">
         <input type="checkbox" tabindex="3" class="" name="remember" id="remember">
         <label for="remember"> Akceptuję regulamin</label>
@@ -23,9 +14,29 @@
       <div class="form-group">
         <div class="row">
           <div class="col-sm-6 col-sm-offset-3">
-            <input type="submit" name="login-submit" id="login-submit" tabindex="4" class="form-control btn btn-primary" value="Zapisz mnie">
+            <input type="submit" name="login-submit" id="enroll-submit" tabindex="4" class="form-control btn btn-primary" value="Zapisz mnie" (click)="wishToEnroll()" />
           </div>
         </div>
       </div>
     </form>
 
+
+
+
+    <div [class.hidden]="!enrolled">
+      <div class="register" style="display: block;
+    padding: 50px 0px 50px;
+    font-weight: 900;
+    text-align: center;">
+        ZAPISAŁEŚ SIĘ JUŻ NA TE WYDARZENIE!
+      </div>
+    </div>
+    <form id="disenroll-form" role="form" style="display: block; width:50%;padding:0px 0 100px; margin: 0 auto" [class.hidden]="!enrolled">
+      <div class="form-group">
+        <div class="row">
+          <div class="col-sm-6 col-sm-offset-3">
+            <input type="submit" name="login-submit" id="disenroll-submit" tabindex="5" class="form-control btn btn-warning" value="Wypisz mnie" (click)="wishToDisenroll()" />
+          </div>
+        </div>
+      </div>
+    </form>
