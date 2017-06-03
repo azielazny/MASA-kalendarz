@@ -9,7 +9,7 @@ import {UsersService} from "../../services/users.service";
 })
 export class CalendarTitleNavbarComponent implements OnInit {
 
-  public username = localStorage.getItem("userName");
+  public username = window.localStorage.getItem("userName");
 
   constructor() {}
 
