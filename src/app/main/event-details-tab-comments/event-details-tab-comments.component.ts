@@ -22,11 +22,21 @@ export class EventDetailsTabCommentsComponent implements OnInit {
     this.route.params.subscribe(params => {
       this.id = params['id'];
 
-      this.commentsService.list(this.id, 0).subscribe(val => this.comms = val);
+      this.commentsService.list(this.id, 0).subscribe(val => {
+        if(val.length == 0)
+          { this.showResponseDiv = true; return; }
+
+        this.comms = val;
+      });
     });
   }
 
   ngOnInit() {
+  }
+
+  addComment() {
+    let comment = $('#komentarz_tresc').val();
+    let username = $().val();
   }
 
 }
