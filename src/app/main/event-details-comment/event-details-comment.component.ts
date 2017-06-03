@@ -11,6 +11,9 @@ export class EventDetailsCommentComponent implements OnInit {
   @Input()
   public commentdata : Comment;
 
+  @Input()
+  public parent;
+
   constructor() { }
 
   ngOnInit() {
