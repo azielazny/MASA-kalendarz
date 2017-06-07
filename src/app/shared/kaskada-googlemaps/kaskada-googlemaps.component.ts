@@ -36,10 +36,10 @@ export class KaskadaGoogleMapsComponent implements OnChanges{
           }
           else {
             if (status == "ZERO_RESULTS") {
-              alert('Jest problem ze znalezieniem adresu w Google maps');
+              //alert('Jest problem ze znalezieniem adresu w Google maps');
             }
             else {
-              alert('Wystąpił nieoczekiwany błąd ze strony Google maps (problem :' + status + ')');
+              //alert('Wystąpił nieoczekiwany błąd ze strony Google maps (problem :' + status + ')');
             }
           }
         });

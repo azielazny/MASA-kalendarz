@@ -51,6 +51,9 @@ import {CalendarTitleNavbarComponent} from "./calendar/calendar-title-navbar/cal
 import {CalendarMonthViewLightBoxComponent} from "./calendar/calendar-month-view-light-box/calendar-month-view-light-box.component";
 import {CalendarMonthViewDarkBoxComponent} from "./calendar/calendar-month-view-dark-box/calendar-month-view-dark-box.component";
 import {CalendarMonthViewComponent} from "./calendar/calendar-month-view/calendar-month-view.component";
+import {HowMakeComponent} from "./main/how-make/how-make.component";
+import {CommentsService} from "./services/comments.service";
+import { EventDetailsCommentComponent } from './main/event-details-comment/event-details-comment.component';
 import {WeatherWidgetComponent} from "./shared/weather-widget/weather-widget.component";
 
 
@@ -96,6 +99,8 @@ import {WeatherWidgetComponent} from "./shared/weather-widget/weather-widget.com
     CalendarMonthViewLightBoxComponent,
     CalendarMonthViewDarkBoxComponent,
     CalendarMonthViewComponent,
+    HowMakeComponent,
+    EventDetailsCommentComponent,
     WeatherWidgetComponent
   ],
   imports: [

@@ -43,7 +43,7 @@ body {
 .header-left h1 {
     font-size: 2em;
     color: #000000;
-    font-family: "Arial Black", Arial, Helvetica, sans-serif;
+    font-faly: "Arial Black", Arial, Helvetica, sans-serif;mi
     font-weight: bolder;
     margin-top: 0.6em;
 }
@@ -184,3 +184,18 @@ body {
     color: #76777a;
     border-color: #CBE0FF;
 }
+
+#myModal .modal-title{
+  font-weight: bolder;
+  color: #323439;
+  font-family: "Arial Black", Arial, Helvetica, sans-serif;
+  font-size: 2em;
+
+
+}#myModal .modal-body{
+   font-size: 21px;
+   color: #76777a;
+   font-family: Verdana;
+
+ }
+
