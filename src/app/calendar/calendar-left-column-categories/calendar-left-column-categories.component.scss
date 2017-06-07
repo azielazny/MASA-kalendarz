@@ -12,3 +12,12 @@ input[type="color"]::-webkit-color-swatch-wrapper {
 input[type="color"]::-webkit-color-swatch {
   border: none;
 }
+#categoryList #basic-addon2 {
+  border:1px solid #59575a !important;
+  border-left:none !important;
+  color:#59575a !important;
+  cursor: pointer;
+}
+app-calendar-backoffice #leftColumn #categoryList .input-group input {
+  border-right: none !important;
+}
