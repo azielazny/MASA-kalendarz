@@ -53,7 +53,7 @@ import {CalendarMonthViewDarkBoxComponent} from "./calendar/calendar-month-view-
 import {CalendarMonthViewComponent} from "./calendar/calendar-month-view/calendar-month-view.component";
 import {HowMakeComponent} from "./main/how-make/how-make.component";
 import {CommentsService} from "./services/comments.service";
-import { EventDetailsCommentComponent } from './main/event-details-comment/event-details-comment.component';
+import {EventDetailsCommentComponent } from './main/event-details-comment/event-details-comment.component';
 import {WeatherWidgetComponent} from "./shared/weather-widget/weather-widget.component";
 
 
@@ -114,7 +114,8 @@ import {WeatherWidgetComponent} from "./shared/weather-widget/weather-widget.com
   ],
   providers: [
     UsersService,
-    EventsService
+    EventsService,
+    CommentsService
   ],
   bootstrap: [AppComponent]
 })

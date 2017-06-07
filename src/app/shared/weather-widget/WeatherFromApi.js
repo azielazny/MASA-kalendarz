@@ -2736,7 +2736,6 @@
             var now = new Date();
             var maxDate = (now.getTime() + 16*24*60*60*1000);
             var middleDate = (now.getTime() + 7*24*60*60*1000);
-            console.log(myWidgetParam.event_date*1000+ "ddd"+middleDate);
             if (new Date(myWidgetParam.event_date*1000).getTime() <= middleDate && new Date(a.dt * 1e3).getTime() <= middleDate) {
               if(t.length<8) {
                 t.push({
