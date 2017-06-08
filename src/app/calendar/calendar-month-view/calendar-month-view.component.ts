@@ -34,10 +34,18 @@ export class CalendarMonthViewComponent implements OnInit {
 
   constructor() {
   }
+formatForDate(num:number):string {
+    let newNum:string=num+"";
+  if(newNum.length < 2)
+    return newNum = "0" + newNum;
+}
 
   openRightColumn(index) {
     this.parent.rightColumn.shown = true;
-    this.parent.rightColumn.day = index;
+
+    this.parent.rightColumn.day = this.formatForDate(index);
+    this.parent.rightColumn.month=this.formatForDate(this.month+1);
+    this.parent.rightColumn.year=this.year;
 
     this.clearActiveClass();
     this.lightBoxes.toArray()[index - 1].active = true;
