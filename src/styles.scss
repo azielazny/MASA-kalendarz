@@ -412,7 +412,14 @@ app-calendar-backoffice {
       line-height: 100px;
       span {
         span {
-          display: none;
+          display: inline-block;
+          font-size: 50%;
+          margin: 0px;
+          padding-left: 5px;
+          /* width: 100%; */
+          vertical-align: super;
+          font-weight: 400;
+          text-transform: capitalize;
         }
       }
       &.active {
@@ -432,6 +439,11 @@ app-calendar-backoffice {
       vertical-align: middle;
       border: 1px solid $darkviolet;
       line-height: 100px;
+      span {
+        span {
+display: none;
+        }
+      }
     }
     .wCard {
       display: inline-block;
@@ -692,4 +704,7 @@ app-calendar-backoffice {
   -webkit-box-shadow: none !important;
   box-shadow:none !important;
   border: none !important;
+}
+calendar-month-view-light-box.active .lCard{
+  border: 2px solid gold !important;
 }

@@ -57,6 +57,7 @@ import {EventDetailsCommentComponent } from './main/event-details-comment/event-
 import {WeatherWidgetComponent} from "./shared/weather-widget/weather-widget.component";
 import {CalendarLeftColumnCategoriesListComponent} from "./calendar/calendar-left-column-categories-list/calendar-left-column-categories-list.component";
 import {CategoriesService} from "./services/categories.service";
+import {CalendarMonthViewWeekListComponent} from "./calendar/calendar-month-view-week-list/calendar-month-view-week-list.component";
 
 
 
@@ -104,7 +105,8 @@ import {CategoriesService} from "./services/categories.service";
     HowMakeComponent,
     EventDetailsCommentComponent,
     WeatherWidgetComponent,
-    CalendarLeftColumnCategoriesListComponent
+    CalendarLeftColumnCategoriesListComponent,
+    CalendarMonthViewWeekListComponent
   ],
   imports: [
     BrowserModule,

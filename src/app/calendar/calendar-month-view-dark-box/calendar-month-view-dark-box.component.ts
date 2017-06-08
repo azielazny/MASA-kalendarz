@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, Input} from '@angular/core';
 import {Router} from "@angular/router";
+import {Calendar} from "../../class/calendar.class";
 
 @Component({
   selector: 'calendar-month-view-dark-box',
@@ -8,6 +9,8 @@ import {Router} from "@angular/router";
 })
 export class CalendarMonthViewDarkBoxComponent implements OnInit {
 
+  @Input()
+  public day: Calendar;
   constructor() {}
 
 
