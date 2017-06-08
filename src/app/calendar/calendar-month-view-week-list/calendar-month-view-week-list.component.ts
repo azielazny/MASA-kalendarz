@@ -16,9 +16,9 @@ export class CalendarMonthViewWeekListComponent implements OnInit {
 
   constructor() {}
 
- 
+
   ngOnInit() {
- 
+
   }
 
 }
