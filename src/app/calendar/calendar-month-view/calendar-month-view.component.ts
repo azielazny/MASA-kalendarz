@@ -1,4 +1,4 @@
-import {Component, OnInit, Input, ViewChild, ViewChildren} from '@angular/core';
+import {Component, OnInit, Input, ViewChild, ViewChildren, Output, EventEmitter} from '@angular/core';
 import {Calendar} from "../../class/calendar.class";
 
 @Component({
@@ -8,11 +8,11 @@ import {Calendar} from "../../class/calendar.class";
 })
 export class CalendarMonthViewComponent implements OnInit {
 
-  public keys_pre:Calendar[]=[];
-  public keys:Calendar[] = [];
-  public keys_post:Calendar[]=[];
-  public keysactive;
-  private week_list:string[]=[];
+  public prevMonthDays:Calendar[]=[];
+  public actualMonthDays:Calendar[] = [];
+  public nextMonthDays:Calendar[]=[];
+  public actualDay;
+  public week_list:string[]=[];
 
   private now = new Date();
   private thisMonth = this.now.getMonth();
@@ -26,6 +26,8 @@ export class CalendarMonthViewComponent implements OnInit {
 
   @Input()
   public parent;
+
+  @Output() outputEvent:EventEmitter<string>=new EventEmitter();
 
   @ViewChildren('lightBoxes')
   public lightBoxes;
@@ -49,6 +51,7 @@ export class CalendarMonthViewComponent implements OnInit {
   ngOnInit() {
     this.now.setFullYear(this.now.getFullYear());
     this.monthGen(this.month, this.year);
+    this.outputEvent.emit(this.months[this.thisMonth]+" "+this.year);
   }
 
   getPrevMonth() {
@@ -56,6 +59,7 @@ export class CalendarMonthViewComponent implements OnInit {
     this.year = this.now.getFullYear();
     this.month = this.now.getMonth();
     this.monthGen(this.month, this.year);
+    this.outputEvent.emit(this.months[this.month]+" "+this.year);
   }
 
   getNextMonth() {
@@ -63,6 +67,7 @@ export class CalendarMonthViewComponent implements OnInit {
     this.year = this.now.getFullYear();
     this.month = this.now.getMonth();
     this.monthGen(this.month, this.year);
+    this.outputEvent.emit(this.months[this.month]+" "+this.year);
   }
 
   februaryInYear(year) {
@@ -81,10 +86,12 @@ export class CalendarMonthViewComponent implements OnInit {
 
   //dni w miesiącu
   monthGen(m, y) {
-    this.keysactive = null;
-    this.keys_post = [];
-    this.keys_pre = [];
-    this.keys = [];
+    //reset pól
+    this.actualDay = null;
+    this.nextMonthDays = [];
+    this.prevMonthDays = [];
+    this.actualMonthDays = [];
+    this.week_list=[];
 
     let mDays = this.monthDays(m + 1, y);
     let mDaysPrev = this.monthDays(m, y);
@@ -100,13 +107,13 @@ export class CalendarMonthViewComponent implements OnInit {
     }
     //dni miesiąca
     for (let i = (1 - marginToDay), j = 0; i <= 42 - marginToDay; i++, j++) {
-      if (i == this.thisDay && m == this.thisMonth && y == this.year) this.keysactive = i;
+      if (i == this.thisDay && m == this.thisMonth && y == new Date().getFullYear()) this.actualDay = i;
 
       (i >= 1) ?
         (i > mDays) ?
-          this.keys_post.push({day:i - mDays, day_of_week:this.days[(j % 7)]}) :
-          this.keys.push({day:i, day_of_week:this.days[(j % 7)]})
-        : this.keys_pre.push({day:mDaysPrev + i, day_of_week:this.days[(j % 7)]});
+          this.nextMonthDays.push({day:i - mDays, day_of_week:this.days[(j % 7)]}) :
+          this.actualMonthDays.push({day:i, day_of_week:this.days[(j % 7)]})
+        : this.prevMonthDays.push({day:mDaysPrev + i, day_of_week:this.days[(j % 7)]});
 
     }
 
