@@ -12,12 +12,36 @@ export class CalendarRightColumnEventsListComponent implements OnInit {
 
   @Input()
   private eventdata: Event;
+  private startDate: string;
+  private endDate: string;
 
-  constructor() {}
+  constructor() {
+  }
+
   @Input()
   public parent;
-  ngOnInit() {
 
+  ngOnInit() {
+    if(this.eventdata.start_ts>0)
+      this.setStartData(this.eventdata.start_ts);
+    if(this.eventdata.end_ts>0)
+      this.setEndData(this.eventdata.end_ts);
+
+  }
+
+  private setStartData(timestamp: number) {
+    let evDate = new Date(timestamp * 1e3);
+    this.startDate = this.formatForDate(evDate.getDate()) + "." + this.formatForDate(evDate.getMonth() + 1) + "." + evDate.getFullYear() + " od godz." + evDate.getHours() + ":" + evDate.getMinutes();
+  }
+
+  private setEndData(timestamp: number) {
+    let evDate = new Date(timestamp * 1e3);
+    this.endDate = this.formatForDate(evDate.getDate()) + "." + this.formatForDate(evDate.getMonth() + 1) + "." + evDate.getFullYear() + " do godz. " + evDate.getHours() + ":" + evDate.getMinutes();
+  }
+
+  formatForDate(num: number): string {
+    let newNum: string = num + "";
+    return (newNum.length < 2) ? "0" + newNum : newNum;
   }
 
 }

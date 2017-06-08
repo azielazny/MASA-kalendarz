@@ -67,7 +67,6 @@ export class CalendarRightColumnComponent implements OnInit {
 
   changeEventsDataNext() {
     let eventsCounter = this.eventslist.length - 1;
-console.log(eventsCounter +"ddfdfd");
     if (this.counter + 1 > eventsCounter) {
       this.eventByData(this.eventslist, 0);
       this.counter = 0;
