@@ -28,6 +28,7 @@ export class CalendarMonthViewComponent implements OnInit {
   public parent;
 
   @Output() outputEvent: EventEmitter<string> = new EventEmitter();
+  @Output() outputDate: EventEmitter<string> = new EventEmitter();
 
   @ViewChildren('lightBoxes')
   public lightBoxes;
@@ -46,7 +47,8 @@ export class CalendarMonthViewComponent implements OnInit {
     this.parent.rightColumn.day = this.formatForDate(index);
     this.parent.rightColumn.month = this.formatForDate(this.month + 1);
     this.parent.rightColumn.year = this.year;
-
+    this.outputDate.emit(this.formatForDate(index)+"."+this.formatForDate(this.month + 1)+"."+this.year);
+    
     this.clearActiveClass();
     this.lightBoxes.toArray()[index - 1].active = true;
   }

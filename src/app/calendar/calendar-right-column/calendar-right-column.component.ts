@@ -1,4 +1,4 @@
-import {Component, OnInit, Input, NgZone} from '@angular/core';
+import {Component, OnInit, Input, NgZone, OnChanges} from '@angular/core';
 import {EventsService} from "../../services/events.service";
 import {Event} from "../../class/event.class";
 
@@ -7,7 +7,7 @@ import {Event} from "../../class/event.class";
   templateUrl: 'calendar-right-column.component.html',
   styleUrls: ['calendar-right-column.component.scss']
 })
-export class CalendarRightColumnComponent implements OnInit {
+export class CalendarRightColumnComponent implements OnInit, OnChanges {
   public username: string = localStorage.getItem("userName");
 
   private eventslist: Event[] = [];
@@ -15,13 +15,12 @@ export class CalendarRightColumnComponent implements OnInit {
   private height: number;
   private limitEvents: number;
   private eventsToShow: Event[] = [];
+  @Input()
+  public selectedDate;
 
   constructor(private eventsService: EventsService, ngZone: NgZone) {
     this.height = <any>window.innerHeight;
     this.limitEvents = this.limitEventsToShow();
-    this.eventsService.listForUserByDate(this.username, 5).subscribe(val => {
-      this.eventByData(val, 0);
-    });
   }
 
   private eventByData(value: Event[], index: number) {
@@ -49,13 +48,17 @@ export class CalendarRightColumnComponent implements OnInit {
     this.parent.editEvents.shown = true;
   }
 
+  ngOnChanges() {
+    console.log(this.selectedDate);
+    this.eventsService.listForUserByDate(this.username, this.selectedDate).subscribe(val => {
+      this.eventByData(val, 0);
+    });
+  }
   ngOnInit() {
 
   }
 
   changeEventsDataPrev() {
-    let eventsCounter = this.eventslist.length - 1;
-
     if (this.counter - 1 < 0) {
       this.eventByData(this.eventslist, 0);
       this.counter = 0;

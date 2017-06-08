@@ -12,8 +12,9 @@ export class CalendarGridComponent implements OnInit {
 
   @Input()
   public parent;
-  
+
   public actualMonth;
+  public selectedDate;
 
   @ViewChild('rightColumn') rightColumn;
   @ViewChild('editEvents') editEvents;
@@ -24,9 +25,12 @@ export class CalendarGridComponent implements OnInit {
 
   ngOnInit() {
   }
-  
+
   changeOfMonth(value) {
     this.actualMonth=value;
+  }
+  sendDateToRightColumn(value) {
+    this.selectedDate=value;
   }
 
 }
