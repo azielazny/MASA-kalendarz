@@ -8,11 +8,11 @@ import {Calendar} from "../../class/calendar.class";
 })
 export class CalendarMonthViewComponent implements OnInit {
 
-  public prevMonthDays:Calendar[]=[];
-  public actualMonthDays:Calendar[] = [];
-  public nextMonthDays:Calendar[]=[];
+  public prevMonthDays: Calendar[] = [];
+  public actualMonthDays: Calendar[] = [];
+  public nextMonthDays: Calendar[] = [];
   public actualDay;
-  public week_list:string[]=[];
+  public week_list: string[] = [];
 
   private now = new Date();
   private thisMonth = this.now.getMonth();
@@ -27,25 +27,25 @@ export class CalendarMonthViewComponent implements OnInit {
   @Input()
   public parent;
 
-  @Output() outputEvent:EventEmitter<string>=new EventEmitter();
+  @Output() outputEvent: EventEmitter<string> = new EventEmitter();
 
   @ViewChildren('lightBoxes')
   public lightBoxes;
 
   constructor() {
   }
-formatForDate(num:number):string {
-    let newNum:string=num+"";
-  if(newNum.length < 2)
-    return newNum = "0" + newNum;
-}
+
+  formatForDate(num: number): string {
+    let newNum: string = num + "";
+    return (newNum.length < 2)? "0" + newNum:newNum;
+  }
 
   openRightColumn(index) {
     this.parent.rightColumn.shown = true;
 
     this.parent.rightColumn.day = this.formatForDate(index);
-    this.parent.rightColumn.month=this.formatForDate(this.month+1);
-    this.parent.rightColumn.year=this.year;
+    this.parent.rightColumn.month = this.formatForDate(this.month + 1);
+    this.parent.rightColumn.year = this.year;
 
     this.clearActiveClass();
     this.lightBoxes.toArray()[index - 1].active = true;
@@ -59,7 +59,7 @@ formatForDate(num:number):string {
   ngOnInit() {
     this.now.setFullYear(this.now.getFullYear());
     this.monthGen(this.month, this.year);
-    this.outputEvent.emit(this.months[this.thisMonth]+" "+this.year);
+    this.outputEvent.emit(this.months[this.thisMonth] + " " + this.year);
   }
 
   getPrevMonth() {
@@ -67,7 +67,7 @@ formatForDate(num:number):string {
     this.year = this.now.getFullYear();
     this.month = this.now.getMonth();
     this.monthGen(this.month, this.year);
-    this.outputEvent.emit(this.months[this.month]+" "+this.year);
+    this.outputEvent.emit(this.months[this.month] + " " + this.year);
   }
 
   getNextMonth() {
@@ -75,7 +75,7 @@ formatForDate(num:number):string {
     this.year = this.now.getFullYear();
     this.month = this.now.getMonth();
     this.monthGen(this.month, this.year);
-    this.outputEvent.emit(this.months[this.month]+" "+this.year);
+    this.outputEvent.emit(this.months[this.month] + " " + this.year);
   }
 
   februaryInYear(year) {
@@ -99,7 +99,7 @@ formatForDate(num:number):string {
     this.nextMonthDays = [];
     this.prevMonthDays = [];
     this.actualMonthDays = [];
-    this.week_list=[];
+    this.week_list = [];
 
     let mDays = this.monthDays(m + 1, y);
     let mDaysPrev = this.monthDays(m, y);
@@ -119,9 +119,9 @@ formatForDate(num:number):string {
 
       (i >= 1) ?
         (i > mDays) ?
-          this.nextMonthDays.push({day:i - mDays, day_of_week:this.days[(j % 7)]}) :
-          this.actualMonthDays.push({day:i, day_of_week:this.days[(j % 7)]})
-        : this.prevMonthDays.push({day:mDaysPrev + i, day_of_week:this.days[(j % 7)]});
+          this.nextMonthDays.push({day: i - mDays, day_of_week: this.days[(j % 7)]}) :
+          this.actualMonthDays.push({day: i, day_of_week: this.days[(j % 7)]})
+        : this.prevMonthDays.push({day: mDaysPrev + i, day_of_week: this.days[(j % 7)]});
 
     }
 

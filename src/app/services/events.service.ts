@@ -24,12 +24,22 @@ export class EventsService {
       .map(this.extractEventsList);
   }
 
-  limitListForUser(username:string, limit: number = 5): Observable<Event[]> {
+  limitListForUser(username: string, limit: number = 5): Observable<Event[]> {
     let options = new RequestOptions({
       withCredentials: true // CORS Access-Control-Allow-Credentials header
     });
 
     return this.http.get(this.url + "/list/" + username + '/' + limit, options)
+      .map(this.extractEventsList);
+  }
+
+  listForUserByDate(username: string, day: number): Observable<Event[]> {
+    let options = new RequestOptions({
+      withCredentials: true // CORS Access-Control-Allow-Credentials header
+    });
+
+    return this.http.get("http://localhost/danzet/xxx.php")//, options)
+    // return this.http.get(this.url + "/list/" + username + '/' + day, options)
       .map(this.extractEventsList);
   }
 
@@ -140,7 +150,7 @@ export class EventsService {
   private extractTotalCount(res: Response) {
     let body = res.json();
 
-    if(body.code == 200)
+    if (body.code == 200)
       return body.count;
     else
       return -1;
