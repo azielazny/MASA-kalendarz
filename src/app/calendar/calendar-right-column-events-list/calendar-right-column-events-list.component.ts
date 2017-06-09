@@ -8,18 +8,17 @@ import {Event} from "../../class/event.class";
   styleUrls: ['calendar-right-column-events-list.component.scss']
 })
 export class CalendarRightColumnEventsListComponent implements OnInit {
-  public username: string = localStorage.getItem("userName");
 
   @Input()
+  public parent;
+  @Input()
   private eventdata: Event;
+
   private startDate: string;
   private endDate: string;
 
   constructor() {
   }
-
-  @Input()
-  public parent;
 
   ngOnInit() {
     if(this.eventdata.start_ts>0)
@@ -31,15 +30,15 @@ export class CalendarRightColumnEventsListComponent implements OnInit {
 
   private setStartData(timestamp: number) {
     let evDate = new Date(timestamp * 1e3);
-    this.startDate = this.formatForDate(evDate.getDate()) + "." + this.formatForDate(evDate.getMonth() + 1) + "." + evDate.getFullYear() + " od godz." + evDate.getHours() + ":" + evDate.getMinutes();
+    this.startDate = CalendarRightColumnEventsListComponent.formatForDate(evDate.getDate()) + "." + CalendarRightColumnEventsListComponent.formatForDate(evDate.getMonth() + 1) + "." + evDate.getFullYear() + " od godz." + evDate.getHours() + ":" + evDate.getMinutes();
   }
 
   private setEndData(timestamp: number) {
     let evDate = new Date(timestamp * 1e3);
-    this.endDate = this.formatForDate(evDate.getDate()) + "." + this.formatForDate(evDate.getMonth() + 1) + "." + evDate.getFullYear() + " do godz. " + evDate.getHours() + ":" + evDate.getMinutes();
+    this.endDate = CalendarRightColumnEventsListComponent.formatForDate(evDate.getDate()) + "." + CalendarRightColumnEventsListComponent.formatForDate(evDate.getMonth() + 1) + "." + evDate.getFullYear() + " do godz. " + evDate.getHours() + ":" + evDate.getMinutes();
   }
 
-  formatForDate(num: number): string {
+  static formatForDate(num: number): string {
     let newNum: string = num + "";
     return (newNum.length < 2) ? "0" + newNum : newNum;
   }

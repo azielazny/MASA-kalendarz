@@ -9,18 +9,36 @@ import {Event} from "../../class/event.class";
 })
 export class CalendarRightColumnComponent implements OnInit, OnChanges {
   public username: string = localStorage.getItem("userName");
-
   private eventslist: Event[] = [];
   private counter: number = 0;
   private height: number;
   private limitEvents: number;
   private eventsToShow: Event[] = [];
+  public shown = false;
+
   @Input()
   public selectedDate;
 
-  constructor(private eventsService: EventsService, ngZone: NgZone) {
+  @Input()
+  public parent;
+
+  constructor(private eventsService: EventsService) {
     this.height = <any>window.innerHeight;
     this.limitEvents = this.limitEventsToShow();
+  }
+
+  limitEventsToShow(): number {
+    let limit: number = Math.floor((this.height - 140) / 230);
+    return (limit > 0) ? limit : 1;
+  }
+
+  ngOnInit() {}
+
+  ngOnChanges() {
+    console.log(this.selectedDate);
+    this.eventsService.listForUserByDate(this.username, this.selectedDate).subscribe(val => {
+      this.eventByData(val, 0);
+    });
   }
 
   private eventByData(value: Event[], index: number) {
@@ -30,32 +48,11 @@ export class CalendarRightColumnComponent implements OnInit, OnChanges {
       this.eventsToShow.push(value[i]);
       if(this.eventslist.length - 1==i) break;
     }
-    console.log(this.eventslist);
-  }
-
-  @Input()
-  public parent;
-
-  public day = 0;
-  public shown = false;
-
-  limitEventsToShow(): number {
-    let limit: number = Math.floor((this.height - 140) / 230);
-    return (limit > 0) ? limit : 1;
+    // console.log(this.eventslist);
   }
 
   addNewEvent() {
     this.parent.editEvents.shown = true;
-  }
-
-  ngOnChanges() {
-    console.log(this.selectedDate);
-    this.eventsService.listForUserByDate(this.username, this.selectedDate).subscribe(val => {
-      this.eventByData(val, 0);
-    });
-  }
-  ngOnInit() {
-
   }
 
   changeEventsDataPrev() {

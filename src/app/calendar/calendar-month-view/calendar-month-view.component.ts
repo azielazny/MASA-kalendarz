@@ -36,62 +36,10 @@ export class CalendarMonthViewComponent implements OnInit {
   constructor() {
   }
 
-  formatForDate(num: number): string {
-    let newNum: string = num + "";
-    return (newNum.length < 2)? "0" + newNum:newNum;
-  }
-
-  openRightColumn(index) {
-    this.parent.rightColumn.shown = true;
-
-    this.parent.rightColumn.day = this.formatForDate(index);
-    this.parent.rightColumn.month = this.formatForDate(this.month + 1);
-    this.parent.rightColumn.year = this.year;
-    this.outputDate.emit(this.formatForDate(index)+"."+this.formatForDate(this.month + 1)+"."+this.year);
-    
-    this.clearActiveClass();
-    this.lightBoxes.toArray()[index - 1].active = true;
-  }
-
-  clearActiveClass() {
-    for (let x of this.lightBoxes.toArray())
-      x.active = false;
-  }
-
   ngOnInit() {
     this.now.setFullYear(this.now.getFullYear());
     this.monthGen(this.month, this.year);
     this.outputEvent.emit(this.months[this.thisMonth] + " " + this.year);
-  }
-
-  getPrevMonth() {
-    this.now.setMonth(this.now.getMonth() - 1);
-    this.year = this.now.getFullYear();
-    this.month = this.now.getMonth();
-    this.monthGen(this.month, this.year);
-    this.outputEvent.emit(this.months[this.month] + " " + this.year);
-  }
-
-  getNextMonth() {
-    this.now.setMonth(this.now.getMonth() + 1);
-    this.year = this.now.getFullYear();
-    this.month = this.now.getMonth();
-    this.monthGen(this.month, this.year);
-    this.outputEvent.emit(this.months[this.month] + " " + this.year);
-  }
-
-  februaryInYear(year) {
-    return (year % 4 == 0) ? 29 : 28;
-  }
-
-  monthDays(month, year) {
-    if (month != 2) {
-      let x = (month <= 7) ? 1 : 0;
-      return 30 + (Number(month % 2 == x));
-    } else {
-      return this.februaryInYear(year);
-    }
-
   }
 
   //dni w miesiącu
@@ -103,8 +51,8 @@ export class CalendarMonthViewComponent implements OnInit {
     this.actualMonthDays = [];
     this.week_list = [];
 
-    let mDays = this.monthDays(m + 1, y);
-    let mDaysPrev = this.monthDays(m, y);
+    let mDays = CalendarMonthViewComponent.monthDays(m + 1, y);
+    let mDaysPrev = CalendarMonthViewComponent.monthDays(m, y);
 
     let data = new Date(y, m, 1);
     let marginToDay = data.getDay() - 1;
@@ -127,5 +75,57 @@ export class CalendarMonthViewComponent implements OnInit {
 
     }
 
+  }
+
+  static monthDays(month, year) {
+    if (month != 2) {
+      let x = (month <= 7) ? 1 : 0;
+      return 30 + (Number(month % 2 == x));
+    } else {
+      return CalendarMonthViewComponent.februaryInYear(year);
+    }
+
+  }
+
+  static februaryInYear(year) {
+    return (year % 4 == 0) ? 29 : 28;
+  }
+
+  getPrevMonth() {
+    this.now.setMonth(this.now.getMonth() - 1);
+    this.year = this.now.getFullYear();
+    this.month = this.now.getMonth();
+    this.monthGen(this.month, this.year);
+    this.outputEvent.emit(this.months[this.month] + " " + this.year);
+  }
+
+  getNextMonth() {
+    this.now.setMonth(this.now.getMonth() + 1);
+    this.year = this.now.getFullYear();
+    this.month = this.now.getMonth();
+    this.monthGen(this.month, this.year);
+    this.outputEvent.emit(this.months[this.month] + " " + this.year);
+  }
+
+  clearActiveClass() {
+    for (let x of this.lightBoxes.toArray())
+      x.active = false;
+  }
+
+  openRightColumn(index) {
+    this.parent.rightColumn.shown = true;
+
+    this.parent.rightColumn.day = CalendarMonthViewComponent.formatForDate(index);
+    this.parent.rightColumn.month = CalendarMonthViewComponent.formatForDate(this.month + 1);
+    this.parent.rightColumn.year = this.year;
+    this.outputDate.emit(CalendarMonthViewComponent.formatForDate(index)+"."+CalendarMonthViewComponent.formatForDate(this.month + 1)+"."+this.year);
+
+    this.clearActiveClass();
+    this.lightBoxes.toArray()[index - 1].active = true;
+  }
+
+  static formatForDate(num: number): string {
+    let newNum: string = num + "";
+    return (newNum.length < 2)? "0" + newNum:newNum;
   }
 }
