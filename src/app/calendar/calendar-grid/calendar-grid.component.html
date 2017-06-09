@@ -1,6 +1,6 @@
 <section id="calendar" class="col-xs-7  col-sm-8 col-md-9  col-xl-10" [class.shortCal]="checkIfShowShortView()">
-  <calendar-right-column #rightColumn [parent]="this" [selectedDate]="selectedDate"></calendar-right-column>
-  <calendar-edit-events #editEvents></calendar-edit-events>
+  <calendar-right-column #rightColumn  (outputEventId)= "getEventID($event)" [parent]="this" [selectedDate]="selectedDate"></calendar-right-column>
+  <calendar-edit-events #editEvents [selectedEvent]="selectedEvent"></calendar-edit-events>
   <calendar-title-navbar [parent]="this" [actualMonth]="actualMonth" ></calendar-title-navbar>
   <calendar-month-view [parent]="this" (outputEvent)= "changeOfMonth($event)" (outputDate)= "sendDateToRightColumn($event)"></calendar-month-view>
 </section>

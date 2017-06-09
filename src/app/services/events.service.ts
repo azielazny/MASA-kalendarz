@@ -38,7 +38,8 @@ export class EventsService {
       withCredentials: true // CORS Access-Control-Allow-Credentials header
     });
 
-    return this.http.get(this.url + "/list/" + username + '/' + day, options)
+    return this.http.get("http://localhost/danzet/xxx.php")//, options)
+    // return this.http.get(this.url + "/list/" + username + '/' + day, options)
       .map(this.extractEventsList);
   }
 

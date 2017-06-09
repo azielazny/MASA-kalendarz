@@ -11,7 +11,7 @@
     <div class="eventPrev" (click)="changeEventsDataPrev()">
       <i class="fa fa-angle-double-up"></i>
     </div>
-    <calendar-right-column-events-list *ngFor="let event of eventsToShow" [eventdata]="event" [parent]="this" ></calendar-right-column-events-list>
+    <calendar-right-column-events-list *ngFor="let event of eventsToShow" [eventdata]="event" [parent]="this" (outputEventId)= "getEventID($event)"></calendar-right-column-events-list>
     <div class="eventNext" (click)="changeEventsDataNext()">
       <i class="fa fa-angle-double-down"></i>
     </div>

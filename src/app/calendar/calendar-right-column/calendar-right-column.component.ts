@@ -1,4 +1,4 @@
-import {Component, OnInit, Input, NgZone, OnChanges} from '@angular/core';
+import {Component, OnInit, Input, NgZone, OnChanges, Output, EventEmitter} from '@angular/core';
 import {EventsService} from "../../services/events.service";
 import {Event} from "../../class/event.class";
 
@@ -21,6 +21,8 @@ export class CalendarRightColumnComponent implements OnInit, OnChanges {
 
   @Input()
   public parent;
+
+  @Output() outputEventId: EventEmitter<number> = new EventEmitter();
 
   constructor(private eventsService: EventsService) {
     this.height = <any>window.innerHeight;
@@ -75,6 +77,9 @@ export class CalendarRightColumnComponent implements OnInit, OnChanges {
       this.counter += 1;
 
     }
+  }
+  getEventID(value) {
+    this.outputEventId.emit(value);
   }
 
 }

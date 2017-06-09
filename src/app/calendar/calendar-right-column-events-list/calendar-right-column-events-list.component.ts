@@ -1,4 +1,4 @@
-import {Component, OnInit, Input} from '@angular/core';
+import {Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
 import {EventsService} from "../../services/events.service";
 import {Event} from "../../class/event.class";
 
@@ -16,6 +16,7 @@ export class CalendarRightColumnEventsListComponent implements OnInit {
 
   private startDate: string;
   private endDate: string;
+  @Output() outputEventId: EventEmitter<number> = new EventEmitter();
 
   constructor() {
   }
@@ -41,6 +42,12 @@ export class CalendarRightColumnEventsListComponent implements OnInit {
   static formatForDate(num: number): string {
     let newNum: string = num + "";
     return (newNum.length < 2) ? "0" + newNum : newNum;
+  }
+
+  editEvent(event_id:number) {
+    this.parent.parent.editEvents.shown = true;
+    this.outputEventId.emit(event_id);
+
   }
 
 }
