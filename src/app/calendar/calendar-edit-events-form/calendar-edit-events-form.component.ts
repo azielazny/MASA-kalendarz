@@ -18,14 +18,14 @@ export class CalendarEditEventsFormComponent implements OnInit, OnChanges, After
   private eventData: Event;
   private title: string = "";
   pl: any;
-  private dateStart: string="";
-  private hourStart: string="";
-  private dateEnd: string="";
-  private hourEnd: string="";
-  private location: string="";
-  private description: string="";
+  private dateStart: string = "";
+  private hourStart: string = "";
+  private dateEnd: string = "";
+  private hourEnd: string = "";
+  private location: string = "";
+  private description: string = "";
 
-  cars: SelectItem[] = [];
+  categories: SelectItem[] = [];
 
   selectedCategory: any = 'fff';
 
@@ -34,7 +34,7 @@ export class CalendarEditEventsFormComponent implements OnInit, OnChanges, After
   }
 
   buildCar(val) {
-    this.cars.push({label: val.category_color, value: val});
+    this.categories.push({label: val.category_color, value: val});
   }
 
 
@@ -52,6 +52,14 @@ export class CalendarEditEventsFormComponent implements OnInit, OnChanges, After
 
   ngOnChanges() {
     if (this.eventData) {
+      // if (this.eventData.category != 0) {
+
+        this.categories.filter(val => {
+          if (val.value.category_id == this.eventData.category)
+            this.selectedCategory = val.value;
+        });
+      // }
+
       // let loc_city= (this.eventData.loc_city) ? this.eventData.loc_city: "";
       // let loc_country= (this.eventData.loc_country) ? this.eventData.loc_country: "";
       // let loc_street= (this.eventData.loc_street) ? "ul. " +this.eventData.loc_street: "";
@@ -59,7 +67,7 @@ export class CalendarEditEventsFormComponent implements OnInit, OnChanges, After
       // let loc_name= (this.eventData.loc_name) ? this.eventData.loc_name: "";
 
       this.title = (this.eventData.title) ? this.eventData.title : "Nazwa zdarzenia...";
-      this.description = (this.eventData.description) ? this.eventData.description: "Opis zdarzenia...";
+      this.description = (this.eventData.description) ? this.eventData.description : "Opis zdarzenia...";
       // this.location = (loc_name+" "+loc_country+" "+loc_city+" "+loc_street+" "+loc_number).trim();
 
       // czasy początku i końca (formatowanie)

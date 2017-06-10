@@ -34,7 +34,8 @@ export class CalendarRightColumnComponent implements OnInit, OnChanges {
     return (limit > 0) ? limit : 1;
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+  }
 
   ngOnChanges() {
     console.log(this.selectedDate);
@@ -44,11 +45,11 @@ export class CalendarRightColumnComponent implements OnInit, OnChanges {
   }
 
   private eventByData(value: Event[], index: number) {
-    this.eventsToShow=[];
+    this.eventsToShow = [];
     this.eventslist = value;
-    for (let i=index;i<index+this.limitEvents;i++) {
+    for (let i = index; i < index + this.limitEvents; i++) {
       this.eventsToShow.push(value[i]);
-      if(this.eventslist.length - 1==i) break;
+      if (this.eventslist.length - 1 == i) break;
     }
     // console.log(this.eventslist);
   }
@@ -78,6 +79,7 @@ export class CalendarRightColumnComponent implements OnInit, OnChanges {
 
     }
   }
+
   getEventID(value) {
     this.outputEventId.emit(value);
   }
