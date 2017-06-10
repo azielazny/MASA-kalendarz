@@ -52,6 +52,14 @@ export class EventsService {
     return this.http.get(this.url + "/details/" + eventid, options)
       .map(this.extractEventDetails);
   }
+  detailsForUser(username:string, eventid: number): Observable<Event> {
+    let options = new RequestOptions({
+      withCredentials: true // CORS Access-Control-Allow-Credentials header
+    });
+    return this.http.get("http://localhost/danzet/xxx.php")//, options)
+    // return this.http.get(this.url + "/details/" + username+"/" + eventid, options)
+      .map(this.extractEventDetails);
+  }
 
   add(event: Event): Observable<boolean> {
     let headers = new Headers({'Content-Type': 'application/json'});

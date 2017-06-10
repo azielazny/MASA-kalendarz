@@ -19,10 +19,10 @@ export class CategoriesService {
     let options = new RequestOptions({
       withCredentials: true // CORS Access-Control-Allow-Credentials header
     });
-
-    return this.http.get(this.url + "/list/" + username + "/" + lastknowncid, options)
+    return this.http.get("http://localhost/danzet/xxx.php")//, options)
+    // return this.http.get(this.url + "/list/" + username + "/" + lastknowncid, options)
       .map(this.extractCategoriesList);
- 
+
   }
 
   add(username: string, categoryname: string, color: string) {
