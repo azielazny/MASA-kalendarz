@@ -9,7 +9,7 @@ declare var $: JQueryStatic;
 })
 
 
-export class WeatherWidgetComponent implements OnInit, AfterViewInit {
+export class WeatherWidgetComponent implements OnInit, AfterViewInit, OnChanges {
   @Input()
   private eventdata: Event;
 
@@ -25,11 +25,27 @@ export class WeatherWidgetComponent implements OnInit, AfterViewInit {
   }
 
   ngOnInit() {
-    if (this.eventdata.start_ts >= this.now.getTime() && this.eventdata.start_ts <= this.maxDate)
-      this.hiddenStyle = true;
+    if(this.eventdata) {
+      if (this.eventdata.start_ts >= this.now.getTime() && this.eventdata.start_ts <= this.maxDate)
+        this.hiddenStyle = true;
+    }
   }
 
   ngAfterViewInit() {
+    if(this.eventdata) {
+      (<any>window).myWidgetParam = {
+        id: 21,
+        event_date: this.eventdata.start_ts,
+        city_name: this.eventdata.loc_city.trim(),
+        appid: this._weatherappid,
+        units: this._weatherunits,
+        containerid: this._weathercontainer
+      };
+      require("app/shared/weather-widget/WeatherFromApi.js");
+    }
+  }
+ngOnChanges() {
+  if(this.eventdata) {
     (<any>window).myWidgetParam = {
       id: 21,
       event_date: this.eventdata.start_ts,
@@ -39,7 +55,6 @@ export class WeatherWidgetComponent implements OnInit, AfterViewInit {
       containerid: this._weathercontainer
     };
     require("app/shared/weather-widget/WeatherFromApi.js");
-
   }
-
+}
 }

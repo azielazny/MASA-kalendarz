@@ -52,15 +52,15 @@ export class CalendarEditEventsFormComponent implements OnInit, OnChanges, After
 
   ngOnChanges() {
     if (this.eventData) {
-      let loc_city= (this.eventData.loc_city) ? this.eventData.loc_city: "";
-      let loc_country= (this.eventData.loc_country) ? this.eventData.loc_country: "";
-      let loc_street= (this.eventData.loc_street) ? "ul. " +this.eventData.loc_street: "";
-      let loc_number= (this.eventData.loc_bnum) ? this.eventData.loc_bnum: "";
-      let loc_name= (this.eventData.loc_name) ? this.eventData.loc_name: "";
+      // let loc_city= (this.eventData.loc_city) ? this.eventData.loc_city: "";
+      // let loc_country= (this.eventData.loc_country) ? this.eventData.loc_country: "";
+      // let loc_street= (this.eventData.loc_street) ? "ul. " +this.eventData.loc_street: "";
+      // let loc_number= (this.eventData.loc_bnum) ? this.eventData.loc_bnum: "";
+      // let loc_name= (this.eventData.loc_name) ? this.eventData.loc_name: "";
 
       this.title = (this.eventData.title) ? this.eventData.title : "Nazwa zdarzenia...";
       this.description = (this.eventData.description) ? this.eventData.description: "Opis zdarzenia...";
-      this.location = (loc_name+" "+loc_country+" "+loc_city+" "+loc_street+" "+loc_number).trim();
+      // this.location = (loc_name+" "+loc_country+" "+loc_city+" "+loc_street+" "+loc_number).trim();
 
       // czasy początku i końca (formatowanie)
       let start = new Date(this.eventData.start_ts * 1000);
@@ -101,6 +101,28 @@ export class CalendarEditEventsFormComponent implements OnInit, OnChanges, After
       this.hourStart = h1_s + ':' + m1_s;
       this.hourEnd = h2_s + ':' + m2_s;
 
+      // lokalizacja (formatowanie)
+      this.location = "";
+
+      if (this.eventData.loc_name != null)
+        this.location += this.eventData.loc_name.trim() + ', ';
+
+      if (this.eventData.loc_street != null)
+        this.location += this.eventData.loc_street.trim();
+
+      if (this.eventData.loc_street != null && this.eventData.loc_bnum != null)
+        this.location += " ";
+
+      if (this.eventData.loc_bnum != null)
+        this.location += this.eventData.loc_bnum.trim();
+
+      if ((this.eventData.loc_street != null || this.eventData.loc_bnum != null) && this.eventData.loc_city != null)
+        this.location += ', ';
+
+      if (this.eventData.loc_city != null)
+        this.location += this.eventData.loc_city.trim();
+
+      this.location = this.location.toUpperCase();
 
     }
   }
