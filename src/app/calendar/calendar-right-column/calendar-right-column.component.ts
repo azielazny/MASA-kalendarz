@@ -38,7 +38,6 @@ export class CalendarRightColumnComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges() {
-    console.log(this.selectedDate);
     this.eventsService.listForUserByDate(this.username, this.selectedDate).subscribe(val => {
       this.eventByData(val, 0);
     });
@@ -55,6 +54,7 @@ export class CalendarRightColumnComponent implements OnInit, OnChanges {
   }
 
   addNewEvent() {
+    this.outputEventId.emit(null);
     this.parent.editEvents.shown = true;
   }
 
