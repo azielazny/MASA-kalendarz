@@ -1,5 +1,7 @@
 import {Component, OnInit, Input, OnChanges} from '@angular/core';
 import {Router} from "@angular/router";
+import {Event} from "../../class/event.class";
+
 
 @Component({
   selector: 'calendar-edit-events-right-column',
@@ -9,6 +11,7 @@ import {Router} from "@angular/router";
 export class CalendarEditEventsRightColumnComponent implements OnInit, OnChanges {
   @Input()
   private eventdata: Event;
+  private location: string;
 
   constructor() {
   }
@@ -16,9 +19,36 @@ export class CalendarEditEventsRightColumnComponent implements OnInit, OnChanges
 
   ngOnInit() {
   }
-ngOnChanges() {
-    console.log(this.eventdata)
-}
+
+  ngOnChanges() {
+    console.log("cccc");
+console.log(this.location);
+    // lokalizacja (formatowanie)
+    this.location = "";
+    if (this.eventdata) {
+
+      if (this.eventdata.loc_name != null)
+        this.location += this.eventdata.loc_name.trim() + ', ';
+
+      if (this.eventdata.loc_street != null)
+        this.location += this.eventdata.loc_street.trim();
+
+      if (this.eventdata.loc_street != null && this.eventdata.loc_bnum != null)
+        this.location += " ";
+
+      if (this.eventdata.loc_bnum != null)
+        this.location += this.eventdata.loc_bnum.trim();
+
+      if ((this.eventdata.loc_street != null || this.eventdata.loc_bnum != null) && this.eventdata.loc_city != null)
+        this.location += ', ';
+
+      if (this.eventdata.loc_city != null)
+        this.location += this.eventdata.loc_city.trim();
+
+      this.location = this.location.toUpperCase();
+    }
+  }
+
 }
 /**
  * Created by LABDI on 19.05.2017.

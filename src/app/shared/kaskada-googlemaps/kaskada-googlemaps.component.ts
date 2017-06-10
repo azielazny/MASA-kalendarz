@@ -22,7 +22,6 @@ export class KaskadaGoogleMapsComponent implements OnChanges{
   }
 
   ngOnChanges () {
-
     var _this = this;
 
     this.mapsAPILoader.load().then(function() {

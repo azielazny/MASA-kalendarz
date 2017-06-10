@@ -475,7 +475,7 @@ app-calendar-backoffice {
     display: block;
     color: $black;
     .mapa {
-      border: 1px solid darken($gray, 10%);
+      border: 1px solid $lightgray;
       padding: 5px;
       color: $gray;
       background: none;
@@ -551,7 +551,7 @@ app-calendar-backoffice {
         color: #8c8a8d;
       }
       .calField, & select, .selectColor, .bigSize {
-        border: 1px solid darken($gray, 10%);
+        border: 1px solid $lightgray;
         padding: 5px;
         color: $gray;
         background: none;
@@ -633,7 +633,7 @@ app-calendar-backoffice {
 
       .ui-accordion .ui-accordion-header {
         background: #fbfbfb !important;
-        border: 1px solid #59575a !important;
+        border: 1px solid $lightgray !important;
         margin-bottom: 10px;
         border-radius: 0px;
         a {
@@ -647,7 +647,7 @@ app-calendar-backoffice {
       }
       .ui-accordion .ui-accordion-content {
         margin: 10px 0 !important;
-        border: 1px solid darken($gray, 20%) !important;
+        border: 1px solid $lightgray !important;
         min-height: 100px;
       }
 
