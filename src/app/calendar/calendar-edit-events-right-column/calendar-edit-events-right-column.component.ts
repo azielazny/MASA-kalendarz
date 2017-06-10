@@ -21,12 +21,13 @@ export class CalendarEditEventsRightColumnComponent implements OnInit, OnChanges
   }
 
   ngOnChanges() {
-    console.log("cccc");
-console.log(this.location);
-    // lokalizacja (formatowanie)
+    this.buildLocationData();
+  }
+
+  private buildLocationData() {
+// lokalizacja (formatowanie)
     this.location = "";
     if (this.eventdata) {
-
       if (this.eventdata.loc_name != null)
         this.location += this.eventdata.loc_name.trim() + ', ';
 
@@ -50,6 +51,3 @@ console.log(this.location);
   }
 
 }
-/**
- * Created by LABDI on 19.05.2017.
- */
