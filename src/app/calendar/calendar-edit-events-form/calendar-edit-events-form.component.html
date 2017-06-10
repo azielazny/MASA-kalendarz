@@ -10,7 +10,7 @@
     </p-dropdown>
   </div>
   <input type="text" value="{{title}}" class="bigSize" placeholder="Nazwa zdarzenia...">
-  <input type="text" value="Lokalizacja..." class="fullWidth calField" placeholder="Lokalizacja...">
+  <input type="text" value="{{location}}" class="fullWidth calField" placeholder="Lokalizacja...">
 
   <div class="calFieldDate calField ">
     <div class="input-group editDate">
@@ -41,7 +41,7 @@
 
   <p-accordion>
     <p-accordionTab header="Opis zdarzenia" [selected]="true">
-      Opis zdarzenia
+      <textarea placeholder="Opis zdarzenia">{{description}}</textarea>
     </p-accordionTab>
     <p-accordionTab header="Osoby zapisane">
       - Imie i nazwisko<br>- Imie i nazwisko<br>- Imie i nazwisko<br>- Imie i
