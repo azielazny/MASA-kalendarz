@@ -25,10 +25,12 @@ export class CalendarEditEventsFormComponent implements OnInit, OnChanges, After
   private selectedCategory: any = 'fff';
 
   private usersData: User[] = [];
+  private usersCount:number;
   categories: SelectItem[] = [];
-  
+
   @Input()
   private eventData: Event;
+
 
   constructor(private categoriesService: CategoriesService, private eventsService: EventsService) {
     this.categoriesService.list(this.username, 0).map(val => val.forEach(v => this.buildEventData(v))).subscribe();
@@ -53,7 +55,7 @@ export class CalendarEditEventsFormComponent implements OnInit, OnChanges, After
     if (this.eventData) {
       this.title = (this.eventData.title) ? this.eventData.title : "Nazwa zdarzenia...";
       this.description = (this.eventData.description) ? this.eventData.description : "Opis zdarzenia...";
-      
+
       this.getUsersList();
       this.getSelectedCategoryData();
       this.buildEventDeteData();
@@ -66,6 +68,8 @@ export class CalendarEditEventsFormComponent implements OnInit, OnChanges, After
     this.eventsService.userListForEvent(this.eventData.event_id).subscribe(val => {
       this.usersData = val
     });
+    this.usersCount=this.usersData.length;
+    console.log(this.usersCount)
   }
 
   private getSelectedCategoryData() {
