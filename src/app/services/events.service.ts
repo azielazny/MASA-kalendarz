@@ -10,7 +10,7 @@ import {Attendant} from '../class/attendant.class';
 
 @Injectable()
 export class EventsService {
-  private url = "https://masa.oustish.pl/events";
+  private url = "https://masa.ousti.sh/events";
 
   constructor(private http: Http) {
   };
