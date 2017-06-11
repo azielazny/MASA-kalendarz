@@ -15,7 +15,7 @@ export class CategoriesService {
   constructor(private http: Http) {
   };
 
-  list(username: string, lastknowncid: number = 0): Observable<Category[]> {
+  list(): Observable<Category[]> {
     let options = new RequestOptions({
       withCredentials: true // CORS Access-Control-Allow-Credentials header
     });

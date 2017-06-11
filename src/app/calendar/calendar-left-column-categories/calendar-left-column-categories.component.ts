@@ -17,7 +17,7 @@ export class CalendarLeftColumnCategoriesComponent implements OnInit {
   public categories: Category[] = [];
 
   constructor(private categoriesService: CategoriesService) {
-    this.categoriesService.list(this.username, 0).subscribe(val => {
+    this.categoriesService.list().subscribe(val => {
       if (val.length == 0) {
         this.showResponseDiv = true;
         return;
@@ -32,7 +32,7 @@ export class CalendarLeftColumnCategoriesComponent implements OnInit {
   }
 
   addCategory() {
-    let categoryName = $('[name=categoryName]').val();
+    /*let categoryName = $('[name=categoryName]').val();
     let categoryColor = $('[name=categoryColor]').val();
 
     this.categoriesService.add(this.username, categoryName, categoryColor).subscribe(val => {
@@ -45,11 +45,11 @@ export class CalendarLeftColumnCategoriesComponent implements OnInit {
 
         this.categories = val;
       });
-    });
+    });*/
   }
 
   removeCategory(categoryId:number) {
-    let categoryColor = $('[name=categoryColor]').val();
+    /*let categoryColor = $('[name=categoryColor]').val();
     this.categoriesService.remove(this.username,categoryId).subscribe(val => {
       this.showResponseDiv = false;
 
@@ -59,7 +59,7 @@ export class CalendarLeftColumnCategoriesComponent implements OnInit {
 
         this.categories = val;
       });
-    });
+    });*/
   }
 
 
