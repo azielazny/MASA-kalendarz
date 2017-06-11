@@ -15,6 +15,8 @@ export class CalendarTitleNavbarComponent implements OnInit {
 
   @Input()
   public parent;
+  @Input()
+  public actualMonth;
 
   checkIfShowShortView() {
     return this.parent.parent.leftColumn.logoBox.showShortView && ($(document).width() > $("#main").width());

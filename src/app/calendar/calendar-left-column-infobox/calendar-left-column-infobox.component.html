@@ -1,10 +1,9 @@
 <section id="newAlerts">
-  <i class="fa fa-angle-down" aria-hidden="true"></i>
-  <i class="fa fa-angle-up" aria-hidden="true"></i>
+  <i class="fa fa-angle-down" aria-hidden="true" (click)="changeEventDataPrev()"></i>
+  <i class="fa fa-angle-up" aria-hidden="true" (click)="changeEventDataNext()"></i>
   <div class="info">
-    <span>Najbliższe wydarzenia</span>
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consectetur explicabo iure mollitia, sed
-      veritatis voluptas.</p>
+    <span>{{title}}</span>
+    <p>{{description}}</p>
   </div>
 
 </section>

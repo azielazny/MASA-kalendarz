@@ -24,6 +24,15 @@ export class EventsService {
       .map(this.extractEventsList);
   }
 
+  limitListForUser(username:string, limit: number = 5): Observable<Event[]> {
+    let options = new RequestOptions({
+      withCredentials: true // CORS Access-Control-Allow-Credentials header
+    });
+
+    return this.http.get(this.url + "/list/" + username + '/' + limit, options)
+      .map(this.extractEventsList);
+  }
+
 
   details(eventid: number): Observable<Event> {
     let options = new RequestOptions({
