@@ -44,10 +44,9 @@
       <textarea placeholder="Opis zdarzenia">{{description}}</textarea>
     </p-accordionTab>
     <p-accordionTab header="Osoby zapisane">
-      - Imie i nazwisko<br>- Imie i nazwisko<br>- Imie i nazwisko<br>- Imie i
-      nazwisko<br>- Imie i nazwisko<br>- Imie i nazwisko<br>- Imie i nazwisko<br>-
-      Imie i nazwisko<br>- Imie i nazwisko<br>-
-      Imie i nazwisko<br>
+      <ul>
+        <calendar-edit-events-users-list *ngFor="let user of usersData" [user]="user"></calendar-edit-events-users-list>
+      </ul>
     </p-accordionTab>
     <p-accordionTab header="Ustawienia publiczne">
       W trakcie budowy

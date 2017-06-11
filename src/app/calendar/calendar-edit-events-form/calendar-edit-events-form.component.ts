@@ -2,6 +2,8 @@ import {Component, OnInit, Input, OnChanges, AfterViewInit} from '@angular/core'
 import {Event} from "../../class/event.class";
 import {SelectItem} from 'primeng/primeng'
 import {CategoriesService} from "../../services/categories.service";
+import {EventsService} from "../../services/events.service";
+import {User} from "../../class/user.class";
 declare var $: any;
 
 
@@ -26,8 +28,9 @@ export class CalendarEditEventsFormComponent implements OnInit, OnChanges, After
 
   @Input()
   private eventData: Event;
+  private usersData: User[] = [];
 
-  constructor(private categoriesService: CategoriesService) {
+  constructor(private categoriesService: CategoriesService, private eventsService: EventsService) {
     this.categoriesService.list(this.username, 0).map(val => val.forEach(v => this.buildEventData(v))).subscribe();
   }
 
@@ -48,6 +51,10 @@ export class CalendarEditEventsFormComponent implements OnInit, OnChanges, After
 
   ngOnChanges() {
     if (this.eventData) {
+      this.eventsService.userListForEvent(this.eventData.event_id).subscribe(val => {
+        this.usersData = val
+      });
+
       this.title = (this.eventData.title) ? this.eventData.title : "Nazwa zdarzenia...";
       this.description = (this.eventData.description) ? this.eventData.description : "Opis zdarzenia...";
 
