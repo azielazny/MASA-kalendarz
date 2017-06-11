@@ -33,7 +33,7 @@ export class CategoriesService {
     });
 
     let data = {
-      categoryname: name,
+      name: name,
       color: color
     };
     return this.http.post(this.url + "/add", JSON.stringify(data), options)
@@ -45,7 +45,7 @@ export class CategoriesService {
       withCredentials: true // CORS Access-Control-Allow-Credentials header
     });
 
-    return this.http.post(this.url + "/remove/" + category_id, options)
+    return this.http.get(this.url + "/remove/" + category_id, options)
       .map(this.extractStatus);
   }
 

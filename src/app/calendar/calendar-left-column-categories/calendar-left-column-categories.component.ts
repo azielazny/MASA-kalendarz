@@ -11,15 +11,12 @@ import {Category} from "../../class/category.class";
 export class CalendarLeftColumnCategoriesComponent implements OnInit {
   public username:string = localStorage.getItem("userName");
 
-  public showResponseDiv = false;
-
   @Input()
   public categories: Category[] = [];
 
   constructor(private categoriesService: CategoriesService) {
     this.categoriesService.list().subscribe(val => {
       if (val.length == 0) {
-        this.showResponseDiv = true;
         return;
       }
        this.categories = val;
@@ -32,34 +29,31 @@ export class CalendarLeftColumnCategoriesComponent implements OnInit {
   }
 
   addCategory() {
-    /*let categoryName = $('[name=categoryName]').val();
+    let categoryName = $('[name=categoryName]').val();
     let categoryColor = $('[name=categoryColor]').val();
 
-    this.categoriesService.add(this.username, categoryName, categoryColor).subscribe(val => {
+    this.categoriesService.add(categoryName, categoryColor).subscribe(val => {
       $('[name=categoryName]').val('');
-      this.showResponseDiv = false;
 
-      this.categoriesService.list(this.username, 0).subscribe(val => {
+      this.categoriesService.list().subscribe(val => {
         if(val.length == 0)
-        { this.showResponseDiv = true; return; }
+        { return; }
 
         this.categories = val;
       });
-    });*/
+    });
   }
 
   removeCategory(categoryId:number) {
-    /*let categoryColor = $('[name=categoryColor]').val();
-    this.categoriesService.remove(this.username,categoryId).subscribe(val => {
-      this.showResponseDiv = false;
-
-      this.categoriesService.list(this.username, 0).subscribe(val => {
+    let categoryColor = $('[name=categoryColor]').val();
+    this.categoriesService.remove(categoryId).subscribe(val => {
+      this.categoriesService.list().subscribe(val => {
         if(val.length == 0)
-        { this.showResponseDiv = true; return; }
+        { return; }
 
         this.categories = val;
       });
-    });*/
+    });
   }
 
 
