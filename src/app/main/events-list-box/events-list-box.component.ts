@@ -25,7 +25,7 @@ export class EventsListBoxComponent implements OnInit {
   ngOnInit() {
     this.title = this.eventdata.title;
 
-    this.image = "https://masa.oustish.pl/events/image/" + this.eventdata.event_id.toString();
+    this.image = "https://masa.ousti.sh/events/image/" + this.eventdata.event_id.toString();
 
 
     // czas początku i końca (formatowanie)
