@@ -1,5 +1,4 @@
 import {Component, OnInit, Input, OnChanges, AfterViewInit} from '@angular/core';
-import {Event} from "../../class/event.class";
 import {User} from "../../class/user.class";
 
 
@@ -8,7 +7,7 @@ import {User} from "../../class/user.class";
   templateUrl: 'calendar-edit-events-users-list.component.html',
   styleUrls: ['calendar-edit-events-users-list.component.scss']
 })
-export class CalendarEditEventsUsersListComponent implements OnInit, OnChanges {
+export class CalendarEditEventsUsersListComponent  {
   @Input()
   private user: User;
 
@@ -16,12 +15,5 @@ export class CalendarEditEventsUsersListComponent implements OnInit, OnChanges {
   }
 
 
-  ngOnInit() {
-
-  }
-
-  ngOnChanges() {
-    
-  }
 
 }
