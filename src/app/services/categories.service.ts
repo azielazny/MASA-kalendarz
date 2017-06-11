@@ -9,7 +9,7 @@ import {Category} from "../class/category.class";
 
 @Injectable()
 export class CategoriesService {
-  private url = "https://masa.oustish.pl/categories";
+  private url = "https://masa.ousti.sh/categories";
 
 
   constructor(private http: Http) {
@@ -22,7 +22,7 @@ export class CategoriesService {
 
     return this.http.get(this.url + "/list/" + username + "/" + lastknowncid, options)
       .map(this.extractCategoriesList);
- 
+
   }
 
   add(username: string, categoryname: string, color: string) {
