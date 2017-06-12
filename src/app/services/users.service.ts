@@ -12,7 +12,7 @@ export class UsersService {
 
   constructor(private http: Http) {}
 
-  login(provider: string = "google", user_id: string): Observable<boolean> {
+  login(provider: string = "google", user_id: string): Observable<number> {
     let headers = new Headers({'Content-Type': 'application/json'});
     let options = new RequestOptions({
       headers: headers,
@@ -47,7 +47,7 @@ export class UsersService {
 
   }
 
-  details($uid, $provider) {
+  details($uid) {
     let options = new RequestOptions({
       withCredentials: true // CORS Access-Control-Allow-Credentials header
     });
@@ -71,5 +71,11 @@ export class UsersService {
     let body = res.json();
 
     return (body.code === 200);
+  }
+
+  private extractID(res: Response) {
+    let body = res.json();
+
+    return (body.uid || -1);
   }
 }
