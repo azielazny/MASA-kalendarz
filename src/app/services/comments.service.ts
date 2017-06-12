@@ -37,6 +37,21 @@ export class CommentsService {
     return this.http.post(this.url + "/add/" + eventid, JSON.stringify(data), options)
       .map(this.extractStatus);
   }
+  remove(eventid: number, username: string, comment_id: number) {
+    let headers = new Headers({'Content-Type': 'application/json'});
+    let options = new RequestOptions({
+      headers: headers,
+      withCredentials: true // CORS Access-Control-Allow-Credentials header
+    });
+
+    let data = {
+      username: username,
+      comment_id: comment_id
+    };
+
+    return this.http.post(this.url + "/remove/" + eventid, JSON.stringify(data), options)
+      .map(this.extractStatus);
+  }
 
   private extractCommentsList(res: Response) {
     let body = res.json();

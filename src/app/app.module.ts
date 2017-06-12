@@ -61,6 +61,8 @@ import {CalendarMonthViewWeekListComponent} from "./calendar/calendar-month-view
 import {CalendarRightColumnEventsListComponent} from "./calendar/calendar-right-column-events-list/calendar-right-column-events-list.component";
 import {CalendarModule, AccordionModule, DropdownModule} from "primeng/primeng";
 import {CalendarEditEventsUsersListComponent} from "./calendar/calendar-edit-events-users-list/calendar-edit-events-users-list.component";
+import {CalendarEditEventsCommentComponent} from "./calendar/calendar-edit-events-comment/calendar-edit-events-comment.component";
+import {CalendarEditEventsCommentsListComponent} from "./calendar/calendar-edit-events-comments-list/calendar-edit-events-comments-list.component";
 
 
 
@@ -111,7 +113,9 @@ import {CalendarEditEventsUsersListComponent} from "./calendar/calendar-edit-eve
     CalendarLeftColumnCategoriesListComponent,
     CalendarMonthViewWeekListComponent,
     CalendarRightColumnEventsListComponent,
-    CalendarEditEventsUsersListComponent
+    CalendarEditEventsUsersListComponent,
+    CalendarEditEventsCommentComponent,
+    CalendarEditEventsCommentsListComponent
   ],
   imports: [
     BrowserModule,
