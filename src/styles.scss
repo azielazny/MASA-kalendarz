@@ -808,3 +808,41 @@ label.ui-dropdown-label.ui-inputtext.ui-corner-all {
 .weatherWidgetForEdit {
   padding:0
 }
+
+@media screen
+{
+  .noPrint{}
+  .noScreen{display:none;}
+}
+
+@media print
+{
+  .noPrint{display:none;}
+  .noScreen{}
+}
+#print-icon {
+  float: right;
+}
+
+#usersList {
+  ul {
+    margin:0;
+    padding: 0;
+    max-height: 200px;
+    overflow: auto;
+    li{
+      padding: 5px;
+      border: 1px solid #ddd;
+      margin-bottom: 2px;
+      list-style: none;
+      /* margin-left: 0; */
+      color: #777;
+      font-weight: 500;
+      font-family: Arial;
+      i {
+        color: #d8d7d9;
+        margin-right: 10px;
+      }
+    }
+  }
+}

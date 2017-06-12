@@ -1,9 +1,10 @@
-import {Component, OnInit, Input, OnChanges, AfterViewInit} from '@angular/core';
+import {Component, OnInit, Input, OnChanges, AfterViewInit, Inject, NgZone} from '@angular/core';
 import {Event} from "../../class/event.class";
 import {SelectItem} from 'primeng/primeng'
 import {CategoriesService} from "../../services/categories.service";
 import {EventsService} from "../../services/events.service";
 import {User} from "../../class/user.class";
+import {DOCUMENT} from "@angular/platform-browser";
 declare var $: any;
 
 
@@ -32,7 +33,7 @@ export class CalendarEditEventsFormComponent implements OnInit, OnChanges, After
   private eventData: Event;
 
 
-  constructor(private categoriesService: CategoriesService, private eventsService: EventsService) {
+  constructor(private categoriesService: CategoriesService, private eventsService: EventsService, @Inject(DOCUMENT) private document: any) {
     this.categoriesService.list(this.username, 0).map(val => val.forEach(v => this.buildEventData(v))).subscribe();
   }
 
@@ -62,6 +63,25 @@ export class CalendarEditEventsFormComponent implements OnInit, OnChanges, After
       this.buildLocationData();
 
     }
+  }
+  printDiv(divName) {
+    let printContents, popupWin;
+    printContents = this.document.getElementById(divName).innerHTML;
+    popupWin = window.open('', '_blank', 'top=0,left=0,height=100%,width=auto');
+    popupWin.document.open();
+    popupWin.document.write(`
+          <html>
+              <head>
+                  <title>Print tab</title>
+                  <style>
+                      //........Customized style.......
+                  </style>
+              </head>
+              <body onload="window.print();window.close()">${printContents}
+              </body>
+          </html>`
+    );
+    popupWin.document.close();
   }
 
   private getUsersList() {

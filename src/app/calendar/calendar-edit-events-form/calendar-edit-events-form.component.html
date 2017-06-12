@@ -46,10 +46,16 @@
     <p-accordionTab >
       <p-header>
         Osoby zapisane <span class="badge">{{usersData.length}}</span>
+        <input type="button" (click)="printDiv('usersList')" value="drukuj listę" id="print-icon"/>
       </p-header>
-      <ul>
-        <calendar-edit-events-users-list *ngFor="let user of usersData" [user]="user"></calendar-edit-events-users-list>
-      </ul>
+
+      <div Id="usersList">
+      <h3 class="noScreen" style="text-align: center">Lista osób zapisanych na<br>{{title}}</h3>
+        <ul>
+          <calendar-edit-events-users-list *ngFor="let user of usersData" [user]="user"></calendar-edit-events-users-list>
+        </ul>
+
+      </div>
     </p-accordionTab>
     <p-accordionTab header="Ustawienia publiczne">
       W trakcie budowy
