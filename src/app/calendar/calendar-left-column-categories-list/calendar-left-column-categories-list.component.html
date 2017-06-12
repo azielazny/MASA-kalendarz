@@ -1,6 +1,6 @@
 
   <div class="actualCategory">
-    <div class="catBox"   [ngStyle]="{ 'color': '#'+categorydata.category_color }"><i class="fa fa-stop" aria-hidden="true"></i></div>
-    <div class="catName">{{categorydata.category_name}}</div>
+    <div class="catBox"   [ngStyle]="{ 'color': categorydata.color }"><i class="fa fa-stop" aria-hidden="true"></i></div>
+    <div class="catName">{{categorydata.name}}</div>
     <div class="catDel" (click)="parent.removeCategory(categorydata.category_id)"><i class="fa fa-times" aria-hidden="true"></i></div>
   </div>

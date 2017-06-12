@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from "@angular/router";
+import {CategoriesService} from "../../services/categories.service";
 
 @Component({
   selector: 'calendar-edit-events-form',
@@ -8,7 +9,7 @@ import {Router} from "@angular/router";
 })
 export class CalendarEditEventsFormComponent implements OnInit {
 
-  constructor() {}
+  constructor(private categoriesService: CategoriesService) {}
 
 
   ngOnInit() {
