@@ -72,10 +72,7 @@ export class CalendarEditEventsFormComponent implements OnInit, OnChanges, After
     popupWin.document.write(`
           <html>
               <head>
-                  <title>Print tab</title>
-                  <style>
-                      //........Customized style.......
-                  </style>
+                  <title>Print from .Makeplan</title>
               </head>
               <body onload="window.print();window.close()">${printContents}
               </body>
