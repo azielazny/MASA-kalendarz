@@ -9,7 +9,7 @@ import {Category} from "../class/category.class";
 
 @Injectable()
 export class CategoriesService {
-  private url = "https://masa.oustish.pl/categories";
+  private url = "https://masa.ousti.sh/categories";
 
 
   constructor(private http: Http) {

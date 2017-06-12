@@ -8,7 +8,7 @@ import 'rxjs/add/operator/map';
 
 @Injectable()
 export class UsersService {
-  private url = "https://masa.oustish.pl/users";
+  private url = "https://masa.ousti.sh/users";
 
   constructor(private http: Http) {}
 
