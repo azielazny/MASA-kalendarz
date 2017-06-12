@@ -61,7 +61,8 @@
       W trakcie budowy
     </p-accordionTab>
     <p-accordionTab header="Komentarze">
-      <calendar-edit-events-comments-list *ngFor="let ev of events" [eventdata]="ev" role="tabpanel" class="tab-pane" id="comments"></calendar-edit-events-comments-list>
+      <!--<calendar-edit-events-comments-list *ngFor="let ev of events" [eventdata]="ev" role="tabpanel" class="tab-pane" id="comments"></calendar-edit-events-comments-list>-->
+      <calendar-edit-events-comments-list [eventdata]="eventData" role="tabpanel" class="tab-pane" id="comments"></calendar-edit-events-comments-list>
     </p-accordionTab>
   </p-accordion>
 

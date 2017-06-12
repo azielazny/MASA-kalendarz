@@ -1,14 +1,15 @@
-import {Component, OnInit, Input} from '@angular/core';
+import {Component, OnInit, Input, OnChanges} from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
 import {CommentsService} from "../../services/comments.service";
 import {Comment} from "../../class/comment.class";
+import {Event} from "../../class/event.class";
 
 @Component({
   selector: 'calendar-edit-events-comments-list',
   templateUrl: 'calendar-edit-events-comments-list.component.html',
   styleUrls: ['calendar-edit-events-comments-list.component.scss']
 })
-export class CalendarEditEventsCommentsListComponent implements OnInit {
+export class CalendarEditEventsCommentsListComponent implements OnInit, OnChanges {
 
   public id : number;
   public showResponseDiv = false;
@@ -19,19 +20,22 @@ export class CalendarEditEventsCommentsListComponent implements OnInit {
   public comms : Comment[] = [];
 
   constructor(public route: ActivatedRoute, private commentsService: CommentsService) {
-    this.route.params.subscribe(params => {
-      this.id = params['id'];
 
-      this.commentsService.list(this.id, 0).subscribe(val => {
-        if(val.length == 0)
-          { this.showResponseDiv = true; return; }
-
-        this.comms = val;
-      });
-    });
   }
 
   ngOnInit() {
+  }
+  ngOnChanges() {
+    if(this.eventdata) {
+      this.route.params.subscribe(params => {
+        this.commentsService.list(this.eventdata.event_id, 0).subscribe(val => {
+          if(val.length == 0)
+          { this.showResponseDiv = true; return; }
+
+          this.comms = val;
+        });
+      });
+    }
   }
 
   showResponse() {
@@ -48,12 +52,12 @@ export class CalendarEditEventsCommentsListComponent implements OnInit {
     let comment = $('#komentarz_tresc').val();
     let username = $('#komentarz_username').val();
 
-    this.commentsService.add(this.id, username, comment).subscribe(val => {
+    this.commentsService.add(this.eventdata.event_id, username, comment).subscribe(val => {
       $('#komentarz_tresc').val('');
       $('#komentarz_username').val('').removeAttr('disabled');
       this.showResponseDiv = false;
 
-      this.commentsService.list(this.id, 0).subscribe(val => {
+      this.commentsService.list(this.eventdata.event_id, 0).subscribe(val => {
         if(val.length == 0)
           { this.showResponseDiv = true; return; }
 
