@@ -6,7 +6,12 @@
     <i class="fa fa-trash-o"></i> <span>Usuń</span>
   </div>
   <div class="mainNavBox" (click)="isVisibility(visibility)">
-    <i class="fa fa-unlock publicIcon"></i> <span>Publiczne</span>
+    <div *ngIf="visibility=='public'">
+      <i class="fa fa-unlock publicIcon"></i> <span>Publiczne</span>
+    </div>
+    <div *ngIf="visibility=='private'">
+      <i class="fa fa-lock privateIcon"></i> <span>Prywatne</span>
+    </div>
   </div>
   <div class="mainNavBox">
     <i class="fa fa-thumb-tack"></i> <span>Przypomnienie</span>
