@@ -73,4 +73,15 @@ export class CalendarEditEventsCommentsListComponent implements OnInit, OnChange
     });
   }
 
+  removeComment(comment_id: number) {
+    this.commentsService.remove(this.eventdata.event_id, comment_id).subscribe(val => {
+      this.commentsService.list(this.eventdata.event_id, 0).subscribe(val => {
+        if (val.length == 0) {
+          return;
+        }
+        this.comms = val;
+      });
+    });
+  }
+
 }

@@ -37,7 +37,7 @@ export class CommentsService {
     return this.http.post(this.url + "/add/" + eventid, JSON.stringify(data), options)
       .map(this.extractStatus);
   }
-  remove(eventid: number, username: string, comment_id: number) {
+  remove(eventid: number, comment_id: number) {
     let headers = new Headers({'Content-Type': 'application/json'});
     let options = new RequestOptions({
       headers: headers,
@@ -45,7 +45,6 @@ export class CommentsService {
     });
 
     let data = {
-      username: username,
       comment_id: comment_id
     };
 
