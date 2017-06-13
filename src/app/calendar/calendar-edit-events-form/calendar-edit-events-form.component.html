@@ -43,16 +43,16 @@
     <p-accordionTab header="Opis zdarzenia" [selected]="true">
       <textarea placeholder="Opis zdarzenia">{{description}}</textarea>
     </p-accordionTab>
-    <p-accordionTab header="Osoby zapisane">
+    <p-accordionTab header="Osoby zapisane" [disabled]="visibility=='private'">
       - Imie i nazwisko<br>- Imie i nazwisko<br>- Imie i nazwisko<br>- Imie i
       nazwisko<br>- Imie i nazwisko<br>- Imie i nazwisko<br>- Imie i nazwisko<br>-
       Imie i nazwisko<br>- Imie i nazwisko<br>-
       Imie i nazwisko<br>
     </p-accordionTab>
-    <p-accordionTab header="Ustawienia publiczne">
+    <p-accordionTab header="Ustawienia publiczne"  [disabled]="visibility=='private'">
       W trakcie budowy
     </p-accordionTab>
-    <p-accordionTab header="Komentarze">
+    <p-accordionTab header="Komentarze"  [disabled]="visibility=='private'">
       W trakcie budowy
     </p-accordionTab>
   </p-accordion>

@@ -27,7 +27,7 @@ export class CalendarEditEventsFormComponent implements OnInit, OnChanges, After
   @Input()
   private eventData: Event;
   @Input()
-  private visibility: string="private";
+  private visibility: string;
 
   constructor(private categoriesService: CategoriesService) {
     this.categoriesService.list().map(val => val.forEach(v => this.buildEventData(v))).subscribe();
@@ -50,12 +50,15 @@ export class CalendarEditEventsFormComponent implements OnInit, OnChanges, After
 
   ngOnChanges() {
     if (this.eventData) {
+      if (this.visibility == undefined) this.visibility = this.eventData.visibility;
+
       this.title = (this.eventData.title) ? this.eventData.title : "Nazwa zdarzenia...";
       this.description = (this.eventData.description) ? this.eventData.description : "Opis zdarzenia...";
 
       this.getSelectedCategoryData();
       this.buildEventDeteData();
       this.buildLocationData();
+      if (this.visibility != this.eventData.visibility) this.eventData.visibility = this.visibility;
 
     }
   }
