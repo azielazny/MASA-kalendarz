@@ -22,9 +22,9 @@
     </div>
 
     <div class="row calEditBody" [class.hidden]="tab == 'settings'">
-      <calendar-edit-events-menu></calendar-edit-events-menu>
+      <calendar-edit-events-menu (outputVisibility)= "changeVisibilityOfEvent($event)"></calendar-edit-events-menu>
       <div class="row">
-        <calendar-edit-events-form [eventData]="eventData" class="col-xs-12 col-md-8"></calendar-edit-events-form>
+        <calendar-edit-events-form [eventData]="eventData" [visibility]="visibility" class="col-xs-12 col-md-8"></calendar-edit-events-form>
         <calendar-edit-events-right-column [eventdata]="eventData" class="col-xs-12 col-md-4"></calendar-edit-events-right-column>
       </div>
       <div class="col-xs-1"></div>

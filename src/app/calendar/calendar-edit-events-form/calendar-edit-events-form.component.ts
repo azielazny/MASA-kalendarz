@@ -26,6 +26,8 @@ export class CalendarEditEventsFormComponent implements OnInit, OnChanges, After
 
   @Input()
   private eventData: Event;
+  @Input()
+  private visibility: string="private";
 
   constructor(private categoriesService: CategoriesService) {
     this.categoriesService.list().map(val => val.forEach(v => this.buildEventData(v))).subscribe();

@@ -1,4 +1,4 @@
-import {Component, OnInit, Input, OnChanges} from '@angular/core';
+import {Component, OnInit, Input, OnChanges, ViewChild} from '@angular/core';
 import {EventsService} from "../../services/events.service";
 import {Event} from "../../class/event.class";
 
@@ -12,9 +12,11 @@ export class CalendarEditEventsComponent implements OnInit, OnChanges {
   public shown = false;
   public tab = 'edit';
   public eventData: Event;
+  private visibility: string;
 
   @Input()
   private selectedEvent: number;
+
 
   constructor(private eventsService: EventsService) {
   }
@@ -24,14 +26,16 @@ export class CalendarEditEventsComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges() {
-    if(this.selectedEvent) {
+    if (this.selectedEvent) {
       this.eventsService.detailsForUser(this.username, this.selectedEvent).subscribe(val => {
         this.eventData = val;
       });
     }
-
   }
 
+  changeVisibilityOfEvent(value) {
+    this.visibility = value;
+  }
 
 }
 
