@@ -1,6 +1,6 @@
 <div>
   <section class="comment-list">
-    <calendar-edit-events-comment *ngFor="let cmnt of comms" [commentdata]="cmnt" [parent]="this"></calendar-edit-events-comment>
+    <calendar-edit-events-comment *ngFor="let cmnt of comms" [commentdata]="cmnt" [parent]="this" [class.moderator]="cmnt.user_id==moderator" ></calendar-edit-events-comment>
 
     <div class="comment-response" [class.hidden]="!showResponseDiv">
       <form class="form-horizontal">

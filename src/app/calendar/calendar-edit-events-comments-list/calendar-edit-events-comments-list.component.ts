@@ -1,4 +1,4 @@
-import {Component, OnInit, Input, OnChanges} from '@angular/core';
+import {Component, OnInit, Input, OnChanges, HostBinding} from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
 import {CommentsService} from "../../services/comments.service";
 import {Comment} from "../../class/comment.class";
@@ -16,6 +16,7 @@ export class CalendarEditEventsCommentsListComponent implements OnInit, OnChange
 
   @Input()
   public eventdata: Event;
+  private moderator:number=null;
 
   public comms : Comment[] = [];
 
@@ -27,6 +28,7 @@ export class CalendarEditEventsCommentsListComponent implements OnInit, OnChange
   }
   ngOnChanges() {
     if(this.eventdata) {
+      this.moderator=this.eventdata.user_id;
       this.route.params.subscribe(params => {
         this.commentsService.list(this.eventdata.event_id, 0).subscribe(val => {
           if(val.length == 0)
