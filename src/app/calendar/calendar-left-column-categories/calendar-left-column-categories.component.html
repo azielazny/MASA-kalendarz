@@ -1,11 +1,10 @@
 <section id="categoryList">
   <div class="input-group  input-group-sm">
-                <span class="input-group-addon" id="basic-addon1"><input type="color" name="categoryColor"
-                                                                         value="#0298ac">
-</span>
+    <span class="input-group-addon" id="basic-addon1">
+      <input type="color" name="categoryColor" value="#0298ac" />
+    </span>
     <input type="text" class="form-control" name="categoryName" placeholder="Dodaj etykietę...">
-    <span class="input-group-addon" id="basic-addon2" (click)="addCategory()"><i class="fa fa-play"></i>
-</span>
+    <span class="input-group-addon" id="basic-addon2" (click)="addCategory()"><i class="fa fa-play"></i></span>
   </div>
 
   <calendar-left-column-categories-list *ngFor="let category of categories" [categorydata]="category"

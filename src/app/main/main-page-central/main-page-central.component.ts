@@ -33,10 +33,10 @@ export class MainPageCentralComponent implements OnInit, AfterViewInit {
   onSignIn(googleUser) {
     if(window.localStorage.getItem("loggedAs") != null) return;
 
-    let resp : boolean;
-    this.usersService.login("google", googleUser.getAuthResponse().id_token).subscribe(ret => {resp = ret});
-
-    this.saveLoginData(googleUser.getAuthResponse().id_token);
+    this.usersService.login("google", googleUser.getAuthResponse().id_token).subscribe(ret => {
+      window.localStorage.setItem("uid", ret.toString());
+      this.saveLoginData(googleUser.getAuthResponse().id_token);
+    });
   }
 
   saveLoginData(googleUser) {
@@ -45,9 +45,7 @@ export class MainPageCentralComponent implements OnInit, AfterViewInit {
       window.localStorage.setItem("loggedBy","google");
       window.localStorage.setItem("loggedAs", googleUser);
 
-      this.zone.runOutsideAngular(() => {
-        location.reload();
-      });
+      this.router.navigate(['/calendar']);
     }
   }
 
