@@ -1,17 +1,19 @@
-import {Component, OnInit, Input} from '@angular/core';
+import {Component, OnInit, Input, OnChanges} from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
 import {CommentsService} from "../../services/comments.service";
 import {Comment} from "../../class/comment.class";
+import {Event} from "../../class/event.class";
 
 @Component({
   selector: 'app-event-details-tab-comments',
   templateUrl: 'event-details-tab-comments.component.html',
   styleUrls: ['event-details-tab-comments.component.scss']
 })
-export class EventDetailsTabCommentsComponent implements OnInit {
+export class EventDetailsTabCommentsComponent implements OnInit, OnChanges {
 
   public id : number;
   public showResponseDiv = false;
+  private moderator: number = null;
 
   @Input()
   public eventdata: Event;
@@ -19,19 +21,25 @@ export class EventDetailsTabCommentsComponent implements OnInit {
   public comms : Comment[] = [];
 
   constructor(public route: ActivatedRoute, private commentsService: CommentsService) {
-    this.route.params.subscribe(params => {
-      this.id = params['id'];
 
-      this.commentsService.list(this.id, 0).subscribe(val => {
-        if(val.length == 0)
-          { this.showResponseDiv = true; return; }
-
-        this.comms = val;
-      });
-    });
   }
 
   ngOnInit() {
+  }
+  ngOnChanges() {
+    if(this.eventdata) {
+      this.moderator = this.eventdata.user_id;
+      this.route.params.subscribe(params => {
+        this.id = params['id'];
+
+        this.commentsService.list(this.id, 0).subscribe(val => {
+          if(val.length == 0)
+          { this.showResponseDiv = true; return; }
+
+          this.comms = val;
+        });
+      });
+    }
   }
 
   showResponse() {

@@ -11,14 +11,14 @@ import {Event} from "../../class/event.class";
 })
 export class CalendarEditEventsCommentsListComponent implements OnInit, OnChanges {
 
-  public id : number;
+  public id: number;
   public showResponseDiv = false;
 
   @Input()
   public eventdata: Event;
-  private moderator:number=null;
+  private moderator: number = null;
 
-  public comms : Comment[] = [];
+  public comms: Comment[] = [];
 
   constructor(public route: ActivatedRoute, private commentsService: CommentsService) {
 
@@ -26,13 +26,16 @@ export class CalendarEditEventsCommentsListComponent implements OnInit, OnChange
 
   ngOnInit() {
   }
+
   ngOnChanges() {
-    if(this.eventdata) {
-      this.moderator=this.eventdata.user_id;
+    if (this.eventdata) {
+      this.moderator = this.eventdata.user_id;
       this.route.params.subscribe(params => {
         this.commentsService.list(this.eventdata.event_id, 0).subscribe(val => {
-          if(val.length == 0)
-          { this.showResponseDiv = true; return; }
+          if (val.length == 0) {
+            this.showResponseDiv = true;
+            return;
+          }
 
           this.comms = val;
         });
@@ -44,7 +47,7 @@ export class CalendarEditEventsCommentsListComponent implements OnInit, OnChange
     $('#komentarz_tresc').val('');
     $('#komentarz_username').val('').removeAttr('disabled');
 
-    if(window.localStorage.getItem('userName') != null)
+    if (window.localStorage.getItem('userName') != null)
       $('#komentarz_username').val(window.localStorage.getItem('userName')).attr('disabled', 'disabled');
 
     this.showResponseDiv = true;
@@ -60,8 +63,10 @@ export class CalendarEditEventsCommentsListComponent implements OnInit, OnChange
       this.showResponseDiv = false;
 
       this.commentsService.list(this.eventdata.event_id, 0).subscribe(val => {
-        if(val.length == 0)
-          { this.showResponseDiv = true; return; }
+        if (val.length == 0) {
+          this.showResponseDiv = true;
+          return;
+        }
 
         this.comms = val;
       });
