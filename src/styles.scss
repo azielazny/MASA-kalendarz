@@ -808,3 +808,38 @@ label.ui-dropdown-label.ui-inputtext.ui-corner-all {
 .weatherWidgetForEdit {
   padding:0
 }
+
+//nadpisane style dla pogody
+.event-weather {
+  padding:5px;
+  .widget-left {
+    overflow: auto;
+     width: 100% !important;//dopasowane do góry
+  }
+  .widget-left-menu {
+    width: auto;
+    margin: 0 auto;
+    display: table;
+    clear: both;
+    content: '';
+    background-color: #fff;
+    border-radius: 6px 6px 0 0;
+    overflow: hidden;
+  }
+  .widget-left__body {
+     -webkit-justify-content: inherit;
+     justify-content: inherit;
+    padding-bottom: 16px;
+    border-radius: 0 0 6px 6px;
+    -webkit-box-orient: horizontal;
+    -webkit-flex-direction: inherit;
+    -ms-flex-direction: inherit;
+    flex-direction: inherit;
+    width: 680px;
+    margin: 0 auto;
+    overflow: auto;
+  }
+  .widget-left__calendar {
+    margin: 0 auto;
+  }
+}
