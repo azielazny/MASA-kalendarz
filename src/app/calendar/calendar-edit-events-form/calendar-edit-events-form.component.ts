@@ -20,7 +20,7 @@ export class CalendarEditEventsFormComponent implements OnInit, OnChanges, After
   private hourEnd: string = "";
   private location: string = "";
   private description: string = "";
-  private selectedCategory: any = 'fff';
+  private selectedCategory: any = '#fff';
 
   categories: SelectItem[] = [];
 
@@ -29,7 +29,6 @@ export class CalendarEditEventsFormComponent implements OnInit, OnChanges, After
 
   constructor(private categoriesService: CategoriesService) {
     this.categoriesService.list().map(val => val.forEach(v => this.buildEventData(v))).subscribe();
-    console.log(this.categories)
   }
 
   buildEventData(val) {
