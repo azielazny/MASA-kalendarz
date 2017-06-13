@@ -10,7 +10,7 @@ import {Event} from "../../class/event.class";
   styleUrls: ['calendar-edit-events-comments-list.component.scss']
 })
 export class CalendarEditEventsCommentsListComponent implements OnInit, OnChanges {
-
+  public username: string = localStorage.getItem("userName");
   public id: number;
   public showResponseDiv = false;
 
@@ -47,8 +47,8 @@ export class CalendarEditEventsCommentsListComponent implements OnInit, OnChange
     $('#komentarz_tresc').val('');
     $('#komentarz_username').val('').removeAttr('disabled');
 
-    if (window.localStorage.getItem('userName') != null)
-      $('#komentarz_username').val(window.localStorage.getItem('userName')).attr('disabled', 'disabled');
+    if (this.username != null)
+      $('#komentarz_username').val(this.username).attr('disabled', 'disabled');
 
     this.showResponseDiv = true;
   }
