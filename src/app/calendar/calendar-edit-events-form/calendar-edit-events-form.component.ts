@@ -29,10 +29,11 @@ export class CalendarEditEventsFormComponent implements OnInit, OnChanges, After
 
   constructor(private categoriesService: CategoriesService) {
     this.categoriesService.list().map(val => val.forEach(v => this.buildEventData(v))).subscribe();
+    console.log(this.categories)
   }
 
   buildEventData(val) {
-    this.categories.push({label: val.category_color, value: val});
+    this.categories.push({label: val.color, value: val});
   }
 
   ngOnInit() {
