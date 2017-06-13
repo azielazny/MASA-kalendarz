@@ -23,7 +23,7 @@
 
     <div class="row calEditBody" [class.hidden]="tab == 'settings'">
       <calendar-edit-events-menu></calendar-edit-events-menu>
-      <div class="col-xs-12">
+      <div class="row">
         <calendar-edit-events-form [eventData]="eventData"></calendar-edit-events-form>
         <calendar-edit-events-right-column [eventdata]="eventData"></calendar-edit-events-right-column>
       </div>
