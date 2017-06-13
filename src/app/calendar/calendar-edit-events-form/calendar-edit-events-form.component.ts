@@ -28,6 +28,9 @@ export class CalendarEditEventsFormComponent implements OnInit, OnChanges, After
   private eventData: Event;
   @Input()
   private visibility: string;
+  @Input()
+  private reminder: boolean;
+  private remindEvent: boolean;
 
   constructor(private categoriesService: CategoriesService) {
     this.categoriesService.list().map(val => val.forEach(v => this.buildEventData(v))).subscribe();
@@ -51,6 +54,8 @@ export class CalendarEditEventsFormComponent implements OnInit, OnChanges, After
   ngOnChanges() {
     if (this.eventData) {
       if (this.visibility == undefined) this.visibility = this.eventData.visibility;
+      if (this.reminder!= this.eventData.reminder) this.reminder= this.eventData.reminder;
+      if (this.reminder != this.remindEvent) this.reminder = this.remindEvent;
 
       this.title = (this.eventData.title) ? this.eventData.title : "Nazwa zdarzenia...";
       this.description = (this.eventData.description) ? this.eventData.description : "Opis zdarzenia...";

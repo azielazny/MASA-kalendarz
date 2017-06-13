@@ -13,7 +13,7 @@
       <i class="fa fa-lock privateIcon"></i> <span>Prywatne</span>
     </div>
   </div>
-  <div class="mainNavBox">
-    <i class="fa fa-thumb-tack"></i> <span>Przypomnienie</span>
+  <div class="mainNavBox" (click)="isReminder(reminder)">
+    <i class="fa fa-thumb-tack" [ngStyle]="{'color':reminder==true?'#8c4b8a':'#000'}"></i> <span>Przypomnienie</span>
   </div>
 </div>

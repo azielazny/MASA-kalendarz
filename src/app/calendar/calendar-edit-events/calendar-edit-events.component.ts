@@ -13,6 +13,7 @@ export class CalendarEditEventsComponent implements OnInit, OnChanges {
   public tab = 'edit';
   public eventData: Event;
   private visibility: string;
+  private reminder: boolean;
 
   @Input()
   private selectedEvent: number;
@@ -35,6 +36,10 @@ export class CalendarEditEventsComponent implements OnInit, OnChanges {
 
   changeVisibilityOfEvent(value) {
     this.visibility = value;
+  }
+
+  changeReminderOfEvent(value) {
+    this.reminder = value;
   }
 
 }

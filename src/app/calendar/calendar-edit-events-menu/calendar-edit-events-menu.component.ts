@@ -1,23 +1,42 @@
-import {Component, OnInit, Output, EventEmitter, OnChanges} from '@angular/core';
+import {Component, OnInit, Output, EventEmitter, OnChanges, Input} from '@angular/core';
 import {Router} from "@angular/router";
+import {Event} from "../../class/event.class";
 
 @Component({
   selector: 'calendar-edit-events-menu',
   templateUrl: 'calendar-edit-events-menu.component.html',
   styleUrls: ['calendar-edit-events-menu.component.scss']
 })
-export class CalendarEditEventsMenuComponent implements OnInit {
-  private visibility:string="private";
-  //public OR private
+export class CalendarEditEventsMenuComponent implements OnInit, OnChanges {
+  private visibility: string = "private";
+  private reminder: boolean = true;
+  @Input()
+  private eventData: Event;
   @Output() outputVisibility: EventEmitter<string> = new EventEmitter();
-  constructor() {}
+  @Output() outputReminder: EventEmitter<boolean> = new EventEmitter();
+
+  constructor() {
+  }
 
 
   ngOnInit() {
   }
 
-  isVisibility(status:string) {
-    this.visibility=(status=="private")?"public":"private";
+  ngOnChanges() {
+    if (this.eventData) {
+      this.visibility = this.eventData.visibility;
+      this.reminder = this.eventData.reminder;
+    }
+  }
+
+  isVisibility(status: string) {
+    this.visibility = (status == "private") ? "public" : "private";
     this.outputVisibility.emit(this.visibility);
+  }
+
+  isReminder(status: boolean) {
+    this.reminder = (status != true)?true:false;
+    this.outputReminder.emit(this.reminder);
+    console.log(this.reminder)
   }
 }
