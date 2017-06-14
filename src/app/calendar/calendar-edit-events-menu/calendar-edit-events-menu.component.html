@@ -2,7 +2,7 @@
   <div class="mainNavBox">
     <i class="fa fa-save"></i> <span>Zapisz i zamknij</span>
   </div>
-  <div class="mainNavBox">
+  <div class="mainNavBox" (click)="removeEvent(eventData.event_id)">
     <i class="fa fa-trash-o"></i> <span>Usuń</span>
   </div>
   <div class="mainNavBox" (click)="isVisibility(visibility)">

@@ -1,6 +1,7 @@
 import {Component, OnInit, Output, EventEmitter, OnChanges, Input} from '@angular/core';
 import {Router} from "@angular/router";
 import {Event} from "../../class/event.class";
+import {EventsService} from "../../services/events.service";
 
 @Component({
   selector: 'calendar-edit-events-menu',
@@ -14,8 +15,10 @@ export class CalendarEditEventsMenuComponent implements OnInit, OnChanges {
   private eventData: Event;
   @Output() outputVisibility: EventEmitter<string> = new EventEmitter();
   @Output() outputReminder: EventEmitter<boolean> = new EventEmitter();
+  @Output() outputRemover: EventEmitter<number> = new EventEmitter();
 
-  constructor() {
+
+  constructor(private eventsService: EventsService) {
   }
 
 
@@ -35,8 +38,11 @@ export class CalendarEditEventsMenuComponent implements OnInit, OnChanges {
   }
 
   isReminder(status: boolean) {
-    this.reminder = (status != true)?true:false;
+    this.reminder = (status != true);
     this.outputReminder.emit(this.reminder);
-    console.log(this.reminder)
+  }
+
+  removeEvent(event_id: number) {
+    this.outputRemover.emit(event_id);
   }
 }
