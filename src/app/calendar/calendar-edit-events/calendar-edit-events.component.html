@@ -1,7 +1,6 @@
-<p-growl [(value)]="msgs" [life]="2000"></p-growl>
+<p-growl [(value)]="msgs" [life]="5000"></p-growl>
 <section id="calEdit" [class.hidden]="!shown">
   <!--box z ustawieniami-->
-
   <div class="col-xs-1"></div>
 
   <div class="col-xs-10">
@@ -25,7 +24,7 @@
     <div class="row calEditBody" [class.hidden]="tab == 'settings'">
       <calendar-edit-events-menu [eventData]="eventData" (outputVisibility)= "changeVisibilityOfEvent($event)" (outputReminder)="changeReminderOfEvent($event)" (outputRemover)="removeEvent($event)" (outputEventSaver)="saveEvent($event)"></calendar-edit-events-menu>
       <div class="row">
-        <calendar-edit-events-form [eventData]="eventData" [visibility]="visibility" [reminder]="remindEvent" class="col-xs-12 col-md-8"></calendar-edit-events-form>
+        <calendar-edit-events-form #editEventsForm [eventData]="eventData" [visibility]="visibility" [reminder]="remindEvent" class="col-xs-12 col-md-8"></calendar-edit-events-form>
         <calendar-edit-events-right-column [eventdata]="eventData" class="col-xs-12 col-md-4"></calendar-edit-events-right-column>
       </div>
       <div class="col-xs-1"></div>

@@ -1,21 +1,25 @@
-<div class=" formCalendar">
+<div class=" formCalendar" [ngClass]="error==true ? 'error' : ''">
   <div class="selectColor">
     <i class="fa fa-2x fa-stop" aria-hidden="true" [style.color]="selectedCategory.color"></i>
     <p-dropdown [options]="categories" [(ngModel)]="selectedCategory" [style]="{'width':'22px'}" [filter]="true">
       <template let-selCategory pTemplate="item">
         <div class="ui-helper-clearfix" style="position: relative;height: 25px;">
-          <div style="font-size:14px;float:left;margin-top:4px"><i class="fa fa-stop" [style.color]="selCategory.value.color"></i>{{selCategory.value.name}}</div>
+          <div style="font-size:14px;float:left;margin-top:4px"><i class="fa fa-stop"
+                                                                   [style.color]="selCategory.value.color"></i>{{selCategory.value.name}}
+          </div>
         </div>
       </template>
     </p-dropdown>
   </div>
-  <input type="text" value="{{title}}" class="bigSize" placeholder="Nazwa zdarzenia...">
-  <input type="text" value="{{location}}" class="fullWidth calField" placeholder="Lokalizacja...">
+  <input type="text" [(ngModel)]="title" class="bigSize" placeholder="Nazwa zdarzenia..." required
+         [ngClass]="title.length==0?'required':''">
+  <input type="text" [(ngModel)]="location" class="fullWidth calField" placeholder="Lokalizacja...">
 
-  <div class="calFieldDate calField ">
+  <div class="calFieldDate calField " [ngClass]="dateStart==''?'required':''">
     <div class="input-group editDate">
       <span class="input-group-addon">Start:</span>
-      <p-calendar [(ngModel)]="dateStart" placeholder="01/01/2017" [locale]="pl" dateFormat="dd/mm/yy"></p-calendar>
+      <p-calendar [(ngModel)]="dateStart" placeholder="01/01/2017" [locale]="pl" dateFormat="dd/mm/yy"
+                  required></p-calendar>
     </div>
   </div>
   <div class="selectHour calFieldDate calField ">
@@ -25,10 +29,10 @@
                   [showTime]="true"></p-calendar>
     </div>
   </div>
-  <div class="calFieldDate calField ">
+  <div class="calFieldDate calField " [ngClass]="dateStart==''?'required':''">
     <div class="input-group editDate">
       <span class="input-group-addon">Koniec:</span>
-      <p-calendar [(ngModel)]="dateEnd" placeholder="01/01/2017" [locale]="pl" dateFormat="dd/mm/yy"></p-calendar>
+      <p-calendar [(ngModel)]="dateEnd" placeholder="01/01/2017" [locale]="pl" dateFormat="dd/mm/yy" required></p-calendar>
     </div>
   </div>
   <div class="selectHour calFieldDate calField ">
@@ -41,7 +45,7 @@
 
   <p-accordion>
     <p-accordionTab header="Opis zdarzenia" [selected]="true">
-      <textarea placeholder="Opis zdarzenia">{{description}}</textarea>
+      <textarea placeholder="Opis zdarzenia" [(ngModel)]="description"></textarea>
     </p-accordionTab>
     <p-accordionTab header="Osoby zapisane" [disabled]="visibility=='private'">
       - Imie i nazwisko<br>- Imie i nazwisko<br>- Imie i nazwisko<br>- Imie i
@@ -49,10 +53,10 @@
       Imie i nazwisko<br>- Imie i nazwisko<br>-
       Imie i nazwisko<br>
     </p-accordionTab>
-    <p-accordionTab header="Ustawienia publiczne"  [disabled]="visibility=='private'">
+    <p-accordionTab header="Ustawienia publiczne" [disabled]="visibility=='private'">
       W trakcie budowy
     </p-accordionTab>
-    <p-accordionTab header="Komentarze"  [disabled]="visibility=='private'">
+    <p-accordionTab header="Komentarze" [disabled]="visibility=='private'">
       W trakcie budowy
     </p-accordionTab>
   </p-accordion>

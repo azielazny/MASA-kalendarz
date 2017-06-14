@@ -21,6 +21,7 @@ export class CalendarEditEventsFormComponent implements OnInit, OnChanges, After
   private location: string = "";
   private description: string = "";
   private selectedCategory: any = '#fff';
+  private error:boolean=false;
 
   categories: SelectItem[] = [];
 
@@ -31,6 +32,8 @@ export class CalendarEditEventsFormComponent implements OnInit, OnChanges, After
   @Input()
   private reminder: boolean;
   private remindEvent: boolean;
+  @Input()
+  public parent;
 
   constructor(private categoriesService: CategoriesService) {
     this.categoriesService.list().map(val => val.forEach(v => this.buildEventData(v))).subscribe();
@@ -52,9 +55,10 @@ export class CalendarEditEventsFormComponent implements OnInit, OnChanges, After
   }
 
   ngOnChanges() {
+    this.error=false;
     if (this.eventData) {
       if (this.visibility == undefined) this.visibility = this.eventData.visibility;
-      if (this.reminder!= this.eventData.reminder) this.reminder= this.eventData.reminder;
+      if (this.reminder != this.eventData.reminder) this.reminder = this.eventData.reminder;
       if (this.reminder != this.remindEvent) this.reminder = this.remindEvent;
 
       this.title = (this.eventData.title) ? this.eventData.title : "Nazwa zdarzenia...";
@@ -65,6 +69,15 @@ export class CalendarEditEventsFormComponent implements OnInit, OnChanges, After
       this.buildLocationData();
       if (this.visibility != this.eventData.visibility) this.eventData.visibility = this.visibility;
 
+    } else {
+      this.eventData = null;
+      this.title = "";
+      this.dateStart = "";
+      this.hourStart = "";
+      this.dateEnd = "";
+      this.hourEnd = "";
+      this.location = "";
+      this.description = "";
     }
   }
 

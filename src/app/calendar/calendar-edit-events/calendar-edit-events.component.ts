@@ -26,12 +26,12 @@ export class CalendarEditEventsComponent implements OnInit, OnChanges {
 
   @Output() outputCloseRightColumn: EventEmitter<boolean> = new EventEmitter();
 
+  @ViewChild('editEventsForm') editEventsForm;
 
   constructor(private eventsService: EventsService) {
   }
 
   ngOnInit() {
-
   }
 
   ngOnChanges() {
@@ -39,7 +39,7 @@ export class CalendarEditEventsComponent implements OnInit, OnChanges {
       this.eventsService.detailsForUser(this.username, this.selectedEvent).subscribe(val => {
         this.eventData = val;
       });
-    }
+    } else {this.eventData=null;}
   }
 
   changeVisibilityOfEvent(value) {
@@ -66,24 +66,44 @@ export class CalendarEditEventsComponent implements OnInit, OnChanges {
     }
   }
 
-  saveEvent(event_id: number) {
-    if (this.eventData) {
-      let status = this.validation();
-      if (this.validation() != "ok") {
-        this.msgs = [];
-        this.msgs.push({
-          severity: 'warn',
-          summary: 'W formularzu są błędy',
-          detail: 'Znaleziono następujące błędy w formularzu:' + status
-        });
-        return;
-      }
-      (this.eventData.event_id > 0) ? this.updateEvent() : this.addEvent();
+  saveEvent(status: boolean) {
+
+    let validationStatus = this.validation();
+    if (this.validation() != "ok") {
+      this.msgs = [];
+      this.msgs.push({
+        severity: 'warn',
+        summary: 'W formularzu są błędy',
+        detail: 'Znaleziono następujące błędy w formularzu:<br>' + validationStatus
+      });
+      return;
+    }
+    this.buildEventData();
+
+    if (this.eventData.event_id) {
+
+      this.updateEvent();
+    } else {
+      this.addEvent();
     }
   }
 
   validation(): string {
+    let validationStatus:string="";
+    //pola wymagane
+    if(this.editEventsForm.selectedCategory=="") validationStatus+="- Nie wybrano kategorii<br>";
+    if(this.editEventsForm.title=="") validationStatus+="- Tytuł jest polem obowiązkowym<br>";
+    if(this.editEventsForm.startDate=="") validationStatus+="- Data startu wydarzenia musi zostać podana<br>";
+    if(this.editEventsForm.endDate=="") validationStatus+="- Data końca wydarzenia musi zostać podana";
+    if(validationStatus!="") {
+      this.editEventsForm.error=true;
+      return validationStatus;
+    }
     return "ok";
+  }
+
+  private buildEventData() {
+//pobranie eventData, update eventData
   }
 
   addEvent() {
@@ -111,6 +131,8 @@ export class CalendarEditEventsComponent implements OnInit, OnChanges {
       this.msgs.push({severity: 'warn', summary: 'Nie zapisano eventu', detail: 'Mamy problem z zapisem Twojego formularza'});
     });
   }
+
+
 }
 
 

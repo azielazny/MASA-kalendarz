@@ -844,3 +844,6 @@ label.ui-dropdown-label.ui-inputtext.ui-corner-all {
     margin: 0 auto;
   }
 }
+.error .required {
+  border: 2px solid lighten($lightviolet, 20%) !important;
+}
