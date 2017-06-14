@@ -58,6 +58,7 @@ import {WeatherWidgetComponent} from "./shared/weather-widget/weather-widget.com
 import {CalendarLeftColumnCategoriesListComponent} from "./calendar/calendar-left-column-categories-list/calendar-left-column-categories-list.component";
 import {CategoriesService} from "./services/categories.service";
 import {CalendarMonthViewWeekListComponent} from "./calendar/calendar-month-view-week-list/calendar-month-view-week-list.component";
+import {CookieComponent} from "./main/cookie/cookie.component";
 
 
 
@@ -106,7 +107,8 @@ import {CalendarMonthViewWeekListComponent} from "./calendar/calendar-month-view
     EventDetailsCommentComponent,
     WeatherWidgetComponent,
     CalendarLeftColumnCategoriesListComponent,
-    CalendarMonthViewWeekListComponent
+    CalendarMonthViewWeekListComponent,
+    CookieComponent
   ],
   imports: [
     BrowserModule,
