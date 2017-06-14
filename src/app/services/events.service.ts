@@ -72,6 +72,7 @@ export class EventsService {
       .map(this.extractStatus);
   }
   update(event: Event): Observable<boolean> {
+    console.log(event);
     let headers = new Headers({'Content-Type': 'application/json'});
     let options = new RequestOptions({
       headers: headers,

@@ -99,16 +99,20 @@ export class CalendarEditEventsComponent implements OnInit, OnChanges {
 
   private buildEventData() {
 //pobranie eventData, update eventData
-    if (this.eventData) {
       this.eventData.title=this.editEventsForm.title;
       this.eventData.description=this.editEventsForm.description;
       this.eventData.reminder=this.editEventsForm.reminder;
       this.eventData.visibility=this.editEventsForm.visibility;
-      this.eventData.start_ts=new Date(this.editEventsForm.startDate+" "+this.editEventsForm.hourStart).getTime();
-      this.eventData.end_ts=new Date(this.editEventsForm.endDate+" "+this.editEventsForm.hourEnd).getTime();
+      this.eventData.category=this.editEventsForm.selectedCategory.category_id;
+
+      let startDate=this.editEventsForm.dateStart.split("/");
+      let startHour=this.editEventsForm.hourStart.split(":");
+      this.eventData.start_ts=new Date(startDate[2],startDate[1]-1,startDate[0], startHour[0], startHour[1], 0).getTime()/1000;
+      let endDate=this.editEventsForm.dateEnd.split("/");
+      let endHour=this.editEventsForm.hourEnd.split(":");
+      this.eventData.end_ts=new Date(endDate[2],endDate[1]-1,endDate[0], endHour[0], endHour[1], 0).getTime()/1000;
+
       //Lokalizacja ???
-      //selected category ????
-    }
   }
 
   addEvent() {

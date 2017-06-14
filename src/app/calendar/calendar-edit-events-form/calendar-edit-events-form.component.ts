@@ -2,6 +2,7 @@ import {Component, OnInit, Input, OnChanges, AfterViewInit} from '@angular/core'
 import {Event} from "../../class/event.class";
 import {SelectItem} from 'primeng/primeng'
 import {CategoriesService} from "../../services/categories.service";
+import {Category} from "../../class/category.class";
 declare var $: any;
 
 
@@ -20,7 +21,7 @@ export class CalendarEditEventsFormComponent implements OnInit, OnChanges, After
   private hourEnd: string = "";
   private location: string = "";
   private description: string = "";
-  private selectedCategory: any = '#fff';
+  private selectedCategory: Category={color:"#ddd", user_id: 0, name: "", category_id:0};
   private error: boolean = false;
 
   categories: SelectItem[] = [];
