@@ -21,7 +21,7 @@ export class CalendarEditEventsFormComponent implements OnInit, OnChanges, After
   private location: string = "";
   private description: string = "";
   private selectedCategory: any = '#fff';
-  private error:boolean=false;
+  private error: boolean = false;
 
   categories: SelectItem[] = [];
 
@@ -55,7 +55,7 @@ export class CalendarEditEventsFormComponent implements OnInit, OnChanges, After
   }
 
   ngOnChanges() {
-    this.error=false;
+    this.error = false;
     if (this.eventData) {
       if (this.visibility == undefined) this.visibility = this.eventData.visibility;
       if (this.reminder != this.eventData.reminder) this.reminder = this.eventData.reminder;
