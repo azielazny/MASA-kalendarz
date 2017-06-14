@@ -51,7 +51,6 @@ export class CalendarEditEventsComponent implements OnInit, OnChanges {
   }
 
   removeEvent(event_id: number) {
-
     if (this.eventData) {
       this.eventsService.remove(event_id).subscribe(val => {
         if (val == true) {
@@ -67,6 +66,51 @@ export class CalendarEditEventsComponent implements OnInit, OnChanges {
     }
   }
 
+  saveEvent(event_id: number) {
+    if (this.eventData) {
+      let status = this.validation();
+      if (this.validation() != "ok") {
+        this.msgs = [];
+        this.msgs.push({
+          severity: 'warn',
+          summary: 'W formularzu są błędy',
+          detail: 'Znaleziono następujące błędy w formularzu:' + status
+        });
+        return;
+      }
+      (this.eventData.event_id > 0) ? this.updateEvent() : this.addEvent();
+    }
+  }
+
+  validation(): string {
+    return "ok";
+  }
+
+  addEvent() {
+    this.eventsService.add(this.eventData).subscribe(val => {
+      if (val == true) {
+        this.msgs = [];
+        this.msgs.push({severity: 'success', summary: 'Dodano event', detail: 'Wydarzenie zostało zapisane w kalendarzu'});
+        this.outputCloseRightColumn.emit(true);
+        return;
+      }
+      this.msgs = [];
+      this.msgs.push({severity: 'warn', summary: 'Nie zapisano eventu', detail: 'Mamy problem z zapisem Twojego formularza'});
+    });
+  }
+
+  updateEvent() {
+    this.eventsService.update(this.eventData).subscribe(val => {
+      if (val == true) {
+        this.msgs = [];
+        this.msgs.push({severity: 'success', summary: 'Dodano event', detail: 'Wydarzenie zostało zapisane w kalendarzu'});
+        this.outputCloseRightColumn.emit(true);
+        return;
+      }
+      this.msgs = [];
+      this.msgs.push({severity: 'warn', summary: 'Nie zapisano eventu', detail: 'Mamy problem z zapisem Twojego formularza'});
+    });
+  }
 }
 
 

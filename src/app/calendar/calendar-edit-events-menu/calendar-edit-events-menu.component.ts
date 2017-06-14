@@ -11,16 +11,18 @@ import {EventsService} from "../../services/events.service";
 export class CalendarEditEventsMenuComponent implements OnInit, OnChanges {
   private visibility: string = "private";
   private reminder: boolean = true;
+
   @Input()
   private eventData: Event;
+
   @Output() outputVisibility: EventEmitter<string> = new EventEmitter();
   @Output() outputReminder: EventEmitter<boolean> = new EventEmitter();
   @Output() outputRemover: EventEmitter<number> = new EventEmitter();
+  @Output() outputEventSaver: EventEmitter<number> = new EventEmitter();
 
 
   constructor(private eventsService: EventsService) {
   }
-
 
   ngOnInit() {
   }
@@ -44,5 +46,8 @@ export class CalendarEditEventsMenuComponent implements OnInit, OnChanges {
 
   removeEvent(event_id: number) {
     this.outputRemover.emit(event_id);
+  }
+  saveEvent(event_id: number) {
+    this.outputEventSaver.emit(event_id);
   }
 }
