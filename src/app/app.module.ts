@@ -3,7 +3,7 @@ import {BrowserModule} from '@angular/platform-browser';
 import {NgModule, CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {HttpModule} from '@angular/http';
-import { AgmCoreModule } from 'angular2-google-maps/core';
+import {AgmCoreModule} from 'angular2-google-maps/core';
 
 import {KaskadaGoogleMapsComponent} from './shared/kaskada-googlemaps/kaskada-googlemaps.component';
 
@@ -53,7 +53,7 @@ import {CalendarMonthViewDarkBoxComponent} from "./calendar/calendar-month-view-
 import {CalendarMonthViewComponent} from "./calendar/calendar-month-view/calendar-month-view.component";
 import {HowMakeComponent} from "./main/how-make/how-make.component";
 import {CommentsService} from "./services/comments.service";
-import {EventDetailsCommentComponent } from './main/event-details-comment/event-details-comment.component';
+import {EventDetailsCommentComponent} from './main/event-details-comment/event-details-comment.component';
 import {WeatherWidgetComponent} from "./shared/weather-widget/weather-widget.component";
 import {CalendarLeftColumnCategoriesListComponent} from "./calendar/calendar-left-column-categories-list/calendar-left-column-categories-list.component";
 import {CategoriesService} from "./services/categories.service";
@@ -63,7 +63,6 @@ import {CalendarModule, AccordionModule, DropdownModule, GrowlModule} from "prim
 import {CalendarEditEventsUsersListComponent} from "./calendar/calendar-edit-events-users-list/calendar-edit-events-users-list.component";
 import {CalendarEditEventsCommentComponent} from "./calendar/calendar-edit-events-comment/calendar-edit-events-comment.component";
 import {CalendarEditEventsCommentsListComponent} from "./calendar/calendar-edit-events-comments-list/calendar-edit-events-comments-list.component";
-
 
 
 @NgModule({

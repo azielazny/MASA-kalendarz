@@ -1,4 +1,4 @@
-import {Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
+import {Component, OnInit, Input, Output, EventEmitter, OnChanges} from '@angular/core';
 import {EventsService} from "../../services/events.service";
 import {Event} from "../../class/event.class";
 
@@ -7,25 +7,30 @@ import {Event} from "../../class/event.class";
   templateUrl: 'calendar-right-column-events-list.component.html',
   styleUrls: ['calendar-right-column-events-list.component.scss']
 })
-export class CalendarRightColumnEventsListComponent implements OnInit {
+export class CalendarRightColumnEventsListComponent implements OnInit, OnChanges {
+  private startDate: string;
+  private endDate: string;
+  private location: string;
 
   @Input()
   public parent;
   @Input()
   private eventdata: Event;
 
-  private startDate: string;
-  private endDate: string;
   @Output() outputEventId: EventEmitter<number> = new EventEmitter();
 
   constructor() {
   }
 
   ngOnInit() {
-    if(this.eventdata.start_ts>0)
+  }
+
+  ngOnChanges() {
+    if (this.eventdata.start_ts > 0)
       this.setStartData(this.eventdata.start_ts);
-    if(this.eventdata.end_ts>0)
+    if (this.eventdata.end_ts > 0)
       this.setEndData(this.eventdata.end_ts);
+    this.buildLocation();
 
   }
 
@@ -44,9 +49,32 @@ export class CalendarRightColumnEventsListComponent implements OnInit {
     return (newNum.length < 2) ? "0" + newNum : newNum;
   }
 
-  editEvent(event_id:number) {
+  editEvent(event_id: number) {
     this.parent.parent.editEvents.shown = true;
     this.outputEventId.emit(event_id);
+
+  }
+
+  private buildLocation() {
+    this.location = "";
+
+    if (this.eventdata.loc_name != null)
+      this.location += this.eventdata.loc_name.trim() + ', ';
+
+    if (this.eventdata.loc_street != null)
+      this.location += this.eventdata.loc_street.trim();
+
+    if (this.eventdata.loc_street != null && this.eventdata.loc_bnum != null)
+      this.location += " ";
+
+    if (this.eventdata.loc_bnum != null)
+      this.location += this.eventdata.loc_bnum.trim();
+
+    if ((this.eventdata.loc_street != null || this.eventdata.loc_bnum != null) && this.eventdata.loc_city != null)
+      this.location += ', ';
+
+    if (this.eventdata.loc_city != null)
+      this.location += this.eventdata.loc_city.trim();
 
   }
 

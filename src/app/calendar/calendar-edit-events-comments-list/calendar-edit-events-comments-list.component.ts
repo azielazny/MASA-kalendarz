@@ -13,10 +13,10 @@ export class CalendarEditEventsCommentsListComponent implements OnInit, OnChange
   public username: string = localStorage.getItem("userName");
   public id: number;
   public showResponseDiv = false;
+  private moderator: number = null;
 
   @Input()
   public eventdata: Event;
-  private moderator: number = null;
 
   public comms: Comment[] = [];
 
@@ -40,7 +40,7 @@ export class CalendarEditEventsCommentsListComponent implements OnInit, OnChange
           this.comms = val;
         });
       });
-    }
+    } else this.comms=[];
   }
 
   showResponse() {

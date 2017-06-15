@@ -75,6 +75,7 @@ export class CalendarEditEventsFormComponent implements OnInit, OnChanges, After
       this.hourStart = "";
       this.dateEnd = "";
       this.hourEnd = "";
+      this.usersData=[];
     }
   }
   printDiv(divName) {

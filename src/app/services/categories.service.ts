@@ -40,6 +40,7 @@ export class CategoriesService {
       .map(this.extractStatus);
 
   }
+
   remove(category_id: number) {
     let options = new RequestOptions({
       withCredentials: true // CORS Access-Control-Allow-Credentials header
