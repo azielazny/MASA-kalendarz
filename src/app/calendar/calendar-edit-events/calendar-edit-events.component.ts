@@ -15,12 +15,11 @@ export class CalendarEditEventsComponent implements OnInit, OnChanges {
   public tab = 'edit';
   public eventData: Event;
   private visibility: string;
-  private reminder: boolean;
+  private remindEvent: boolean;
   msgs: Message[] = [];
 
   @Input()
   private selectedEvent: number;
-
   @Input()
   public parent;
 
@@ -35,13 +34,10 @@ export class CalendarEditEventsComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges() {
-    if (this.selectedEvent) {
-      this.eventsService.detailsForUser(this.username, this.selectedEvent).subscribe(val => {
+    (this.selectedEvent) ? this.eventsService.detailsForUser(this.username, this.selectedEvent).subscribe(val => {
         this.eventData = val;
-      });
-    } else {
-      this.eventData = null;
-    }
+      }) : this.eventData = null;
+
   }
 
   changeVisibilityOfEvent(value) {
@@ -49,7 +45,7 @@ export class CalendarEditEventsComponent implements OnInit, OnChanges {
   }
 
   changeReminderOfEvent(value) {
-    this.reminder = value;
+    this.remindEvent = value;
   }
 
   removeEvent(event_id: number) {
@@ -98,21 +94,17 @@ export class CalendarEditEventsComponent implements OnInit, OnChanges {
   }
 
   private buildEventData() {
-//pobranie eventData, update eventData
-      this.eventData.title=this.editEventsForm.title;
-      this.eventData.description=this.editEventsForm.description;
-      this.eventData.reminder=this.editEventsForm.reminder;
-      this.eventData.visibility=this.editEventsForm.visibility;
-      this.eventData.category=this.editEventsForm.selectedCategory.category_id;
+    this.eventData = this.editEventsForm.eventData;
+    this.eventData.category = this.editEventsForm.selectedCategory.category_id;
 
-      let startDate=this.editEventsForm.dateStart.split("/");
-      let startHour=this.editEventsForm.hourStart.split(":");
-      this.eventData.start_ts=new Date(startDate[2],startDate[1]-1,startDate[0], startHour[0], startHour[1], 0).getTime()/1000;
-      let endDate=this.editEventsForm.dateEnd.split("/");
-      let endHour=this.editEventsForm.hourEnd.split(":");
-      this.eventData.end_ts=new Date(endDate[2],endDate[1]-1,endDate[0], endHour[0], endHour[1], 0).getTime()/1000;
+    let startDate = this.editEventsForm.dateStart.split("/");
+    let startHour = this.editEventsForm.hourStart.split(":");
+    this.eventData.start_ts = new Date(startDate[2], startDate[1] - 1, startDate[0], startHour[0], startHour[1], 0).getTime() / 1000;
 
-      //Lokalizacja ???
+    let endDate = this.editEventsForm.dateEnd.split("/");
+    let endHour = this.editEventsForm.hourEnd.split(":");
+    this.eventData.end_ts = new Date(endDate[2], endDate[1] - 1, endDate[0], endHour[0], endHour[1], 0).getTime() / 1000;
+
   }
 
   addEvent() {
@@ -124,9 +116,9 @@ export class CalendarEditEventsComponent implements OnInit, OnChanges {
           summary: 'Dodano event',
           detail: 'Wydarzenie zostało zapisane w kalendarzu'
         });
-        this.outputCloseRightColumn.emit(true);
         return;
       }
+      this.outputCloseRightColumn.emit(true);
       this.msgs = [];
       this.msgs.push({
         severity: 'warn',
@@ -145,9 +137,9 @@ export class CalendarEditEventsComponent implements OnInit, OnChanges {
           summary: 'Dodano event',
           detail: 'Wydarzenie zostało zapisane w kalendarzu'
         });
-        this.outputCloseRightColumn.emit(true);
         return;
       }
+      this.outputCloseRightColumn.emit(true);
       this.msgs = [];
       this.msgs.push({
         severity: 'warn',

@@ -13,15 +13,12 @@ declare var $: any;
 })
 export class CalendarEditEventsFormComponent implements OnInit, OnChanges, AfterViewInit {
   public username: string = localStorage.getItem("userName");
-  private title: string = "";
   private pl: any;
   private dateStart: string = "";
   private hourStart: string = "";
   private dateEnd: string = "";
   private hourEnd: string = "";
-  private location: string = "";
-  private description: string = "";
-  private selectedCategory: Category={color:"#ddd", user_id: 0, name: "", category_id:0};
+  private selectedCategory: Category = {color: "#ddd", user_id: 0, name: "", category_id: 0};
   private error: boolean = false;
 
   categories: SelectItem[] = [];
@@ -30,8 +27,8 @@ export class CalendarEditEventsFormComponent implements OnInit, OnChanges, After
   private eventData: Event;
   @Input()
   private visibility: string;
+
   @Input()
-  private reminder: boolean;
   private remindEvent: boolean;
   @Input()
   public parent;
@@ -55,30 +52,24 @@ export class CalendarEditEventsFormComponent implements OnInit, OnChanges, After
     }
   }
 
+
   ngOnChanges() {
     this.error = false;
     if (this.eventData) {
-      if (this.visibility == undefined) this.visibility = this.eventData.visibility;
-      if (this.reminder != this.eventData.reminder) this.reminder = this.eventData.reminder;
-      if (this.reminder != this.remindEvent) this.reminder = this.remindEvent;
+      this.eventData.visibility=(undefined != this.visibility)?this.visibility:(this.eventData.visibility)?this.eventData.visibility:"private";
+      this.visibility=undefined;
 
-      this.title = (this.eventData.title) ? this.eventData.title : "Nazwa zdarzenia...";
-      this.description = (this.eventData.description) ? this.eventData.description : "Opis zdarzenia...";
+      this.eventData.reminder=(undefined != this.remindEvent)? this.remindEvent:(this.eventData.reminder)? this.eventData.reminder:true;
+      this.remindEvent=undefined;
 
       this.getSelectedCategoryData();
       this.buildEventDeteData();
-      this.buildLocationData();
-      if (this.visibility != this.eventData.visibility) this.eventData.visibility = this.visibility;
-
     } else {
       this.eventData = null;
-      this.title = "";
       this.dateStart = "";
       this.hourStart = "";
       this.dateEnd = "";
       this.hourEnd = "";
-      this.location = "";
-      this.description = "";
     }
   }
 
@@ -131,32 +122,6 @@ export class CalendarEditEventsFormComponent implements OnInit, OnChanges, After
     this.hourStart = h1_s + ':' + m1_s;
     this.hourEnd = h2_s + ':' + m2_s;
   }
-
-  private buildLocationData() {
-// lokalizacja (formatowanie)
-    this.location = "";
-
-    if (this.eventData.loc_name != null)
-      this.location += this.eventData.loc_name.trim() + ', ';
-
-    if (this.eventData.loc_street != null)
-      this.location += this.eventData.loc_street.trim();
-
-    if (this.eventData.loc_street != null && this.eventData.loc_bnum != null)
-      this.location += " ";
-
-    if (this.eventData.loc_bnum != null)
-      this.location += this.eventData.loc_bnum.trim();
-
-    if ((this.eventData.loc_street != null || this.eventData.loc_bnum != null) && this.eventData.loc_city != null)
-      this.location += ', ';
-
-    if (this.eventData.loc_city != null)
-      this.location += this.eventData.loc_city.trim();
-
-    this.location = this.location.toUpperCase();
-  }
-
   ngAfterViewInit() {
     $('.collapse').collapse();
   }

@@ -11,9 +11,21 @@
       </template>
     </p-dropdown>
   </div>
-  <input type="text" [(ngModel)]="title" class="bigSize" placeholder="Nazwa zdarzenia..." required
-         [ngClass]="title.length==0?'required':''">
-  <input type="text" [(ngModel)]="location" class="fullWidth calField" placeholder="Lokalizacja...">
+  <input type="text" [ngModel]="eventData?.title" (ngModelChange)="eventData?.title ? eventData.title = $event : null"
+         class="bigSize" placeholder="Nazwa zdarzenia..." required
+         [ngClass]="eventData?.title.length==0?'required':''">
+  <input type="text" [ngModel]="eventData?.loc_name"
+         (ngModelChange)="eventData?.loc_name ? eventData.loc_name = $event : null" class="col-xs-6 col-sm-4 calField"
+         placeholder="Miejsce...">
+  <input type="text" [ngModel]="eventData?.loc_city"
+         (ngModelChange)="eventData?.loc_city ? eventData.loc_city = $event : null" class="col-xs-6 col-sm-4 calField"
+         placeholder="Miasto...">
+  <input type="text" [ngModel]="eventData?.loc_street"
+         (ngModelChange)="eventData?.loc_street ? eventData.loc_street = $event : null"
+         class="col-xs-11 col-sm-3 calField" placeholder="Ulica...">
+  <input type="text" [ngModel]="eventData?.loc_bnum"
+         (ngModelChange)="eventData?.loc_bnum ? eventData.loc_bnum = $event : null" class="col-xs-1 calField"
+         placeholder="Nr...">
 
   <div class="calFieldDate calField " [ngClass]="dateStart==''?'required':''">
     <div class="input-group editDate">
@@ -32,7 +44,8 @@
   <div class="calFieldDate calField " [ngClass]="dateStart==''?'required':''">
     <div class="input-group editDate">
       <span class="input-group-addon">Koniec:</span>
-      <p-calendar [(ngModel)]="dateEnd" placeholder="01/01/2017" [locale]="pl" dateFormat="dd/mm/yy" required></p-calendar>
+      <p-calendar [(ngModel)]="dateEnd" placeholder="01/01/2017" [locale]="pl" dateFormat="dd/mm/yy"
+                  required></p-calendar>
     </div>
   </div>
   <div class="selectHour calFieldDate calField ">
@@ -45,7 +58,8 @@
 
   <p-accordion>
     <p-accordionTab header="Opis zdarzenia" [selected]="true">
-      <textarea placeholder="Opis zdarzenia" [(ngModel)]="description"></textarea>
+      <textarea placeholder="Opis zdarzenia" [ngModel]="eventData?.description"
+                (ngModelChange)="eventData?.description? eventData.description= $event : null"></textarea>
     </p-accordionTab>
     <p-accordionTab header="Osoby zapisane" [disabled]="visibility=='private'">
       - Imie i nazwisko<br>- Imie i nazwisko<br>- Imie i nazwisko<br>- Imie i
@@ -53,10 +67,10 @@
       Imie i nazwisko<br>- Imie i nazwisko<br>-
       Imie i nazwisko<br>
     </p-accordionTab>
-    <p-accordionTab header="Ustawienia publiczne" [disabled]="visibility=='private'">
+    <p-accordionTab header="Ustawienia publiczne" [disabled]="eventData?.visibility=='private'" >
       W trakcie budowy
     </p-accordionTab>
-    <p-accordionTab header="Komentarze" [disabled]="visibility=='private'">
+    <p-accordionTab header="Komentarze" [disabled]="eventData?.visibility=='private'">
       W trakcie budowy
     </p-accordionTab>
   </p-accordion>
