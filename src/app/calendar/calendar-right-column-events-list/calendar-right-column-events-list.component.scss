@@ -1,0 +1,17 @@
+.addEvent, .fa.fa-close {
+  cursor: pointer;
+}
+.eventBox .body {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+}
+.eventBox .title {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}

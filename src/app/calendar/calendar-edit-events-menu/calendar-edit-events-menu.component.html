@@ -1,14 +1,19 @@
 <div class="col-xs-12 mainNav">
-  <div class="mainNavBox">
+  <div class="mainNavBox" (click)="saveEvent(eventData.event_id)">
     <i class="fa fa-save"></i> <span>Zapisz i zamknij</span>
   </div>
-  <div class="mainNavBox">
+  <div class="mainNavBox" (click)="removeEvent(eventData.event_id)">
     <i class="fa fa-trash-o"></i> <span>Usuń</span>
   </div>
-  <div class="mainNavBox">
-    <i class="fa fa-unlock publicIcon"></i> <span>Publiczne</span>
+  <div class="mainNavBox" (click)="isVisibility(visibility)">
+    <div *ngIf="visibility=='public'">
+      <i class="fa fa-unlock publicIcon"></i> <span>Publiczne</span>
+    </div>
+    <div *ngIf="visibility=='private'">
+      <i class="fa fa-lock privateIcon"></i> <span>Prywatne</span>
+    </div>
   </div>
-  <div class="mainNavBox">
-    <i class="fa fa-thumb-tack"></i> <span>Przypomnienie</span>
+  <div class="mainNavBox" (click)="isReminder(reminder)">
+    <i class="fa fa-thumb-tack" [ngStyle]="{'color':reminder==true?'#8c4b8a':'#000'}"></i> <span>Przypomnienie</span>
   </div>
 </div>

@@ -1,6 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
 
-
 body {
   font-family: Arial;
 
@@ -16,8 +15,9 @@ body {
   -khtml-user-select: none; /* Konqueror HTML */
   -moz-user-select: none; /* Firefox */
   -ms-user-select: none; /* Internet Explorer/Edge */
-  user-select: none; /* Non-prefixed version, currently
-                                  supported by Chrome and Opera */
+  user-select: none;
+  /* Non-prefixed version, currently
+                                   supported by Chrome and Opera */
 }
 
 //kolory
@@ -329,7 +329,7 @@ app-calendar-backoffice {
     }
 
     #calendar {
-      width: calc(100% - 140px) !important;
+      width: calc(100% - 50px) !important;
       float: right;
     }
     .logoBox {
@@ -403,7 +403,7 @@ app-calendar-backoffice {
     .lCard {
       display: inline-block;
       font-size: 2.25rem;
-      width: 14%;
+      width: 13%;
       height: 15.5%;
       background: $lightviolet;
       text-align: center;
@@ -432,7 +432,7 @@ app-calendar-backoffice {
     .dCard {
       display: inline-block;
       font-size: 2.25rem;
-      width: 14%;
+      width: 13%;
       height: 15.5%;
       background: $darkviolet;
       text-align: center;
@@ -441,13 +441,13 @@ app-calendar-backoffice {
       line-height: 100px;
       span {
         span {
-display: none;
+          display: none;
         }
       }
     }
     .wCard {
       display: inline-block;
-      width: 14%;
+      width: 13%;
       height: 30px;
       padding-top: 15px;
       text-align: center;
@@ -475,7 +475,7 @@ display: none;
     display: block;
     color: $black;
     .mapa {
-      border: 1px solid darken($gray, 10%);
+      border: 1px solid $lightgray;
       padding: 5px;
       color: $gray;
       background: none;
@@ -512,6 +512,7 @@ display: none;
         display: inline-block;
         font-size: 16px;
         font-weight: 500;
+        cursor:pointer;
         color: $black;
         span {
 
@@ -533,6 +534,9 @@ display: none;
 
     .formCalendar {
       margin-top: 35px;
+      .calFieldDate {
+        padding: 4px !important;
+      }
       & input {
         border: none;
         padding: 0;
@@ -541,13 +545,19 @@ display: none;
         margin: 0;
         display: inline-block;
       }
+      .input-group-addon {
+        background-color: transparent;
+        border: 0px;
+        padding: 0 5px;
+        color: #8c8a8d;
+      }
       .calField, & select, .selectColor, .bigSize {
-        border: 1px solid darken($gray, 10%);
+        border: 1px solid $lightgray;
         padding: 5px;
         color: $gray;
         background: none;
         margin: 10px 0px 10px;
-        display: inline-block;
+        display: inline-table;
       }
       .selectColor {
         max-width: 70px;
@@ -555,15 +565,38 @@ display: none;
         padding: 10px;
         margin-right: 20px;
       }
-      .editDate:after {
-        color: $gray;
-        content: "\f133";
-        display: inline-block;
-        font: normal normal normal 14px/1 FontAwesome;
-        font-size: inherit;
-        text-rendering: auto;
-        -webkit-font-smoothing: antialiased;
-        -moz-osx-font-smoothing: grayscale;
+      .editDate {
+        input {
+          max-width: 95px;
+        }
+        &:after {
+          color: $gray;
+          content: "\f133";
+          display: inline-block;
+          font: normal normal normal 14px/1 FontAwesome;
+          font-size: inherit;
+          text-rendering: auto;
+          -webkit-font-smoothing: antialiased;
+          -moz-osx-font-smoothing: grayscale;
+          padding: 0px 5px;
+        }
+      }
+
+      .editHour {
+        input {
+          max-width: 40px;
+        }
+        &:after {
+          color: $gray;
+          content: "\f017";
+          display: inline-block;
+          font: normal normal normal 14px/1 FontAwesome;
+          font-size: inherit;
+          text-rendering: auto;
+          -webkit-font-smoothing: antialiased;
+          -moz-osx-font-smoothing: grayscale;
+          padding: 0px 5px;
+        }
       }
 
       .selectHour {
@@ -588,15 +621,35 @@ display: none;
           background-color: transparent !important;
           border: 1px solid transparent;
           border-radius: 0px !important;
-          .panel-heading {
+          .panel-heading { //.ui-accordion .ui-accordion-header
             background: transparent !important;
             border: 1px solid darken($gray, 20%);
           }
-          .panel-body {
+          .panel-body { //ui-accordion-content ui-widget-content
             margin-top: 10px;
             border: 1px solid darken($gray, 20%);
           }
         }
+      }
+
+      .ui-accordion .ui-accordion-header {
+        background: #fbfbfb !important;
+        border: 1px solid $lightgray !important;
+        margin-bottom: 10px;
+        border-radius: 0px;
+        a {
+          color: inherit;
+          font-size: 16px;
+          font-family: Arial;
+          font-weight: 500;
+          line-height: 1.1;
+          text-decoration: none;
+        }
+      }
+      .ui-accordion .ui-accordion-content {
+        margin: 10px 0 !important;
+        border: 1px solid $lightgray !important;
+        min-height: 100px;
       }
 
     }
@@ -678,33 +731,119 @@ display: none;
   }
 
 }
+
 .weather-left-card {
   display: none;
 }
+
 .widget-left-menu__links {
   display: none;
 }
+
 .widget-left__body, .widget-left {
-  width:435px !important;
+  width: 435px !important;
 }
+
 .widget-left-menu__layout {
-  width:420px !important;
+  width: 420px !important;
 }
+
 .widget-left-menu__header:before {
   content: 'Pogoda dla ' !important;
 }
+
 .selectedEvent {
-  padding:5px;
-  background:#eee;
+  padding: 5px;
+  background: #eee;
 }
+
 .widget-left {
   margin: 0 auto !important;
   -webkit-border-radius: 0px !important;
   border-radius: 0px !important;
   -webkit-box-shadow: none !important;
-  box-shadow:none !important;
+  box-shadow: none !important;
   border: none !important;
 }
-calendar-month-view-light-box.active .lCard{
+
+calendar-month-view-light-box.active .lCard {
   border: 2px solid gold !important;
+}
+
+
+
+.ui-dropdown-panel.ui-widget-content.ui-corner-all.ui-helper-hidden.ui-shadow {
+  width: 250px;
+}
+.ui-dropdown-filter-container {
+  width:100%
+}
+
+.ui-helper-clearfix i.fa.fa-stop {
+  padding: 0 5px;
+}
+label.ui-dropdown-label.ui-inputtext.ui-corner-all {
+  visibility: hidden;
+}
+.ui-widget-header .ui-state-default, .ui-widget-content .ui-state-default, .ui-state-default {
+  border: 0 solid #d6d6d6;
+  background: transparent;
+  color: inherit;
+}
+.ui-dropdown {
+  float: right;
+  .ui-dropdown-trigger .fa {
+    font-size: 1.5em;
+  }
+  &:not(.ui-state-disabled):hover {
+    border-color: transparent;
+    background: transparent;
+    color: #212121;
+  }
+  .ui-dropdown-trigger .fa {
+    margin-top: .2em;
+    margin-left: -.125em;
+    color:#727173
+  }
+}
+.weatherWidgetForEdit {
+  padding:0
+}
+
+//nadpisane style dla pogody
+.event-weather {
+  padding:5px;
+  .widget-left {
+    overflow: auto;
+     width: 100% !important;//dopasowane do góry
+  }
+  .widget-left-menu {
+    width: auto;
+    margin: 0 auto;
+    display: table;
+    clear: both;
+    content: '';
+    background-color: #fff;
+    border-radius: 6px 6px 0 0;
+    overflow: hidden;
+  }
+  .widget-left__body {
+     -webkit-justify-content: inherit;
+     justify-content: inherit;
+    padding-bottom: 16px;
+    border-radius: 0 0 6px 6px;
+    -webkit-box-orient: horizontal;
+    -webkit-flex-direction: inherit;
+    -ms-flex-direction: inherit;
+    flex-direction: inherit;
+    width: 680px;
+    margin: 0 auto;
+    overflow: auto;
+  }
+  .widget-left__calendar {
+    margin: 0 auto;
+  }
+}
+.error .required {
+  border: 2px solid lighten($lightviolet, 20%) !important;
 }

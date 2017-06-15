@@ -1,80 +1,79 @@
-<div class="col-xs-12 col-md-8 formCalendar">
-
+<div class=" formCalendar" [ngClass]="error==true ? 'error' : ''">
   <div class="selectColor">
-    <i class="fa fa-2x fa-stop" aria-hidden="true"></i>
-    <i class="fa fa-2x fa-angle-down" aria-hidden="true"></i>
+    <i class="fa fa-2x fa-stop" aria-hidden="true" [style.color]="selectedCategory.color"></i>
+    <p-dropdown [options]="categories" [(ngModel)]="selectedCategory" [style]="{'width':'22px'}" [filter]="true">
+      <template let-selCategory pTemplate="item">
+        <div class="ui-helper-clearfix" style="position: relative;height: 25px;">
+          <div style="font-size:14px;float:left;margin-top:4px"><i class="fa fa-stop"
+                                                                   [style.color]="selCategory.value.color"></i>{{selCategory.value.name}}
+          </div>
+        </div>
+      </template>
+    </p-dropdown>
   </div>
-  <input type="text" value="Nazwa zdarzenia..." class="bigSize">
-  <input type="text" value="Lokalizacja..." class="fullWidth calField">
-  <div class="calField editDate">
-    <input type="text" value="Start:11.11.2222">
-  </div>
-  <select name="" class="selectHour calField" id="">
-    <option value="">Od: 33:33</option>
-  </select>
-  <div class="calField editDate">
-    <input type="text" value="Start:11.11.2222">
-  </div>
-  <select name="" id="" class="selectHour calField">
-    <option value="">Do: 33:33</option>
-  </select>
+  <input type="text" [ngModel]="eventData?.title" (ngModelChange)="eventData?.title ? eventData.title = $event : null"
+         class="bigSize" placeholder="Nazwa zdarzenia..." required
+         [ngClass]="eventData?.title.length==0?'required':''">
+  <input type="text" [ngModel]="eventData?.loc_name"
+         (ngModelChange)="eventData?.loc_name ? eventData.loc_name = $event : null" class="col-xs-6 col-sm-4 calField"
+         placeholder="Miejsce...">
+  <input type="text" [ngModel]="eventData?.loc_city"
+         (ngModelChange)="eventData?.loc_city ? eventData.loc_city = $event : null" class="col-xs-6 col-sm-4 calField"
+         placeholder="Miasto...">
+  <input type="text" [ngModel]="eventData?.loc_street"
+         (ngModelChange)="eventData?.loc_street ? eventData.loc_street = $event : null"
+         class="col-xs-11 col-sm-3 calField" placeholder="Ulica...">
+  <input type="text" [ngModel]="eventData?.loc_bnum"
+         (ngModelChange)="eventData?.loc_bnum ? eventData.loc_bnum = $event : null" class="col-xs-1 calField"
+         placeholder="Nr...">
 
-
-  <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-    <div class="panel panel-default">
-      <div class="panel-heading" role="tab" id="headingOne">
-        <h4 class="panel-title">
-          <a role="button" data-toggle="collapse" data-parent="#accordion"
-             href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-            Opis zdarzenia
-          </a>
-        </h4>
-      </div>
-      <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel"
-           aria-labelledby="headingOne">
-        <div class="panel-body">
-          <textarea>Opis zdarzenia</textarea>
-        </div>
-      </div>
-    </div>
-    <div class="panel panel-default">
-      <div class="panel-heading" role="tab" id="headingTwo">
-        <h4 class="panel-title">
-          <a class="collapsed" role="button" data-toggle="collapse"
-             data-parent="#accordion" href="#collapseTwo" aria-expanded="false"
-             aria-controls="collapseTwo">
-            Osoby zapisane
-          </a>
-        </h4>
-      </div>
-      <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel"
-           aria-labelledby="headingTwo">
-        <div class="panel-body">
-          - Imie i nazwisko<br>- Imie i nazwisko<br>- Imie i nazwisko<br>- Imie i
-          nazwisko<br>- Imie i nazwisko<br>- Imie i nazwisko<br>- Imie i nazwisko<br>-
-          Imie i nazwisko<br>- Imie i nazwisko<br>-
-          Imie i nazwisko<br>
-        </div>
-      </div>
-    </div>
-    <div class="panel panel-default">
-      <div class="panel-heading" role="tab" id="headingThree">
-        <h4 class="panel-title">
-          <a class="collapsed" role="button" data-toggle="collapse"
-             data-parent="#accordion" href="#collapseThree" aria-expanded="false"
-             aria-controls="collapseThree">
-            Ustawienia publiczne
-          </a>
-        </h4>
-      </div>
-      <div id="collapseThree" class="panel-collapse collapse" role="tabpanel"
-           aria-labelledby="headingThree">
-        <div class="panel-body">
-          W trakcie budowy
-        </div>
-      </div>
+  <div class="calFieldDate calField " [ngClass]="dateStart==''?'required':''">
+    <div class="input-group editDate">
+      <span class="input-group-addon">Start:</span>
+      <p-calendar [(ngModel)]="dateStart" placeholder="01/01/2017" [locale]="pl" dateFormat="dd/mm/yy"
+                  required></p-calendar>
     </div>
   </div>
+  <div class="selectHour calFieldDate calField ">
+    <div class="input-group editHour">
+      <span class="input-group-addon">Od:</span>
+      <p-calendar [(ngModel)]="hourStart" placeholder="01:01" [hourFormat]="24" [timeOnly]="true"
+                  [showTime]="true"></p-calendar>
+    </div>
+  </div>
+  <div class="calFieldDate calField " [ngClass]="dateStart==''?'required':''">
+    <div class="input-group editDate">
+      <span class="input-group-addon">Koniec:</span>
+      <p-calendar [(ngModel)]="dateEnd" placeholder="01/01/2017" [locale]="pl" dateFormat="dd/mm/yy"
+                  required></p-calendar>
+    </div>
+  </div>
+  <div class="selectHour calFieldDate calField ">
+    <div class="input-group editHour">
+      <span class="input-group-addon">Do:</span>
+      <p-calendar [(ngModel)]="hourEnd" placeholder="01:01" [hourFormat]="24" [timeOnly]="true"
+                  [showTime]="true"></p-calendar>
+    </div>
+  </div>
+
+  <p-accordion>
+    <p-accordionTab header="Opis zdarzenia" [selected]="true">
+      <textarea placeholder="Opis zdarzenia" [ngModel]="eventData?.description"
+                (ngModelChange)="eventData?.description? eventData.description= $event : null"></textarea>
+    </p-accordionTab>
+    <p-accordionTab header="Osoby zapisane" [disabled]="visibility=='private'">
+      - Imie i nazwisko<br>- Imie i nazwisko<br>- Imie i nazwisko<br>- Imie i
+      nazwisko<br>- Imie i nazwisko<br>- Imie i nazwisko<br>- Imie i nazwisko<br>-
+      Imie i nazwisko<br>- Imie i nazwisko<br>-
+      Imie i nazwisko<br>
+    </p-accordionTab>
+    <p-accordionTab header="Ustawienia publiczne" [disabled]="eventData?.visibility=='private'" >
+      W trakcie budowy
+    </p-accordionTab>
+    <p-accordionTab header="Komentarze" [disabled]="eventData?.visibility=='private'">
+      W trakcie budowy
+    </p-accordionTab>
+  </p-accordion>
 
 
 </div>

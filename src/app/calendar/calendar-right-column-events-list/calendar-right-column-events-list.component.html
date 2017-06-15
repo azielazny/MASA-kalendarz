@@ -1,0 +1,16 @@
+<div class="eventsList">
+  <div class="eventBox" (click)="editEvent(eventdata.event_id)">
+    <i class="fa fa-2x fa-bookmark"></i>
+    <div class="title">{{eventdata.title}}</div>
+    <div class="data">
+      {{startDate}} <br>
+      {{endDate}} <br>
+      {{eventdata.loc_name}}<br>
+      {{eventdata.loc_city}}, ul. {{eventdata.loc_street}}
+    </div>
+    <div class="body">
+      {{eventdata.description}}    </div>
+  </div>
+</div>
+
+

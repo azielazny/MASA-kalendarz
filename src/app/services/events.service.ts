@@ -24,12 +24,22 @@ export class EventsService {
       .map(this.extractEventsList);
   }
 
-  limitListForUser(username:string, limit: number = 5): Observable<Event[]> {
+  limitListForUser(username: string, limit: number = 5): Observable<Event[]> {
     let options = new RequestOptions({
       withCredentials: true // CORS Access-Control-Allow-Credentials header
     });
 
     return this.http.get(this.url + "/list/" + username + '/' + limit, options)
+      .map(this.extractEventsList);
+  }
+
+  listForUserByDate(username: string, day: number): Observable<Event[]> {
+    let options = new RequestOptions({
+      withCredentials: true // CORS Access-Control-Allow-Credentials header
+    });
+
+    return this.http.get("http://localhost/danzet/xxx.php")//, options)
+    // return this.http.get(this.url + "/list/" + username + '/' + day, options)
       .map(this.extractEventsList);
   }
 
@@ -42,6 +52,14 @@ export class EventsService {
     return this.http.get(this.url + "/details/" + eventid, options)
       .map(this.extractEventDetails);
   }
+  detailsForUser(username:string, eventid: number): Observable<Event> {
+    let options = new RequestOptions({
+      withCredentials: true // CORS Access-Control-Allow-Credentials header
+    });
+    return this.http.get("http://localhost/danzet/xxx.php")//, options)
+    // return this.http.get(this.url + "/details/" + username+"/" + eventid, options)
+      .map(this.extractEventDetails);
+  }
 
   add(event: Event): Observable<boolean> {
     let headers = new Headers({'Content-Type': 'application/json'});
@@ -51,6 +69,17 @@ export class EventsService {
     });
 
     return this.http.post(this.url + "/add", JSON.stringify(event), options)
+      .map(this.extractStatus);
+  }
+  update(event: Event): Observable<boolean> {
+    console.log(event);
+    let headers = new Headers({'Content-Type': 'application/json'});
+    let options = new RequestOptions({
+      headers: headers,
+      withCredentials: true // CORS Access-Control-Allow-Credentials header
+    });
+
+    return this.http.post(this.url + "/update", JSON.stringify(event), options)
       .map(this.extractStatus);
   }
 
@@ -140,7 +169,7 @@ export class EventsService {
   private extractTotalCount(res: Response) {
     let body = res.json();
 
-    if(body.code == 200)
+    if (body.code == 200)
       return body.count;
     else
       return -1;

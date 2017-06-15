@@ -58,6 +58,8 @@ import {WeatherWidgetComponent} from "./shared/weather-widget/weather-widget.com
 import {CalendarLeftColumnCategoriesListComponent} from "./calendar/calendar-left-column-categories-list/calendar-left-column-categories-list.component";
 import {CategoriesService} from "./services/categories.service";
 import {CalendarMonthViewWeekListComponent} from "./calendar/calendar-month-view-week-list/calendar-month-view-week-list.component";
+import {CalendarRightColumnEventsListComponent} from "./calendar/calendar-right-column-events-list/calendar-right-column-events-list.component";
+import {CalendarModule, AccordionModule, DropdownModule, GrowlModule} from "primeng/primeng";
 
 
 
@@ -106,13 +108,18 @@ import {CalendarMonthViewWeekListComponent} from "./calendar/calendar-month-view
     EventDetailsCommentComponent,
     WeatherWidgetComponent,
     CalendarLeftColumnCategoriesListComponent,
-    CalendarMonthViewWeekListComponent
+    CalendarMonthViewWeekListComponent,
+    CalendarRightColumnEventsListComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
     routing,
+    CalendarModule,
+    AccordionModule,
+    DropdownModule,
+    GrowlModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyAfZ6Cyh-Ri-NBQykrD0HSz-4PXP1SDPLw'
     })
