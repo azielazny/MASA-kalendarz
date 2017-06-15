@@ -61,11 +61,19 @@
       <textarea placeholder="Opis zdarzenia" [ngModel]="eventData?.description"
                 (ngModelChange)="eventData?.description? eventData.description= $event : null"></textarea>
     </p-accordionTab>
-    <p-accordionTab header="Osoby zapisane" [disabled]="visibility=='private'">
-      - Imie i nazwisko<br>- Imie i nazwisko<br>- Imie i nazwisko<br>- Imie i
-      nazwisko<br>- Imie i nazwisko<br>- Imie i nazwisko<br>- Imie i nazwisko<br>-
-      Imie i nazwisko<br>- Imie i nazwisko<br>-
-      Imie i nazwisko<br>
+    <p-accordionTab [disabled]="visibility=='private'">
+      <p-header>
+        Osoby zapisane <span class="badge">{{usersData.length}}</span>
+        <input type="button" (click)="printDiv('usersList')" value="drukuj listę" id="print-icon"/>
+      </p-header>
+
+      <div Id="usersList">
+        <h3 class="noScreen" style="text-align: center">Lista osób zapisanych na<br>{{title}}</h3>
+        <ul>
+          <calendar-edit-events-users-list *ngFor="let user of usersData" [user]="user"></calendar-edit-events-users-list>
+        </ul>
+
+      </div>
     </p-accordionTab>
     <p-accordionTab header="Ustawienia publiczne" [disabled]="eventData?.visibility=='private'" >
       W trakcie budowy

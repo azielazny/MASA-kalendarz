@@ -60,6 +60,9 @@ import {CategoriesService} from "./services/categories.service";
 import {CalendarMonthViewWeekListComponent} from "./calendar/calendar-month-view-week-list/calendar-month-view-week-list.component";
 import {CalendarRightColumnEventsListComponent} from "./calendar/calendar-right-column-events-list/calendar-right-column-events-list.component";
 import {CalendarModule, AccordionModule, DropdownModule, GrowlModule} from "primeng/primeng";
+import {CalendarEditEventsUsersListComponent} from "./calendar/calendar-edit-events-users-list/calendar-edit-events-users-list.component";
+import {CalendarEditEventsCommentComponent} from "./calendar/calendar-edit-events-comment/calendar-edit-events-comment.component";
+import {CalendarEditEventsCommentsListComponent} from "./calendar/calendar-edit-events-comments-list/calendar-edit-events-comments-list.component";
 
 
 
