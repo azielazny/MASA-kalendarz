@@ -83,7 +83,7 @@ export class CalendarEditEventsComponent implements OnInit, OnChanges {
     let validationStatus: string = "";
     //pola wymagane
     if (this.editEventsForm.selectedCategory == "") validationStatus += "- Nie wybrano kategorii<br>";
-    if (this.editEventsForm.title == "") validationStatus += "- Tytuł jest polem obowiązkowym<br>";
+    if (this.editEventsForm.eventData.title == "") validationStatus += "- Tytuł jest polem obowiązkowym<br>";
     if (this.editEventsForm.startDate == "") validationStatus += "- Data startu wydarzenia musi zostać podana<br>";
     if (this.editEventsForm.endDate == "") validationStatus += "- Data końca wydarzenia musi zostać podana";
     if (validationStatus != "") {
