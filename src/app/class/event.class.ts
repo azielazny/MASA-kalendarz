@@ -23,5 +23,6 @@ export class Event {
   remind_threshold: number;
   category: number;
   attendants: number;
+  reminder:boolean;
 }
 

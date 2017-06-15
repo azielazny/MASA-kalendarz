@@ -82,6 +82,17 @@ export class EventsService {
     return this.http.post(this.url + "/add", JSON.stringify(event), options)
       .map(this.extractStatus);
   }
+  update(event: Event): Observable<boolean> {
+    console.log(event);
+    let headers = new Headers({'Content-Type': 'application/json'});
+    let options = new RequestOptions({
+      headers: headers,
+      withCredentials: true // CORS Access-Control-Allow-Credentials header
+    });
+
+    return this.http.post(this.url + "/update", JSON.stringify(event), options)
+      .map(this.extractStatus);
+  }
 
   remove(eventid: number): Observable<boolean> {
     let options = new RequestOptions({

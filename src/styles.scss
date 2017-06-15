@@ -329,7 +329,7 @@ app-calendar-backoffice {
     }
 
     #calendar {
-      width: calc(100% - 140px) !important;
+      width: calc(100% - 50px) !important;
       float: right;
     }
     .logoBox {
@@ -403,7 +403,7 @@ app-calendar-backoffice {
     .lCard {
       display: inline-block;
       font-size: 2.25rem;
-      width: 14%;
+      width: 13%;
       height: 15.5%;
       background: $lightviolet;
       text-align: center;
@@ -432,7 +432,7 @@ app-calendar-backoffice {
     .dCard {
       display: inline-block;
       font-size: 2.25rem;
-      width: 14%;
+      width: 13%;
       height: 15.5%;
       background: $darkviolet;
       text-align: center;
@@ -447,7 +447,7 @@ app-calendar-backoffice {
     }
     .wCard {
       display: inline-block;
-      width: 14%;
+      width: 13%;
       height: 30px;
       padding-top: 15px;
       text-align: center;
@@ -513,6 +513,7 @@ app-calendar-backoffice {
         display: inline-block;
         font-size: 16px;
         font-weight: 500;
+        cursor:pointer;
         color: $black;
         span {
 
@@ -875,4 +876,42 @@ app-calendar-backoffice #calEdit .formCalendar input#komentarz_username {
   background: #eee;
   margin: 0;
   display: inline-block;
+}
+
+//nadpisane style dla pogody
+.event-weather {
+  padding:5px;
+  .widget-left {
+    overflow: auto;
+     width: 100% !important;//dopasowane do góry
+  }
+  .widget-left-menu {
+    width: auto;
+    margin: 0 auto;
+    display: table;
+    clear: both;
+    content: '';
+    background-color: #fff;
+    border-radius: 6px 6px 0 0;
+    overflow: hidden;
+  }
+  .widget-left__body {
+     -webkit-justify-content: inherit;
+     justify-content: inherit;
+    padding-bottom: 16px;
+    border-radius: 0 0 6px 6px;
+    -webkit-box-orient: horizontal;
+    -webkit-flex-direction: inherit;
+    -ms-flex-direction: inherit;
+    flex-direction: inherit;
+    width: 680px;
+    margin: 0 auto;
+    overflow: auto;
+  }
+  .widget-left__calendar {
+    margin: 0 auto;
+  }
+}
+.error .required {
+  border: 2px solid lighten($lightviolet, 20%) !important;
 }

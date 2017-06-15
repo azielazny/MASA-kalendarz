@@ -1,21 +1,37 @@
-<div class="col-xs-12 col-md-8 formCalendar">
+<div class=" formCalendar" [ngClass]="error==true ? 'error' : ''">
   <div class="selectColor">
-    <i class="fa fa-2x fa-stop" aria-hidden="true" [style.color]="'#'+selectedCategory.category_color"></i>
+    <i class="fa fa-2x fa-stop" aria-hidden="true" [style.color]="selectedCategory.color"></i>
     <p-dropdown [options]="categories" [(ngModel)]="selectedCategory" [style]="{'width':'22px'}" [filter]="true">
-      <template let-car pTemplate="item">
+      <template let-selCategory pTemplate="item">
         <div class="ui-helper-clearfix" style="position: relative;height: 25px;">
-          <div style="font-size:14px;float:left;margin-top:4px"><i class="fa fa-stop" [style.color]="'#'+car.value.category_color"></i>{{car.value.category_name}}</div>
+          <div style="font-size:14px;float:left;margin-top:4px"><i class="fa fa-stop"
+                                                                   [style.color]="selCategory.value.color"></i>{{selCategory.value.name}}
+          </div>
         </div>
       </template>
     </p-dropdown>
   </div>
-  <input type="text" value="{{title}}" class="bigSize" placeholder="Nazwa zdarzenia...">
-  <input type="text" value="{{location}}" class="fullWidth calField" placeholder="Lokalizacja...">
+  <input type="text" [ngModel]="eventData?.title" (ngModelChange)="eventData?.title ? eventData.title = $event : null"
+         class="bigSize" placeholder="Nazwa zdarzenia..." required
+         [ngClass]="eventData?.title.length==0?'required':''">
+  <input type="text" [ngModel]="eventData?.loc_name"
+         (ngModelChange)="eventData?.loc_name ? eventData.loc_name = $event : null" class="col-xs-6 col-sm-4 calField"
+         placeholder="Miejsce...">
+  <input type="text" [ngModel]="eventData?.loc_city"
+         (ngModelChange)="eventData?.loc_city ? eventData.loc_city = $event : null" class="col-xs-6 col-sm-4 calField"
+         placeholder="Miasto...">
+  <input type="text" [ngModel]="eventData?.loc_street"
+         (ngModelChange)="eventData?.loc_street ? eventData.loc_street = $event : null"
+         class="col-xs-11 col-sm-3 calField" placeholder="Ulica...">
+  <input type="text" [ngModel]="eventData?.loc_bnum"
+         (ngModelChange)="eventData?.loc_bnum ? eventData.loc_bnum = $event : null" class="col-xs-1 calField"
+         placeholder="Nr...">
 
-  <div class="calFieldDate calField ">
+  <div class="calFieldDate calField " [ngClass]="dateStart==''?'required':''">
     <div class="input-group editDate">
       <span class="input-group-addon">Start:</span>
-      <p-calendar [(ngModel)]="dateStart" placeholder="01/01/2017" [locale]="pl" dateFormat="dd/mm/yy"></p-calendar>
+      <p-calendar [(ngModel)]="dateStart" placeholder="01/01/2017" [locale]="pl" dateFormat="dd/mm/yy"
+                  required></p-calendar>
     </div>
   </div>
   <div class="selectHour calFieldDate calField ">
@@ -25,10 +41,11 @@
                   [showTime]="true"></p-calendar>
     </div>
   </div>
-  <div class="calFieldDate calField ">
+  <div class="calFieldDate calField " [ngClass]="dateStart==''?'required':''">
     <div class="input-group editDate">
       <span class="input-group-addon">Koniec:</span>
-      <p-calendar [(ngModel)]="dateEnd" placeholder="01/01/2017" [locale]="pl" dateFormat="dd/mm/yy"></p-calendar>
+      <p-calendar [(ngModel)]="dateEnd" placeholder="01/01/2017" [locale]="pl" dateFormat="dd/mm/yy"
+                  required></p-calendar>
     </div>
   </div>
   <div class="selectHour calFieldDate calField ">
@@ -41,28 +58,20 @@
 
   <p-accordion>
     <p-accordionTab header="Opis zdarzenia" [selected]="true">
-      <textarea placeholder="Opis zdarzenia">{{description}}</textarea>
+      <textarea placeholder="Opis zdarzenia" [ngModel]="eventData?.description"
+                (ngModelChange)="eventData?.description? eventData.description= $event : null"></textarea>
     </p-accordionTab>
-    <p-accordionTab >
-      <p-header>
-        Osoby zapisane <span class="badge">{{usersData.length}}</span>
-        <input type="button" (click)="printDiv('usersList')" value="drukuj listę" id="print-icon"/>
-      </p-header>
-
-      <div Id="usersList">
-      <h3 class="noScreen" style="text-align: center">Lista osób zapisanych na<br>{{title}}</h3>
-        <ul>
-          <calendar-edit-events-users-list *ngFor="let user of usersData" [user]="user"></calendar-edit-events-users-list>
-        </ul>
-
-      </div>
+    <p-accordionTab header="Osoby zapisane" [disabled]="visibility=='private'">
+      - Imie i nazwisko<br>- Imie i nazwisko<br>- Imie i nazwisko<br>- Imie i
+      nazwisko<br>- Imie i nazwisko<br>- Imie i nazwisko<br>- Imie i nazwisko<br>-
+      Imie i nazwisko<br>- Imie i nazwisko<br>-
+      Imie i nazwisko<br>
     </p-accordionTab>
-    <p-accordionTab header="Ustawienia publiczne">
+    <p-accordionTab header="Ustawienia publiczne" [disabled]="eventData?.visibility=='private'" >
       W trakcie budowy
     </p-accordionTab>
-    <p-accordionTab header="Komentarze">
-      <!--<calendar-edit-events-comments-list *ngFor="let ev of events" [eventdata]="ev" role="tabpanel" class="tab-pane" id="comments"></calendar-edit-events-comments-list>-->
-      <calendar-edit-events-comments-list [eventdata]="eventData" id="comments"></calendar-edit-events-comments-list>
+    <p-accordionTab header="Komentarze" [disabled]="eventData?.visibility=='private'">
+      W trakcie budowy
     </p-accordionTab>
   </p-accordion>
 

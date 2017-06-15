@@ -1,10 +1,8 @@
-import {Component, OnInit, Input, OnChanges, AfterViewInit, Inject, NgZone} from '@angular/core';
+import {Component, OnInit, Input, OnChanges, AfterViewInit} from '@angular/core';
 import {Event} from "../../class/event.class";
 import {SelectItem} from 'primeng/primeng'
 import {CategoriesService} from "../../services/categories.service";
-import {EventsService} from "../../services/events.service";
-import {User} from "../../class/user.class";
-import {DOCUMENT} from "@angular/platform-browser";
+import {Category} from "../../class/category.class";
 declare var $: any;
 
 
@@ -15,15 +13,13 @@ declare var $: any;
 })
 export class CalendarEditEventsFormComponent implements OnInit, OnChanges, AfterViewInit {
   public username: string = localStorage.getItem("userName");
-  private title: string = "";
   private pl: any;
   private dateStart: string = "";
   private hourStart: string = "";
   private dateEnd: string = "";
   private hourEnd: string = "";
-  private location: string = "";
-  private description: string = "";
-  private selectedCategory: any = 'fff';
+  private selectedCategory: Category = {color: "#ddd", user_id: 0, name: "", category_id: 0};
+  private error: boolean = false;
 
   private usersData: User[] = [];
   private usersCount:number;
@@ -31,14 +27,20 @@ export class CalendarEditEventsFormComponent implements OnInit, OnChanges, After
 
   @Input()
   private eventData: Event;
+  @Input()
+  private visibility: string;
 
+  @Input()
+  private remindEvent: boolean;
+  @Input()
+  public parent;
 
-  constructor(private categoriesService: CategoriesService, private eventsService: EventsService, @Inject(DOCUMENT) private document: any) {
+  constructor(private categoriesService: CategoriesService) {
     this.categoriesService.list().map(val => val.forEach(v => this.buildEventData(v))).subscribe();
   }
 
   buildEventData(val) {
-    this.categories.push({label: val.category_color, value: val});
+    this.categories.push({label: val.color, value: val});
   }
 
   ngOnInit() {
@@ -52,16 +54,25 @@ export class CalendarEditEventsFormComponent implements OnInit, OnChanges, After
     }
   }
 
+
   ngOnChanges() {
+    this.error = false;
     if (this.eventData) {
-      this.title = (this.eventData.title) ? this.eventData.title : "Nazwa zdarzenia...";
-      this.description = (this.eventData.description) ? this.eventData.description : "Opis zdarzenia...";
+      this.eventData.visibility=(undefined != this.visibility)?this.visibility:(this.eventData.visibility)?this.eventData.visibility:"private";
+      this.visibility=undefined;
+
+      this.eventData.reminder=(undefined != this.remindEvent)? this.remindEvent:(this.eventData.reminder)? this.eventData.reminder:true;
+      this.remindEvent=undefined;
 
       this.getUsersList();
       this.getSelectedCategoryData();
       this.buildEventDeteData();
-      this.buildLocationData();
-
+    } else {
+      this.eventData = null;
+      this.dateStart = "";
+      this.hourStart = "";
+      this.dateEnd = "";
+      this.hourEnd = "";
     }
   }
   printDiv(divName) {
@@ -138,32 +149,6 @@ export class CalendarEditEventsFormComponent implements OnInit, OnChanges, After
     this.hourStart = h1_s + ':' + m1_s;
     this.hourEnd = h2_s + ':' + m2_s;
   }
-
-  private buildLocationData() {
-// lokalizacja (formatowanie)
-    this.location = "";
-
-    if (this.eventData.loc_name != null)
-      this.location += this.eventData.loc_name.trim() + ', ';
-
-    if (this.eventData.loc_street != null)
-      this.location += this.eventData.loc_street.trim();
-
-    if (this.eventData.loc_street != null && this.eventData.loc_bnum != null)
-      this.location += " ";
-
-    if (this.eventData.loc_bnum != null)
-      this.location += this.eventData.loc_bnum.trim();
-
-    if ((this.eventData.loc_street != null || this.eventData.loc_bnum != null) && this.eventData.loc_city != null)
-      this.location += ', ';
-
-    if (this.eventData.loc_city != null)
-      this.location += this.eventData.loc_city.trim();
-
-    this.location = this.location.toUpperCase();
-  }
-
   ngAfterViewInit() {
     $('.collapse').collapse();
   }
