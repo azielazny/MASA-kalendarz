@@ -4,9 +4,8 @@
     <div class="title">{{eventdata.title}}</div>
     <div class="data">
       {{startDate}} <br>
-      {{endDate}} <br>
-      {{eventdata.loc_name}}<br>
-      {{eventdata.loc_city}}, ul. {{eventdata.loc_street}}
+      <span *ngIf="endDate">{{endDate}} <br></span>
+      {{location}}
     </div>
     <div class="body">
       {{eventdata.description}}    </div>

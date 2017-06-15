@@ -34,6 +34,7 @@ export class CalendarEditEventsComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges() {
+
     (this.selectedEvent) ? this.eventsService.detailsForUser(this.username, this.selectedEvent).subscribe(val => {
         this.eventData = val;
       }) : this.eventData = null;

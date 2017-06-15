@@ -1,4 +1,4 @@
-import {Component, OnInit, Input, OnChanges} from '@angular/core';
+import {Component, OnInit, Input, OnChanges, AfterViewInit} from '@angular/core';
 import {Router} from "@angular/router";
 import {Event} from "../../class/event.class";
 
@@ -23,6 +23,7 @@ export class CalendarEditEventsRightColumnComponent implements OnInit, OnChanges
   ngOnChanges() {
     this.buildLocationData();
   }
+
 
   private buildLocationData() {
 // lokalizacja (formatowanie)

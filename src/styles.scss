@@ -704,7 +704,7 @@ app-calendar-backoffice {
         font-weight: 700;
       }
       .data {
-        color: $lightviolet;
+        color: lighten($lightviolet,20%);
         overflow: hidden;
         text-overflow: ellipsis;
         span {

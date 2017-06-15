@@ -82,6 +82,7 @@ export class EventsService {
     return this.http.post(this.url + "/add", JSON.stringify(event), options)
       .map(this.extractStatus);
   }
+
   update(event: Event): Observable<boolean> {
     console.log(event);
     let headers = new Headers({'Content-Type': 'application/json'});

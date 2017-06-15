@@ -1,8 +1,11 @@
-import {Component, OnInit, Input, OnChanges, AfterViewInit} from '@angular/core';
+import {Component, OnInit, Input, OnChanges, AfterViewInit, Inject} from '@angular/core';
 import {Event} from "../../class/event.class";
 import {SelectItem} from 'primeng/primeng'
 import {CategoriesService} from "../../services/categories.service";
 import {Category} from "../../class/category.class";
+import {User} from "../../class/user.class";
+import {EventsService} from "../../services/events.service";
+import {DOCUMENT} from "@angular/platform-browser";
 declare var $: any;
 
 
@@ -20,22 +23,21 @@ export class CalendarEditEventsFormComponent implements OnInit, OnChanges, After
   private hourEnd: string = "";
   private selectedCategory: Category = {color: "#ddd", user_id: 0, name: "", category_id: 0};
   private error: boolean = false;
-
   private usersData: User[] = [];
   private usersCount:number;
+
   categories: SelectItem[] = [];
 
   @Input()
   private eventData: Event;
   @Input()
   private visibility: string;
-
   @Input()
   private remindEvent: boolean;
   @Input()
   public parent;
 
-  constructor(private categoriesService: CategoriesService) {
+  constructor(private categoriesService: CategoriesService, private eventsService: EventsService, @Inject(DOCUMENT) private document: any) {
     this.categoriesService.list().map(val => val.forEach(v => this.buildEventData(v))).subscribe();
   }
 
@@ -73,6 +75,7 @@ export class CalendarEditEventsFormComponent implements OnInit, OnChanges, After
       this.hourStart = "";
       this.dateEnd = "";
       this.hourEnd = "";
+      this.usersData=[];
     }
   }
   printDiv(divName) {
@@ -97,7 +100,7 @@ export class CalendarEditEventsFormComponent implements OnInit, OnChanges, After
       this.usersData = val
     });
     this.usersCount=this.usersData.length;
-    console.log(this.usersCount)
+    // console.log(this.usersCount)
   }
 
   private getSelectedCategoryData() {
