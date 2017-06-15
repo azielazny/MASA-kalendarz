@@ -466,7 +466,8 @@ app-calendar-backoffice {
 
   #calEdit {
     position: absolute;
-    height: 100%;
+    height: 100vh;
+    overflow: auto;
     width: 100%;
     background: rgb(255, 255, 255);
     z-index: 100;
@@ -770,26 +771,28 @@ calendar-month-view-light-box.active .lCard {
   border: 2px solid gold !important;
 }
 
-
-
 .ui-dropdown-panel.ui-widget-content.ui-corner-all.ui-helper-hidden.ui-shadow {
   width: 250px;
 }
+
 .ui-dropdown-filter-container {
-  width:100%
+  width: 100%
 }
 
 .ui-helper-clearfix i.fa.fa-stop {
   padding: 0 5px;
 }
+
 label.ui-dropdown-label.ui-inputtext.ui-corner-all {
   visibility: hidden;
 }
+
 .ui-widget-header .ui-state-default, .ui-widget-content .ui-state-default, .ui-state-default {
   border: 0 solid #d6d6d6;
   background: transparent;
   color: inherit;
 }
+
 .ui-dropdown {
   float: right;
   .ui-dropdown-trigger .fa {
@@ -803,11 +806,76 @@ label.ui-dropdown-label.ui-inputtext.ui-corner-all {
   .ui-dropdown-trigger .fa {
     margin-top: .2em;
     margin-left: -.125em;
-    color:#727173
+    color: #727173
   }
 }
+
 .weatherWidgetForEdit {
-  padding:0
+  padding: 0
+}
+
+@media screen {
+  .noPrint {
+  }
+  .noScreen {
+    display: none;
+  }
+}
+
+@media print {
+  .noPrint {
+    display: none;
+  }
+  .noScreen {
+  }
+}
+
+#print-icon {
+  float: right;
+}
+
+#usersList {
+  ul {
+    margin: 0;
+    padding: 0;
+    max-height: 200px;
+    overflow: auto;
+    li {
+      padding: 5px;
+      border: 1px solid #ddd;
+      margin-bottom: 2px;
+      list-style: none;
+      /* margin-left: 0; */
+      color: #777;
+      font-weight: 500;
+      font-family: Arial;
+      i {
+        color: #d8d7d9;
+        margin-right: 10px;
+      }
+    }
+  }
+}
+
+.moderator .commentAvatar {
+  float: right;
+}
+
+figure {
+  margin: auto !important;
+}
+
+textarea#komentarz_tresc {
+  border: 1px solid #ddd !important;
+}
+
+app-calendar-backoffice #calEdit .formCalendar input#komentarz_username {
+  border: none;
+  padding: 0 5px;
+  color: #8c8a8d;
+  background: #eee;
+  margin: 0;
+  display: inline-block;
 }
 
 //nadpisane style dla pogody

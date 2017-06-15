@@ -1,7 +1,7 @@
 <article class="row">
   <div class="col-md-2 col-sm-2 hidden-xs commentAvatar">
     <figure class="thumbnail">
-      <img class="img-responsive" src="{{ getAvatarLink() }}" />
+      <img class="img-responsive" src="{{ getAvatarLink() }}"/>
       <figcaption class="text-center">{{ getUsername() }}</figcaption>
     </figure>
   </div>
@@ -10,12 +10,16 @@
       <div class="panel-body">
         <header class="text-left">
           <div class="comment-user"><i class="fa fa-user"></i> {{ getUsername() }}</div>
-          <time class="comment-date" [attr.datetime]="getDateTime()"><i class="fa fa-clock-o"></i> {{ getDate() }}</time>
+          <time class="comment-date" [attr.datetime]="getDateTime()"><i class="fa fa-clock-o"></i> {{ getDate() }}
+          </time>
         </header>
         <div class="comment-post">
           <p>{{ getContent() }}</p>
         </div>
-        <p class="text-right"><a class="btn btn-default btn-sm" (click)="parent.showResponse()"><i class="fa fa-reply"></i> odpowiedz</a></p>
+        <p class="text-right">
+          <a class="btn btn-default btn-sm" (click)="parent.removeComment(commentdata.comment_id)"><i class="fa fa-close"></i> skasuj</a>
+          <a class="btn btn-default btn-sm" (click)="parent.showResponse()"><i class="fa fa-reply"></i> odpowiedz</a>
+        </p>
       </div>
     </div>
   </div>

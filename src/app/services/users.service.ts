@@ -51,8 +51,6 @@ export class UsersService {
     let options = new RequestOptions({
       withCredentials: true // CORS Access-Control-Allow-Credentials header
     });
-
-
   }
 
   private handleErrors (error: Response | any) {

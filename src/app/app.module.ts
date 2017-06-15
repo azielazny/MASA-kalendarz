@@ -109,7 +109,10 @@ import {CalendarModule, AccordionModule, DropdownModule, GrowlModule} from "prim
     WeatherWidgetComponent,
     CalendarLeftColumnCategoriesListComponent,
     CalendarMonthViewWeekListComponent,
-    CalendarRightColumnEventsListComponent
+    CalendarRightColumnEventsListComponent,
+    CalendarEditEventsUsersListComponent,
+    CalendarEditEventsCommentComponent,
+    CalendarEditEventsCommentsListComponent
   ],
   imports: [
     BrowserModule,

@@ -7,6 +7,7 @@ import 'rxjs/add/operator/map';
 
 import {Event} from '../class/event.class';
 import {Attendant} from '../class/attendant.class';
+import {User} from "../class/user.class";
 
 @Injectable()
 export class EventsService {
@@ -43,6 +44,15 @@ export class EventsService {
       .map(this.extractEventsList);
   }
 
+  userListForEvent(event_id: number): Observable<User[]> {
+    let options = new RequestOptions({
+      withCredentials: true // CORS Access-Control-Allow-Credentials header
+    });
+
+    return this.http.get("http://localhost/danzet/xxx.php")//, options)
+    // return this.http.get(this.url + "/list/" + username + '/' + day, options)
+      .map(this.extractUsersList);
+  }
 
   details(eventid: number): Observable<Event> {
     let options = new RequestOptions({
@@ -52,7 +62,8 @@ export class EventsService {
     return this.http.get(this.url + "/details/" + eventid, options)
       .map(this.extractEventDetails);
   }
-  detailsForUser(username:string, eventid: number): Observable<Event> {
+
+  detailsForUser(username: string, eventid: number): Observable<Event> {
     let options = new RequestOptions({
       withCredentials: true // CORS Access-Control-Allow-Credentials header
     });
@@ -198,6 +209,15 @@ export class EventsService {
 
     if (body.code === 200)
       return body.events;
+    else
+      return {};
+  }
+
+  private extractUsersList(res: Response) {
+    let body = res.json();
+
+    if (body.code === 200)
+      return body.users;
     else
       return {};
   }

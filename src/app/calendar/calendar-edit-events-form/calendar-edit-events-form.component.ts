@@ -21,6 +21,8 @@ export class CalendarEditEventsFormComponent implements OnInit, OnChanges, After
   private selectedCategory: Category = {color: "#ddd", user_id: 0, name: "", category_id: 0};
   private error: boolean = false;
 
+  private usersData: User[] = [];
+  private usersCount:number;
   categories: SelectItem[] = [];
 
   @Input()
@@ -62,6 +64,7 @@ export class CalendarEditEventsFormComponent implements OnInit, OnChanges, After
       this.eventData.reminder=(undefined != this.remindEvent)? this.remindEvent:(this.eventData.reminder)? this.eventData.reminder:true;
       this.remindEvent=undefined;
 
+      this.getUsersList();
       this.getSelectedCategoryData();
       this.buildEventDeteData();
     } else {
@@ -71,6 +74,30 @@ export class CalendarEditEventsFormComponent implements OnInit, OnChanges, After
       this.dateEnd = "";
       this.hourEnd = "";
     }
+  }
+  printDiv(divName) {
+    let printContents, popupWin;
+    printContents = this.document.getElementById(divName).innerHTML;
+    popupWin = window.open('', '_blank', 'top=0,left=0,height=100%,width=auto');
+    popupWin.document.open();
+    popupWin.document.write(`
+          <html>
+              <head>
+                  <title>Print from .Makeplan</title>
+              </head>
+              <body onload="window.print();window.close()">${printContents}
+              </body>
+          </html>`
+    );
+    popupWin.document.close();
+  }
+
+  private getUsersList() {
+    this.eventsService.userListForEvent(this.eventData.event_id).subscribe(val => {
+      this.usersData = val
+    });
+    this.usersCount=this.usersData.length;
+    console.log(this.usersCount)
   }
 
   private getSelectedCategoryData() {
