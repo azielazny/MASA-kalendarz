@@ -9,7 +9,7 @@ import {Comment} from "../class/comment.class";
 
 @Injectable()
 export class CommentsService {
-  private url = "https://masa.oustish.pl/comments";
+  private url = "https://masa.ousti.sh/comments";
 
   constructor(private http: Http) {};
 
