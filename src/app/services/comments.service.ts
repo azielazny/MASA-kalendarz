@@ -1,7 +1,7 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 
-import { Http, Response, Headers, RequestOptions } from '@angular/http';
-import { Observable } from 'rxjs/Observable';
+import {Http, Response, Headers, RequestOptions} from '@angular/http';
+import {Observable} from 'rxjs/Observable';
 
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
@@ -11,9 +11,10 @@ import {Comment} from "../class/comment.class";
 export class CommentsService {
   private url = "https://masa.ousti.sh/comments";
 
-  constructor(private http: Http) {};
+  constructor(private http: Http) {
+  };
 
-  list(eventid: number, lastknowncid : number = 0): Observable<Comment[]> {
+  list(eventid: number, lastknowncid: number = 0): Observable<Comment[]> {
     let options = new RequestOptions({
       withCredentials: true // CORS Access-Control-Allow-Credentials header
     });
@@ -35,6 +36,21 @@ export class CommentsService {
     };
 
     return this.http.post(this.url + "/add/" + eventid, JSON.stringify(data), options)
+      .map(this.extractStatus);
+  }
+
+  remove(eventid: number, comment_id: number) {
+    let headers = new Headers({'Content-Type': 'application/json'});
+    let options = new RequestOptions({
+      headers: headers,
+      withCredentials: true // CORS Access-Control-Allow-Credentials header
+    });
+
+    let data = {
+      comment_id: comment_id
+    };
+
+    return this.http.post(this.url + "/remove/" + eventid, JSON.stringify(data), options)
       .map(this.extractStatus);
   }
 

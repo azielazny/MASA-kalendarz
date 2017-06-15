@@ -1,5 +1,6 @@
 export class Attendant {
+  when: number;
   email: string;
-  name: string;
+  username: string;
   avatar: string;
 }

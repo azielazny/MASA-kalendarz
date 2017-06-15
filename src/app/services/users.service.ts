@@ -1,7 +1,7 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 
-import { Http, Response, Headers, RequestOptions } from '@angular/http';
-import { Observable } from 'rxjs/Observable';
+import {Http, Response, Headers, RequestOptions} from '@angular/http';
+import {Observable} from 'rxjs/Observable';
 
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
@@ -10,9 +10,10 @@ import 'rxjs/add/operator/map';
 export class UsersService {
   private url = "https://masa.ousti.sh/users";
 
-  constructor(private http: Http) {}
+  constructor(private http: Http) {
+  }
 
-  login(provider: string = "google", user_id: string): Observable<boolean> {
+  login(provider: string = "google", user_id: string): Observable<number> {
     let headers = new Headers({'Content-Type': 'application/json'});
     let options = new RequestOptions({
       headers: headers,
@@ -43,19 +44,15 @@ export class UsersService {
     let options = new RequestOptions({
       withCredentials: true // CORS Access-Control-Allow-Credentials header
     });
-
-
   }
 
-  details($uid, $provider) {
+  details($uid) {
     let options = new RequestOptions({
       withCredentials: true // CORS Access-Control-Allow-Credentials header
     });
-
-
   }
 
-  private handleErrors (error: Response | any) {
+  private handleErrors(error: Response | any) {
     // In a real world app, you might use a remote logging infrastructure
     let errMsg: string;
     if (error instanceof Response) {
@@ -73,5 +70,11 @@ export class UsersService {
     let body = res.json();
 
     return (body.code === 200);
+  }
+
+  private extractID(res: Response) {
+    let body = res.json();
+
+    return (body.uid || -1);
   }
 }

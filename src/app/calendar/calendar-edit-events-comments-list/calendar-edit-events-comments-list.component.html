@@ -1,6 +1,6 @@
 <div>
   <section class="comment-list">
-    <event-details-comment *ngFor="let cmnt of comms" [commentdata]="cmnt" [parent]="this" [class.moderator]="cmnt.user_id==moderator"></event-details-comment>
+    <calendar-edit-events-comment *ngFor="let cmnt of comms" [commentdata]="cmnt" [parent]="this" [class.moderator]="cmnt.user_id==moderator" ></calendar-edit-events-comment>
 
     <div class="comment-response" [class.hidden]="!showResponseDiv">
       <form class="form-horizontal">
@@ -14,7 +14,7 @@
         <div class="form-group">
           <label for="komentarz_username" class="col-sm-3 control-label"><b>Imię i nazwisko</b> lub <b>nick</b></label>
           <div class="col-sm-9">
-            <input type="text" name="komentarz_username" id="komentarz_username" class="form-control" />
+            <input type="text" name="komentarz_username" id="komentarz_username" class="form-control" value="{{username}}" disabled/>
           </div>
         </div>
 

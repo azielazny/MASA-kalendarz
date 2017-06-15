@@ -1,4 +1,4 @@
-import {Component, OnInit, Input, ViewChild} from '@angular/core';
+import {Component, OnInit, Input, ViewChild, OnChanges} from '@angular/core';
 import {Router} from "@angular/router";
 
 @Component({
@@ -12,8 +12,10 @@ export class CalendarGridComponent implements OnInit {
 
   @Input()
   public parent;
-  
+
   public actualMonth;
+  public selectedDate;
+  private selectedEvent;
 
   @ViewChild('rightColumn') rightColumn;
   @ViewChild('editEvents') editEvents;
@@ -24,9 +26,18 @@ export class CalendarGridComponent implements OnInit {
 
   ngOnInit() {
   }
-  
+  getEventID(value) {
+    this.selectedEvent=value;
+  }
+
   changeOfMonth(value) {
     this.actualMonth=value;
+  }
+  sendDateToRightColumn(value) {
+    this.selectedDate=value;
+  }
+  closeRightColumn(value) {
+    if(value==true) this.rightColumn.shown=false;
   }
 
 }

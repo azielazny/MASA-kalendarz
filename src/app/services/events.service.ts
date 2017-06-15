@@ -7,6 +7,7 @@ import 'rxjs/add/operator/map';
 
 import {Event} from '../class/event.class';
 import {Attendant} from '../class/attendant.class';
+import {User} from "../class/user.class";
 
 @Injectable()
 export class EventsService {
@@ -24,7 +25,7 @@ export class EventsService {
       .map(this.extractEventsList);
   }
 
-  limitListForUser(username:string, limit: number = 5): Observable<Event[]> {
+  limitListForUser(username: string, limit: number = 5): Observable<Event[]> {
     let options = new RequestOptions({
       withCredentials: true // CORS Access-Control-Allow-Credentials header
     });
@@ -33,6 +34,25 @@ export class EventsService {
       .map(this.extractEventsList);
   }
 
+  listForUserByDate(username: string, day: number): Observable<Event[]> {
+    let options = new RequestOptions({
+      withCredentials: true // CORS Access-Control-Allow-Credentials header
+    });
+
+    return this.http.get("http://localhost/danzet/xxx.php")//, options)
+    // return this.http.get(this.url + "/list/" + username + '/' + day, options)
+      .map(this.extractEventsList);
+  }
+
+  userListForEvent(event_id: number): Observable<User[]> {
+    let options = new RequestOptions({
+      withCredentials: true // CORS Access-Control-Allow-Credentials header
+    });
+
+    return this.http.get("http://localhost/danzet/xxx.php")//, options)
+    // return this.http.get(this.url + "/list/" + username + '/' + day, options)
+      .map(this.extractUsersList);
+  }
 
   details(eventid: number): Observable<Event> {
     let options = new RequestOptions({
@@ -40,6 +60,15 @@ export class EventsService {
     });
 
     return this.http.get(this.url + "/details/" + eventid, options)
+      .map(this.extractEventDetails);
+  }
+
+  detailsForUser(username: string, eventid: number): Observable<Event> {
+    let options = new RequestOptions({
+      withCredentials: true // CORS Access-Control-Allow-Credentials header
+    });
+    return this.http.get("http://localhost/danzet/xxx.php")//, options)
+    // return this.http.get(this.url + "/details/" + username+"/" + eventid, options)
       .map(this.extractEventDetails);
   }
 
@@ -51,6 +80,18 @@ export class EventsService {
     });
 
     return this.http.post(this.url + "/add", JSON.stringify(event), options)
+      .map(this.extractStatus);
+  }
+
+  update(event: Event): Observable<boolean> {
+    console.log(event);
+    let headers = new Headers({'Content-Type': 'application/json'});
+    let options = new RequestOptions({
+      headers: headers,
+      withCredentials: true // CORS Access-Control-Allow-Credentials header
+    });
+
+    return this.http.post(this.url + "/update", JSON.stringify(event), options)
       .map(this.extractStatus);
   }
 
@@ -140,7 +181,7 @@ export class EventsService {
   private extractTotalCount(res: Response) {
     let body = res.json();
 
-    if(body.code == 200)
+    if (body.code == 200)
       return body.count;
     else
       return -1;
@@ -169,6 +210,15 @@ export class EventsService {
 
     if (body.code === 200)
       return body.events;
+    else
+      return {};
+  }
+
+  private extractUsersList(res: Response) {
+    let body = res.json();
+
+    if (body.code === 200)
+      return body.users;
     else
       return {};
   }
