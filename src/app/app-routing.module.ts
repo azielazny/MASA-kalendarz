@@ -6,6 +6,7 @@ import {EventDetailsComponent}  from './main/event-details/event-details.compone
 import {EventsListComponent} from "./main/events-list/events-list.component";
 import {CalendarEditEventsComponent} from "./calendar/calendar-edit-events/calendar-edit-events.component";
 import {CalendarBackofficeComponent} from "./calendar/calendar-backoffice/calendar-backoffice.component";
+import {CookieComponent} from "./main/cookie/cookie.component";
 
 
 // import {EventsListComponent} from "./events-list/events-list.component";
@@ -18,6 +19,7 @@ const routes: Routes = [
   {path: 'event/:id/:utitle', component: EventDetailsComponent},
   {path: 'events/:city/:scope/:page', component: EventsListComponent},
   {path: 'calendar', component: CalendarBackofficeComponent},
+  {path: 'cookie', component: CookieComponent},
 
   // { path: '', redirectTo: '/index', pathMatch: 'full' },
 

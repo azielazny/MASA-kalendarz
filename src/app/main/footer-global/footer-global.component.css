@@ -14,6 +14,8 @@
     text-align: center;
     margin-top: 10px; }
     .footer-wrap .footer p span {
-      margin: 0 25px; }
+      margin: 0 25px;
+      cursor: pointer;
+    }
 
 /*# sourceMappingURL=footer-global.component.css.map */
