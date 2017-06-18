@@ -65,6 +65,7 @@ import {CalendarEditEventsCommentComponent} from "./calendar/calendar-edit-event
 import {CalendarEditEventsCommentsListComponent} from "./calendar/calendar-edit-events-comments-list/calendar-edit-events-comments-list.component";
 import {CookieComponent} from "./main/cookie/cookie.component";
 import {CalendarMonthViewLightBoxEventsListComponent} from "./calendar/calendar-month-view-light-box-events-list/calendar-month-view-light-box-events-list.component";
+import {FilterPipe} from "./calendar/calendar-month-view-light-box/filterPipe";
 
 
 @NgModule({
@@ -118,7 +119,8 @@ import {CalendarMonthViewLightBoxEventsListComponent} from "./calendar/calendar-
     CalendarEditEventsCommentComponent,
     CalendarEditEventsCommentsListComponent,
     CookieComponent,
-    CalendarMonthViewLightBoxEventsListComponent
+    CalendarMonthViewLightBoxEventsListComponent,
+    FilterPipe
 
   ],
   imports: [

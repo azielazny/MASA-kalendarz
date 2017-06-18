@@ -18,6 +18,9 @@ export class CalendarMonthViewLightBoxEventsListComponent implements OnInit, OnC
   @Input()
   private day;
 
+  private startDay:number;
+  private endDay:number;
+
   constructor() {
 
   }
@@ -28,6 +31,7 @@ export class CalendarMonthViewLightBoxEventsListComponent implements OnInit, OnC
 
   ngOnChanges() {
     // console.log(this.day)
+    this.startDay = new Date(this.eventForGrid.start_ts *1000).getDate();
   }
 
 
