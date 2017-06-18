@@ -23,6 +23,7 @@ export class CalendarMonthViewComponent implements OnInit {
   private eventsListForGrid: EventForGrid[] = [];
   private eventsListByDay: EventForGrid[] = [];
 
+
   public categories: Category[] = [];
 
   private now = new Date();
@@ -62,20 +63,24 @@ export class CalendarMonthViewComponent implements OnInit {
       this.categories = val
     });
     let startDay = new Date(this.year, this.month, 1).getTime() / 1000;
-    console.log(startDay);
+    // console.log(startDay);
     let endDay = new Date(this.year, this.month + 1, 1).getTime() / 1000;
-    console.log(endDay);
-    this.eventsService.listForUserByPeriod(startDay, endDay).map(val => val.forEach(v => this.eventsListForGrid.push(
-      {
-        "event_id": v.event_id,
-        "title": v.title,
-        "start_ts": v.start_ts,
-        "end_ts": v.end_ts,
-        "category": v.category,
-        "color": this.getCategoryColor(v.category)
-      }
-    ))).subscribe();
-    console.log(this.eventsListForGrid)
+    // console.log(endDay);
+    this.eventsService.listForUserByPeriod(startDay, endDay).map(val => val.forEach(v => {
+        this.eventsListForGrid.push(
+          {
+            "event_id": v.event_id,
+            "title": v.title,
+            "start_ts": v.start_ts,
+            "end_ts": v.end_ts,
+            "category": v.category,
+            "color": this.getCategoryColor(v.category)
+          }
+        )
+      })
+    ).subscribe();
+
+    // console.log(this.eventsListForGrid)
   }
 
   getCategoryColor(category_id): string {
@@ -86,16 +91,7 @@ export class CalendarMonthViewComponent implements OnInit {
     return '';
   }
 
-  eventsListForGridByDay(day: number) {
-    let startDate = new Date(this.year, this.month, day).getTime() / 1000;
-    let endDate = new Date(this.year, this.month, day + 1).getTime() / 1000;
-
-    return this.eventsListForGrid.filter(val => val.start_ts >= startDate && val.end_ts < endDate);
-
-
-  }
-
-  //dni w miesiącu
+//dni w miesiącu
   monthGen(m, y) {
     //reset pól
     this.actualDay = null;
@@ -130,7 +126,8 @@ export class CalendarMonthViewComponent implements OnInit {
 
   }
 
-  static monthDays(month, year) {
+  static
+  monthDays(month, year) {
     if (month != 2) {
       let x = (month <= 7) ? 1 : 0;
       return 30 + (Number(month % 2 == x));
@@ -140,7 +137,8 @@ export class CalendarMonthViewComponent implements OnInit {
 
   }
 
-  static februaryInYear(year) {
+  static
+  februaryInYear(year) {
     return (year % 4 == 0) ? 29 : 28;
   }
 
@@ -179,7 +177,8 @@ export class CalendarMonthViewComponent implements OnInit {
     this.lightBoxes.toArray()[index - 1].active = true;
   }
 
-  static formatForDate(num: number): string {
+  static
+  formatForDate(num: number): string {
     let newNum: string = num + "";
     return (newNum.length < 2) ? "0" + newNum : newNum;
   }

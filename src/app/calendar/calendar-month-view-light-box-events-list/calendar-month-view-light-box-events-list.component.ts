@@ -27,7 +27,7 @@ export class CalendarMonthViewLightBoxEventsListComponent implements OnInit, OnC
   }
 
   ngOnChanges() {
-    console.log(this.day)
+    // console.log(this.day)
   }
 
 
