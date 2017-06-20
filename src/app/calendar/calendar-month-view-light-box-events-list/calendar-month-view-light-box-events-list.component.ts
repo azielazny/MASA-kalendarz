@@ -1,8 +1,7 @@
-import {Component, OnInit, Input, HostBinding, OnChanges} from '@angular/core';
-import {Router} from "@angular/router";
-import {Calendar} from "../../class/calendar.class";
+import {Component, OnInit, Input, OnChanges} from '@angular/core';
 import {EventForGrid} from "../../class/eventForGrid.class";
-import {Category} from "../../class/category.class";
+import {TooltipModule} from 'primeng/primeng';
+
 
 @Component({
   selector: 'calendar-month-view-light-box-events-list',

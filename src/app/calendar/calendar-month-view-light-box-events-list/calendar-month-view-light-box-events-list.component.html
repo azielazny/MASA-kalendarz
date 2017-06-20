@@ -1,1 +1,1 @@
-<i class="fa fa-stop" *ngIf="day==startDay" [ngStyle]="{'color': eventForGrid?.color?eventForGrid.color:'#ff0'}"></i>
+<i class="fa fa-stop" *ngIf="day==startDay" pTooltip="{{eventForGrid.title}}" tooltipPosition="bottom" [ngStyle]="{'color': eventForGrid?.color?eventForGrid.color:'#ff0'}"></i>

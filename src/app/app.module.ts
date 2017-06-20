@@ -66,6 +66,7 @@ import {CalendarEditEventsCommentsListComponent} from "./calendar/calendar-edit-
 import {CookieComponent} from "./main/cookie/cookie.component";
 import {CalendarMonthViewLightBoxEventsListComponent} from "./calendar/calendar-month-view-light-box-events-list/calendar-month-view-light-box-events-list.component";
 import {FilterPipe} from "./calendar/calendar-month-view-light-box/filterPipe";
+import {TooltipModule} from "primeng/components/tooltip/tooltip";
 
 
 @NgModule({
@@ -132,6 +133,7 @@ import {FilterPipe} from "./calendar/calendar-month-view-light-box/filterPipe";
     AccordionModule,
     DropdownModule,
     GrowlModule,
+    TooltipModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyAfZ6Cyh-Ri-NBQykrD0HSz-4PXP1SDPLw'
     })
