@@ -67,6 +67,7 @@ import {CookieComponent} from "./main/cookie/cookie.component";
 import {CalendarMonthViewLightBoxEventsListComponent} from "./calendar/calendar-month-view-light-box-events-list/calendar-month-view-light-box-events-list.component";
 import {FilterPipe} from "./calendar/calendar-month-view-light-box/filterPipe";
 import {TooltipModule} from "primeng/components/tooltip/tooltip";
+import {CalendarEditEventsPublicSettingsComponent} from "./calendar/calendar-edit-events-public-settings/calendar-edit-events-public-settings.component";
 
 
 @NgModule({
@@ -121,7 +122,8 @@ import {TooltipModule} from "primeng/components/tooltip/tooltip";
     CalendarEditEventsCommentsListComponent,
     CookieComponent,
     CalendarMonthViewLightBoxEventsListComponent,
-    FilterPipe
+    FilterPipe,
+    CalendarEditEventsPublicSettingsComponent
 
   ],
   imports: [

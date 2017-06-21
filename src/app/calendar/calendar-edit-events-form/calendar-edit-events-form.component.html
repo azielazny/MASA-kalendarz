@@ -76,7 +76,7 @@
       </div>
     </p-accordionTab>
     <p-accordionTab header="Ustawienia publiczne" [disabled]="eventData?.visibility=='private'" >
-      W trakcie budowy
+      <calendar-edit-events-public-settings></calendar-edit-events-public-settings>
     </p-accordionTab>
     <p-accordionTab header="Komentarze" [disabled]="eventData?.visibility=='private'">
       <calendar-edit-events-comments-list [eventdata]="eventData" id="comments"></calendar-edit-events-comments-list>
