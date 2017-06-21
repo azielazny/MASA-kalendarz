@@ -37,7 +37,7 @@ export class CalendarEditEventsComponent implements OnInit, OnChanges {
 
   ngOnChanges() {
 
-    (this.selectedEvent>0) ? this.eventsService.detailsForUser(this.username, this.selectedEvent).subscribe(val => {
+    (this.selectedEvent>0) ? this.eventsService.details(this.selectedEvent).subscribe(val => {
         this.eventData = val;
       }) : this.clearEventData();
     this.selectedEvent=0;
@@ -175,7 +175,7 @@ export class CalendarEditEventsComponent implements OnInit, OnChanges {
         this.msgs = [];
         this.msgs.push({
           severity: 'success',
-          summary: 'Dodano event',
+          summary: 'Zaktualizowano event',
           detail: 'Wydarzenie zostało zapisane w kalendarzu'
         });
         return;
