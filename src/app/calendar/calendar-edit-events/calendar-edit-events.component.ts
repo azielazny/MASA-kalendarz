@@ -141,8 +141,7 @@ export class CalendarEditEventsComponent implements OnInit, OnChanges {
       is_remind_set: true,
       remind_threshold: 0,
       category: 0,
-      attendants: 0,
-      reminder: true
+      attendants: 0
     }
   }
 
@@ -171,7 +170,7 @@ export class CalendarEditEventsComponent implements OnInit, OnChanges {
 
   updateEvent() {
     console.log(this.eventData);
-    this.eventsService.update(this.eventData).subscribe(val => {
+    this.eventsService.edit(this.eventData.event_id, this.eventData).subscribe(val => {
       if (val == true) {
         this.msgs = [];
         this.msgs.push({
