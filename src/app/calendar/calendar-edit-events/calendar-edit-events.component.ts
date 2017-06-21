@@ -79,7 +79,6 @@ export class CalendarEditEventsComponent implements OnInit, OnChanges {
       });
       return;
     }
-    console.log(validationStatus);
     this.buildEventData();
     (this.eventData.event_id > 0) ? this.updateEvent() : this.addEvent();
   }
@@ -100,7 +99,6 @@ export class CalendarEditEventsComponent implements OnInit, OnChanges {
   }
 
   private buildEventData() {
-    console.log('builder');
     this.eventData = this.editEventsForm.eventData;
     this.eventData.category = this.editEventsForm.selectedCategory.category_id;
 
@@ -163,6 +161,7 @@ export class CalendarEditEventsComponent implements OnInit, OnChanges {
   }
 
   updateEvent() {
+    console.log(this.eventData);
     this.eventsService.update(this.eventData).subscribe(val => {
       if (val == true) {
         this.msgs = [];

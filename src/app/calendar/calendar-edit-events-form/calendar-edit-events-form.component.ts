@@ -22,7 +22,7 @@ export class CalendarEditEventsFormComponent implements OnInit, OnChanges, After
   private selectedCategory: Category = {color: "#ddd", user_id: 0, name: "", category_id: 0};
   private error: boolean = false;
   private usersData: User[] = [];
-  private usersCount:number;
+  private usersCount: number;
 
   categories: SelectItem[] = [];
 
@@ -57,24 +57,21 @@ export class CalendarEditEventsFormComponent implements OnInit, OnChanges, After
 
   ngOnChanges() {
     this.error = false;
-    console.log("nowa data "+this.dateStart)
-    if (this.eventData) {
-      this.eventData.visibility=(undefined != this.visibility)?this.visibility:(this.eventData.visibility)?this.eventData.visibility:"private";
-      this.visibility=undefined;
+    if (this.eventData.event_id > 0) {
+      this.eventData.visibility = (undefined != this.visibility) ? this.visibility : (this.eventData.visibility) ? this.eventData.visibility : "private";
+      this.visibility = undefined;
 
-      this.eventData.reminder=(undefined != this.remindEvent)? this.remindEvent:(this.eventData.reminder)? this.eventData.reminder:true;
-      this.remindEvent=undefined;
+      this.eventData.reminder = (undefined != this.remindEvent) ? this.remindEvent : (this.eventData.reminder) ? this.eventData.reminder : true;
+      this.remindEvent = undefined;
 
       this.getSelectedCategoryData();
-if(this.eventData.event_id>0){
-  this.getUsersList();
-  this.buildEventDeteData();
-}
+      this.getUsersList();
+      this.buildEventDeteData();
     } else {
-      console.log('nicccccccc')
-      this.usersData=[];
+      this.usersData = [];
     }
   }
+
   printDiv(divName) {
     let printContents, popupWin;
     printContents = this.document.getElementById(divName).innerHTML;
@@ -96,7 +93,7 @@ if(this.eventData.event_id>0){
     this.eventsService.userListForEvent(this.eventData.event_id).subscribe(val => {
       this.usersData = val
     });
-    this.usersCount=this.usersData.length;
+    this.usersCount = this.usersData.length;
     // console.log(this.usersCount)
   }
 
@@ -114,9 +111,10 @@ if(this.eventData.event_id>0){
     let start = new Date(this.eventData.start_ts * 1000);
     let end = new Date(this.eventData.end_ts * 1000);
 
-    this.dateStart=start;
-    this.dateEnd=end;
+    this.dateStart = start;
+    this.dateEnd = end;
   }
+
   ngAfterViewInit() {
     $('.collapse').collapse();
   }
