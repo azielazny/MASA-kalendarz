@@ -58,9 +58,10 @@ export class CalendarMonthViewComponent implements OnInit {
 
 
   private getEventsListForGrid() {
-
+    this.eventsListForGrid=[];
     this.categoriesService.list().subscribe(val => {
-      this.categories = val
+      if(val.length == 0) return;
+      this.categories = val;
     });
     let startDay = new Date(this.year, this.month, 1).getTime() / 1000;
     // console.log(startDay);

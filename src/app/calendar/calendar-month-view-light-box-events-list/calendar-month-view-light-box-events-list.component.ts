@@ -29,7 +29,7 @@ export class CalendarMonthViewLightBoxEventsListComponent implements OnInit, OnC
   }
 
   ngOnChanges() {
-    // console.log(this.day)
+    console.log(this.eventForGrid.color)
     this.startDay = new Date(this.eventForGrid.start_ts *1000).getDate();
   }
 
