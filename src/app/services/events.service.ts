@@ -34,25 +34,25 @@ export class EventsService {
       .map(this.extractEventsList);
   }
 
-  listForUserByDate(username: string, day: number): Observable<Event[]> {
+  listForUserByDate( day: string, month:string, year:string): Observable<Event[]> {
     let options = new RequestOptions({
       withCredentials: true // CORS Access-Control-Allow-Credentials header
     });
 
-    return this.http.get("http://localhost/danzet/xxx.php")//, options)
-    // return this.http.get(this.url + "/list/" + username + '/' + day, options)
+    // return this.http.get("http://localhost/danzet/xxx.php")//, options)
+    return this.http.get(this.url + "/listday/"+year+"/"+month+"/" + day, options)
       .map(this.extractEventsList);
   }
 
-  listForUserByPeriod(day_start: number, day_end: number): Observable<Event[]> {
-    let options = new RequestOptions({
-      withCredentials: true // CORS Access-Control-Allow-Credentials header
-    });
-
-    return this.http.get("http://localhost/danzet/xxx.php")//, options)
-    // return this.http.get(this.url + "/list/" + username + '/' + day, options)
-      .map(this.extractEventsList);
-  }
+  // listForUserByPeriod(day_start: number, day_end: number): Observable<Event[]> {
+  //   let options = new RequestOptions({
+  //     withCredentials: true // CORS Access-Control-Allow-Credentials header
+  //   });
+  //
+  //   return this.http.get("http://localhost/danzet/xxx.php")//, options)
+  //   // return this.http.get(this.url + "/list/" + username + '/' + day, options)
+  //     .map(this.extractEventsList);
+  // }
 
   userListForEvent(event_id: number): Observable<User[]> {
     let options = new RequestOptions({

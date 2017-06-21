@@ -34,7 +34,7 @@ export class CalendarGridComponent implements OnInit {
     this.actualMonth=value;
   }
   sendDateToRightColumn(value) {
-    this.selectedDate=value;
+    this.selectedDate=value.split(".");
   }
   closeRightColumn(value) {
     if(value==true) this.rightColumn.shown=false;

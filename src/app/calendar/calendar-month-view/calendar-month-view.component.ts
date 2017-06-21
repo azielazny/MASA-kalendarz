@@ -66,7 +66,7 @@ export class CalendarMonthViewComponent implements OnInit {
     // console.log(startDay);
     let endDay = new Date(this.year, this.month + 1, 1).getTime() / 1000;
     // console.log(endDay);
-    this.eventsService.listForUserByPeriod(startDay, endDay).map(val => val.forEach(v => {
+    this.eventsService.list("private", "0", startDay, endDay).map(val => val.forEach(v => {
         this.eventsListForGrid.push(
           {
             "event_id": v.event_id,
@@ -177,8 +177,7 @@ export class CalendarMonthViewComponent implements OnInit {
     this.lightBoxes.toArray()[index - 1].active = true;
   }
 
-  static
-  formatForDate(num: number): string {
+  static formatForDate(num: number): string {
     let newNum: string = num + "";
     return (newNum.length < 2) ? "0" + newNum : newNum;
   }

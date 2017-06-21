@@ -43,10 +43,15 @@ export class CalendarRightColumnComponent implements OnInit, OnChanges {
 
   ngOnChanges() {
     this.categoriesService.list().map(val => val.forEach(v => this.categoriesList.push(v))).subscribe();
+    if (this.selectedDate != undefined) {
+      this.eventsToShow = [];
+      this.eventslist=[]
+      this.eventsService.listForUserByDate(this.selectedDate[0], this.selectedDate[1], this.selectedDate[2]).subscribe(val => {
+        if(val.length==0) return;
+        this.eventByData(val, 0);
+      });
+    }
 
-    this.eventsService.listForUserByDate(this.username, this.selectedDate).subscribe(val => {
-      this.eventByData(val, 0);
-    });
   }
 
   private eventByData(value: Event[], index: number) {
