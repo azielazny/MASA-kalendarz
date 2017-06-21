@@ -1,6 +1,6 @@
 <h5>Załaduj zdjęcie promujące wydarzenie</h5>
-<input id="uploadFile" placeholder="Wybierz plik" disabled="disabled" />
 <div class="fileUpload btn btn-primary">
   <span>Załaduj zdjęcie</span>
-  <input id="uploadBtn" type="file" class="upload" />
+  <input id="uploadBtn" type="file" class="upload" accept="image/*" (change)="changeListener($event)">
 </div>
+<div><img src="{{eventImage}}" style="width:250px; border:none; background: #ddd;"></div>
