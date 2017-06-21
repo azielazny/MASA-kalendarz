@@ -1,4 +1,4 @@
-import {Component, OnInit, Input, OnChanges, AfterViewInit, Inject} from '@angular/core';
+import {Component, OnInit, Input, OnChanges, AfterViewInit, Inject, ViewChild} from '@angular/core';
 import {Event} from "../../class/event.class";
 import {SelectItem} from 'primeng/primeng'
 import {CategoriesService} from "../../services/categories.service";
@@ -34,6 +34,9 @@ export class CalendarEditEventsFormComponent implements OnInit, OnChanges, After
   private remindEvent: boolean;
   @Input()
   public parent;
+
+  @Input()
+  private eventImage: string;
 
   constructor(private categoriesService: CategoriesService, private eventsService: EventsService, @Inject(DOCUMENT) private document: any) {
     this.categoriesService.list().map(val => val.forEach(v => this.buildEventData(v))).subscribe();
@@ -117,5 +120,8 @@ export class CalendarEditEventsFormComponent implements OnInit, OnChanges, After
 
   ngAfterViewInit() {
     $('.collapse').collapse();
+  }
+  changeEventDataImages(value) {
+    this.eventData.picture=value;
   }
 }

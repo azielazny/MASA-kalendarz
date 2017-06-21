@@ -1,4 +1,4 @@
-import {Component, OnInit, Input, OnChanges, AfterViewInit} from '@angular/core';
+import {Component, OnInit, Input, OnChanges, AfterViewInit, Output, EventEmitter} from '@angular/core';
 import {User} from "../../class/user.class";
 
 
@@ -10,6 +10,7 @@ import {User} from "../../class/user.class";
 export class CalendarEditEventsPublicSettingsComponent {
 
   private eventImage: string;
+  @Output() outputEventImage: EventEmitter<string> = new EventEmitter();
 
   constructor() {
   }
@@ -23,6 +24,7 @@ export class CalendarEditEventsPublicSettingsComponent {
 
     myReader.onloadend = (e) => {
       this.eventImage= myReader.result;
+      this.outputEventImage.emit(myReader.result)
     }
     myReader.readAsDataURL(file);
   }
