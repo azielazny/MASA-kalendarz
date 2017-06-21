@@ -61,7 +61,7 @@
       <textarea placeholder="Opis zdarzenia" [ngModel]="eventData.description"
                 (ngModelChange)="eventData.description= $event"></textarea>
     </p-accordionTab>
-    <p-accordionTab [disabled]="visibility=='private'">
+    <p-accordionTab [disabled]="eventData?.visibility=='private'">
       <p-header>
         Osoby zapisane <span class="badge">{{usersData.length}}</span>
         <input type="button" (click)="printDiv('usersList')" value="drukuj listę" id="print-icon"/>
@@ -75,10 +75,10 @@
 
       </div>
     </p-accordionTab>
-    <p-accordionTab header="Ustawienia publiczne" [disabled]="visibility=='private'" >
+    <p-accordionTab header="Ustawienia publiczne" [disabled]="eventData?.visibility=='private'" >
       <calendar-edit-events-public-settings (pictureChange)="updatePicture($event)" class="text-center" style="display: block"></calendar-edit-events-public-settings>
     </p-accordionTab>
-    <p-accordionTab header="Komentarze" [disabled]="visibility=='private'">
+    <p-accordionTab header="Komentarze" [disabled]="eventData?.visibility=='private'">
       <calendar-edit-events-comments-list [eventdata]="eventData" id="comments"></calendar-edit-events-comments-list>
     </p-accordionTab>
   </p-accordion>
