@@ -1,4 +1,4 @@
-import {Component, OnInit, Input, OnChanges, AfterViewInit, Output, EventEmitter} from '@angular/core';
+import {Component, OnInit, Input, OnChanges, AfterViewInit, ViewChild, Output, EventEmitter} from '@angular/core';
 import {User} from "../../class/user.class";
 
 
@@ -7,25 +7,24 @@ import {User} from "../../class/user.class";
   templateUrl: 'calendar-edit-events-public-settings.component.html',
   styleUrls: ['calendar-edit-events-public-settings.component.scss']
 })
-export class CalendarEditEventsPublicSettingsComponent {
-
-  private eventImage: string;
-  @Output() outputEventImage: EventEmitter<string> = new EventEmitter();
+export class CalendarEditEventsPublicSettingsComponent  {
 
   constructor() {
   }
 
-  changeListener($event) : void {
-    this.readThis($event.target);
-  }
-  readThis(inputValue: any): void {
-    let file:File = inputValue.files[0];
-    let myReader:FileReader = new FileReader();
+  @ViewChild('uploadBtn') uploadBtn;
 
-    myReader.onloadend = (e) => {
-      this.eventImage= myReader.result;
-      this.outputEventImage.emit(myReader.result)
-    }
-    myReader.readAsDataURL(file);
+  @Output() pictureChange = new EventEmitter();
+
+  fileChanged(e) {
+    if(this.uploadBtn.nativeElement.files.length != 1) return;
+    let x = this;
+
+    let reader = new FileReader();
+    reader.onloadend = function() {
+      x.pictureChange.emit(reader.result);
+    };
+    reader.readAsDataURL(this.uploadBtn.nativeElement.files[0]);
   }
+
 }

@@ -30,7 +30,7 @@ export class CalendarEditEventsMenuComponent implements OnInit, OnChanges {
   ngOnChanges() {
     if (this.eventData) {
       this.visibility = this.eventData.visibility;
-      this.reminder = this.eventData.reminder;
+      this.reminder = this.eventData.is_remind_set;
     }
   }
 

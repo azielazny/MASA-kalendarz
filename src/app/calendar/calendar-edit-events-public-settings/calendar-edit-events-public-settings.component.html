@@ -2,6 +2,8 @@
 <div class="fileUpload btn btn-primary ">
   <span>Załaduj zdjęcie</span>
   <input id="uploadBtn" type="file" class="upload" accept="image/*" (change)="changeListener($event)">
+  <input #uploadBtn id="uploadBtn" type="file" class="upload" (change)="fileChanged($event)" />
+
 </div>
 <div style="margin: 0;
     padding: 0;
