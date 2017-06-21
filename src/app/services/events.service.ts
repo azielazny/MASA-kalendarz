@@ -16,7 +16,7 @@ export class EventsService {
   constructor(private http: Http) {
   };
 
-  list(access: string = "public", city: string = "%", startts: number = 0, endts: number = 2147483647, page: number = 0, limit: number = 100): Observable<Event[]> {
+  list(access: string = "public", city: string = "0", startts: number = 0, endts: number = 2147483647, page: number = 0, limit: number = 100): Observable<Event[]> {
     let options = new RequestOptions({
       withCredentials: true // CORS Access-Control-Allow-Credentials header
     });
@@ -25,12 +25,12 @@ export class EventsService {
       .map(this.extractEventsList);
   }
 
-  limitListForUser(username: string, limit: number = 5): Observable<Event[]> {
+  limitListForUser(limit: number = 5): Observable<Event[]> {
     let options = new RequestOptions({
       withCredentials: true // CORS Access-Control-Allow-Credentials header
     });
 
-    return this.http.get(this.url + "/list/" + username + '/' + limit, options)
+    return this.http.get(this.url + "/reminder/" + limit, options)
       .map(this.extractEventsList);
   }
 
@@ -90,18 +90,6 @@ export class EventsService {
     });
 
     return this.http.post(this.url + "/add", JSON.stringify(event), options)
-      .map(this.extractStatus);
-  }
-
-  update(event: Event): Observable<boolean> {
-    console.log(event);
-    let headers = new Headers({'Content-Type': 'application/json'});
-    let options = new RequestOptions({
-      headers: headers,
-      withCredentials: true // CORS Access-Control-Allow-Credentials header
-    });
-
-    return this.http.post(this.url + "/update", JSON.stringify(event), options)
       .map(this.extractStatus);
   }
 

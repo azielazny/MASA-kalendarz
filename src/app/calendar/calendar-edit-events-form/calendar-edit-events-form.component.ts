@@ -63,7 +63,7 @@ export class CalendarEditEventsFormComponent implements OnInit, OnChanges, After
       this.eventData.visibility = (undefined != this.visibility) ? this.visibility : (this.eventData.visibility) ? this.eventData.visibility : "private";
       this.visibility = undefined;
 
-      this.eventData.reminder = (undefined != this.remindEvent) ? this.remindEvent : (this.eventData.reminder) ? this.eventData.reminder : true;
+      this.eventData.is_remind_set = (undefined != this.remindEvent) ? this.remindEvent : (this.eventData.is_remind_set) ? this.eventData.is_remind_set : true;
       this.remindEvent = undefined;
 
       this.getSelectedCategoryData();
