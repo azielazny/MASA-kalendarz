@@ -1,4 +1,4 @@
-import {Component, OnInit, Input, OnChanges, AfterViewInit, Inject} from '@angular/core';
+import {Component, OnInit, Input, OnChanges, AfterViewInit, Inject, EventEmitter, Output} from '@angular/core';
 import {Event} from "../../class/event.class";
 import {SelectItem} from 'primeng/primeng'
 import {CategoriesService} from "../../services/categories.service";
@@ -23,6 +23,8 @@ export class CalendarEditEventsFormComponent implements OnInit, OnChanges, After
   private error: boolean = false;
   private usersData: User[] = [];
   private usersCount: number;
+
+  @Output() pictureChanged = new EventEmitter();
 
   categories: SelectItem[] = [];
 
@@ -113,6 +115,10 @@ export class CalendarEditEventsFormComponent implements OnInit, OnChanges, After
 
     this.dateStart = start;
     this.dateEnd = end;
+  }
+
+  private updatePicture(e) {
+    this.pictureChanged.emit(e);
   }
 
   ngAfterViewInit() {

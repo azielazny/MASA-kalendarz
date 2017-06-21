@@ -2,5 +2,5 @@
 <input id="uploadFile" placeholder="Wybierz plik" disabled="disabled" />
 <div class="fileUpload btn btn-primary">
   <span>Załaduj zdjęcie</span>
-  <input id="uploadBtn" type="file" class="upload" />
+  <input #uploadBtn id="uploadBtn" type="file" class="upload" (change)="fileChanged($event)" />
 </div>

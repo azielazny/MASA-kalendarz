@@ -1,4 +1,4 @@
-import {Component, OnInit, Input, OnChanges, AfterViewInit} from '@angular/core';
+import {Component, OnInit, Input, OnChanges, AfterViewInit, ViewChild, Output, EventEmitter} from '@angular/core';
 import {User} from "../../class/user.class";
 
 
@@ -12,6 +12,19 @@ export class CalendarEditEventsPublicSettingsComponent  {
   constructor() {
   }
 
+  @ViewChild('uploadBtn') uploadBtn;
 
+  @Output() pictureChange = new EventEmitter();
+
+  fileChanged(e) {
+    if(this.uploadBtn.nativeElement.files.length != 1) return;
+    let x = this;
+
+    let reader = new FileReader();
+    reader.onloadend = function() {
+      x.pictureChange.emit(reader.result);
+    };
+    reader.readAsDataURL(this.uploadBtn.nativeElement.files[0]);
+  }
 
 }

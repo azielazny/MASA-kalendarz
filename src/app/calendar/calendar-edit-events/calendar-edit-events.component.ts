@@ -14,8 +14,9 @@ export class CalendarEditEventsComponent implements OnInit, OnChanges {
   public shown = false;
   public tab = 'edit';
   public eventData: Event;
-  private visibility: string;
+  private visibility: string = "private";
   private remindEvent: boolean;
+  private picture : string = "data:,";
   msgs: Message[] = [];
 
   @Input()
@@ -44,6 +45,7 @@ export class CalendarEditEventsComponent implements OnInit, OnChanges {
 
   changeVisibilityOfEvent(value) {
     this.visibility = value;
+
   }
 
   changeReminderOfEvent(value) {
@@ -105,12 +107,19 @@ export class CalendarEditEventsComponent implements OnInit, OnChanges {
     this.eventData.start_ts =this.editEventsForm.dateStart.getTime() / 1000;
     this.eventData.end_ts =this.editEventsForm.dateEnd.getTime() / 1000;
 
+    this.eventData.visibility = this.visibility;
+
+    this.eventData.picture = this.picture;
+  }
+
+  private pictureChanged(e) {
+    this.picture = e;
   }
 
   private clearEventData() {
     this.eventData = {
       event_id: 0,
-      user_id: 16,
+      user_id: 0,
       title: "",
       picture: "",
       creat_ts: 0,
@@ -119,7 +128,7 @@ export class CalendarEditEventsComponent implements OnInit, OnChanges {
       end_ts: 0,
       is_day_long: false,
       timezone: "",
-      visibility: "",
+      visibility: "private",
       description: "",
       loc_name: "",
       loc_street: "",
