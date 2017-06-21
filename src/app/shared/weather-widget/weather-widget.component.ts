@@ -1,5 +1,6 @@
 import {Component, Input, OnInit, OnChanges, AfterViewInit, Inject, NgZone, HostBinding} from '@angular/core';
 import {Event} from '../../class/event.class';
+import {DOCUMENT} from "@angular/platform-browser";
 declare var $: JQueryStatic;
 
 @Component({
@@ -21,7 +22,7 @@ export class WeatherWidgetComponent implements OnInit, AfterViewInit, OnChanges 
 
   @HostBinding('class.hidden') hiddenStyle: boolean = false;
 
-  constructor(private zone: NgZone) {
+  constructor(private zone: NgZone, @Inject(DOCUMENT) private document: any) {
   }
 
   ngOnInit() {
@@ -34,10 +35,11 @@ export class WeatherWidgetComponent implements OnInit, AfterViewInit, OnChanges 
         this.hiddenStyle = true;
     }
     this.buildWidget();
+
   }
 
   private buildWidget() {
-    if (this.eventdata) {
+    if (this.eventdata.event_id > 0) {
       (<any>window).myWidgetParam = {
         id: 21,
         event_date: this.eventdata.start_ts,

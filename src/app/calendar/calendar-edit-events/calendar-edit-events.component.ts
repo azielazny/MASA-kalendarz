@@ -19,7 +19,7 @@ export class CalendarEditEventsComponent implements OnInit, OnChanges {
   msgs: Message[] = [];
 
   @Input()
-  private selectedEvent: number;
+  private selectedEvent: number=0;
   @Input()
   public parent;
 
@@ -28,6 +28,7 @@ export class CalendarEditEventsComponent implements OnInit, OnChanges {
   @ViewChild('editEventsForm') editEventsForm;
 
   constructor(private eventsService: EventsService) {
+    this.clearEventData()
   }
 
   ngOnInit() {
@@ -35,10 +36,10 @@ export class CalendarEditEventsComponent implements OnInit, OnChanges {
 
   ngOnChanges() {
 
-    (this.selectedEvent) ? this.eventsService.detailsForUser(this.username, this.selectedEvent).subscribe(val => {
+    (this.selectedEvent>0) ? this.eventsService.detailsForUser(this.username, this.selectedEvent).subscribe(val => {
         this.eventData = val;
-      }) : this.eventData = null;
-
+      }) : this.clearEventData();
+    this.selectedEvent=0;
   }
 
   changeVisibilityOfEvent(value) {
@@ -65,7 +66,9 @@ export class CalendarEditEventsComponent implements OnInit, OnChanges {
     }
   }
 
-  saveEvent(status: boolean) {
+  saveEvent(status: number) {
+    // if(status==0) this.clearEventData();
+
     let validationStatus = this.validation();
     if (this.validation() != "ok") {
       this.msgs = [];
@@ -76,8 +79,9 @@ export class CalendarEditEventsComponent implements OnInit, OnChanges {
       });
       return;
     }
+    console.log(validationStatus);
     this.buildEventData();
-    (this.eventData.event_id) ? this.updateEvent() : this.addEvent();
+    (this.eventData.event_id > 0) ? this.updateEvent() : this.addEvent();
   }
 
   validation(): string {
@@ -91,24 +95,53 @@ export class CalendarEditEventsComponent implements OnInit, OnChanges {
       this.editEventsForm.error = true;
       return validationStatus;
     }
+
     return "ok";
   }
 
   private buildEventData() {
+    console.log('builder');
     this.eventData = this.editEventsForm.eventData;
     this.eventData.category = this.editEventsForm.selectedCategory.category_id;
 
-    let startDate = this.editEventsForm.dateStart.split("/");
-    let startHour = this.editEventsForm.hourStart.split(":");
-    this.eventData.start_ts = new Date(startDate[2], startDate[1] - 1, startDate[0], startHour[0], startHour[1], 0).getTime() / 1000;
-
-    let endDate = this.editEventsForm.dateEnd.split("/");
-    let endHour = this.editEventsForm.hourEnd.split(":");
-    this.eventData.end_ts = new Date(endDate[2], endDate[1] - 1, endDate[0], endHour[0], endHour[1], 0).getTime() / 1000;
+    this.eventData.start_ts =this.editEventsForm.dateStart.getTime() / 1000;
+    this.eventData.end_ts =this.editEventsForm.dateEnd.getTime() / 1000;
 
   }
 
+  private clearEventData() {
+    this.eventData = {
+      event_id: 0,
+      user_id: 16,
+      title: "",
+      picture: "",
+      creat_ts: 0,
+      mod_ts: 0,
+      start_ts: 0,
+      end_ts: 0,
+      is_day_long: false,
+      timezone: "",
+      visibility: "",
+      description: "",
+      loc_name: "",
+      loc_street: "",
+      loc_bnum: "",
+      loc_city: "",
+      loc_country: "",
+      loc_lat: "",
+      loc_lon: "",
+      enabled: true,
+      is_remind_set: true,
+      remind_threshold: 0,
+      category: 0,
+      attendants: 0,
+      reminder: true
+    }
+  }
+
   addEvent() {
+    console.log(this.eventData);
+
     this.eventsService.add(this.eventData).subscribe(val => {
       if (val == true) {
         this.msgs = [];

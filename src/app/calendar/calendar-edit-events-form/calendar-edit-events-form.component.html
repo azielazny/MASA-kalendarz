@@ -11,20 +11,20 @@
       </template>
     </p-dropdown>
   </div>
-  <input type="text" [ngModel]="eventData?.title" (ngModelChange)="eventData?.title ? eventData.title = $event : null"
+  <input type="text" [ngModel]="eventData.title" (ngModelChange)="eventData.title = $event "
          class="bigSize" placeholder="Nazwa zdarzenia..." required
          [ngClass]="eventData?.title.length==0?'required':''">
-  <input type="text" [ngModel]="eventData?.loc_name"
-         (ngModelChange)="eventData?.loc_name ? eventData.loc_name = $event : null" class="col-xs-6 col-sm-4 calField"
+  <input type="text" [ngModel]="eventData.loc_name"
+         (ngModelChange)="eventData.loc_name = $event" class="col-xs-6 col-sm-4 calField"
          placeholder="Miejsce...">
-  <input type="text" [ngModel]="eventData?.loc_city"
-         (ngModelChange)="eventData?.loc_city ? eventData.loc_city = $event : null" class="col-xs-6 col-sm-4 calField"
+  <input type="text" [ngModel]="eventData.loc_city"
+         (ngModelChange)="eventData.loc_city = $event" class="col-xs-6 col-sm-4 calField"
          placeholder="Miasto...">
   <input type="text" [ngModel]="eventData?.loc_street"
-         (ngModelChange)="eventData?.loc_street ? eventData.loc_street = $event : null"
+         (ngModelChange)="eventData.loc_street = $event"
          class="col-xs-11 col-sm-3 calField" placeholder="Ulica...">
-  <input type="text" [ngModel]="eventData?.loc_bnum"
-         (ngModelChange)="eventData?.loc_bnum ? eventData.loc_bnum = $event : null" class="col-xs-1 calField"
+  <input type="text" [ngModel]="eventData.loc_bnum"
+         (ngModelChange)="eventData.loc_bnum = $event " class="col-xs-1 calField"
          placeholder="Nr...">
 
   <div class="calFieldDate calField " [ngClass]="dateStart==''?'required':''">
@@ -37,7 +37,7 @@
   <div class="selectHour calFieldDate calField ">
     <div class="input-group editHour">
       <span class="input-group-addon">Od:</span>
-      <p-calendar [(ngModel)]="hourStart" placeholder="01:01" [hourFormat]="24" [timeOnly]="true"
+      <p-calendar [(ngModel)]="dateStart" placeholder="01:01" [hourFormat]="24" [timeOnly]="true"
                   [showTime]="true"></p-calendar>
     </div>
   </div>
@@ -51,15 +51,15 @@
   <div class="selectHour calFieldDate calField ">
     <div class="input-group editHour">
       <span class="input-group-addon">Do:</span>
-      <p-calendar [(ngModel)]="hourEnd" placeholder="01:01" [hourFormat]="24" [timeOnly]="true"
+      <p-calendar [(ngModel)]="dateEnd" placeholder="01:01" [hourFormat]="24" [timeOnly]="true"
                   [showTime]="true"></p-calendar>
     </div>
   </div>
 
   <p-accordion>
     <p-accordionTab header="Opis zdarzenia" [selected]="true">
-      <textarea placeholder="Opis zdarzenia" [ngModel]="eventData?.description"
-                (ngModelChange)="eventData?.description? eventData.description= $event : null"></textarea>
+      <textarea placeholder="Opis zdarzenia" [ngModel]="eventData.description"
+                (ngModelChange)="eventData.description= $event"></textarea>
     </p-accordionTab>
     <p-accordionTab [disabled]="eventData?.visibility=='private'">
       <p-header>

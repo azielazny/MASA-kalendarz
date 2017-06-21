@@ -21,7 +21,7 @@ export class CalendarEditEventsRightColumnComponent implements OnInit, OnChanges
   }
 
   ngOnChanges() {
-    this.buildLocationData();
+    (this.eventdata.event_id > 0) ? this.buildLocationData() : this.location = "";
   }
 
 

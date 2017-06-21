@@ -1,5 +1,5 @@
 <div class="col-xs-12 mainNav">
-  <div class="mainNavBox" (click)="saveEvent(eventData.event_id)">
+  <div class="mainNavBox" (click)="saveEvent(eventData?.event_id?eventData.event_id:0)">
     <i class="fa fa-save"></i> <span>Zapisz i zamknij</span>
   </div>
   <div class="mainNavBox" (click)="removeEvent(eventData.event_id)">

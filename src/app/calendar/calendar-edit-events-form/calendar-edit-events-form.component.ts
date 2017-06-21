@@ -17,10 +17,8 @@ declare var $: any;
 export class CalendarEditEventsFormComponent implements OnInit, OnChanges, AfterViewInit {
   public username: string = localStorage.getItem("userName");
   private pl: any;
-  private dateStart: string = "";
-  private hourStart: string = "";
-  private dateEnd: string = "";
-  private hourEnd: string = "";
+  private dateStart: Date;
+  private dateEnd: Date;
   private selectedCategory: Category = {color: "#ddd", user_id: 0, name: "", category_id: 0};
   private error: boolean = false;
   private usersData: User[] = [];
@@ -59,6 +57,7 @@ export class CalendarEditEventsFormComponent implements OnInit, OnChanges, After
 
   ngOnChanges() {
     this.error = false;
+    console.log("nowa data "+this.dateStart)
     if (this.eventData) {
       this.eventData.visibility=(undefined != this.visibility)?this.visibility:(this.eventData.visibility)?this.eventData.visibility:"private";
       this.visibility=undefined;
@@ -66,15 +65,13 @@ export class CalendarEditEventsFormComponent implements OnInit, OnChanges, After
       this.eventData.reminder=(undefined != this.remindEvent)? this.remindEvent:(this.eventData.reminder)? this.eventData.reminder:true;
       this.remindEvent=undefined;
 
-      this.getUsersList();
       this.getSelectedCategoryData();
-      this.buildEventDeteData();
+if(this.eventData.event_id>0){
+  this.getUsersList();
+  this.buildEventDeteData();
+}
     } else {
-      this.eventData = null;
-      this.dateStart = "";
-      this.hourStart = "";
-      this.dateEnd = "";
-      this.hourEnd = "";
+      console.log('nicccccccc')
       this.usersData=[];
     }
   }
@@ -115,42 +112,10 @@ export class CalendarEditEventsFormComponent implements OnInit, OnChanges, After
   private buildEventDeteData() {
 // czasy początku i końca (formatowanie)
     let start = new Date(this.eventData.start_ts * 1000);
-
-    let day1 = start.getDate();
-    let day1_s: string = day1.toString();
-    if (day1 < 10) day1_s = '0' + day1.toString();
-
-    let month1 = start.getMonth() + 1;
-    let month1_s: string = month1.toString();
-    if (month1 < 10) month1_s = '0' + month1.toString();
-
-    this.dateStart = day1_s + '/' + month1_s + '/' + start.getFullYear().toString();
-
     let end = new Date(this.eventData.end_ts * 1000);
 
-    let day2 = end.getDate();
-    let day2_s: string = day2.toString();
-    if (day2 < 10) day2_s = '0' + day2.toString();
-
-    let month2 = end.getMonth() + 1;
-    let month2_s: string = month2.toString();
-    if (month2 < 10) month2_s = '0' + month2.toString();
-
-    this.dateEnd = day2_s + '/' + month2_s + '/' + end.getFullYear().toString();
-
-    let hStart = start.getHours(), hEnd = end.getHours();
-    let mStart = start.getMinutes(), mEnd = end.getMinutes();
-
-    let h1_s = hStart.toString(), h2_s = hEnd.toString();
-    let m1_s = mStart.toString(), m2_s = mEnd.toString();
-
-    if (hStart < 10) h1_s = '0' + hStart.toString();
-    if (hEnd < 10) h2_s = '0' + hEnd.toString();
-    if (mStart < 10) m1_s = '0' + mStart.toString();
-    if (mEnd < 10) m2_s = '0' + mEnd.toString();
-
-    this.hourStart = h1_s + ':' + m1_s;
-    this.hourEnd = h2_s + ':' + m2_s;
+    this.dateStart=start;
+    this.dateEnd=end;
   }
   ngAfterViewInit() {
     $('.collapse').collapse();
