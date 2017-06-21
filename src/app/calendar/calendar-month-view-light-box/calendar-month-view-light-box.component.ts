@@ -8,8 +8,6 @@ import {EventForGrid} from "../../class/eventForGrid.class";
   styleUrls: ['calendar-month-view-light-box.component.scss']
 })
 
-
-
 export class CalendarMonthViewLightBoxComponent implements OnInit, OnChanges {
 
 

@@ -45,6 +45,17 @@ $blue: #0298ac;
     min-width: initial;
   }
 
+  .eventsBoxes {
+    display: inline-block;
+    text-align: left;
+    padding: 10px 30px 10px;
+    font-size: 16px;
+    line-height: 16px;
+    white-space: nowrap;
+    overflow: hidden;
+    height: 25px;
+    width:initial;
+  }
   .lCard {
     display: inline-block;
     font-size: 1rem;
@@ -400,6 +411,16 @@ app-calendar-backoffice {
         width: 20px
       }
     }
+    .eventsBoxes {
+      display: block;
+      width: 100%;
+      text-align: left;
+      padding: 5px;
+      font-size: 16px;
+      line-height: 16px;
+      white-space: nowrap;
+      overflow: hidden;
+    }
     .lCard {
       display: inline-block;
       font-size: 2.25rem;
@@ -513,7 +534,7 @@ app-calendar-backoffice {
         display: inline-block;
         font-size: 16px;
         font-weight: 500;
-        cursor:pointer;
+        cursor: pointer;
         color: $black;
         span {
 
@@ -704,7 +725,7 @@ app-calendar-backoffice {
         font-weight: 700;
       }
       .data {
-        color: lighten($lightviolet,20%);
+        color: lighten($lightviolet, 20%);
         overflow: hidden;
         text-overflow: ellipsis;
         span {
@@ -880,10 +901,10 @@ app-calendar-backoffice #calEdit .formCalendar input#komentarz_username {
 
 //nadpisane style dla pogody
 .event-weather {
-  padding:5px;
+  padding: 5px;
   .widget-left {
     overflow: auto;
-     width: 100% !important;//dopasowane do góry
+    width: 100% !important; //dopasowane do góry
   }
   .widget-left-menu {
     width: auto;
@@ -896,8 +917,8 @@ app-calendar-backoffice #calEdit .formCalendar input#komentarz_username {
     overflow: hidden;
   }
   .widget-left__body {
-     -webkit-justify-content: inherit;
-     justify-content: inherit;
+    -webkit-justify-content: inherit;
+    justify-content: inherit;
     padding-bottom: 16px;
     border-radius: 0 0 6px 6px;
     -webkit-box-orient: horizontal;
@@ -912,6 +933,7 @@ app-calendar-backoffice #calEdit .formCalendar input#komentarz_username {
     margin: 0 auto;
   }
 }
+
 .error .required {
   border: 2px solid lighten($lightviolet, 20%) !important;
 }

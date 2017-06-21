@@ -1,9 +1,6 @@
 <div class='lCard' [class.mouseover]="mouseover" [class.active]="active" (mouseover)="mouseover = true"
      (mouseout)="mouseover = false"><span>{{day.day}}<span>{{day.day_of_week}}</span></span>
-  <div style="  display: block;  width: 100%;
-    text-align: left;
-    padding: 5px;
-    font-size: 16px; line-height: 16px;white-space: nowrap; overflow: hidden;">
+  <div class="eventsBoxes">
     <calendar-month-view-light-box-events-list  *ngFor="let events of eventsListForGrid | filter:{color: '#eeee33'}" [eventForGrid]="events"
                                                [parent]="this" [day]="day.day"></calendar-month-view-light-box-events-list></div>
 </div>
