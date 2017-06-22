@@ -82,7 +82,7 @@ export class EventsService {
       .map(this.extractEventDetails);
   }
 
-  add(event: Event): Observable<boolean> {
+  add(event: Event): Observable<Event> {
     let headers = new Headers({'Content-Type': 'application/json'});
     let options = new RequestOptions({
       headers: headers,
@@ -90,7 +90,7 @@ export class EventsService {
     });
 
     return this.http.post(this.url + "/add", JSON.stringify(event), options)
-      .map(this.extractStatus);
+      .map(this.extractEventDetails);
   }
 
   remove(eventid: number): Observable<boolean> {

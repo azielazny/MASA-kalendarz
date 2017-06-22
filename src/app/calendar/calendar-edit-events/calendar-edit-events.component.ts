@@ -149,7 +149,9 @@ export class CalendarEditEventsComponent implements OnInit, OnChanges {
     console.log(this.eventData);
 
     this.eventsService.add(this.eventData).subscribe(val => {
-      if (val == true) {
+      console.log(val)
+      if (val.event_id >0) {
+        this.eventData=val;
         this.msgs = [];
         this.msgs.push({
           severity: 'success',
