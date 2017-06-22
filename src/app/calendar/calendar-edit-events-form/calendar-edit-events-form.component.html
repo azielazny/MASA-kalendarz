@@ -27,7 +27,7 @@
          (ngModelChange)="eventData.loc_bnum = $event " class="col-xs-1 calField"
          placeholder="Nr...">
 
-  <div class="calFieldDate calField " [ngClass]="dateStart==''?'required':''">
+  <div class="calFieldDate calField " [ngClass]="dateStart?'':'required'">
     <div class="input-group editDate">
       <span class="input-group-addon">Start:</span>
       <p-calendar [(ngModel)]="dateStart" [locale]="pl" dateFormat="dd/mm/yy"
@@ -41,7 +41,7 @@
                   [showTime]="true"></p-calendar>
     </div>
   </div>
-  <div class="calFieldDate calField " [ngClass]="dateStart==''?'required':''">
+  <div class="calFieldDate calField " [ngClass]="dateStart?'':'required'">
     <div class="input-group editDate">
       <span class="input-group-addon">Koniec:</span>
       <p-calendar [(ngModel)]="dateEnd" [locale]="pl" dateFormat="dd/mm/yy"
@@ -57,9 +57,9 @@
   </div>
 
   <p-accordion>
-    <p-accordionTab header="Opis zdarzenia" [selected]="true" [ngClass]="eventData?.description==''?'required':''">
+    <p-accordionTab header="Opis zdarzenia" [selected]="true" >
       <textarea placeholder="Opis zdarzenia" [ngModel]="eventData.description"
-                (ngModelChange)="eventData.description= $event"></textarea>
+                (ngModelChange)="eventData.description= $event" [ngClass]="eventData?.description==''?'required':''"></textarea>
     </p-accordionTab>
     <p-accordionTab [disabled]="eventData?.visibility=='private'">
       <p-header>
