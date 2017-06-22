@@ -58,39 +58,41 @@ export class CalendarMonthViewComponent implements OnInit {
 
   private getEventsListForGrid() {
 
-    this.categoriesService.list().map(val => val.forEach(v => this.categoriesList.push(v))).subscribe();
+    this.categoriesService.list().map(val => val.forEach(v => this.categoriesList.push(v))).subscribe();//.subscribe(v=>{this.categoriesList=v});
+
     let startDay = new Date(this.year, this.month, 1).getTime() / 1000;
     // console.log(startDay);
     let endDay = new Date(this.year, this.month + 1, 1).getTime() / 1000;
     // console.log(endDay);
-    this.eventsListForGrid=[];
+    this.eventsListForGrid = [];
 
     this.eventsService.list("private", "0", startDay, endDay).map(val => val.forEach(v => {
-      // console.log(v)
+        console.log(v)
         this.eventsListForGrid.push(
           {
-            "event_id": v.event_id,
-            "title": v.title,
-            "start_ts": v.start_ts,
-            "end_ts": v.end_ts,
-            "category": v.category,
-            "color": this.getCategoryColor(v.category)
+            event_id: v.event_id,
+            title: v.title,
+            start_ts: v.start_ts,
+            end_ts: v.end_ts,
+            category: v.category,
+            color: this.getCategoryColor(v.category)
           }
         )
       })
     ).subscribe();
 
-    // console.log(this.eventsListForGrid)
+    console.log(this.eventsListForGrid)
   }
-
-  getCategoryColor(category_id): string {
-    let newcolor=this.categoriesList.find(x=>x.category_id == category_id);
+  getCategoryColor(category_id:number): string {
+    let newcolor = this.categoriesList.filter(x => {if(x.category_id == category_id) return x})[0];
+    console.log(newcolor);
+    return (newcolor)?newcolor.color:'';
     // for (let category of this.categoriesList) {
     //   console.log(category)
     //   if (category.category_id == category_id)
     //     return category.color
     // }
-    return (newcolor)?newcolor.color:'';
+    // return ''
   }
 
 //dni w miesiącu

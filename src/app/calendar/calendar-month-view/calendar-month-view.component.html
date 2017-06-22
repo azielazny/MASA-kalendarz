@@ -1,4 +1,4 @@
-<div id="calGrid" style="margin-top: 90px !important;">
+<div id="calGrid" >
   <div id="calPrev" (click)="getPrevMonth()"><i class="fa fa-angle-double-left" aria-hidden="true"></i></div>
   <div id="calBody" class="noselect">
     <calendar-month-view-week-list  *ngFor="let day of week_list" [day]="day"></calendar-month-view-week-list>

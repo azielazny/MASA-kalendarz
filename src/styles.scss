@@ -65,6 +65,7 @@ $blue: #0298ac;
     vertical-align: middle;
     border: 1px solid $darkviolet;
     line-height: 40px;
+    cursor: pointer;
     span {
 
       &:first-child {
@@ -77,6 +78,7 @@ $blue: #0298ac;
         color: darken($lightviolet, 7%); //#6b4c6a;
         left: 64px;
         border-right: 1px solid darken($lightviolet, 20%);
+        font-size:100%
       }
     }
     &.active {
@@ -374,6 +376,7 @@ app-calendar-backoffice {
   }
 
   #calendar {
+    padding: 0px;
     color: $beige;
     overflow-y: auto;
     height: 100vh;
@@ -392,14 +395,14 @@ app-calendar-backoffice {
       overflow: hidden;
     }
     #calGrid {
-      height: calc(100% - 140px);
+      height: calc(100% - 60px);
     }
     #calBody {
       display: table-cell;
       font-weight: 700;
       text-align: center;
       width: 100%;
-      height: calc(100vh - 140px);
+      height: calc(100vh - 60px);
       min-width: 540px;
     }
     #calPrev, #calNext {
@@ -431,6 +434,7 @@ app-calendar-backoffice {
       vertical-align: middle;
       border: 1px solid $darkviolet;
       line-height: 87px;
+      cursor: pointer;
       span {
         span {
           display: inline-block;
@@ -492,7 +496,7 @@ app-calendar-backoffice {
     width: 100%;
     background: rgb(255, 255, 255);
     z-index: 100;
-    margin: 0 -15px;
+    margin: 0;
     border-top: 3px solid $black;
     display: block;
     color: $black;
@@ -580,6 +584,9 @@ app-calendar-backoffice {
         background: none;
         margin: 10px 0px 10px;
         display: inline-table;
+        .input-group {
+          display: inline-table;
+        }
       }
       .selectColor {
         max-width: 70px;
@@ -678,7 +685,7 @@ app-calendar-backoffice {
   }
 
   #rightColumn {
-    position: absolute;
+    position: fixed;
     width: 300px;
     height: 100vh;
     right: 0px;
@@ -940,4 +947,15 @@ app-calendar-backoffice #calEdit .formCalendar input#komentarz_username {
 
 .hidden{
   display: none;
+}
+.activeDate .lCard{
+  background: #b351b0 !important;
+}
+.overflow-hidden {
+  overflow: hidden !important;
+  height:100vh !important;
+}
+.overflow-auto {
+  overflow: auto !important;
+  height:100vh !important;
 }
