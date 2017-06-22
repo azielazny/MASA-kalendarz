@@ -66,7 +66,7 @@ export class CalendarMonthViewComponent implements OnInit {
     this.eventsListForGrid=[];
 
     this.eventsService.list("private", "0", startDay, endDay).map(val => val.forEach(v => {
-      console.log(v)
+      // console.log(v)
         this.eventsListForGrid.push(
           {
             "event_id": v.event_id,
@@ -84,13 +84,13 @@ export class CalendarMonthViewComponent implements OnInit {
   }
 
   getCategoryColor(category_id): string {
-    let newcolor:string=this.categoriesList.find(x=>x.category_id == category_id).color;
+    let newcolor=this.categoriesList.find(x=>x.category_id == category_id);
     // for (let category of this.categoriesList) {
     //   console.log(category)
     //   if (category.category_id == category_id)
     //     return category.color
     // }
-    return (newcolor!='')?newcolor:'';
+    return (newcolor)?newcolor.color:'';
   }
 
 //dni w miesiącu
