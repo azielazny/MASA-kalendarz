@@ -27,6 +27,7 @@ export class CalendarEditEventsComponent implements OnInit, OnChanges {
   public parent;
 
   @Output() outputCloseRightColumn: EventEmitter<boolean> = new EventEmitter();
+  @Output() outputRemoveEvent: EventEmitter<number> = new EventEmitter();
 
   @ViewChild('editEventsForm') editEventsForm;
 
@@ -58,6 +59,7 @@ export class CalendarEditEventsComponent implements OnInit, OnChanges {
     if (this.eventData) {
       this.eventsService.remove(event_id).subscribe(val => {
         if (val == true) {
+          this.outputRemoveEvent.emit(event_id);
           this.shown = false;
           this.msgs = [];
           this.msgs.push({severity: 'success', summary: 'Usunięto event', detail: 'Okno edycji zostało zamknięte'});
