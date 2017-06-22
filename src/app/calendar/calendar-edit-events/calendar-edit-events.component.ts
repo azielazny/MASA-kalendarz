@@ -90,8 +90,9 @@ export class CalendarEditEventsComponent implements OnInit, OnChanges {
     //pola wymagane
     if (this.editEventsForm.selectedCategory == "") validationStatus += "- Nie wybrano kategorii<br>";
     if (this.editEventsForm.eventData.title == "") validationStatus += "- Tytuł jest polem obowiązkowym<br>";
-    if (this.editEventsForm.startDate == "") validationStatus += "- Data startu wydarzenia musi zostać podana<br>";
-    if (this.editEventsForm.endDate == "") validationStatus += "- Data końca wydarzenia musi zostać podana";
+    if (this.editEventsForm.startDate != undefined) validationStatus += "- Data startu wydarzenia musi zostać podana<br>";
+    if (this.editEventsForm.endDate != undefined) validationStatus += "- Data końca wydarzenia musi zostać podana<br>";
+    if (this.editEventsForm.eventData.description =="") validationStatus += "- Opis wydarzenia jest wymagany";
     if (validationStatus != "") {
       this.editEventsForm.error = true;
       return validationStatus;
@@ -103,7 +104,6 @@ export class CalendarEditEventsComponent implements OnInit, OnChanges {
   private buildEventData() {
     this.eventData = this.editEventsForm.eventData;
     this.eventData.category = this.editEventsForm.selectedCategory.category_id;
-
     this.eventData.start_ts =this.editEventsForm.dateStart.getTime() / 1000;
     this.eventData.end_ts =this.editEventsForm.dateEnd.getTime() / 1000;
 

@@ -24,7 +24,7 @@ export class CalendarMonthViewComponent implements OnInit {
   private eventsListByDay: EventForGrid[] = [];
 
 
-  public categories: Category[] = [];
+  public categoriesList: Category[] = [];
 
   private now = new Date();
   private thisMonth = this.now.getMonth();
@@ -42,8 +42,7 @@ export class CalendarMonthViewComponent implements OnInit {
   @Output() outputEvent: EventEmitter<string> = new EventEmitter();
   @Output() outputDate: EventEmitter<string> = new EventEmitter();
 
-  @ViewChildren('lightBoxes')
-  public lightBoxes;
+  @ViewChildren('lightBoxes') public lightBoxes;
 
   constructor(private eventsService: EventsService, private categoriesService: CategoriesService) {
   }
@@ -58,16 +57,14 @@ export class CalendarMonthViewComponent implements OnInit {
 
 
   private getEventsListForGrid() {
-    this.eventsListForGrid=[];
-    this.categoriesService.list().subscribe(val => {
-      if(val.length == 0) return;
-      this.categories = val;
-    });
+
+    this.categoriesService.list().map(val => val.forEach(v => this.categoriesList.push(v))).subscribe();
     let startDay = new Date(this.year, this.month, 1).getTime() / 1000;
     // console.log(startDay);
     let endDay = new Date(this.year, this.month + 1, 1).getTime() / 1000;
     // console.log(endDay);
     this.eventsService.list("private", "0", startDay, endDay).map(val => val.forEach(v => {
+      // this.eventsListForGrid=[];
         this.eventsListForGrid.push(
           {
             "event_id": v.event_id,
@@ -85,7 +82,7 @@ export class CalendarMonthViewComponent implements OnInit {
   }
 
   getCategoryColor(category_id): string {
-    for (let category of this.categories) {
+    for (let category of this.categoriesList) {
       if (category.category_id == category_id)
         return category.color
     }
@@ -127,8 +124,7 @@ export class CalendarMonthViewComponent implements OnInit {
 
   }
 
-  static
-  monthDays(month, year) {
+  static monthDays(month, year) {
     if (month != 2) {
       let x = (month <= 7) ? 1 : 0;
       return 30 + (Number(month % 2 == x));
@@ -138,8 +134,7 @@ export class CalendarMonthViewComponent implements OnInit {
 
   }
 
-  static
-  februaryInYear(year) {
+  static februaryInYear(year) {
     return (year % 4 == 0) ? 29 : 28;
   }
 

@@ -30,34 +30,34 @@
   <div class="calFieldDate calField " [ngClass]="dateStart==''?'required':''">
     <div class="input-group editDate">
       <span class="input-group-addon">Start:</span>
-      <p-calendar [(ngModel)]="dateStart" placeholder="01/01/2017" [locale]="pl" dateFormat="dd/mm/yy"
+      <p-calendar [(ngModel)]="dateStart" [locale]="pl" dateFormat="dd/mm/yy"
                   required></p-calendar>
     </div>
   </div>
   <div class="selectHour calFieldDate calField ">
     <div class="input-group editHour">
       <span class="input-group-addon">Od:</span>
-      <p-calendar [(ngModel)]="dateStart" placeholder="01:01" [hourFormat]="24" [timeOnly]="true"
+      <p-calendar [(ngModel)]="dateStart" [hourFormat]="24" [timeOnly]="true"
                   [showTime]="true"></p-calendar>
     </div>
   </div>
   <div class="calFieldDate calField " [ngClass]="dateStart==''?'required':''">
     <div class="input-group editDate">
       <span class="input-group-addon">Koniec:</span>
-      <p-calendar [(ngModel)]="dateEnd" placeholder="01/01/2017" [locale]="pl" dateFormat="dd/mm/yy"
+      <p-calendar [(ngModel)]="dateEnd" [locale]="pl" dateFormat="dd/mm/yy"
                   required></p-calendar>
     </div>
   </div>
   <div class="selectHour calFieldDate calField ">
     <div class="input-group editHour">
       <span class="input-group-addon">Do:</span>
-      <p-calendar [(ngModel)]="dateEnd" placeholder="01:01" [hourFormat]="24" [timeOnly]="true"
+      <p-calendar [(ngModel)]="dateEnd" [hourFormat]="24" [timeOnly]="true"
                   [showTime]="true"></p-calendar>
     </div>
   </div>
 
   <p-accordion>
-    <p-accordionTab header="Opis zdarzenia" [selected]="true">
+    <p-accordionTab header="Opis zdarzenia" [selected]="true" [ngClass]="eventData?.description==''?'required':''">
       <textarea placeholder="Opis zdarzenia" [ngModel]="eventData.description"
                 (ngModelChange)="eventData.description= $event"></textarea>
     </p-accordionTab>

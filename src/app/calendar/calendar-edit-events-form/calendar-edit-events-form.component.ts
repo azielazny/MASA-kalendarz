@@ -71,6 +71,8 @@ export class CalendarEditEventsFormComponent implements OnInit, OnChanges, After
       this.buildEventDeteData();
     } else {
       this.usersData = [];
+      this.dateStart=new Date(2017,6, 5);
+      this.dateEnd=new Date(2017,6, 5);
     }
   }
 
