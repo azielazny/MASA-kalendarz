@@ -34,13 +34,13 @@ export class EventsService {
       .map(this.extractEventsList);
   }
 
-  listForUserByDate( day: string, month:string, year:string): Observable<Event[]> {
+  listForUserByDate(day: string, month: string, year: string): Observable<Event[]> {
     let options = new RequestOptions({
       withCredentials: true // CORS Access-Control-Allow-Credentials header
     });
 
     // return this.http.get("http://localhost/danzet/xxx.php")//, options)
-    return this.http.get(this.url + "/listday/"+year+"/"+month+"/" + day, options)
+    return this.http.get(this.url + "/listday/" + year + "/" + month + "/" + day, options)
       .map(this.extractEventsList);
   }
 
