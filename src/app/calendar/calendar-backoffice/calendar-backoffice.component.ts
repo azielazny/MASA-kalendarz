@@ -12,9 +12,9 @@ export class CalendarBackofficeComponent implements OnInit {
   public username = localStorage.getItem("userName");
 
 
-
   constructor(private router: Router, private title: Title) {
-    if(this.username==null) { this.router.navigate(['index']);
+    if (this.username == null) {
+      this.router.navigate(['index']);
     }
 
     this.title.setTitle("Twój Organizer - makeplan.");
@@ -24,11 +24,13 @@ export class CalendarBackofficeComponent implements OnInit {
   @ViewChild('grid') public grid;
 
   ngOnInit() {
+    if (window.innerWidth <= 767) this.leftColumn.logoBox.showShortView = true;
+
   }
 
   showSettings() {
-    this.grid.editEvents.shown=true;
-    this.grid.editEvents.tab='settings';
+    this.grid.editEvents.shown = true;
+    this.grid.editEvents.tab = 'settings';
   }
 
 }
