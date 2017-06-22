@@ -84,14 +84,13 @@ export class CalendarMonthViewComponent implements OnInit {
   }
 
   getCategoryColor(category_id): string {
-    console.log(this.categoriesList)
-   console.log(this.categoriesList.find(x=>x.category_id == category_id));
+    let newcolor:string=this.categoriesList.find(x=>x.category_id == category_id).color;
     // for (let category of this.categoriesList) {
     //   console.log(category)
     //   if (category.category_id == category_id)
     //     return category.color
     // }
-    return '';
+    return (newcolor!='')?newcolor:'';
   }
 
 //dni w miesiącu
