@@ -58,8 +58,8 @@
 
   <p-accordion>
     <p-accordionTab header="Opis zdarzenia" [selected]="true" >
-      <textarea placeholder="Opis zdarzenia" [ngModel]="eventData.description"
-                (ngModelChange)="eventData.description= $event" [ngClass]="eventData?.description==''?'required':''"></textarea>
+      <textarea placeholder="Opis zdarzenia" [ngModel]="eventData.description_edit"
+                (ngModelChange)="eventData.description_edit= $event" [ngClass]="eventData?.description_edit==''?'required':''"></textarea>
     </p-accordionTab>
     <p-accordionTab [disabled]="eventData?.visibility=='private'">
       <p-header>
