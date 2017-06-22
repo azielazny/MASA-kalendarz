@@ -16,11 +16,13 @@ export class CalendarEditEventsComponent implements OnInit, OnChanges {
   public eventData: Event;
   private visibility: string = "private";
   private remindEvent: boolean;
-  private picture : string = "data:,";
+  private picture: string = "data:,";
   msgs: Message[] = [];
 
   @Input()
-  private selectedEvent: number=0;
+  private selectedDate: string;
+  @Input()
+  private selectedEvent: number = 0;
   @Input()
   public parent;
 
@@ -36,11 +38,11 @@ export class CalendarEditEventsComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges() {
-
-    (this.selectedEvent>0) ? this.eventsService.details(this.selectedEvent).subscribe(val => {
+    this.editEventsForm.selectedDate = this.selectedDate;
+    (this.selectedEvent > 0) ? this.eventsService.details(this.selectedEvent).subscribe(val => {
         this.eventData = val;
       }) : this.clearEventData();
-    this.selectedEvent=0;
+    this.selectedEvent = 0;
   }
 
   changeVisibilityOfEvent(value) {
@@ -92,7 +94,7 @@ export class CalendarEditEventsComponent implements OnInit, OnChanges {
     if (this.editEventsForm.eventData.title == "") validationStatus += "- Tytuł jest polem obowiązkowym<br>";
     if (this.editEventsForm.startDate != undefined) validationStatus += "- Data startu wydarzenia musi zostać podana<br>";
     if (this.editEventsForm.endDate != undefined) validationStatus += "- Data końca wydarzenia musi zostać podana<br>";
-    if (this.editEventsForm.eventData.description =="") validationStatus += "- Opis wydarzenia jest wymagany";
+    if (this.editEventsForm.eventData.description == "") validationStatus += "- Opis wydarzenia jest wymagany";
     if (validationStatus != "") {
       this.editEventsForm.error = true;
       return validationStatus;
@@ -104,8 +106,8 @@ export class CalendarEditEventsComponent implements OnInit, OnChanges {
   private buildEventData() {
     this.eventData = this.editEventsForm.eventData;
     this.eventData.category = this.editEventsForm.selectedCategory.category_id;
-    this.eventData.start_ts =this.editEventsForm.dateStart.getTime() / 1000;
-    this.eventData.end_ts =this.editEventsForm.dateEnd.getTime() / 1000;
+    this.eventData.start_ts = this.editEventsForm.dateStart.getTime() / 1000;
+    this.eventData.end_ts = this.editEventsForm.dateEnd.getTime() / 1000;
 
     this.eventData.visibility = this.visibility;
 

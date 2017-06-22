@@ -23,6 +23,7 @@ export class CalendarEditEventsFormComponent implements OnInit, OnChanges, After
   private error: boolean = false;
   private usersData: User[] = [];
   private usersCount: number;
+  private selectedDate:string;
 
   @Output() pictureChanged = new EventEmitter();
 
@@ -71,8 +72,11 @@ export class CalendarEditEventsFormComponent implements OnInit, OnChanges, After
       this.buildEventDeteData();
     } else {
       this.usersData = [];
-      this.dateStart=new Date(2017,6, 5);
-      this.dateEnd=new Date(2017,6, 5);
+      if (this.selectedDate != undefined) {
+        let eventDate=this.selectedDate.split(".");
+        this.dateStart=new Date(parseInt(eventDate[2]), parseInt(eventDate[1]), parseInt(eventDate[0]));
+        this.dateEnd=new Date(parseInt(eventDate[2]), parseInt(eventDate[1]), parseInt(eventDate[0]));
+      }
     }
   }
 
