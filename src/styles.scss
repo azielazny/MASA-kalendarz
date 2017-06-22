@@ -48,7 +48,7 @@ $blue: #0298ac;
   .eventsBoxes {
     display: inline-block;
     text-align: left;
-    padding: 10px 30px 10px;
+    padding: 10px 30px 10px 47px;
     font-size: 16px;
     line-height: 16px;
     white-space: nowrap;
@@ -749,6 +749,12 @@ app-calendar-backoffice {
       @include shortCalendar();
     }
     #calEdit {
+      .topNav, .topNav.active {
+         width: auto;
+        border-bottom: 0 solid #8c8a8d;
+
+        padding: 0 10px;
+      }
       .mainNav {
         .mainNavBox {
           span {

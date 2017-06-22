@@ -16,6 +16,7 @@ export class CalendarGridComponent implements OnInit {
   public actualMonth;
   public selectedDate;
   private selectedEvent;
+  private overflow:string='overflow-auto';
 
   @ViewChild('rightColumn') rightColumn;
   @ViewChild('editEvents') editEvents;
@@ -29,6 +30,7 @@ export class CalendarGridComponent implements OnInit {
   }
   getEventID(value) {
     this.selectedEvent=value;
+    this.overflow='overflow-hidden';
   }
 
   changeOfMonth(value) {

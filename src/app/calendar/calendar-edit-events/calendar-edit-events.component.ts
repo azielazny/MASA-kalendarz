@@ -61,6 +61,7 @@ export class CalendarEditEventsComponent implements OnInit, OnChanges {
         if (val == true) {
           this.outputRemoveEvent.emit(event_id);
           this.shown = false;
+          this.parent.overflow='overflow-auto';
           this.msgs = [];
           this.msgs.push({severity: 'success', summary: 'Usunięto event', detail: 'Okno edycji zostało zamknięte'});
           this.outputCloseRightColumn.emit(true);
@@ -73,8 +74,6 @@ export class CalendarEditEventsComponent implements OnInit, OnChanges {
   }
 
   saveEvent(status: number) {
-    // if(status==0) this.clearEventData();
-
     let validationStatus = this.validation();
     if (this.validation() != "ok") {
       this.msgs = [];
@@ -195,6 +194,10 @@ export class CalendarEditEventsComponent implements OnInit, OnChanges {
     });
   }
 
+  closeEditCal() {
+    this.parent.overflow='overflow-auto';
+    this.shown = false;
+  }
 
 }
 
