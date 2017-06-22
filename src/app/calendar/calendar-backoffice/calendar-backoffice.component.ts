@@ -1,6 +1,7 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {Router} from "@angular/router";
 import {Title} from "@angular/platform-browser";
+import {settings} from "cluster";
 
 @Component({
   selector: 'app-calendar-backoffice',
@@ -11,6 +12,7 @@ export class CalendarBackofficeComponent implements OnInit {
   public username = localStorage.getItem("userName");
 
 
+
   constructor(private router: Router, private title: Title) {
     if(this.username==null) { this.router.navigate(['index']);
     }
@@ -19,8 +21,14 @@ export class CalendarBackofficeComponent implements OnInit {
   }
 
   @ViewChild('leftColumn') public leftColumn;
+  @ViewChild('grid') public grid;
 
   ngOnInit() {
+  }
+
+  showSettings() {
+    this.grid.editEvents.shown=true;
+    this.grid.editEvents.tab='settings';
   }
 
 }
