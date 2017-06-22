@@ -75,8 +75,8 @@ export class CalendarEditEventsFormComponent implements OnInit, OnChanges, After
       this.usersData = [];
       if (this.selectedDate != undefined) {
         let eventDate=this.selectedDate.split(".");
-        this.dateStart=new Date(parseInt(eventDate[2]), parseInt(eventDate[1]), parseInt(eventDate[0]));
-        this.dateEnd=new Date(parseInt(eventDate[2]), parseInt(eventDate[1]), parseInt(eventDate[0]));
+        this.dateStart=new Date(parseInt(eventDate[2]), parseInt(eventDate[1])-1, parseInt(eventDate[0]));
+        this.dateEnd=new Date(parseInt(eventDate[2]), parseInt(eventDate[1])-1, parseInt(eventDate[0]));
       }
     }
   }

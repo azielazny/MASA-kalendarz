@@ -11,6 +11,7 @@ export class Event {
   timezone: string;
   visibility: string;
   description: string;
+  description_edit: string;
   loc_name: string;
   loc_street: string;
   loc_bnum: string;

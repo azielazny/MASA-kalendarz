@@ -96,7 +96,7 @@ export class CalendarEditEventsComponent implements OnInit, OnChanges {
     if (this.editEventsForm.eventData.title == "") validationStatus += "- Tytuł jest polem obowiązkowym<br>";
       if (!Date.parse(this.editEventsForm.dateStart)) validationStatus += "- Data startu wydarzenia musi zostać podana<br>";
       if (!Date.parse(this.editEventsForm.dateEnd)) validationStatus += "- Data końca wydarzenia musi zostać podana<br>";
-    if (this.editEventsForm.eventData.description == "") validationStatus += "- Opis wydarzenia jest wymagany";
+    if (this.editEventsForm.eventData.description_edit == "") validationStatus += "- Opis wydarzenia jest wymagany";
     if (validationStatus != "") {
       this.editEventsForm.error = true;
       return validationStatus;
@@ -132,6 +132,7 @@ export class CalendarEditEventsComponent implements OnInit, OnChanges {
       timezone: "",
       visibility: "private",
       description: "",
+      description_edit: "",
       loc_name: "",
       loc_street: "",
       loc_bnum: "",
@@ -151,7 +152,7 @@ export class CalendarEditEventsComponent implements OnInit, OnChanges {
     console.log(this.eventData);
 
     this.eventsService.add(this.eventData).subscribe(val => {
-      console.log(val)
+      console.log(val);
       if (val.event_id >0) {
         this.eventData=val;
         this.msgs = [];
