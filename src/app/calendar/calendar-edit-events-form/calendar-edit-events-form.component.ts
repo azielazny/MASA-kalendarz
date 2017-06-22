@@ -6,6 +6,7 @@ import {Category} from "../../class/category.class";
 import {User} from "../../class/user.class";
 import {EventsService} from "../../services/events.service";
 import {DOCUMENT} from "@angular/platform-browser";
+import {Attendant} from "../../class/attendant.class";
 declare var $: any;
 
 
@@ -21,7 +22,7 @@ export class CalendarEditEventsFormComponent implements OnInit, OnChanges, After
   private dateEnd: Date;
   private selectedCategory: Category = {color: "#ddd", user_id: 0, name: "", category_id: 0};
   private error: boolean = false;
-  private usersData: User[] = [];
+  private usersData: Attendant[] = [];
   private usersCount: number;
   private selectedDate:string;
 
@@ -98,7 +99,7 @@ export class CalendarEditEventsFormComponent implements OnInit, OnChanges, After
   }
 
   private getUsersList() {
-    this.eventsService.userListForEvent(this.eventData.event_id).subscribe(val => {
+    this.eventsService.attendants(this.eventData.event_id).subscribe(val => {
       this.usersData = val
     });
     this.usersCount = this.usersData.length;

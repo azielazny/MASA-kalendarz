@@ -1,5 +1,6 @@
 import {Component, OnInit, Input, OnChanges, AfterViewInit} from '@angular/core';
 import {User} from "../../class/user.class";
+import {Attendant} from "../../class/attendant.class";
 
 
 @Component({
@@ -9,7 +10,7 @@ import {User} from "../../class/user.class";
 })
 export class CalendarEditEventsUsersListComponent  {
   @Input()
-  private user: User;
+  private user: Attendant;
 
   constructor() {
   }
