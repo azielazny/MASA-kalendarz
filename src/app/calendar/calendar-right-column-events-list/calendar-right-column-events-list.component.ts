@@ -1,6 +1,8 @@
 import {Component, OnInit, Input, Output, EventEmitter, OnChanges} from '@angular/core';
 import {EventsService} from "../../services/events.service";
 import {Event} from "../../class/event.class";
+import {Category} from "../../class/category.class";
+import {CategoriesService} from "../../services/categories.service";
 
 @Component({
   selector: 'calendar-right-column-events-list',
@@ -11,7 +13,10 @@ export class CalendarRightColumnEventsListComponent implements OnInit, OnChanges
   private startDate: string;
   private endDate: string;
   private location: string;
+  private selectedCategory: Category;
 
+  @Input()
+  private categoriesList: Category[];
   @Input()
   public parent;
   @Input()
@@ -32,6 +37,7 @@ export class CalendarRightColumnEventsListComponent implements OnInit, OnChanges
       this.setEndData(this.eventdata.end_ts);
     this.buildLocation();
 
+    this.selectedCategory = this.categoriesList.find(x => x.category_id == this.eventdata.category);
   }
 
   private setStartData(timestamp: number) {
