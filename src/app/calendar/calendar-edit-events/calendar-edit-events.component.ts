@@ -48,7 +48,6 @@ export class CalendarEditEventsComponent implements OnInit, OnChanges {
 
   changeVisibilityOfEvent(value) {
     this.visibility = value;
-
   }
 
   changeReminderOfEvent(value) {

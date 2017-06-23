@@ -61,8 +61,8 @@ export class CalendarEditEventsFormComponent implements OnInit, OnChanges, After
 
   ngOnChanges() {
     this.error = false;
+    this.eventData.visibility = (undefined != this.visibility) ? this.visibility : (this.eventData.visibility) ? this.eventData.visibility : "private";
     if (this.eventData.event_id > 0) {
-      this.eventData.visibility = (undefined != this.visibility) ? this.visibility : (this.eventData.visibility) ? this.eventData.visibility : "private";
       this.visibility = undefined;
 
       this.eventData.is_remind_set = (undefined != this.remindEvent) ? this.remindEvent : (this.eventData.is_remind_set) ? this.eventData.is_remind_set : true;
