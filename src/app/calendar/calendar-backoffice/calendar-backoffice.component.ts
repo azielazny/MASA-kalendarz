@@ -26,7 +26,7 @@ export class CalendarBackofficeComponent implements OnInit {
 
   }
 
-  showSettings() {
+  public showSettings() {
     this.grid.editEvents.shown = true;
     this.grid.editEvents.tab = 'settings';
   }

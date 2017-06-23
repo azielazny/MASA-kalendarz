@@ -16,8 +16,8 @@ export class CalendarLeftColumnMainnavComponent implements OnInit {
   ngOnInit() {
   }
 
-  showSettings() {
-    console.log(this.parent.parent.showSettings());
+  private showSettings() {
+    this.parent.parent.showSettings();
   }
 }
 

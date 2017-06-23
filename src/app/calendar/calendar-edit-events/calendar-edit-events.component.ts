@@ -46,15 +46,15 @@ export class CalendarEditEventsComponent implements OnInit, OnChanges {
     this.selectedEvent = 0;
   }
 
-  changeVisibilityOfEvent(value) {
+  private changeVisibilityOfEvent(value) {
     this.visibility = value;
   }
 
-  changeReminderOfEvent(value) {
+  private changeReminderOfEvent(value) {
     this.remindEvent = value;
   }
 
-  removeEvent(event_id: number) {
+  private removeEvent(event_id: number) {
     if (this.eventData) {
       this.eventsService.remove(event_id).subscribe(val => {
         if (val == true) {
@@ -72,7 +72,7 @@ export class CalendarEditEventsComponent implements OnInit, OnChanges {
     }
   }
 
-  saveEvent(status: number) {
+  private saveEvent(status: number) {
     let validationStatus = this.validation();
     if (this.validation() != "ok") {
       this.msgs = [];
@@ -146,11 +146,8 @@ export class CalendarEditEventsComponent implements OnInit, OnChanges {
     }
   }
 
-  addEvent() {
-    console.log(this.eventData);
-
+  private addEvent() {
     this.eventsService.add(this.eventData).subscribe(val => {
-      console.log(val);
       if (val.event_id >0) {
         this.eventData=val;
         this.msgs = [];
@@ -172,8 +169,7 @@ export class CalendarEditEventsComponent implements OnInit, OnChanges {
     });
   }
 
-  updateEvent() {
-    console.log(this.eventData);
+  private updateEvent() {
     this.eventsService.edit(this.eventData.event_id, this.eventData).subscribe(val => {
       if (val == true) {
         this.msgs = [];
@@ -195,9 +191,10 @@ export class CalendarEditEventsComponent implements OnInit, OnChanges {
     });
   }
 
-  closeEditCal() {
+  private closeEditCal() {
     this.parent.overflow='overflow-auto';
     this.shown = false;
+    this.tab = 'edit';
   }
 
 }

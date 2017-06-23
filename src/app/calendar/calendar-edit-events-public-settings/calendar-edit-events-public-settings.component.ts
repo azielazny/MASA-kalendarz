@@ -1,5 +1,4 @@
-import {Component, OnInit, Input, OnChanges, AfterViewInit, ViewChild, Output, EventEmitter} from '@angular/core';
-import {User} from "../../class/user.class";
+import {Component,  Input, OnChanges, ViewChild, Output, EventEmitter} from '@angular/core';
 import {Event} from "../../class/event.class";
 
 
@@ -23,17 +22,17 @@ export class CalendarEditEventsPublicSettingsComponent implements OnChanges{
   ngOnChanges() {
     this.eventImage=this.eventdata.picture;
   }
-  fileChanged($event) : void {
+  private fileChanged($event) : void {
     this.readThis($event.target);
   }
-  readThis(inputValue: any): void {
+  private readThis(inputValue: any): void {
     let file:File = inputValue.files[0];
     let reader:FileReader = new FileReader();
 
     reader.onloadend = (e) => {
       this.eventImage= reader.result;
-      this.pictureChange.emit(reader.result)
-    }
+      this.pictureChange.emit(reader.result);
+    };
     reader.readAsDataURL(file);
   }
 }

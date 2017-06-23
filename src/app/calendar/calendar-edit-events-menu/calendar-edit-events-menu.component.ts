@@ -34,20 +34,20 @@ export class CalendarEditEventsMenuComponent implements OnInit, OnChanges {
     }
   }
 
-  isVisibility(status: string) {
+  private isVisibility(status: string) {
     this.visibility = (status == "private") ? "public" : "private";
     this.outputVisibility.emit(this.visibility);
   }
 
-  isReminder(status: boolean) {
+  private isReminder(status: boolean) {
     this.reminder = (status != true);
     this.outputReminder.emit(this.reminder);
   }
 
-  removeEvent(event_id: number) {
+  private removeEvent(event_id: number) {
     this.outputRemover.emit(event_id);
   }
-  saveEvent(status: number) {
+  private saveEvent(status: number) {
     this.outputEventSaver.emit(status);
   }
 }
