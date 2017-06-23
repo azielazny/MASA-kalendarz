@@ -1,4 +1,4 @@
-import {Component, OnInit, Input, OnChanges, AfterViewInit} from '@angular/core';
+import {Component, OnInit, Input, OnChanges, AfterViewInit, HostBinding} from '@angular/core';
 import {Router} from "@angular/router";
 import {Event} from "../../class/event.class";
 
@@ -16,12 +16,15 @@ export class CalendarEditEventsRightColumnComponent implements OnInit, OnChanges
   constructor() {
   }
 
+  @HostBinding('class.hidden') hiddenClass: boolean = false;
 
   ngOnInit() {
-  }
 
+  }
   ngOnChanges() {
     (this.eventdata.event_id > 0) ? this.buildLocationData() : this.location = "";
+    this.hiddenClass=(this.eventdata.event_id == 0);
+    if(this.eventdata.loc_city=='') this.hiddenClass=true;
   }
 
 
