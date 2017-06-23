@@ -42,12 +42,12 @@ export class CalendarRightColumnEventsListComponent implements OnInit, OnChanges
 
   private setStartData(timestamp: number) {
     let evDate = new Date(timestamp * 1e3);
-    this.startDate = CalendarRightColumnEventsListComponent.formatForDate(evDate.getDate()) + "." + CalendarRightColumnEventsListComponent.formatForDate(evDate.getMonth() + 1) + "." + evDate.getFullYear() + " od godz." + evDate.getHours() + ":" + evDate.getMinutes();
+    this.startDate = CalendarRightColumnEventsListComponent.formatForDate(evDate.getDate()) + "." + CalendarRightColumnEventsListComponent.formatForDate(evDate.getMonth() + 1) + "." + evDate.getFullYear() + " od godz." + CalendarRightColumnEventsListComponent.formatForDate(evDate.getHours()) + ":" + CalendarRightColumnEventsListComponent.formatForDate(evDate.getMinutes());
   }
 
   private setEndData(timestamp: number) {
     let evDate = new Date(timestamp * 1e3);
-    this.endDate = CalendarRightColumnEventsListComponent.formatForDate(evDate.getDate()) + "." + CalendarRightColumnEventsListComponent.formatForDate(evDate.getMonth() + 1) + "." + evDate.getFullYear() + " do godz. " + evDate.getHours() + ":" + evDate.getMinutes();
+    this.endDate = CalendarRightColumnEventsListComponent.formatForDate(evDate.getDate()) + "." + CalendarRightColumnEventsListComponent.formatForDate(evDate.getMonth() + 1) + "." + evDate.getFullYear() + " do godz. " + CalendarRightColumnEventsListComponent.formatForDate(evDate.getHours()) + ":" + CalendarRightColumnEventsListComponent.formatForDate(evDate.getMinutes());
   }
 
   static formatForDate(num: number): string {
