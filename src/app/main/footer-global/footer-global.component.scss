@@ -17,6 +17,8 @@
     color: #76777a;
     text-align: center;
     margin-top: 10px;
+    touch-action: manipulation;
+    cursor: pointer;
 
     span {
       margin: 0 25px;
