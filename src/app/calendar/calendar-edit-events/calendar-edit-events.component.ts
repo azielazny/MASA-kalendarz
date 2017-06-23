@@ -117,6 +117,10 @@ export class CalendarEditEventsComponent implements OnInit, OnChanges {
   }
 
   private clearEventData() {
+    this.eventData = null;
+
+    this.eventData = new Event();
+
     this.eventData = {
       event_id: 0,
       user_id: 0,
