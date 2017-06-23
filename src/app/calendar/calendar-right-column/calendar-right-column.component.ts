@@ -1,6 +1,7 @@
 import {Component, OnInit, Input, NgZone, OnChanges, Output, EventEmitter} from '@angular/core';
 import {EventsService} from "../../services/events.service";
 import {Event} from "../../class/event.class";
+import {Category} from "../../class/category.class";
 
 @Component({
   selector: 'calendar-right-column',
@@ -15,6 +16,7 @@ export class CalendarRightColumnComponent implements OnInit, OnChanges {
   private limitEvents: number;
   private eventsToShow: Event[] = [];
   public shown = false;
+  private categoriesList: Category[] = [];
 
   @Input()
   public selectedDate;
@@ -24,7 +26,7 @@ export class CalendarRightColumnComponent implements OnInit, OnChanges {
 
   @Output() outputEventId: EventEmitter<number> = new EventEmitter();
 
-  constructor(private eventsService: EventsService) {
+  constructor(private eventsService: EventsService, private categoriesService) {
     this.height = <any>window.innerHeight;
     this.limitEvents = this.limitEventsToShow();
   }
