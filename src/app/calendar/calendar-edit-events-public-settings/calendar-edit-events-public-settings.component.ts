@@ -1,5 +1,6 @@
 import {Component, OnInit, Input, OnChanges, AfterViewInit, ViewChild, Output, EventEmitter} from '@angular/core';
 import {User} from "../../class/user.class";
+import {Event} from "../../class/event.class";
 
 
 @Component({
@@ -7,27 +8,21 @@ import {User} from "../../class/user.class";
   templateUrl: 'calendar-edit-events-public-settings.component.html',
   styleUrls: ['calendar-edit-events-public-settings.component.scss']
 })
-export class CalendarEditEventsPublicSettingsComponent  {
+export class CalendarEditEventsPublicSettingsComponent implements OnChanges{
   private eventImage:string;
 
+  @Input()
+  public eventdata: Event;
 
-  constructor() {
-  }
   @ViewChild('uploadBtn') uploadBtn;
   @Output() pictureChange = new EventEmitter();
 
-  // fileChanged(e) {
-  //   if(this.uploadBtn.nativeElement.files.length != 1) return;
-  //   let x = this;
-  //
-  //   let reader = new FileReader();
-  //   reader.onloadend = function() {
-  //     this.picture=
-  //     x.pictureChange.emit(reader.result);
-  //   };
-  //   reader.readAsDataURL(this.uploadBtn.nativeElement.files[0]);
-  // }
+  constructor() {
+  }
 
+  ngOnChanges() {
+    this.eventImage=this.eventdata.picture;
+  }
   fileChanged($event) : void {
     this.readThis($event.target);
   }

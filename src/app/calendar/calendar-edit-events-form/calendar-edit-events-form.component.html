@@ -76,7 +76,7 @@
       </div>
     </p-accordionTab>
     <p-accordionTab header="Ustawienia publiczne" [disabled]="eventData?.visibility=='private'" >
-      <calendar-edit-events-public-settings (pictureChange)="updatePicture($event)" class="text-center" style="display: block"></calendar-edit-events-public-settings>
+      <calendar-edit-events-public-settings (pictureChange)="updatePicture($event)" class="text-center" style="display: block" [eventdata]="eventData"></calendar-edit-events-public-settings>
     </p-accordionTab>
     <p-accordionTab header="Komentarze" [disabled]="eventData?.visibility=='private'">
       <calendar-edit-events-comments-list [eventdata]="eventData" id="comments"></calendar-edit-events-comments-list>

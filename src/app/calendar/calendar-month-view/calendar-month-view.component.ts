@@ -45,15 +45,16 @@ export class CalendarMonthViewComponent implements OnInit, AfterViewInit {
   @ViewChildren('lightBoxes') public lightBoxes;
 
   constructor(private eventsService: EventsService, private categoriesService: CategoriesService) {
-    this.categoriesService.list().subscribe(v=>{this.categoriesList=v});
   }
 
   ngOnInit() {
   }
   ngAfterViewInit() {
-    this.getEventsListForGrid();
+    this.categoriesService.list().subscribe(v=>{this.categoriesList=v});//.map(val => val.forEach(v => this.categoriesList.push(v))).subscribe();//.subscribe(v=>{this.categoriesList=v});
+
     this.now.setFullYear(this.now.getFullYear());
     this.monthGen(this.month, this.year);
+    this.getEventsListForGrid();
 
     this.outputEvent.emit(this.months[this.thisMonth] + " " + this.year);
   }
@@ -68,8 +69,7 @@ export class CalendarMonthViewComponent implements OnInit, AfterViewInit {
     // console.log(endDay);
     this.eventsListForGrid = [];
 
-    this.eventsService.list("private", "0", startDay, endDay).map(val => val.forEach(v => {
-        console.log(v)
+    this.eventsService.list("private", "0", startDay, endDay).map(val => setTimeout(() => {val.forEach(v => {
         this.eventsListForGrid.push(
           {
             event_id: v.event_id,
@@ -81,6 +81,7 @@ export class CalendarMonthViewComponent implements OnInit, AfterViewInit {
           }
         )
       })
+    }, 1000)
     ).subscribe();
 
     console.log(this.eventsListForGrid)
@@ -88,6 +89,7 @@ export class CalendarMonthViewComponent implements OnInit, AfterViewInit {
   getCategoryColor(category_id:number): string {
     let newcolor = this.categoriesList.filter(x => {if(x.category_id == category_id) return x})[0];
     return (newcolor)?newcolor.color:'';
+
   }
 
 //dni w miesiącu
