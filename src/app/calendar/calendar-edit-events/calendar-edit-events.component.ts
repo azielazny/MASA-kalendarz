@@ -159,6 +159,7 @@ export class CalendarEditEventsComponent implements OnInit, OnChanges {
           summary: 'Dodano event',
           detail: 'Wydarzenie zostało zapisane w kalendarzu'
         });
+        this.outputRemoveEvent.emit(0);
         return;
       }
       this.outputCloseRightColumn.emit(true);
@@ -181,6 +182,7 @@ export class CalendarEditEventsComponent implements OnInit, OnChanges {
           summary: 'Zaktualizowano event',
           detail: 'Wydarzenie zostało zapisane w kalendarzu'
         });
+        this.outputRemoveEvent.emit(0);
         return;
       }
       this.outputCloseRightColumn.emit(true);
