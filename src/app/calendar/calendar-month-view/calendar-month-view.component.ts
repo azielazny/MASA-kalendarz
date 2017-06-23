@@ -1,5 +1,12 @@
-import {Component, OnInit, Input, ViewChild, ViewChildren, Output, EventEmitter} from '@angular/core';
+import {
+  Component, OnInit, Input, ViewChild, ViewChildren, Output, EventEmitter, OnChanges,
+  AfterViewInit
+} from '@angular/core';
 import {Calendar} from "../../class/calendar.class";
+import {EventsService} from "../../services/events.service";
+import {CategoriesService} from "../../services/categories.service";
+import {EventForGrid} from "../../class/eventForGrid.class";
+import {Category} from "../../class/category.class";
 
 @Component({
   selector: 'calendar-month-view',
@@ -13,6 +20,11 @@ export class CalendarMonthViewComponent implements OnInit {
   public nextMonthDays: Calendar[] = [];
   public actualDay;
   public week_list: string[] = [];
+  private eventsListForGrid: EventForGrid[] = [];
+  private eventsListByDay: EventForGrid[] = [];
+
+
+  public categories: Category[] = [];
 
   private now = new Date();
   private thisMonth = this.now.getMonth();
@@ -33,16 +45,53 @@ export class CalendarMonthViewComponent implements OnInit {
   @ViewChildren('lightBoxes')
   public lightBoxes;
 
-  constructor() {
+  constructor(private eventsService: EventsService, private categoriesService: CategoriesService) {
   }
 
   ngOnInit() {
     this.now.setFullYear(this.now.getFullYear());
     this.monthGen(this.month, this.year);
     this.outputEvent.emit(this.months[this.thisMonth] + " " + this.year);
+
+    this.getEventsListForGrid();
   }
 
-  //dni w miesiącu
+
+  private getEventsListForGrid() {
+
+    this.categoriesService.list().subscribe(val => {
+      this.categories = val
+    });
+    let startDay = new Date(this.year, this.month, 1).getTime() / 1000;
+    // console.log(startDay);
+    let endDay = new Date(this.year, this.month + 1, 1).getTime() / 1000;
+    // console.log(endDay);
+    this.eventsService.listForUserByPeriod(startDay, endDay).map(val => val.forEach(v => {
+        this.eventsListForGrid.push(
+          {
+            "event_id": v.event_id,
+            "title": v.title,
+            "start_ts": v.start_ts,
+            "end_ts": v.end_ts,
+            "category": v.category,
+            "color": this.getCategoryColor(v.category)
+          }
+        )
+      })
+    ).subscribe();
+
+    // console.log(this.eventsListForGrid)
+  }
+
+  getCategoryColor(category_id): string {
+    for (let category of this.categories) {
+      if (category.category_id == category_id)
+        return category.color
+    }
+    return '';
+  }
+
+//dni w miesiącu
   monthGen(m, y) {
     //reset pól
     this.actualDay = null;
@@ -77,7 +126,8 @@ export class CalendarMonthViewComponent implements OnInit {
 
   }
 
-  static monthDays(month, year) {
+  static
+  monthDays(month, year) {
     if (month != 2) {
       let x = (month <= 7) ? 1 : 0;
       return 30 + (Number(month % 2 == x));
@@ -87,7 +137,8 @@ export class CalendarMonthViewComponent implements OnInit {
 
   }
 
-  static februaryInYear(year) {
+  static
+  februaryInYear(year) {
     return (year % 4 == 0) ? 29 : 28;
   }
 
@@ -97,6 +148,7 @@ export class CalendarMonthViewComponent implements OnInit {
     this.month = this.now.getMonth();
     this.monthGen(this.month, this.year);
     this.outputEvent.emit(this.months[this.month] + " " + this.year);
+    this.getEventsListForGrid();
   }
 
   getNextMonth() {
@@ -105,6 +157,7 @@ export class CalendarMonthViewComponent implements OnInit {
     this.month = this.now.getMonth();
     this.monthGen(this.month, this.year);
     this.outputEvent.emit(this.months[this.month] + " " + this.year);
+    this.getEventsListForGrid();
   }
 
   clearActiveClass() {
@@ -118,14 +171,15 @@ export class CalendarMonthViewComponent implements OnInit {
     this.parent.rightColumn.day = CalendarMonthViewComponent.formatForDate(index);
     this.parent.rightColumn.month = CalendarMonthViewComponent.formatForDate(this.month + 1);
     this.parent.rightColumn.year = this.year;
-    this.outputDate.emit(CalendarMonthViewComponent.formatForDate(index)+"."+CalendarMonthViewComponent.formatForDate(this.month + 1)+"."+this.year);
+    this.outputDate.emit(CalendarMonthViewComponent.formatForDate(index) + "." + CalendarMonthViewComponent.formatForDate(this.month + 1) + "." + this.year);
 
     this.clearActiveClass();
     this.lightBoxes.toArray()[index - 1].active = true;
   }
 
-  static formatForDate(num: number): string {
+  static
+  formatForDate(num: number): string {
     let newNum: string = num + "";
-    return (newNum.length < 2)? "0" + newNum:newNum;
+    return (newNum.length < 2) ? "0" + newNum : newNum;
   }
 }

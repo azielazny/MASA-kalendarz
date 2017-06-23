@@ -64,6 +64,9 @@ import {CalendarEditEventsUsersListComponent} from "./calendar/calendar-edit-eve
 import {CalendarEditEventsCommentComponent} from "./calendar/calendar-edit-events-comment/calendar-edit-events-comment.component";
 import {CalendarEditEventsCommentsListComponent} from "./calendar/calendar-edit-events-comments-list/calendar-edit-events-comments-list.component";
 import {CookieComponent} from "./main/cookie/cookie.component";
+import {CalendarMonthViewLightBoxEventsListComponent} from "./calendar/calendar-month-view-light-box-events-list/calendar-month-view-light-box-events-list.component";
+import {FilterPipe} from "./calendar/calendar-month-view-light-box/filterPipe";
+import {TooltipModule} from "primeng/components/tooltip/tooltip";
 
 
 @NgModule({
@@ -116,7 +119,9 @@ import {CookieComponent} from "./main/cookie/cookie.component";
     CalendarEditEventsUsersListComponent,
     CalendarEditEventsCommentComponent,
     CalendarEditEventsCommentsListComponent,
-    CookieComponent
+    CookieComponent,
+    CalendarMonthViewLightBoxEventsListComponent,
+    FilterPipe
 
   ],
   imports: [
@@ -128,6 +133,7 @@ import {CookieComponent} from "./main/cookie/cookie.component";
     AccordionModule,
     DropdownModule,
     GrowlModule,
+    TooltipModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyAfZ6Cyh-Ri-NBQykrD0HSz-4PXP1SDPLw'
     })
