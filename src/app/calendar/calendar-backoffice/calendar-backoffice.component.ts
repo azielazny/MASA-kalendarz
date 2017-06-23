@@ -11,12 +11,10 @@ import {settings} from "cluster";
 export class CalendarBackofficeComponent implements OnInit {
   public username = localStorage.getItem("userName");
 
-
   constructor(private router: Router, private title: Title) {
     if (this.username == null) {
       this.router.navigate(['index']);
     }
-
     this.title.setTitle("Twój Organizer - makeplan.");
   }
 

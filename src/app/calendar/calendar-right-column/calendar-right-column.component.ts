@@ -42,7 +42,7 @@ export class CalendarRightColumnComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges() {
-    this.categoriesService.list().map(val => val.forEach(v => this.categoriesList.push(v))).subscribe();
+    this.getCategoryList();
     if (this.selectedDate != undefined) {
       let eventDate = this.selectedDate.split(".");
       this.eventsService.listForUserByDate(eventDate[0], eventDate[1], eventDate[2]).subscribe(val => {
@@ -54,6 +54,12 @@ export class CalendarRightColumnComponent implements OnInit, OnChanges {
       });
     }
 
+  }
+
+  private getCategoryList() {
+    this.categoriesService.list().subscribe(v => {
+      this.categoriesList = v
+    });
   }
 
   private eventByData(value: Event[], index: number) {

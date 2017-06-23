@@ -112,11 +112,13 @@ export class CalendarEditEventsFormComponent implements OnInit, OnChanges, After
   }
 
   private getSelectedCategoryData() {
-    if (this.eventData.category != 0) {
-      this.categories.filter(val => {
+
+    if (this.eventData.category > 0) {
+      setTimeout(() => {
+        this.categories.filter(val => {
         if (val.value.category_id == this.eventData.category)
           this.selectedCategory = val.value;
-      });
+      });},1000);
     }
   }
 

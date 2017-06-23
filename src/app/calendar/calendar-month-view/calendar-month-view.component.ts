@@ -50,13 +50,19 @@ export class CalendarMonthViewComponent implements OnInit, AfterViewInit {
   ngOnInit() {
   }
   ngAfterViewInit() {
-    this.categoriesService.list().subscribe(v=>{this.categoriesList=v});//.map(val => val.forEach(v => this.categoriesList.push(v))).subscribe();//.subscribe(v=>{this.categoriesList=v});
+    this.getCategoryList();
 
     this.now.setFullYear(this.now.getFullYear());
     this.monthGen(this.month, this.year);
     this.getEventsListForGrid();
 
     this.outputEvent.emit(this.months[this.thisMonth] + " " + this.year);
+  }
+
+  private getCategoryList() {
+    this.categoriesService.list().subscribe(v => {
+      this.categoriesList = v
+    });//.map(val => val.forEach(v => this.categoriesList.push(v))).subscribe();//.subscribe(v=>{this.categoriesList=v});
   }
 
 
