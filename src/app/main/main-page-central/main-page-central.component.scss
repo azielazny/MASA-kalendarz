@@ -124,7 +124,7 @@ body {
 
 
 
-@media(max-width: 1023px) {
+@media(max-width: 1023px) and (min-width: 549px) {
   //@media(min-width:992px){}
   //@media(min-width:1200px){}
   .main {
@@ -239,6 +239,130 @@ body {
       text-align: center;
       white-space: nowrap;
       vertical-align: middle;
+      touch-action: manipulation;
+      cursor: pointer;
+      user-select: none;
+      background-image: none;
+    }
+  }
+}
+
+@media(max-width: 550px) {
+  //@media(min-width:992px){}
+  //@media(min-width:1200px){}
+  .main {
+    background: url("images/women3.png") bottom -95px center no-repeat;
+    min-height: 750px;
+    height: 100%;
+  }
+  .main-body-position {
+    height: 260px;
+    position: absolute;
+    bottom: 50px;
+    margin: 0 auto;
+    width: 100%;
+  }
+
+  .column-center {
+    width: 267px;
+    margin: 0px auto 20px;
+    position: relative;
+    background: #fff;
+
+    h1 {
+      font-size: 22px;
+      font-family: Verdana;
+      font-weight: bold;
+      color: #323439 !important;
+      height: auto;
+      text-align: center;
+    }
+
+    h2 {
+      font-size: 14px;
+      color: #76777a !important;
+      font-weight: normal;
+      font-family: Verdana;
+      text-align: center;
+    }
+  }
+  .btn-list {
+    text-align: center;
+
+  }
+
+  .button1 {
+    &, &:hover, &:visited, &:active, &:focus {
+      margin: 0px auto;
+
+      color: white !important;
+      font-weight: bolder;
+      border: none !important;
+      background-color: #3367d6 !important;
+
+      padding: 10px 16px;
+      font-size: 18px;
+      line-height: 1.3333333;
+      border-radius: 6px;
+
+      display: block;
+      text-align: center;
+      white-space: nowrap;
+      vertical-align: middle;
+      touch-action: manipulation;
+      cursor: pointer;
+      user-select: none;
+      background-image: none;
+      span {
+        display: none;
+      }
+    }
+  }
+
+  .button2 {
+    &, &:hover, &:visited, &:active, &:focus {
+
+      margin-top: 15px;
+
+      font-weight: bold;
+      color: #76777a !important;
+      border-color: #ddd !important;
+      background-color: #fff !important;
+
+      padding: 12px 16px;
+      font-size: 12px;
+      line-height: 1.3333333;
+      border-radius: 6px;
+
+
+      margin-bottom: 0;
+      text-align: center;
+      white-space: nowrap;
+      touch-action: manipulation;
+      cursor: pointer;
+      user-select: none;
+      background-image: none;
+    }
+  }
+
+  .button3 {
+    &, &:hover, &:visited, &:active, &:focus {
+      margin-top: 5px;
+
+      font-weight: bold;
+      color: #76777a !important;
+      border-color: #ddd !important;
+      background-color: #fff !important;
+
+      padding: 10px 16px;
+      font-size: 12px;
+      line-height: 1.3333333;
+      border-radius: 6px;
+
+      margin-bottom: 0;
+      text-align: center;
+      white-space: nowrap;
+
       touch-action: manipulation;
       cursor: pointer;
       user-select: none;
