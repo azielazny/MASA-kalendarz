@@ -1,4 +1,4 @@
-import {Component, OnInit, Input, OnChanges, DoCheck} from '@angular/core';
+import {Component, OnInit, Input, OnChanges, DoCheck, HostBinding} from '@angular/core';
 import {EventForGrid} from "../../class/eventForGrid.class";
 import {TooltipModule} from 'primeng/primeng';
 
@@ -8,7 +8,7 @@ import {TooltipModule} from 'primeng/primeng';
   templateUrl: 'calendar-month-view-light-box-events-list.component.html',
   styleUrls: ['calendar-month-view-light-box-events-list.component.scss']
 })
-export class CalendarMonthViewLightBoxEventsListComponent implements OnInit, OnChanges, DoCheck {
+export class CalendarMonthViewLightBoxEventsListComponent implements OnInit, OnChanges {
 
   @Input()
   private eventForGrid: EventForGrid;
@@ -17,33 +17,28 @@ export class CalendarMonthViewLightBoxEventsListComponent implements OnInit, OnC
   @Input()
   private day;
 
-  private startDay:number;
-  private endDay:number;
-  private color:string = "#ff0";
+  private startDay: number;
+  private endDay: number;
+  private color: string = "#ff0";
 
-  getColor() {
-    return {
-      color: this.color
-    };
+  @HostBinding('style.color') get getColor() {
+    if (this.color !== this.eventForGrid.color) {
+      this.color = this.eventForGrid.color;
+    }
+    return this.color;
   }
 
   constructor() {
-
   }
-
 
   ngOnInit() {
   }
 
-    ngOnChanges(changes: any) {
-    this.startDay = new Date(this.eventForGrid.start_ts *1000).getDate();
+  ngOnChanges(changes: any) {
+    this.startDay = new Date(this.eventForGrid.start_ts * 1000).getDate();
+
   }
 
-  ngDoCheck() { // less = better !!!
-    if(this.color !== this.eventForGrid.color) {
-      this.color = this.eventForGrid.color;
-    }
-  }
 
 
 }
