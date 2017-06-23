@@ -44,8 +44,7 @@ export class MainPageCentralComponent implements OnInit, AfterViewInit {
     {
       window.localStorage.setItem("loggedBy","google");
       window.localStorage.setItem("loggedAs", googleUser);
-
-      this.router.navigate(['/calendar']);
+      window.location.href = '/calendar';
     }
   }
 
