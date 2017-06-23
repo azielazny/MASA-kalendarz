@@ -19,7 +19,7 @@ export class CalendarEditEventsCommentComponent implements OnInit {
   ngOnInit() {
   }
 
-  getAvatarLink() {
+  private getAvatarLink() {
     if (this.commentdata != undefined && this.commentdata.user_avatar != undefined) {
       return this.commentdata.user_avatar;
     }
@@ -27,19 +27,19 @@ export class CalendarEditEventsCommentComponent implements OnInit {
     return "http://www.keita-gaming.com/assets/profile/default-avatar-c5d8ec086224cb6fc4e395f4ba3018c2.jpg";
   }
 
-  getUsername() {
+  private getUsername() {
     if(this.commentdata != undefined && this.commentdata.user_name != "")
       return this.commentdata.user_name;
 
     return "That Guy";
   }
 
-  getContent() {
+  private getContent() {
     if(this.commentdata != undefined)
       return this.commentdata.comment;
   }
 
-  getDate() {
+  private getDate() {
     if(this.commentdata == undefined) return;
 
     let x = new Date();
@@ -50,7 +50,7 @@ export class CalendarEditEventsCommentComponent implements OnInit {
     return x.getDate() + " " + mnths[x.getMonth()] + " " + x.getFullYear();
   }
 
-  getDateTime() {
+  protected getDateTime() {
     if(this.commentdata == undefined) return "";
 
     let x = new Date();

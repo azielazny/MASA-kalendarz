@@ -45,6 +45,17 @@ $blue: #0298ac;
     min-width: initial;
   }
 
+  .eventsBoxes {
+    display: inline-block;
+    text-align: left;
+    padding: 10px 30px 10px 47px;
+    font-size: 16px;
+    line-height: 16px;
+    white-space: nowrap;
+    overflow: hidden;
+    height: 25px;
+    width:initial;
+  }
   .lCard {
     display: inline-block;
     font-size: 1rem;
@@ -54,6 +65,7 @@ $blue: #0298ac;
     vertical-align: middle;
     border: 1px solid $darkviolet;
     line-height: 40px;
+    cursor: pointer;
     span {
 
       &:first-child {
@@ -66,6 +78,7 @@ $blue: #0298ac;
         color: darken($lightviolet, 7%); //#6b4c6a;
         left: 64px;
         border-right: 1px solid darken($lightviolet, 20%);
+        font-size:100%
       }
     }
     &.active {
@@ -363,6 +376,7 @@ app-calendar-backoffice {
   }
 
   #calendar {
+    padding: 0px;
     color: $beige;
     overflow-y: auto;
     height: 100vh;
@@ -381,14 +395,14 @@ app-calendar-backoffice {
       overflow: hidden;
     }
     #calGrid {
-      height: calc(100% - 140px);
+      height: calc(100% - 60px);
     }
     #calBody {
       display: table-cell;
       font-weight: 700;
       text-align: center;
       width: 100%;
-      height: calc(100vh - 140px);
+      height: calc(100vh - 60px);
       min-width: 540px;
     }
     #calPrev, #calNext {
@@ -400,6 +414,16 @@ app-calendar-backoffice {
         width: 20px
       }
     }
+    .eventsBoxes {
+      display: block;
+      width: 100%;
+      text-align: left;
+      padding: 5px;
+      font-size: 16px;
+      line-height: 16px;
+      white-space: nowrap;
+      overflow: hidden;
+    }
     .lCard {
       display: inline-block;
       font-size: 2.25rem;
@@ -409,7 +433,8 @@ app-calendar-backoffice {
       text-align: center;
       vertical-align: middle;
       border: 1px solid $darkviolet;
-      line-height: 100px;
+      line-height: 87px;
+      cursor: pointer;
       span {
         span {
           display: inline-block;
@@ -471,7 +496,7 @@ app-calendar-backoffice {
     width: 100%;
     background: rgb(255, 255, 255);
     z-index: 100;
-    margin: 0 -15px;
+    margin: 0;
     border-top: 3px solid $black;
     display: block;
     color: $black;
@@ -513,7 +538,7 @@ app-calendar-backoffice {
         display: inline-block;
         font-size: 16px;
         font-weight: 500;
-        cursor:pointer;
+        cursor: pointer;
         color: $black;
         span {
 
@@ -559,6 +584,9 @@ app-calendar-backoffice {
         background: none;
         margin: 10px 0px 10px;
         display: inline-table;
+        .input-group {
+          display: inline-table;
+        }
       }
       .selectColor {
         max-width: 70px;
@@ -657,7 +685,7 @@ app-calendar-backoffice {
   }
 
   #rightColumn {
-    position: absolute;
+    position: fixed;
     width: 300px;
     height: 100vh;
     right: 0px;
@@ -704,7 +732,7 @@ app-calendar-backoffice {
         font-weight: 700;
       }
       .data {
-        color: lighten($lightviolet,20%);
+        color: lighten($lightviolet, 20%);
         overflow: hidden;
         text-overflow: ellipsis;
         span {
@@ -721,6 +749,12 @@ app-calendar-backoffice {
       @include shortCalendar();
     }
     #calEdit {
+      .topNav, .topNav.active {
+         width: auto;
+        border-bottom: 0 solid #8c8a8d;
+
+        padding: 0 10px;
+      }
       .mainNav {
         .mainNavBox {
           span {
@@ -880,10 +914,10 @@ app-calendar-backoffice #calEdit .formCalendar input#komentarz_username {
 
 //nadpisane style dla pogody
 .event-weather {
-  padding:5px;
+  padding: 5px;
   .widget-left {
     overflow: auto;
-     width: 100% !important;//dopasowane do góry
+    width: 100% !important; //dopasowane do góry
   }
   .widget-left-menu {
     width: auto;
@@ -896,8 +930,8 @@ app-calendar-backoffice #calEdit .formCalendar input#komentarz_username {
     overflow: hidden;
   }
   .widget-left__body {
-     -webkit-justify-content: inherit;
-     justify-content: inherit;
+    -webkit-justify-content: inherit;
+    justify-content: inherit;
     padding-bottom: 16px;
     border-radius: 0 0 6px 6px;
     -webkit-box-orient: horizontal;
@@ -912,6 +946,22 @@ app-calendar-backoffice #calEdit .formCalendar input#komentarz_username {
     margin: 0 auto;
   }
 }
+
 .error .required {
   border: 2px solid lighten($lightviolet, 20%) !important;
+}
+
+.hidden{
+  display: none;
+}
+.activeDate .lCard{
+  background: #b351b0 !important;
+}
+.overflow-hidden {
+  overflow: hidden !important;
+  height:100vh !important;
+}
+.overflow-auto {
+  overflow: auto !important;
+  height:100vh !important;
 }

@@ -1,9 +1,9 @@
-<div id="calGrid" style="margin-top: 90px !important;">
+<div id="calGrid" >
   <div id="calPrev" (click)="getPrevMonth()"><i class="fa fa-angle-double-left" aria-hidden="true"></i></div>
   <div id="calBody" class="noselect">
     <calendar-month-view-week-list  *ngFor="let day of week_list" [day]="day"></calendar-month-view-week-list>
     <calendar-month-view-dark-box *ngFor="let day of prevMonthDays" [day]="day"></calendar-month-view-dark-box>
-    <calendar-month-view-light-box *ngFor="let day of actualMonthDays; let i = index" (click)="openRightColumn(i+1)" [parent]="this" #lightBoxes [day]="day" [actualDate]="actualDay"></calendar-month-view-light-box>
+    <calendar-month-view-light-box *ngFor="let day of actualMonthDays; let i = index" (click)="openRightColumn(i+1)" [parent]="this" #lightBoxes [day]="day" [actualDate]="actualDay" [eventsListForGrid]="eventsListForGrid"></calendar-month-view-light-box>
     <calendar-month-view-dark-box *ngFor="let day of nextMonthDays" [day]="day"></calendar-month-view-dark-box>
   </div>
   <div id="calNext" (click)="getNextMonth()"><i class="fa fa-angle-double-right" aria-hidden="true"></i></div>

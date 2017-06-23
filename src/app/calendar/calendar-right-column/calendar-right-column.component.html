@@ -7,7 +7,7 @@
     <i class="fa fa-plus"></i>
     <span>Dodaj zdarzenie</span>
   </div>
-  <div id="evList">
+  <div id="evList" *ngIf="eventsToShow.length>0">
     <div class="eventPrev" (click)="changeEventsDataPrev()">
       <i class="fa fa-angle-double-up"></i>
     </div>

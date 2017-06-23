@@ -1,7 +1,7 @@
 <div class=" formCalendar" [ngClass]="error==true ? 'error' : ''">
   <div class="selectColor">
     <i class="fa fa-2x fa-stop" aria-hidden="true" [style.color]="selectedCategory.color"></i>
-    <p-dropdown [options]="categories" [(ngModel)]="selectedCategory" [style]="{'width':'22px'}" [filter]="true">
+    <p-dropdown [options]="categories" [(ngModel)]="selectedCategory" [style]="{'width':'22px'}" >
       <template let-selCategory pTemplate="item">
         <div class="ui-helper-clearfix" style="position: relative;height: 25px;">
           <div style="font-size:14px;float:left;margin-top:4px"><i class="fa fa-stop"
@@ -11,55 +11,55 @@
       </template>
     </p-dropdown>
   </div>
-  <input type="text" [ngModel]="eventData?.title" (ngModelChange)="eventData?.title ? eventData.title = $event : null"
+  <input type="text" [ngModel]="eventData.title" (ngModelChange)="eventData.title = $event "
          class="bigSize" placeholder="Nazwa zdarzenia..." required
          [ngClass]="eventData?.title.length==0?'required':''">
-  <input type="text" [ngModel]="eventData?.loc_name"
-         (ngModelChange)="eventData?.loc_name ? eventData.loc_name = $event : null" class="col-xs-6 col-sm-4 calField"
+  <input type="text" [ngModel]="eventData.loc_name"
+         (ngModelChange)="eventData.loc_name = $event" class="col-xs-6 col-sm-4 calField"
          placeholder="Miejsce...">
-  <input type="text" [ngModel]="eventData?.loc_city"
-         (ngModelChange)="eventData?.loc_city ? eventData.loc_city = $event : null" class="col-xs-6 col-sm-4 calField"
+  <input type="text" [ngModel]="eventData.loc_city"
+         (ngModelChange)="eventData.loc_city = $event" class="col-xs-6 col-sm-4 calField"
          placeholder="Miasto...">
   <input type="text" [ngModel]="eventData?.loc_street"
-         (ngModelChange)="eventData?.loc_street ? eventData.loc_street = $event : null"
+         (ngModelChange)="eventData.loc_street = $event"
          class="col-xs-11 col-sm-3 calField" placeholder="Ulica...">
-  <input type="text" [ngModel]="eventData?.loc_bnum"
-         (ngModelChange)="eventData?.loc_bnum ? eventData.loc_bnum = $event : null" class="col-xs-1 calField"
+  <input type="text" [ngModel]="eventData.loc_bnum"
+         (ngModelChange)="eventData.loc_bnum = $event " class="col-xs-1 calField"
          placeholder="Nr...">
 
-  <div class="calFieldDate calField " [ngClass]="dateStart==''?'required':''">
+  <div class="calFieldDate calField " [ngClass]="dateStart?'':'required'">
     <div class="input-group editDate">
       <span class="input-group-addon">Start:</span>
-      <p-calendar [(ngModel)]="dateStart" placeholder="01/01/2017" [locale]="pl" dateFormat="dd/mm/yy"
+      <p-calendar [(ngModel)]="dateStart" [locale]="pl" dateFormat="dd/mm/yy"
                   required></p-calendar>
     </div>
   </div>
   <div class="selectHour calFieldDate calField ">
     <div class="input-group editHour">
       <span class="input-group-addon">Od:</span>
-      <p-calendar [(ngModel)]="hourStart" placeholder="01:01" [hourFormat]="24" [timeOnly]="true"
+      <p-calendar [(ngModel)]="dateStart" [hourFormat]="24" [timeOnly]="true"
                   [showTime]="true"></p-calendar>
     </div>
   </div>
-  <div class="calFieldDate calField " [ngClass]="dateStart==''?'required':''">
+  <div class="calFieldDate calField " [ngClass]="dateStart?'':'required'">
     <div class="input-group editDate">
       <span class="input-group-addon">Koniec:</span>
-      <p-calendar [(ngModel)]="dateEnd" placeholder="01/01/2017" [locale]="pl" dateFormat="dd/mm/yy"
+      <p-calendar [(ngModel)]="dateEnd" [locale]="pl" dateFormat="dd/mm/yy"
                   required></p-calendar>
     </div>
   </div>
   <div class="selectHour calFieldDate calField ">
     <div class="input-group editHour">
       <span class="input-group-addon">Do:</span>
-      <p-calendar [(ngModel)]="hourEnd" placeholder="01:01" [hourFormat]="24" [timeOnly]="true"
+      <p-calendar [(ngModel)]="dateEnd" [hourFormat]="24" [timeOnly]="true"
                   [showTime]="true"></p-calendar>
     </div>
   </div>
 
   <p-accordion>
-    <p-accordionTab header="Opis zdarzenia" [selected]="true">
-      <textarea placeholder="Opis zdarzenia" [ngModel]="eventData?.description"
-                (ngModelChange)="eventData?.description? eventData.description= $event : null"></textarea>
+    <p-accordionTab header="Opis zdarzenia" [selected]="true" >
+      <textarea placeholder="Opis zdarzenia" [ngModel]="eventData.description_edit"
+                (ngModelChange)="eventData.description_edit= $event" [ngClass]="eventData?.description_edit==''?'required':''"></textarea>
     </p-accordionTab>
     <p-accordionTab [disabled]="eventData?.visibility=='private'">
       <p-header>
@@ -76,7 +76,7 @@
       </div>
     </p-accordionTab>
     <p-accordionTab header="Ustawienia publiczne" [disabled]="eventData?.visibility=='private'" >
-      W trakcie budowy
+      <calendar-edit-events-public-settings (pictureChange)="updatePicture($event)" class="text-center" style="display: block" [eventdata]="eventData"></calendar-edit-events-public-settings>
     </p-accordionTab>
     <p-accordionTab header="Komentarze" [disabled]="eventData?.visibility=='private'">
       <calendar-edit-events-comments-list [eventdata]="eventData" id="comments"></calendar-edit-events-comments-list>

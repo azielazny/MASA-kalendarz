@@ -13,19 +13,26 @@ export class CalendarLeftColumnCategoriesComponent implements OnInit {
 
   @Input()
   public categories: Category[] = [];
+  @Input()
+  public parent;
 
   constructor(private categoriesService: CategoriesService) {
+    this.getCategoryList();
+  }
+
+  private getCategoryList() {
     this.categoriesService.list().subscribe(val => {
-      if (val.length == 0) {
-        return;
-      }
-       this.categories = val;
+      if (val.length == 0) return;
+      this.categories = val;
+      this.parent.parent.grid.rightColumn.getCategoryList();
+      this.parent.parent.grid.monthGrid.getCategoryList();
+      this.parent.parent.grid.editEvents.editEventsForm.getCategoryList();
     });
-    console.log(this.categories);
   }
 
 
   ngOnInit() {
+    console.log(this.parent.parent.grid.rightColumn.xx)
   }
 
   addCategory() {
@@ -34,25 +41,15 @@ export class CalendarLeftColumnCategoriesComponent implements OnInit {
 
     this.categoriesService.add(categoryName, categoryColor).subscribe(val => {
       $('[name=categoryName]').val('');
+      this.getCategoryList();
 
-      this.categoriesService.list().subscribe(val => {
-        if(val.length == 0)
-        { return; }
-
-        this.categories = val;
-      });
     });
   }
 
   removeCategory(categoryId:number) {
     let categoryColor = $('[name=categoryColor]').val();
     this.categoriesService.remove(categoryId).subscribe(val => {
-      this.categoriesService.list().subscribe(val => {
-        if(val.length == 0)
-        { return; }
-
-        this.categories = val;
-      });
+      this.getCategoryList();
     });
   }
 

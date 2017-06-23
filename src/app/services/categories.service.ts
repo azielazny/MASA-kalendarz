@@ -19,7 +19,6 @@ export class CategoriesService {
     let options = new RequestOptions({
       withCredentials: true // CORS Access-Control-Allow-Credentials header
     });
-
     return this.http.get(this.url + "/list", options)
       .map(this.extractCategoriesList);
 
