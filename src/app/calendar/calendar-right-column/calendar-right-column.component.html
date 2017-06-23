@@ -12,7 +12,6 @@
       <i class="fa fa-angle-double-up"></i>
     </div>
     <calendar-right-column-events-list *ngFor="let event of eventsToShow" [eventdata]="event" [parent]="this"
-                                       [categoriesList]="categoriesList"
                                        (outputEventId)="getEventID($event)"></calendar-right-column-events-list>
     <div class="eventNext" (click)="changeEventsDataNext()">
       <i class="fa fa-angle-double-down"></i>
