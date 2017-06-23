@@ -16,15 +16,18 @@ export class CalendarEditEventsComponent implements OnInit, OnChanges {
   public eventData: Event;
   private visibility: string = "private";
   private remindEvent: boolean;
-  private picture : string = "data:,";
+  private picture: string = "data:,";
   msgs: Message[] = [];
 
   @Input()
-  private selectedEvent: number=0;
+  private selectedDate: string;
+  @Input()
+  private selectedEvent: number = 0;
   @Input()
   public parent;
 
   @Output() outputCloseRightColumn: EventEmitter<boolean> = new EventEmitter();
+  @Output() outputRemoveEvent: EventEmitter<number> = new EventEmitter();
 
   @ViewChild('editEventsForm') editEventsForm;
 
@@ -36,27 +39,28 @@ export class CalendarEditEventsComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges() {
-
-    (this.selectedEvent>0) ? this.eventsService.detailsForUser(this.username, this.selectedEvent).subscribe(val => {
+    this.editEventsForm.selectedDate = this.selectedDate;
+    (this.selectedEvent > 0) ? this.eventsService.details(this.selectedEvent).subscribe(val => {
         this.eventData = val;
       }) : this.clearEventData();
-    this.selectedEvent=0;
+    this.selectedEvent = 0;
   }
 
-  changeVisibilityOfEvent(value) {
+  private changeVisibilityOfEvent(value) {
     this.visibility = value;
-
   }
 
-  changeReminderOfEvent(value) {
+  private changeReminderOfEvent(value) {
     this.remindEvent = value;
   }
 
-  removeEvent(event_id: number) {
+  private removeEvent(event_id: number) {
     if (this.eventData) {
       this.eventsService.remove(event_id).subscribe(val => {
         if (val == true) {
+          this.outputRemoveEvent.emit(event_id);
           this.shown = false;
+          this.parent.overflow='overflow-auto';
           this.msgs = [];
           this.msgs.push({severity: 'success', summary: 'Usunięto event', detail: 'Okno edycji zostało zamknięte'});
           this.outputCloseRightColumn.emit(true);
@@ -68,9 +72,7 @@ export class CalendarEditEventsComponent implements OnInit, OnChanges {
     }
   }
 
-  saveEvent(status: number) {
-    // if(status==0) this.clearEventData();
-
+  private saveEvent(status: number) {
     let validationStatus = this.validation();
     if (this.validation() != "ok") {
       this.msgs = [];
@@ -85,13 +87,14 @@ export class CalendarEditEventsComponent implements OnInit, OnChanges {
     (this.eventData.event_id > 0) ? this.updateEvent() : this.addEvent();
   }
 
-  validation(): string {
+  private validation(): string {
     let validationStatus: string = "";
     //pola wymagane
     if (this.editEventsForm.selectedCategory == "") validationStatus += "- Nie wybrano kategorii<br>";
     if (this.editEventsForm.eventData.title == "") validationStatus += "- Tytuł jest polem obowiązkowym<br>";
-    if (this.editEventsForm.startDate == "") validationStatus += "- Data startu wydarzenia musi zostać podana<br>";
-    if (this.editEventsForm.endDate == "") validationStatus += "- Data końca wydarzenia musi zostać podana";
+      if (!Date.parse(this.editEventsForm.dateStart)) validationStatus += "- Data startu wydarzenia musi zostać podana<br>";
+      if (!Date.parse(this.editEventsForm.dateEnd)) validationStatus += "- Data końca wydarzenia musi zostać podana<br>";
+    if (this.editEventsForm.eventData.description_edit == "") validationStatus += "- Opis wydarzenia jest wymagany";
     if (validationStatus != "") {
       this.editEventsForm.error = true;
       return validationStatus;
@@ -103,12 +106,9 @@ export class CalendarEditEventsComponent implements OnInit, OnChanges {
   private buildEventData() {
     this.eventData = this.editEventsForm.eventData;
     this.eventData.category = this.editEventsForm.selectedCategory.category_id;
-
-    this.eventData.start_ts =this.editEventsForm.dateStart.getTime() / 1000;
-    this.eventData.end_ts =this.editEventsForm.dateEnd.getTime() / 1000;
-
+    this.eventData.start_ts = this.editEventsForm.dateStart.getTime() / 1000;
+    this.eventData.end_ts = this.editEventsForm.dateEnd.getTime() / 1000;
     this.eventData.visibility = this.visibility;
-
     this.eventData.picture = this.picture;
   }
 
@@ -130,6 +130,7 @@ export class CalendarEditEventsComponent implements OnInit, OnChanges {
       timezone: "",
       visibility: "private",
       description: "",
+      description_edit: "",
       loc_name: "",
       loc_street: "",
       loc_bnum: "",
@@ -145,17 +146,17 @@ export class CalendarEditEventsComponent implements OnInit, OnChanges {
     }
   }
 
-  addEvent() {
-    console.log(this.eventData);
-
+  private addEvent() {
     this.eventsService.add(this.eventData).subscribe(val => {
-      if (val == true) {
+      if (val.event_id >0) {
+        this.eventData=val;
         this.msgs = [];
         this.msgs.push({
           severity: 'success',
           summary: 'Dodano event',
           detail: 'Wydarzenie zostało zapisane w kalendarzu'
         });
+        this.outputRemoveEvent.emit(0);
         return;
       }
       this.outputCloseRightColumn.emit(true);
@@ -168,16 +169,16 @@ export class CalendarEditEventsComponent implements OnInit, OnChanges {
     });
   }
 
-  updateEvent() {
-    console.log(this.eventData);
+  private updateEvent() {
     this.eventsService.edit(this.eventData.event_id, this.eventData).subscribe(val => {
       if (val == true) {
         this.msgs = [];
         this.msgs.push({
           severity: 'success',
-          summary: 'Dodano event',
+          summary: 'Zaktualizowano event',
           detail: 'Wydarzenie zostało zapisane w kalendarzu'
         });
+        this.outputRemoveEvent.emit(0);
         return;
       }
       this.outputCloseRightColumn.emit(true);
@@ -190,6 +191,11 @@ export class CalendarEditEventsComponent implements OnInit, OnChanges {
     });
   }
 
+  private closeEditCal() {
+    this.parent.overflow='overflow-auto';
+    this.shown = false;
+    this.tab = 'edit';
+  }
 
 }
 

@@ -12,8 +12,8 @@ export class CalendarLeftColumnInfoboxComponent implements OnInit {
 
   private eventslist: Event[] = [];
 
-  private title: string;
-  private description: string;
+  private title: string="";
+  private description: string="";
   private counter: number = 0;
 
   constructor(private eventsService: EventsService) {
@@ -23,10 +23,12 @@ export class CalendarLeftColumnInfoboxComponent implements OnInit {
   }
 
   private infoboxData(value: Event[], index: number) {
-    this.eventslist = value;
-    this.title = value[index].title;
-    this.description = value[index].description;
-    console.log(this.eventslist);
+    if(value.length>0) {
+      this.eventslist = value;
+      this.title = value[index].title;
+      this.description = value[index].description;
+      console.log(this.eventslist);
+    }
   }
 
 

@@ -1,5 +1,5 @@
 <div id="main" [class.shortView]="leftColumn.logoBox.showShortView">
-  <calendar-left-column #leftColumn></calendar-left-column>
-  <calendar-grid [parent]="this"></calendar-grid>
+  <calendar-left-column #leftColumn [parent]="this"></calendar-left-column>
+  <calendar-grid #grid [parent]="this"></calendar-grid>
 </div>
 

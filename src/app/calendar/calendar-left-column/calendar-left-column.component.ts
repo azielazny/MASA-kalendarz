@@ -8,6 +8,9 @@ import {Router} from "@angular/router";
 })
 export class CalendarLeftColumComponent implements OnInit {
 
+  @Input()
+  public parent;
+
   constructor() {}
 
   @ViewChild('logoBox') public logoBox;

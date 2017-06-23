@@ -34,25 +34,25 @@ export class EventsService {
       .map(this.extractEventsList);
   }
 
-  listForUserByDate(username: string, day: number): Observable<Event[]> {
+  listForUserByDate(day: string, month: string, year: string): Observable<Event[]> {
     let options = new RequestOptions({
       withCredentials: true // CORS Access-Control-Allow-Credentials header
     });
 
-    return this.http.get("http://localhost/danzet/xxx.php")//, options)
-    // return this.http.get(this.url + "/list/" + username + '/' + day, options)
+    // return this.http.get("http://localhost/danzet/xxx.php")//, options)
+    return this.http.get(this.url + "/listday/" + year + "/" + month + "/" + day, options)
       .map(this.extractEventsList);
   }
 
-  listForUserByPeriod(day_start: number, day_end: number): Observable<Event[]> {
-    let options = new RequestOptions({
-      withCredentials: true // CORS Access-Control-Allow-Credentials header
-    });
-
-    return this.http.get("http://localhost/danzet/xxx.php")//, options)
-    // return this.http.get(this.url + "/list/" + username + '/' + day, options)
-      .map(this.extractEventsList);
-  }
+  // listForUserByPeriod(day_start: number, day_end: number): Observable<Event[]> {
+  //   let options = new RequestOptions({
+  //     withCredentials: true // CORS Access-Control-Allow-Credentials header
+  //   });
+  //
+  //   return this.http.get("http://localhost/danzet/xxx.php")//, options)
+  //   // return this.http.get(this.url + "/list/" + username + '/' + day, options)
+  //     .map(this.extractEventsList);
+  // }
 
   userListForEvent(event_id: number): Observable<User[]> {
     let options = new RequestOptions({
@@ -82,7 +82,7 @@ export class EventsService {
       .map(this.extractEventDetails);
   }
 
-  add(event: Event): Observable<boolean> {
+  add(event: Event): Observable<Event> {
     let headers = new Headers({'Content-Type': 'application/json'});
     let options = new RequestOptions({
       headers: headers,
@@ -90,7 +90,7 @@ export class EventsService {
     });
 
     return this.http.post(this.url + "/add", JSON.stringify(event), options)
-      .map(this.extractStatus);
+      .map(this.extractEventDetails);
   }
 
   remove(eventid: number): Observable<boolean> {
@@ -154,7 +154,7 @@ export class EventsService {
       withCredentials: true // CORS Access-Control-Allow-Credentials header
     });
 
-    return this.http.get(this.url + "/attendants/$(eventid)", options)
+    return this.http.get(this.url + "/attendants/"+eventid, options)
       .map(this.extractEventAttendants);
   }
 

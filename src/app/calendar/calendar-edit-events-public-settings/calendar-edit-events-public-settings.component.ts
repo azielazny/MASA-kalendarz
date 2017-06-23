@@ -1,5 +1,5 @@
-import {Component, OnInit, Input, OnChanges, AfterViewInit, ViewChild, Output, EventEmitter} from '@angular/core';
-import {User} from "../../class/user.class";
+import {Component,  Input, OnChanges, ViewChild, Output, EventEmitter} from '@angular/core';
+import {Event} from "../../class/event.class";
 
 
 @Component({
@@ -7,24 +7,32 @@ import {User} from "../../class/user.class";
   templateUrl: 'calendar-edit-events-public-settings.component.html',
   styleUrls: ['calendar-edit-events-public-settings.component.scss']
 })
-export class CalendarEditEventsPublicSettingsComponent  {
+export class CalendarEditEventsPublicSettingsComponent implements OnChanges{
+  private eventImage:string;
+
+  @Input()
+  public eventdata: Event;
+
+  @ViewChild('uploadBtn') uploadBtn;
+  @Output() pictureChange = new EventEmitter();
 
   constructor() {
   }
 
-  @ViewChild('uploadBtn') uploadBtn;
-
-  @Output() pictureChange = new EventEmitter();
-
-  fileChanged(e) {
-    if(this.uploadBtn.nativeElement.files.length != 1) return;
-    let x = this;
-
-    let reader = new FileReader();
-    reader.onloadend = function() {
-      x.pictureChange.emit(reader.result);
-    };
-    reader.readAsDataURL(this.uploadBtn.nativeElement.files[0]);
+  ngOnChanges() {
+    this.eventImage="https://masa.ousti.sh/events/image/"+this.eventdata.event_id;
   }
+  private fileChanged($event) : void {
+    this.readThis($event.target);
+  }
+  private readThis(inputValue: any): void {
+    let file:File = inputValue.files[0];
+    let reader:FileReader = new FileReader();
 
+    reader.onloadend = (e) => {
+      this.eventImage= reader.result;
+      this.pictureChange.emit(reader.result);
+    };
+    reader.readAsDataURL(file);
+  }
 }

@@ -13,7 +13,7 @@ import {Category} from "../../class/category.class";
   templateUrl: 'calendar-month-view.component.html',
   styleUrls: ['calendar-month-view.component.scss']
 })
-export class CalendarMonthViewComponent implements OnInit {
+export class CalendarMonthViewComponent implements OnInit, AfterViewInit {
 
   public prevMonthDays: Calendar[] = [];
   public actualMonthDays: Calendar[] = [];
@@ -24,7 +24,7 @@ export class CalendarMonthViewComponent implements OnInit {
   private eventsListByDay: EventForGrid[] = [];
 
 
-  public categories: Category[] = [];
+  public categoriesList: Category[] = [];
 
   private now = new Date();
   private thisMonth = this.now.getMonth();
@@ -42,53 +42,60 @@ export class CalendarMonthViewComponent implements OnInit {
   @Output() outputEvent: EventEmitter<string> = new EventEmitter();
   @Output() outputDate: EventEmitter<string> = new EventEmitter();
 
-  @ViewChildren('lightBoxes')
-  public lightBoxes;
+  @ViewChildren('lightBoxes') public lightBoxes;
 
   constructor(private eventsService: EventsService, private categoriesService: CategoriesService) {
   }
 
   ngOnInit() {
+  }
+  ngAfterViewInit() {
+    this.getCategoryList();
+
     this.now.setFullYear(this.now.getFullYear());
     this.monthGen(this.month, this.year);
-    this.outputEvent.emit(this.months[this.thisMonth] + " " + this.year);
-
     this.getEventsListForGrid();
+
+    this.outputEvent.emit(this.months[this.thisMonth] + " " + this.year);
+  }
+
+  private getCategoryList() {
+    this.categoriesService.list().subscribe(v => {
+      this.categoriesList = v
+    });//.map(val => val.forEach(v => this.categoriesList.push(v))).subscribe();//.subscribe(v=>{this.categoriesList=v});
   }
 
 
   private getEventsListForGrid() {
 
-    this.categoriesService.list().subscribe(val => {
-      this.categories = val
-    });
+
     let startDay = new Date(this.year, this.month, 1).getTime() / 1000;
     // console.log(startDay);
     let endDay = new Date(this.year, this.month + 1, 1).getTime() / 1000;
     // console.log(endDay);
-    this.eventsService.listForUserByPeriod(startDay, endDay).map(val => val.forEach(v => {
+    this.eventsListForGrid = [];
+
+    this.eventsService.list("private", "0", startDay, endDay).map(val => setTimeout(() => {val.forEach(v => {
         this.eventsListForGrid.push(
           {
-            "event_id": v.event_id,
-            "title": v.title,
-            "start_ts": v.start_ts,
-            "end_ts": v.end_ts,
-            "category": v.category,
-            "color": this.getCategoryColor(v.category)
+            event_id: v.event_id,
+            title: v.title,
+            start_ts: v.start_ts,
+            end_ts: v.end_ts,
+            category: v.category,
+            color: this.getCategoryColor(v.category)
           }
         )
       })
+    }, 1500)
     ).subscribe();
 
-    // console.log(this.eventsListForGrid)
+    console.log(this.eventsListForGrid)
   }
+  getCategoryColor(category_id:number): string {
+    let newcolor = this.categoriesList.filter(x => {if(x.category_id == category_id) return x})[0];
+    return (newcolor)?newcolor.color:'';
 
-  getCategoryColor(category_id): string {
-    for (let category of this.categories) {
-      if (category.category_id == category_id)
-        return category.color
-    }
-    return '';
   }
 
 //dni w miesiącu
@@ -126,8 +133,7 @@ export class CalendarMonthViewComponent implements OnInit {
 
   }
 
-  static
-  monthDays(month, year) {
+  static monthDays(month, year) {
     if (month != 2) {
       let x = (month <= 7) ? 1 : 0;
       return 30 + (Number(month % 2 == x));
@@ -137,8 +143,7 @@ export class CalendarMonthViewComponent implements OnInit {
 
   }
 
-  static
-  februaryInYear(year) {
+  static februaryInYear(year) {
     return (year % 4 == 0) ? 29 : 28;
   }
 
@@ -177,8 +182,7 @@ export class CalendarMonthViewComponent implements OnInit {
     this.lightBoxes.toArray()[index - 1].active = true;
   }
 
-  static
-  formatForDate(num: number): string {
+  static formatForDate(num: number): string {
     let newNum: string = num + "";
     return (newNum.length < 2) ? "0" + newNum : newNum;
   }

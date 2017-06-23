@@ -6,6 +6,7 @@ import {Category} from "../../class/category.class";
 import {User} from "../../class/user.class";
 import {EventsService} from "../../services/events.service";
 import {DOCUMENT} from "@angular/platform-browser";
+import {Attendant} from "../../class/attendant.class";
 declare var $: any;
 
 
@@ -21,8 +22,9 @@ export class CalendarEditEventsFormComponent implements OnInit, OnChanges, After
   private dateEnd: Date;
   private selectedCategory: Category = {color: "#ddd", user_id: 0, name: "", category_id: 0};
   private error: boolean = false;
-  private usersData: User[] = [];
+  private usersData: Attendant[] = [];
   private usersCount: number;
+  private selectedDate:string;
 
   @Output() pictureChanged = new EventEmitter();
 
@@ -38,6 +40,10 @@ export class CalendarEditEventsFormComponent implements OnInit, OnChanges, After
   public parent;
 
   constructor(private categoriesService: CategoriesService, private eventsService: EventsService, @Inject(DOCUMENT) private document: any) {
+  }
+
+  private getCategoryList() {
+    this.categories=[];
     this.categoriesService.list().map(val => val.forEach(v => this.buildEventData(v))).subscribe();
   }
 
@@ -58,10 +64,12 @@ export class CalendarEditEventsFormComponent implements OnInit, OnChanges, After
 
 
   ngOnChanges() {
+    this.getCategoryList();
     this.error = false;
+
+    this.eventData.visibility = (undefined != this.visibility) ? this.visibility : (this.eventData.visibility) ? this.eventData.visibility : "private";
+    this.visibility = undefined;
     if (this.eventData.event_id > 0) {
-      this.eventData.visibility = (undefined != this.visibility) ? this.visibility : (this.eventData.visibility) ? this.eventData.visibility : "private";
-      this.visibility = undefined;
 
       this.eventData.is_remind_set = (undefined != this.remindEvent) ? this.remindEvent : (this.eventData.is_remind_set) ? this.eventData.is_remind_set : true;
       this.remindEvent = undefined;
@@ -71,6 +79,11 @@ export class CalendarEditEventsFormComponent implements OnInit, OnChanges, After
       this.buildEventDeteData();
     } else {
       this.usersData = [];
+      if (this.selectedDate != undefined) {
+        let eventDate=this.selectedDate.split(".");
+        this.dateStart=new Date(parseInt(eventDate[2]), parseInt(eventDate[1])-1, parseInt(eventDate[0]));
+        this.dateEnd=new Date(parseInt(eventDate[2]), parseInt(eventDate[1])-1, parseInt(eventDate[0]));
+      }
     }
   }
 
@@ -92,19 +105,20 @@ export class CalendarEditEventsFormComponent implements OnInit, OnChanges, After
   }
 
   private getUsersList() {
-    this.eventsService.userListForEvent(this.eventData.event_id).subscribe(val => {
+    this.eventsService.attendants(this.eventData.event_id).subscribe(val => {
       this.usersData = val
     });
     this.usersCount = this.usersData.length;
-    // console.log(this.usersCount)
   }
 
   private getSelectedCategoryData() {
-    if (this.eventData.category != 0) {
-      this.categories.filter(val => {
+
+    if (this.eventData.category > 0) {
+      setTimeout(() => {
+        this.categories.filter(val => {
         if (val.value.category_id == this.eventData.category)
           this.selectedCategory = val.value;
-      });
+      });},1000);
     }
   }
 
