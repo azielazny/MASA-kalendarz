@@ -63,7 +63,7 @@
     </p-accordionTab>
     <p-accordionTab [disabled]="eventData?.visibility=='private'">
       <p-header>
-        Osoby zapisane <span class="badge">{{usersData.length}}</span>
+        Osoby zapisane <span class="badge">{{eventData.attendants}}</span>
         <input type="button" (click)="printDiv('usersList')" value="drukuj listę" id="print-icon"/>
       </p-header>
 

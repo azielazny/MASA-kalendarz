@@ -40,17 +40,11 @@ export class CommentsService {
   }
 
   remove(eventid: number, comment_id: number) {
-    let headers = new Headers({'Content-Type': 'application/json'});
     let options = new RequestOptions({
-      headers: headers,
       withCredentials: true // CORS Access-Control-Allow-Credentials header
     });
 
-    let data = {
-      comment_id: comment_id
-    };
-
-    return this.http.post(this.url + "/remove/" + eventid, JSON.stringify(data), options)
+    return this.http.get(this.url + "/remove/" + comment_id, options)
       .map(this.extractStatus);
   }
 

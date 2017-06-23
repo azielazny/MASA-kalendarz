@@ -105,6 +105,7 @@ export class CalendarEditEventsFormComponent implements OnInit, OnChanges, After
   }
 
   private getUsersList() {
+    this.usersData = [];
     this.eventsService.attendants(this.eventData.event_id).subscribe(val => {
       this.usersData = val
     });

@@ -31,6 +31,7 @@ export class CalendarEditEventsCommentsListComponent implements OnInit, OnChange
     if (this.eventdata) {
       this.moderator = this.eventdata.user_id;
       this.route.params.subscribe(params => {
+        this.comms = [];
         this.commentsService.list(this.eventdata.event_id, 0).subscribe(val => {
           if (val.length == 0) {
             this.showResponseDiv = true;
@@ -57,6 +58,8 @@ export class CalendarEditEventsCommentsListComponent implements OnInit, OnChange
     let comment = $('#komentarz_tresc').val();
     let username = $('#komentarz_username').val();
 
+    this.comms = [];
+
     this.commentsService.add(this.eventdata.event_id, username, comment).subscribe(val => {
       $('#komentarz_tresc').val('');
       $('#komentarz_username').val('').removeAttr('disabled');
@@ -74,6 +77,7 @@ export class CalendarEditEventsCommentsListComponent implements OnInit, OnChange
   }
 
   removeComment(comment_id: number) {
+    this.comms = [];
     this.commentsService.remove(this.eventdata.event_id, comment_id).subscribe(val => {
       this.commentsService.list(this.eventdata.event_id, 0).subscribe(val => {
         if (val.length == 0) {
