@@ -20,7 +20,7 @@ export class CalendarEditEventsPublicSettingsComponent implements OnChanges{
   }
 
   ngOnChanges() {
-    this.eventImage=this.eventdata.picture;
+    this.eventImage="https://masa.ousti.sh/events/image/"+this.eventdata.event_id;
   }
   private fileChanged($event) : void {
     this.readThis($event.target);
