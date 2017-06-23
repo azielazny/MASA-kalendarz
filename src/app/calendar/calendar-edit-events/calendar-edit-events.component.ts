@@ -87,7 +87,7 @@ export class CalendarEditEventsComponent implements OnInit, OnChanges {
     (this.eventData.event_id > 0) ? this.updateEvent() : this.addEvent();
   }
 
-  validation(): string {
+  private validation(): string {
     let validationStatus: string = "";
     //pola wymagane
     if (this.editEventsForm.selectedCategory == "") validationStatus += "- Nie wybrano kategorii<br>";
