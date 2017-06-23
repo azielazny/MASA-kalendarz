@@ -81,7 +81,7 @@ export class CalendarMonthViewComponent implements OnInit, AfterViewInit {
           }
         )
       })
-    }, 1000)
+    }, 1500)
     ).subscribe();
 
     console.log(this.eventsListForGrid)

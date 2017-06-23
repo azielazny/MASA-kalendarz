@@ -154,7 +154,7 @@ export class EventsService {
       withCredentials: true // CORS Access-Control-Allow-Credentials header
     });
 
-    return this.http.get(this.url + "/attendants/$(eventid)", options)
+    return this.http.get(this.url + "/attendants/"+eventid, options)
       .map(this.extractEventAttendants);
   }
 

@@ -104,7 +104,6 @@ export class CalendarEditEventsFormComponent implements OnInit, OnChanges, After
       this.usersData = val
     });
     this.usersCount = this.usersData.length;
-    // console.log(this.usersCount)
   }
 
   private getSelectedCategoryData() {
