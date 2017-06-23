@@ -937,3 +937,7 @@ app-calendar-backoffice #calEdit .formCalendar input#komentarz_username {
 .error .required {
   border: 2px solid lighten($lightviolet, 20%) !important;
 }
+
+.hidden{
+  display: none;
+}

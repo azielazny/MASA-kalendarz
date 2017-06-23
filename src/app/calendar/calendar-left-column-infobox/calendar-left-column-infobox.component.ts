@@ -17,7 +17,7 @@ export class CalendarLeftColumnInfoboxComponent implements OnInit {
   private counter: number = 0;
 
   constructor(private eventsService: EventsService) {
-    this.eventsService.limitListForUser(this.username, 5).subscribe(val => {
+    this.eventsService.limitListForUser(5).subscribe(val => {
       this.infoboxData(val, 0);
     });
   }

@@ -3,4 +3,5 @@
     <kaskada-googlemap [adres]="location"></kaskada-googlemap>
   </div>
 </div>
-<weather-widget [eventdata]="eventdata" class="col-xs-12 weatherWidgetForEdit"></weather-widget>
+<weather-widget [eventdata]="eventdata" class="col-xs-12 weatherWidgetForEdit"
+                [ngClass]="eventdata.event_id==0?'hidden':''"></weather-widget>

@@ -18,7 +18,7 @@ export class CalendarEditEventsMenuComponent implements OnInit, OnChanges {
   @Output() outputVisibility: EventEmitter<string> = new EventEmitter();
   @Output() outputReminder: EventEmitter<boolean> = new EventEmitter();
   @Output() outputRemover: EventEmitter<number> = new EventEmitter();
-  @Output() outputEventSaver: EventEmitter<boolean> = new EventEmitter();
+  @Output() outputEventSaver: EventEmitter<number> = new EventEmitter();
 
 
   constructor(private eventsService: EventsService) {
@@ -30,7 +30,7 @@ export class CalendarEditEventsMenuComponent implements OnInit, OnChanges {
   ngOnChanges() {
     if (this.eventData) {
       this.visibility = this.eventData.visibility;
-      this.reminder = this.eventData.reminder;
+      this.reminder = this.eventData.is_remind_set;
     }
   }
 
@@ -47,7 +47,7 @@ export class CalendarEditEventsMenuComponent implements OnInit, OnChanges {
   removeEvent(event_id: number) {
     this.outputRemover.emit(event_id);
   }
-  saveEvent(status: boolean) {
+  saveEvent(status: number) {
     this.outputEventSaver.emit(status);
   }
 }
