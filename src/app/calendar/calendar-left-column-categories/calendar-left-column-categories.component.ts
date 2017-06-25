@@ -24,15 +24,17 @@ export class CalendarLeftColumnCategoriesComponent implements OnInit {
     this.categoriesService.list().subscribe(val => {
       if (val.length == 0) return;
       this.categories = val;
-      this.parent.parent.grid.rightColumn.getCategoryList();
-      this.parent.parent.grid.monthGrid.getCategoryList();
-      this.parent.parent.grid.editEvents.editEventsForm.getCategoryList();
+
+      // this.parent.parent.grid.rightColumn.getCategoryList();
+      // this.parent.parent.grid.monthGrid.getCategoryList();
+      // this.parent.parent.grid.editEvents.editEventsForm.getCategoryList();
     });
+
   }
 
 
   ngOnInit() {
-    console.log(this.parent.parent.grid.rightColumn.xx)
+
   }
 
   addCategory() {

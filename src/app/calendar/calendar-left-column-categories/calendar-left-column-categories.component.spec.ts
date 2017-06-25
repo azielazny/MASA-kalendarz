@@ -7,10 +7,15 @@ import {CategoriesService} from "../../services/categories.service";
 import {HttpModule, BaseRequestOptions, Http, Response, ResponseOptions} from "@angular/http";
 import {MockBackend, MockConnection} from "@angular/http/testing";
 import {Category} from "../../class/category.class";
+import {CalendarLeftColumnCategoriesListComponent} from "../calendar-left-column-categories-list/calendar-left-column-categories-list.component";
+import {Component} from "@angular/core";
+import {isUndefined} from "util";
 
-describe('CalendarLeftColumnCategoriesComponent', () => {
+fdescribe('CalendarLeftColumnCategoriesComponent', () => {
   let component: CalendarLeftColumnCategoriesComponent;
   let fixture: ComponentFixture<CalendarLeftColumnCategoriesComponent>;
+  let fixture2: ComponentFixture<TestComponentWrapper>;
+
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -19,18 +24,23 @@ describe('CalendarLeftColumnCategoriesComponent', () => {
         CategoriesService,
         MockBackend,
         BaseRequestOptions,
+        CalendarLeftColumnCategoriesComponent,
         {
           provide: Http,
           useFactory: (backend: MockBackend, options: BaseRequestOptions) => new Http(backend, options),
           deps: [MockBackend, BaseRequestOptions]
         }
       ],
-      declarations: [ CalendarLeftColumnCategoriesComponent ],
+      declarations: [ CalendarLeftColumnCategoriesListComponent,CalendarLeftColumnCategoriesComponent, TestComponentWrapper ],
       imports: [
         HttpModule
-      ]
+      ],
+      // exports: [CalendarLeftColumnCategoriesListComponent,CalendarLeftColumnCategoriesComponent]
     })
       .compileComponents();
+    fixture2 = TestBed.createComponent(TestComponentWrapper);
+    component = fixture2.debugElement.children[0].componentInstance;
+    fixture2.detectChanges();
   }));
 
   beforeEach(() => {
@@ -47,19 +57,28 @@ describe('CalendarLeftColumnCategoriesComponent', () => {
     [CalendarLeftColumnCategoriesComponent, MockBackend], (testObj: CalendarLeftColumnCategoriesComponent, mockBackend: MockBackend) => {
       /*given*/
       mockBackend.connections.subscribe((connection: MockConnection) => {
-        const categories: Category[] = [{category_id: 11, color: "#fff", name: "nazwa", user_id: 11}];
+        const categories: Category[] = [{category_id: 11, color: "#fff", name: "kategoria", user_id: 11}];
+        if(categories!=undefined) {const categoryName= categories[0].name;}
         connection.mockRespond(new Response(new ResponseOptions({body: JSON.stringify(categories)})));
       });
 
       /*when*/
       const result = testObj.getCategoryList();
+      if(result!=undefined) {const firstresultName=result[0].name;}
 
       /*then*/
-          expect(component.categories.length).toEqual(1);
-          expect(component.categories[0].color).toEqual("#fff");
-          expect(component.categories[0].name).toEqual("nazwa");
+          expect(result).toEqual(this.categories);
+          // expect(result[0].color).toEqual(this.categories[0].color);
+          expect(this.firstresultName).toEqual(this.categoryName);
 
 
     })));
 });
 
+@Component({
+  selector: 'test-component-wrapper',
+  template: '<calendar-left-column-categories [parent]="this"></calendar-left-column-categories>'
+})
+class TestComponentWrapper {
+  parent=""
+}
