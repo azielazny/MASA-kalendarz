@@ -7,8 +7,8 @@ describe('todo-list App', function() {
     page = new TodoListPage();
   });
 
-  it('should display message saying app works', () => {
+  it('should display message saying app works1', () => {
     page.navigateTo();
-    expect(page.getParagraphText()).toEqual('app works!');
+    expect(page.getParagraphText()).toEqual('makeplan.');
   });
 });

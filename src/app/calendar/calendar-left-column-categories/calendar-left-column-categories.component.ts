@@ -20,7 +20,7 @@ export class CalendarLeftColumnCategoriesComponent implements OnInit {
     this.getCategoryList();
   }
 
-  private getCategoryList() {
+  public getCategoryList() {
     this.categoriesService.list().subscribe(val => {
       if (val.length == 0) return;
       this.categories = val;
