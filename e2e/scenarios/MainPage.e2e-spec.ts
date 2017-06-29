@@ -8,6 +8,7 @@ describe('Masa Kalendarz Main Page', () => {
   let mainPage = MainPage.buildComponent();
 
   beforeEach(() => {
+    browser.get(browser.baseUrl);
     browser.sleep(2000);
   });
 
