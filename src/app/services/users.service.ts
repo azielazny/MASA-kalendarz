@@ -67,10 +67,10 @@ export class UsersService {
   }
 
   private extractStatus(res: Response) {
-    let body = res.json();
+  let body = res.json();
 
-    return (body.code === 200);
-  }
+  return (body.code === 200);
+}
 
   private extractID(res: Response) {
     let body = res.json();

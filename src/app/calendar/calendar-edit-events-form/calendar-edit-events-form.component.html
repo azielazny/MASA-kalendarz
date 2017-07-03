@@ -1,9 +1,9 @@
 <div class=" formCalendar" [ngClass]="error==true ? 'error' : ''">
   <div class="selectColor">
     <i class="fa fa-2x fa-stop" aria-hidden="true" [style.color]="selectedCategory.color"></i>
-    <p-dropdown [options]="categories" [(ngModel)]="selectedCategory" [style]="{'width':'22px'}" >
+    <p-dropdown [options]="categories" [(ngModel)]="selectedCategory" [style]="{'width':'22px'}"  class="editFormCategories">
       <template let-selCategory pTemplate="item">
-        <div class="ui-helper-clearfix" style="position: relative;height: 25px;">
+        <div class="ui-helper-clearfix dropdownCategoryList" style="position: relative;height: 25px;">
           <div style="font-size:14px;float:left;margin-top:4px"><i class="fa fa-stop"
                                                                    [style.color]="selCategory.value.color"></i>{{selCategory.value.name}}
           </div>

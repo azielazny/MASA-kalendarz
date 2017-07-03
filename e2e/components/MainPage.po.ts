@@ -28,10 +28,7 @@ export class MainPage extends BaseWebControl {
   }
 
   public loginData() {
-    this.saveData("loggedAs", LoginData.correct_loggedAs);
-    this.saveData("loggedBy", LoginData.correct_loggedBy);
-    this.saveData("userName", LoginData.correct_userName);
-    this.saveData("uid", LoginData.correct_uid);
+    this.login(LoginData.correct_loggedAs, LoginData.correct_loggedBy, LoginData.correct_userName, LoginData.correct_uid);
   }
 
   public logout() {

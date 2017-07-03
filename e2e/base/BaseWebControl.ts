@@ -1,7 +1,11 @@
 import {By} from 'selenium-webdriver';
 import {browser, element, ElementFinder, protractor} from 'protractor';
+import 'reflect-metadata';
+import {Headers, Response, Http} from "@angular/http";
+
 
 export class BaseWebControl {
+  private constants: any;
 
   constructor(public rootLocator: By) {
   }
@@ -10,8 +14,11 @@ export class BaseWebControl {
     return element(this.rootLocator);
   }
 
-  private componentElement(locator: By): ElementFinder {
+  public componentElement(locator: By): ElementFinder {
     return this.rootElement().element(locator);
+  }
+  public componentElementAll(locator: By) {
+    return this.rootElement().all(locator);
   }
 
   public clickElement(locator: By) {
@@ -55,4 +62,12 @@ export class BaseWebControl {
     browser.wait(EC.visibilityOf(element), timeout, 'Couldn\'t find element [' +
       element.locator() + '] within ' + browser.params.webElementDisplayedTimeout + ' milliseconds.');
   }
+
+  public login(loggedAs: string, loggedBy: string, userName: string, uid: string) {
+    this.saveData("loggedAs", loggedAs);
+    this.saveData("loggedBy", loggedBy);
+    this.saveData("userName", userName);
+    this.saveData("uid", uid);
+  }
+
 }
