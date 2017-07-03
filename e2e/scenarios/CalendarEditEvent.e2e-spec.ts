@@ -5,16 +5,39 @@ import {MainPage} from "../components/MainPage.po";
 
 describe('Masa Kalendarz Left Column', () => {
 
+
+  let newEvent = EditEvent.buildComponent();
   let mainPage = MainPage.buildComponent();
 
-  beforeEach(() => {
+  beforeAll(() => {
     browser.get(browser.baseUrl);
+    browser.sleep(2000);
+    mainPage.clickLoginButton();
+
+    browser.getAllWindowHandles().then(handles => {
+      let newTabHandle = handles[2];
+      browser.switchTo().window(newTabHandle).then(() => {
+        mainPage.typeInEmailField(LoginData.correct_login);
+        mainPage.clickEmailNextButton();
+        browser.sleep(1000);
+        mainPage.typeInPasswordField(LoginData.correct_password);
+        mainPage.clickPasswordNextButton();
+        browser.sleep(1000);
+        browser.switchTo().window(handles[0]);
+      });
+    });
     browser.sleep(2000);
   });
 
-  afterEach(() => {
+  beforeEach(() => {
+    browser.get("/calendar");
+    browser.sleep(2000);
+  });
+
+  afterAll(() => {
     mainPage.logout();
   });
+
 
   it('edycja wydarzenia wydarzenia i aktualizacja gridu', () => {
     // expect(mainPage.validateLogin()).toEqual("Zaloguj się za pomocą Google");

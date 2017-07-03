@@ -4,7 +4,7 @@ import {MainPage} from "../components/MainPage.po";
 import {LeftColumn} from "../components/LeftColumn.po";
 import {CalendarGrid} from "../components/CalendarGrid.po";
 
-fdescribe('Masa Kalendarz Calendar Grid', () => {
+describe('Masa Kalendarz Calendar Grid', () => {
 
   let calendarGrid = CalendarGrid.buildComponent();
   let mainPage = MainPage.buildComponent();
