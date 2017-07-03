@@ -48,11 +48,11 @@ fdescribe('Masa Kalendarz New Event', () => {
     browser.sleep(1000);
     newEvent.clickLastCategoryOfCategoryList();
     newEvent.setEventName("Nowe wydarzenie");
-    newEvent.setLocName();
-    newEvent.setLocCity();
-    newEvent.setLocStreet();
-    newEvent.setLocNumber();
-    newEvent.setEventDescription();
+    newEvent.setLocName("Politechnika Gdańska");
+    newEvent.setLocCity("Gdynia");
+    newEvent.setLocStreet("Narutowicza");
+    newEvent.setLocNumber("11/12");
+    newEvent.setEventDescription("Przykładowy opis zdarzenia");
     browser.sleep(2000);
     newEvent.clickSaveEventButton();
     newEvent.clickCloseEditEventButton();

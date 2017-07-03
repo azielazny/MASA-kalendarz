@@ -58,24 +58,24 @@ export class NewEvent extends BaseWebControl {
     this.putTextIntoElement(this.EVENT_NAME, event);
   }
 
-  public setLocName() {
-    this.putTextIntoElement(this.LOC_NAME, "Politechnika Gdańska");
+  public setLocName(loc:string) {
+    this.putTextIntoElement(this.LOC_NAME, loc);
   }
 
-  public setLocCity() {
-    this.putTextIntoElement(this.LOC_CITY, "Gdynia");
+  public setLocCity(loc:string) {
+    this.putTextIntoElement(this.LOC_CITY, loc);
   }
 
-  public setLocStreet() {
-    this.putTextIntoElement(this.LOC_STREET, "Narutowicza");
+  public setLocStreet(loc:string) {
+    this.putTextIntoElement(this.LOC_STREET, loc);
   }
 
-  public setLocNumber() {
-    this.putTextIntoElement(this.LOC_NUM, "11/12");
+  public setLocNumber(loc:string) {
+    this.putTextIntoElement(this.LOC_NUM, loc);
   }
 
-  public setEventDescription() {
-    this.putTextIntoElement(this.EVENT_DESCRIPTION, "Przykładowy opis zdarzenia");
+  public setEventDescription(loc:string) {
+    this.putTextIntoElement(this.EVENT_DESCRIPTION, loc);
   }
 
   public clickSaveEventButton() {

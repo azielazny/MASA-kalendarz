@@ -39,7 +39,7 @@ describe('Masa Kalendarz Left Column', () => {
   });
 
 
-  it('edycja wydarzenia wydarzenia i aktualizacja gridu', () => {
+  it('edycja wydarzenia i aktualizacja gridu', () => {
     // expect(mainPage.validateLogin()).toEqual("Zaloguj się za pomocą Google");
     // mainPage.loginData();
     // browser.refresh();
