@@ -3,7 +3,7 @@ import {LoginData} from "../test_data"
 import {MainPage} from "../components/MainPage.po";
 import {LeftColumn} from "../components/LeftColumn.po";
 
-fdescribe('Masa Kalendarz Left Column', () => {
+describe('Masa Kalendarz Left Column', () => {
 
   let leftColumn = LeftColumn.buildComponent();
   let mainPage = MainPage.buildComponent();
