@@ -24,7 +24,13 @@ export class NewEvent extends BaseWebControl {
   private EVENT_VISIBILITY = by.id('eventVisibility');
   private EVENT_UPLOAD = by.id('uploadBtn');
   private EVENT_PUBLIC_SETTINGS = by.css('[header="Ustawienia publiczne"]');
+  private EVENT_PUBLIC_COMMENTS = by.css('[header="Komentarze"]');
+  private EVENT_DETAILS_COMMENTS = by.css('[aria-controls="comments"]');
   private EVENT_TITLE=by.css(".event-title h1");
+  private EVENT_COMMENT_BODY=by.id("komentarz_tresc");
+  private EVENT_ADD_COMMENT=by.id("addComment");
+  private EVENT_DETAILS_COMMENT_REPLAY=by.className("fa-reply");
+  private EVENT_COMMENTS_LIST=by.css("calendar-edit-events-comment article");
 
 
   constructor(public rootLocator: By) {
@@ -129,11 +135,29 @@ export class NewEvent extends BaseWebControl {
     return this.getText(this.EVENT_TITLE);
   }
 
+  public setCommentBody(text:string) {
+    return this.putTextIntoElement(this.EVENT_COMMENT_BODY,text);
+  }
 
   public static buildComponent() {
     return new NewEvent(by.id('app-root'));
   }
 
+  public clickCommentsForEvent() {
+    return this.clickElement(this.EVENT_PUBLIC_COMMENTS);
+  }
+  public clickAddComment() {
+    return this.clickElement(this.EVENT_ADD_COMMENT);
+  }
+  public clickCommentsFromEventDetails() {
+    return this.clickElement(this.EVENT_DETAILS_COMMENTS);
+  }
+  public clickCommentReplayFromEventDetails() {
+    return this.clickElement(this.EVENT_DETAILS_COMMENT_REPLAY);
+  }
+  public getCommentsCount() {
+    return this.componentElementAll(this.EVENT_COMMENTS_LIST);
+  }
 
 }
 

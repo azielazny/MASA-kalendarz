@@ -90,28 +90,45 @@ fdescribe('Masa Kalendarz New Event', () => {
   //   expect(newEvent.getEditEventFromList(0)).toContain("Edytowane wydarzenie");
   //   newEvent.clickCloseRightColumnButton();
   // });
-  it('It should by change the event to public', () => {
+  // it('It should by change the event to public', () => {
+  //   newEvent.clickDayOfMonth(0);
+  //   newEvent.clickEditEventFromList(0);
+  //   newEvent.clickPublicEvent();
+  //   newEvent.clickPublicSettingsOfEvent();
+  //   newEvent.clickUploadImage();
+  //   newEvent.clickSaveEventButton();
+  //   browser.sleep(8000);
+  //   browser.get(browser.baseUrl + "events/Kraków/3/1");
+  //   browser.sleep(4000);
+  //   newEvent.clickNewEvent("Edytowane wydarzenie");
+  //   browser.sleep(2000);
+  //   expect(newEvent.getEventTitle()).toEqual("Edytowane wydarzenie");
+  //   browser.sleep(2000);
+  // });
+
+  it('It should simulate dialogue in comments', () => {
     newEvent.clickDayOfMonth(0);
     newEvent.clickEditEventFromList(0);
-    newEvent.clickPublicEvent();
-    newEvent.clickPublicSettingsOfEvent();
-    newEvent.clickUploadImage();
-    newEvent.clickSaveEventButton();
-    browser.sleep(8000);
-    browser.get(browser.baseUrl+"events/Kraków/3/1");
+    newEvent.clickCommentsForEvent();
+    newEvent.setCommentBody("Pierwsza wiadomość");
+    newEvent.clickAddComment();
+    browser.sleep(6000);
+    browser.get(browser.baseUrl + "events/Kraków/3/1");
     browser.sleep(4000);
     newEvent.clickNewEvent("Edytowane wydarzenie");
-    browser.sleep(2000);
-    expect(newEvent.getEventTitle()).toEqual("Edytowane wydarzenie");
-    browser.sleep(2000);
+    newEvent.clickCommentsFromEventDetails();
+    newEvent.clickCommentReplayFromEventDetails();
+    newEvent.setCommentBody("Jakaś odpowiedź");
+    newEvent.clickAddComment();
+    browser.sleep(3000);
+    browser.get(browser.baseUrl + "calendar");
+    newEvent.clickDayOfMonth(0);
+    newEvent.clickEditEventFromList(0);
+    newEvent.clickCommentsForEvent();
+    browser.sleep(3000);
+    expect(newEvent.getCommentsCount().count()).toEqual(2);
+
   });
-  //
-  // it('obsługa komentarzy', () => {
-  //   // expect(mainPage.validateLogin()).toEqual("Zaloguj się za pomocą Google");
-  //   // mainPage.loginData();
-  //   // browser.refresh();
-  //   // expect(mainPage.validateLogin()).toEqual("Zalogowano jako: kiomi kiomi");
-  // });
   //
   // it('zapis na wydarzenie z drukiem', () => {
   //   // expect(mainPage.validateLogin()).toEqual("Zaloguj się za pomocą Google");
