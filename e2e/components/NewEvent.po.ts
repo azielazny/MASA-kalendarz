@@ -21,6 +21,10 @@ export class NewEvent extends BaseWebControl {
   private EVENT_EDIT_CLOSE = by.id('closeEditCal');
   private EVENTS_LIST = by.css('app-calendar-backoffice #rightColumn .eventBox');
   private CLOSE_RIGHT_COLUMN = by.css('#rightColumn .fa-close');
+  private EVENT_VISIBILITY = by.id('eventVisibility');
+  private EVENT_UPLOAD = by.id('uploadBtn');
+  private EVENT_PUBLIC_SETTINGS = by.css('[header="Ustawienia publiczne"]');
+  private EVENT_TITLE=by.css(".event-title h1");
 
 
   constructor(public rootLocator: By) {
@@ -55,26 +59,32 @@ export class NewEvent extends BaseWebControl {
   }
 
   public setEventName(event: string) {
+    this.removeTextFromElement(this.EVENT_NAME);
     this.putTextIntoElement(this.EVENT_NAME, event);
   }
 
-  public setLocName(loc:string) {
+  public setLocName(loc: string) {
+    this.removeTextFromElement(this.LOC_NAME);
     this.putTextIntoElement(this.LOC_NAME, loc);
   }
 
-  public setLocCity(loc:string) {
+  public setLocCity(loc: string) {
+    this.removeTextFromElement(this.LOC_CITY);
     this.putTextIntoElement(this.LOC_CITY, loc);
   }
 
-  public setLocStreet(loc:string) {
+  public setLocStreet(loc: string) {
+    this.removeTextFromElement(this.LOC_STREET);
     this.putTextIntoElement(this.LOC_STREET, loc);
   }
 
-  public setLocNumber(loc:string) {
+  public setLocNumber(loc: string) {
+    this.removeTextFromElement(this.LOC_NUM);
     this.putTextIntoElement(this.LOC_NUM, loc);
   }
 
-  public setEventDescription(loc:string) {
+  public setEventDescription(loc: string) {
+    this.removeTextFromElement(this.EVENT_DESCRIPTION);
     this.putTextIntoElement(this.EVENT_DESCRIPTION, loc);
   }
 
@@ -89,6 +99,36 @@ export class NewEvent extends BaseWebControl {
   public clickCloseRightColumnButton() {
     return this.clickElement(this.CLOSE_RIGHT_COLUMN);
   }
+
+  public clickEditEventFromList(number: number) {
+    return this.componentElementAll(this.EVENTS_LIST).get(number).click();
+  }
+
+  public getEditEventFromList(number: number) {
+    return this.componentElementAll(this.EVENTS_LIST).get(number).getText();
+  }
+
+  public clickPublicEvent() {
+    return this.clickElement(this.EVENT_VISIBILITY);
+  }
+
+  public clickPublicSettingsOfEvent() {
+    return this.clickElement(this.EVENT_PUBLIC_SETTINGS);
+  }
+
+  public clickUploadImage() {
+    let uri = "C:/Users/arek50/Desktop/kuchnie/kuchnia.jpg";
+    return this.putTextIntoElement(this.EVENT_UPLOAD, uri);
+  }
+
+  public clickNewEvent(eventTitle: string) {
+    return this.clickElement(by.cssContainingText('.event-title', eventTitle));
+  }
+
+  public getEventTitle() {
+    return this.getText(this.EVENT_TITLE);
+  }
+
 
   public static buildComponent() {
     return new NewEvent(by.id('app-root'));

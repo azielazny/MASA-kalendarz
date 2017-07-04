@@ -5,7 +5,7 @@
   <div class="mainNavBox" (click)="removeEvent(eventData.event_id)">
     <i class="fa fa-trash-o"></i> <span>Usuń</span>
   </div>
-  <div class="mainNavBox" (click)="isVisibility(visibility)">
+  <div class="mainNavBox" (click)="isVisibility(visibility)" id="eventVisibility">
     <div *ngIf="visibility=='public'">
       <i class="fa fa-unlock publicIcon"></i> <span>Publiczne</span>
     </div>

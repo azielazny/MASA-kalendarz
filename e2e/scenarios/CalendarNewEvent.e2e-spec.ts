@@ -38,31 +38,85 @@ fdescribe('Masa Kalendarz New Event', () => {
     mainPage.logout();
   });
 
-  it('Is should add the new event and update grid of calendar', () => {
+  // it('Is should add the new event and update grid of calendar', () => {
+  //   newEvent.clickDayOfMonth(0);
+  //   browser.sleep(2000);
+  //   let eventsListCounter = newEvent.getEventsListAll().count().then((result) => {
+  //     return result + 1
+  //   });
+  //   newEvent.clickAddEventButton();
+  //   newEvent.clickShowCategoryListButton();
+  //   browser.sleep(1000);
+  //   newEvent.clickLastCategoryOfCategoryList();
+  //   newEvent.setEventName("Nowe wydarzenie");
+  //   newEvent.setLocName("Real Escape Room");
+  //   newEvent.setLocCity("Gdynia");
+  //   newEvent.setLocStreet("skwer kościuszki");
+  //   newEvent.setLocNumber("15");
+  //   newEvent.setEventDescription("Przykładowy opis zdarzenia");
+  //   browser.sleep(2000);
+  //   newEvent.clickSaveEventButton();
+  //   newEvent.clickCloseEditEventButton();
+  //   browser.sleep(2000);
+  //   newEvent.clickDayOfMonth(1);
+  //   browser.sleep(2000);
+  //   newEvent.clickDayOfMonth(0);
+  //   browser.sleep(2000);
+  //   expect(newEvent.getEventsListAll().count()).toEqual(eventsListCounter);
+  //   newEvent.clickCloseRightColumnButton();
+  // });
+  // it('Is should edit event and update grid of calendar', () => {
+  //   newEvent.clickDayOfMonth(0);
+  //   browser.sleep(2000);
+  //   newEvent.clickEditEventFromList(0);
+  //
+  //   newEvent.clickShowCategoryListButton();
+  //   browser.sleep(1000);
+  //   newEvent.clickLastCategoryOfCategoryList();
+  //   newEvent.setEventName("Edytowane wydarzenie");
+  //   newEvent.setLocName("Targi w Krakowie");
+  //   newEvent.setLocCity("Kraków");
+  //   newEvent.setLocStreet("Galicyjska");
+  //   newEvent.setLocNumber("9");
+  //   newEvent.setEventDescription("Zmieniony opis zdarzenia");
+  //   browser.sleep(2000);
+  //   newEvent.clickSaveEventButton();
+  //   newEvent.clickCloseEditEventButton();
+  //   browser.sleep(2000);
+  //   newEvent.clickDayOfMonth(1);
+  //   browser.sleep(2000);
+  //   newEvent.clickDayOfMonth(0);
+  //   browser.sleep(2000);
+  //   expect(newEvent.getEditEventFromList(0)).toContain("Edytowane wydarzenie");
+  //   newEvent.clickCloseRightColumnButton();
+  // });
+  it('It should by change the event to public', () => {
     newEvent.clickDayOfMonth(0);
-    let eventsListCounter = newEvent.getEventsListAll().count().then((result) => {
-      return result + 1
-    });
-    newEvent.clickAddEventButton();
-    newEvent.clickShowCategoryListButton();
-    browser.sleep(1000);
-    newEvent.clickLastCategoryOfCategoryList();
-    newEvent.setEventName("Nowe wydarzenie");
-    newEvent.setLocName("Politechnika Gdańska");
-    newEvent.setLocCity("Gdynia");
-    newEvent.setLocStreet("Narutowicza");
-    newEvent.setLocNumber("11/12");
-    newEvent.setEventDescription("Przykładowy opis zdarzenia");
-    browser.sleep(2000);
+    newEvent.clickEditEventFromList(0);
+    newEvent.clickPublicEvent();
+    newEvent.clickPublicSettingsOfEvent();
+    newEvent.clickUploadImage();
     newEvent.clickSaveEventButton();
-    newEvent.clickCloseEditEventButton();
+    browser.sleep(8000);
+    browser.get(browser.baseUrl+"events/Kraków/3/1");
+    browser.sleep(4000);
+    newEvent.clickNewEvent("Edytowane wydarzenie");
     browser.sleep(2000);
-    newEvent.clickDayOfMonth(1);
+    expect(newEvent.getEventTitle()).toEqual("Edytowane wydarzenie");
     browser.sleep(2000);
-    newEvent.clickDayOfMonth(0);
-    newEvent.clickCloseRightColumnButton();
-    browser.sleep(2000);
-    expect(newEvent.getEventsListAll().count()).toEqual(eventsListCounter);
   });
-
+  //
+  // it('obsługa komentarzy', () => {
+  //   // expect(mainPage.validateLogin()).toEqual("Zaloguj się za pomocą Google");
+  //   // mainPage.loginData();
+  //   // browser.refresh();
+  //   // expect(mainPage.validateLogin()).toEqual("Zalogowano jako: kiomi kiomi");
+  // });
+  //
+  // it('zapis na wydarzenie z drukiem', () => {
+  //   // expect(mainPage.validateLogin()).toEqual("Zaloguj się za pomocą Google");
+  //   // mainPage.loginData();
+  //   // browser.refresh();
+  //   // expect(mainPage.validateLogin()).toEqual("Zalogowano jako: kiomi kiomi");
+  // });
 });

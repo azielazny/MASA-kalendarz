@@ -109,7 +109,7 @@ export class EventsListBoxgridComponent implements OnInit {
 
     setTimeout(function() {
       let $event_image_img = $(".event-image img");
-      $(".event-image-cover").width($event_image_img.width() + 1).height($event_image_img.height() + 1);
+      $(".event-image-cover").width($event_image_img.width() + 1).height("calc(100% - 22px)");
     }, 200);
   }
 

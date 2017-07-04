@@ -14,20 +14,17 @@
 
 .event-image-cover {
   display: none;
-
   position: absolute;
-  top: 11px;
-  left: 11px;
-  background-color: rgba(237, 237, 237, 0.8);
-
+  background: rgba(237, 237, 237, 0.8);
   text-align: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
   justify-content: center;
-
   font-variant: small-caps;
-
   font-size: 2em;
-
   cursor: pointer;
+  vertical-align: middle;
+  padding-top: 0px;
 }
 
 .event-image-cover span {
@@ -35,7 +32,7 @@
 }
 
 .event:hover .event-image-cover {
-  display: flex;
+  display: table-cell;
 }
 
 .event-image img {

@@ -13,7 +13,7 @@ export class CalendarBackofficeComponent implements OnInit {
 
   constructor(private router: Router, private title: Title) {
     if (this.username == null) {
-      this.router.navigate(['index']);
+      // this.router.navigate(['index']);
     }
     this.title.setTitle("Twój Organizer - makeplan.");
   }
