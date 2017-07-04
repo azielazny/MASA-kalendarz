@@ -26,11 +26,17 @@ export class NewEvent extends BaseWebControl {
   private EVENT_PUBLIC_SETTINGS = by.css('[header="Ustawienia publiczne"]');
   private EVENT_PUBLIC_COMMENTS = by.css('[header="Komentarze"]');
   private EVENT_DETAILS_COMMENTS = by.css('[aria-controls="comments"]');
+  private EVENT_DETAILS_REGISTER = by.css('[aria-controls="register"]');
+  private EVENT_DETAILS_REMEMBER = by.css('[for="remember"]');
   private EVENT_TITLE=by.css(".event-title h1");
   private EVENT_COMMENT_BODY=by.id("komentarz_tresc");
   private EVENT_ADD_COMMENT=by.id("addComment");
   private EVENT_DETAILS_COMMENT_REPLAY=by.className("fa-reply");
   private EVENT_COMMENTS_LIST=by.css("calendar-edit-events-comment article");
+  private EVENT_USERS_LIST_HEADER=by.css("p-header");
+  private EVENT_DETAILS_REGISTER_USER=by.id("enroll-submit");
+  private EVENT_USERS_LIST=by.css("calendar-edit-events-users-list li");
+  private EVENT_REMOVE=by.className("fa-trash-o");
 
 
   constructor(public rootLocator: By) {
@@ -155,9 +161,26 @@ export class NewEvent extends BaseWebControl {
   public clickCommentReplayFromEventDetails() {
     return this.clickElement(this.EVENT_DETAILS_COMMENT_REPLAY);
   }
-  public getCommentsCount() {
+  public getComments() {
     return this.componentElementAll(this.EVENT_COMMENTS_LIST);
   }
 
+  public clickUserListForEvent() {
+    return this.clickElement(this.EVENT_USERS_LIST_HEADER);
+  }
+  public clickRegisterForEvent() {
+    return this.clickElement(this.EVENT_DETAILS_REGISTER);
+  }
+  public clickRegisterUser() {
+    this.clickElement(this.EVENT_DETAILS_REMEMBER);
+    return this.clickElement(this.EVENT_DETAILS_REGISTER_USER);
+  }
+  public getUsersList() {
+    return this.componentElementAll(this.EVENT_USERS_LIST);
+  }
+
+  public clickRemoveEvent() {
+    this.clickElement(this.EVENT_REMOVE);
+  }
 }
 

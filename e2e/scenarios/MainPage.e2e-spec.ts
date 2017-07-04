@@ -55,9 +55,9 @@ describe('Masa Kalendarz Main Page', () => {
     expect(mainPage.getPersonHelloField()).toEqual("makeplan.");
   });
 
-  it('Wyświetlanie listy wydarzeń i wybór wydarzenia', () => {
-  });
-  it('Wyświetlanie szczegółów wydarzenia i walidacja zakładek', () => {
-  });
+  // it('Wyświetlanie listy wydarzeń i wybór wydarzenia', () => {
+  // });
+  // it('Wyświetlanie szczegółów wydarzenia i walidacja zakładek', () => {
+  // });
 
 });
