@@ -13,29 +13,18 @@ describe('Masa Kalendarz Calendar Grid', () => {
     browser.get(browser.baseUrl);
     browser.sleep(2000);
     mainPage.clickLoginButton();
-
-    browser.getAllWindowHandles().then(handles => {
-      let newTabHandle = handles[2];
-      browser.switchTo().window(newTabHandle).then(() => {
-        mainPage.typeInEmailField(LoginData.correct_login);
-        mainPage.clickEmailNextButton();
-        browser.sleep(1000);
-        mainPage.typeInPasswordField(LoginData.correct_password);
-        mainPage.clickPasswordNextButton();
-        browser.sleep(1000);
-        browser.switchTo().window(handles[0]);
-      });
-    });
+    browser.sleep(2000);
+    mainPage.loginAsUser();
     browser.sleep(2000);
   });
 
   beforeEach(() => {
     browser.get("/calendar");
-    browser.sleep(2000);
   });
 
   afterAll(() => {
     mainPage.logout();
+    browser.sleep(5000);
   });
 
   it('Is should show the previous month', () => {

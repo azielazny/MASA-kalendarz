@@ -21,6 +21,7 @@ describe('Masa Kalendarz Main Page', () => {
     mainPage.loginData();
     browser.refresh();
     expect(mainPage.validateLogin()).toEqual("Zalogowano jako: kiomi kiomi");
+
   });
 
   it('Verify that all menu elements displayed and works', () => {
@@ -36,20 +37,8 @@ describe('Masa Kalendarz Main Page', () => {
 
   it('Verify that login form google oauth works', () => {
     mainPage.clickLoginButton();
-
-    browser.getAllWindowHandles().then(handles=> {
-      let newTabHandle = handles[2];
-      browser.switchTo().window(newTabHandle).then(()=> {
-        mainPage.typeInEmailField(LoginData.correct_login);
-        mainPage.clickEmailNextButton();
-        browser.sleep(1000);
-        mainPage.typeInPasswordField(LoginData.correct_password);
-        mainPage.clickPasswordNextButton();
-        browser.sleep(1000);
-        browser.switchTo().window(handles[0]);
-      });
-    });
-
+    browser.sleep(2000);
+    mainPage.loginAsUser();
     browser.sleep(2000);
     expect(mainPage.getLoggedBy()).toEqual("kiomi kiomi");
     expect(mainPage.getPersonHelloField()).toEqual("makeplan.");

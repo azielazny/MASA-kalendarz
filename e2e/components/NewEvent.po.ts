@@ -15,7 +15,7 @@ export class NewEvent extends BaseWebControl {
   private LOC_NUM = by.css('.calEditBody #locNum');
   private ADD_EVENT_BUTTON = by.css('app-calendar-backoffice #rightColumn .addEvent');
   private SHOW_DROPDOWN_CATEGORY_LIST_BUTTON = by.css('.editFormCategories .fa-caret-down');
-  private DROPDOWN_CATEGORY_LIST_LAST_ELEMENT = by.css('.editFormCategories .dropdownCategoryList:last-of-type');
+  private DROPDOWN_CATEGORY_LIST_LAST_ELEMENT = by.css('li.ui-dropdown-item:last-of-type .dropdownCategoryList');
   private EVENT_DESCRIPTION = by.css('.calEditBody #eventDescription');
   private EVENT_SAVE = by.css('.calEditBody .mainNavBox .fa-save');
   private EVENT_EDIT_CLOSE = by.id('closeEditCal');

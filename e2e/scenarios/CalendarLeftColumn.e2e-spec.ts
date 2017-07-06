@@ -12,29 +12,18 @@ describe('Masa Kalendarz Left Column', () => {
     browser.get(browser.baseUrl);
     browser.sleep(2000);
     mainPage.clickLoginButton();
-
-    browser.getAllWindowHandles().then(handles => {
-      let newTabHandle = handles[2];
-      browser.switchTo().window(newTabHandle).then(() => {
-        mainPage.typeInEmailField(LoginData.correct_login);
-        mainPage.clickEmailNextButton();
-        browser.sleep(1000);
-        mainPage.typeInPasswordField(LoginData.correct_password);
-        mainPage.clickPasswordNextButton();
-        browser.sleep(1000);
-        browser.switchTo().window(handles[0]);
-      });
-    });
+    browser.sleep(2000);
+  mainPage.loginAsUser();
     browser.sleep(2000);
   });
 
   beforeEach(() => {
     browser.get("/calendar");
-    browser.sleep(2000);
   });
 
   afterAll(() => {
     mainPage.logout();
+    browser.sleep(5000);
   });
 
   it('Verify that toggle left column', () => {
@@ -43,31 +32,6 @@ describe('Masa Kalendarz Left Column', () => {
     browser.sleep(1000);
     leftColumn.clickBarsButton();
     expect(leftColumn.shortViewLeftColumn().isPresent()).toBeFalsy();
-  });
-
-  it('it should change the events name', () => {
-    expect(leftColumn.alertFieldTitle()).toContain("Wydarzenie 1");
-    leftColumn.clickAlertNextButton();
-    browser.sleep(1000);
-    expect(leftColumn.alertFieldTitle()).toContain("Wydarzenie 2");
-    browser.sleep(1000);
-    leftColumn.clickAlertNextButton();
-    expect(leftColumn.alertFieldTitle()).toContain("Wydarzenie 3");
-    browser.sleep(1000);
-    leftColumn.clickAlertNextButton();
-    expect(leftColumn.alertFieldTitle()).toContain("Wydarzenie 4");
-    browser.sleep(1000);
-    leftColumn.clickAlertNextButton();
-    expect(leftColumn.alertFieldTitle()).toContain("Wydarzenie 5");
-    browser.sleep(1000);
-    leftColumn.clickAlertNextButton();
-    expect(leftColumn.alertFieldTitle()).toContain("Wydarzenie 1");
-    browser.sleep(1000);
-    leftColumn.clickAlertPrevButton();
-    expect(leftColumn.alertFieldTitle()).toContain("Wydarzenie 5");
-    browser.sleep(1000);
-    leftColumn.clickAlertPrevButton();
-    expect(leftColumn.alertFieldTitle()).toContain("Wydarzenie 4");
   });
 
   it('It should add new category', () => {
@@ -97,7 +61,32 @@ describe('Masa Kalendarz Left Column', () => {
     leftColumn.clickAddEventButton();
     leftColumn.clickShowCategoryListButton();
     browser.sleep(2000);
-    expect(leftColumn.getLastCategoryOfCategoryList()).toContain("Nowa kategoria");
+    expect(leftColumn.getLastCategoryOfCategoryList()).toContain("Kategoria 2");
+  });
+
+  it('it should change the events name', () => {
+    expect(leftColumn.alertFieldTitle()).toContain("Wydarzenie 1");
+    leftColumn.clickAlertNextButton();
+    browser.sleep(1000);
+    expect(leftColumn.alertFieldTitle()).toContain("Wydarzenie 2");
+    browser.sleep(1000);
+    leftColumn.clickAlertNextButton();
+    expect(leftColumn.alertFieldTitle()).toContain("Wydarzenie 3");
+    browser.sleep(1000);
+    leftColumn.clickAlertNextButton();
+    expect(leftColumn.alertFieldTitle()).toContain("Wydarzenie 4");
+    browser.sleep(1000);
+    leftColumn.clickAlertNextButton();
+    expect(leftColumn.alertFieldTitle()).toContain("Wydarzenie 5");
+    browser.sleep(1000);
+    leftColumn.clickAlertNextButton();
+    expect(leftColumn.alertFieldTitle()).toContain("Wydarzenie 1");
+    browser.sleep(1000);
+    leftColumn.clickAlertPrevButton();
+    expect(leftColumn.alertFieldTitle()).toContain("Wydarzenie 5");
+    browser.sleep(1000);
+    leftColumn.clickAlertPrevButton();
+    expect(leftColumn.alertFieldTitle()).toContain("Wydarzenie 4");
   });
   it('Verify that all left menu elements displayed and works', () => {
     leftColumn.clickSettingsButton();

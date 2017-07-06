@@ -18,10 +18,10 @@ export class LeftColumn extends BaseWebControl {
   private CATEGORY_LIST = by.css('#leftColumn #categoryList calendar-left-column-categories-list');
   private CATEGORY_LIST_LAST_ELEMENT_NAME = by.css('#leftColumn #categoryList calendar-left-column-categories-list:last-of-type .actualCategory .catName');
   private CATEGORY_LIST_LAST_ELEMENT_DELETE = by.css('#leftColumn #categoryList calendar-left-column-categories-list:last-of-type .actualCategory .catDel');
-  private GRID_CALENDAR_FIRST_DAY = by.css('app-calendar-backoffice #calendar .lCard:first-child');
+  private GRID_CALENDAR_FIRST_DAY = by.css('app-calendar-backoffice #calendar calendar-month-view-light-box:first-of-type .lCard');
   private ADD_EVENT_BUTTON = by.css('app-calendar-backoffice #rightColumn .addEvent');
   private SHOW_DROPDOWN_CATEGORY_LIST_BUTTON = by.css('.editFormCategories .fa-caret-down');
-  private DROPDOWN_CATEGORY_LIST_LAST_ELEMENT = by.css('.dropdownCategoryList:last-of-type');
+  private DROPDOWN_CATEGORY_LIST_LAST_ELEMENT = by.css('li.ui-dropdown-item:last-of-type .dropdownCategoryList');
   private SETTINGS_BUTTON = by.id('calSettings');
   private PUBLIC_EVENTS_LINK_BUTTON = by.id('publicEventsLink');
   private SETTINGS_FIELD = by.css('.topNav.setTab.active');
@@ -59,7 +59,7 @@ export class LeftColumn extends BaseWebControl {
 
   public selectCategoryColor() {
     let elm = this.componentElement(this.CATEGORY_INPUT_CATEGORY_COLOR_FIELD);
-    browser.executeScript("arguments[0].setAttribute('value', arguments[1]);", elm, "#fe2235");
+    browser.executeScript("arguments[0].setAttribute('value', arguments[1]);", elm, "#29ac0e");
   }
 
   public selectCategoryName() {

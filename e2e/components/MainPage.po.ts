@@ -16,7 +16,7 @@ export class MainPage extends BaseWebControl {
   private CITY_FIELD = by.className('city-header');
   private LOGOBOX_FIELD = by.className('logoBox');
   private EMAIL_NEXT_BUTTON = by.id('identifierNext');
-  private PASSWORD_NEXT_BUTTON= by.id('passwordNext');
+  private PASSWORD_NEXT_BUTTON = by.id('passwordNext');
 
 
   constructor(public rootLocator: By) {
@@ -84,7 +84,7 @@ export class MainPage extends BaseWebControl {
   }
 
   public getLoggedBy() {
-   return this.getSavedData("userName");
+    return this.getSavedData("userName");
   }
 
 
@@ -92,5 +92,27 @@ export class MainPage extends BaseWebControl {
     return new MainPage(by.id('app-root'));
   }
 
+  public loginAsUser() {
+    return browser.executeScript('return localStorage.getItem("userName");').then(x => {
+      if (x != LoginData.correct_userName) {
+        browser.getAllWindowHandles().then(handles => {
+          let newTabHandle = handles[2];
+          if (newTabHandle) {
+            browser.sleep(2000);
+            browser.switchTo().window(newTabHandle).then(() => {
+              browser.sleep(2000);
+              this.typeInEmailField(LoginData.correct_login);
+              this.clickEmailNextButton();
+              browser.sleep(1000);
+              this.typeInPasswordField(LoginData.correct_password);
+              this.clickPasswordNextButton();
+              browser.sleep(1000);
+              browser.switchTo().window(handles[0]);
+            });
+          }
+        });
+      }
+    });
+  }
 }
 

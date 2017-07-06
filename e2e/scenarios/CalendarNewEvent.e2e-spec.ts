@@ -4,7 +4,7 @@ import {MainPage} from "../components/MainPage.po";
 import {NewEvent} from "../components/NewEvent.po";
 
 
-fdescribe('Masa Kalendarz New Event', () => {
+describe('Masa Kalendarz New Event', () => {
 
   let newEvent = NewEvent.buildComponent();
   let mainPage = MainPage.buildComponent();
@@ -13,19 +13,8 @@ fdescribe('Masa Kalendarz New Event', () => {
     browser.get(browser.baseUrl);
     browser.sleep(2000);
     mainPage.clickLoginButton();
-
-    browser.getAllWindowHandles().then(handles => {
-      let newTabHandle = handles[2];
-      browser.switchTo().window(newTabHandle).then(() => {
-        mainPage.typeInEmailField(LoginData.correct_login);
-        mainPage.clickEmailNextButton();
-        browser.sleep(1000);
-        mainPage.typeInPasswordField(LoginData.correct_password);
-        mainPage.clickPasswordNextButton();
-        browser.sleep(1000);
-        browser.switchTo().window(handles[0]);
-      });
-    });
+    browser.sleep(2000);
+    mainPage.loginAsUser();
     browser.sleep(2000);
   });
 
@@ -97,7 +86,7 @@ fdescribe('Masa Kalendarz New Event', () => {
     newEvent.clickPublicSettingsOfEvent();
     newEvent.clickUploadImage();
     newEvent.clickSaveEventButton();
-    browser.sleep(8000);
+    browser.sleep(6000);
     browser.get(browser.baseUrl + "events/Kraków/3/1");
     browser.sleep(4000);
     newEvent.clickNewEvent("Edytowane wydarzenie");
@@ -120,12 +109,12 @@ fdescribe('Masa Kalendarz New Event', () => {
     newEvent.clickCommentReplayFromEventDetails();
     newEvent.setCommentBody("Jakaś odpowiedź");
     newEvent.clickAddComment();
-    browser.sleep(3000);
+    browser.sleep(2000);
     browser.get(browser.baseUrl + "calendar");
     newEvent.clickDayOfMonth(0);
     newEvent.clickEditEventFromList(0);
     newEvent.clickCommentsForEvent();
-    browser.sleep(3000);
+    browser.sleep(2000);
     expect(newEvent.getComments().count()).toEqual(2);
 
   });
